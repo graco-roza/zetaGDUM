@@ -1,0 +1,10 @@
+*.o
+*.so
+*.dll
+.Rproj.user
+.Rhistory
+.RData
+doc
+Meta
+*.html
+vignettes/*.R

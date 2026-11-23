@@ -1,0 +1,17 @@
+Package: zetaGDUM
+Type: Package
+Title: Zeta Diversity with Abundance, Component Partitioning and Multi-Site Generalised Dissimilarity Uniqueness Models
+Version: 0.1.0
+Authors@R: person("Caio", "Graco-Roza", email = "caio.roza@helsinki.fi", role = c("aut", "cre"))
+Description: Tools to compute zeta diversity from presence-absence and abundance data, including exact species weights at any zeta order, the zeta retention rate and its breakpoint, abundance- and dominance-based zeta, the partition of shared-species similarity into turnover (Simpson-type) and nestedness-resultant components for sets of sites, and a multi-site extension of generalised dissimilarity uniqueness models (GDUM) that separates directional (spread) from non-directional (position) effects at any order, with paired Bayesian-bootstrap importance and Shapley decomposition of deviance explained.
+License: MIT + file LICENSE
+URL: https://github.com/graco-roza/zetaGDUM
+BugReports: https://github.com/graco-roza/zetaGDUM/issues
+Encoding: UTF-8
+Depends: R (>= 4.0.0)
+Imports: Rcpp (>= 1.0.0), nnls, splines2, stats, utils, parallel
+LinkingTo: Rcpp
+Suggests: testthat (>= 3.0.0), knitr, rmarkdown, gdmmTMB
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+Config/roxygen2/version: 8.1.0

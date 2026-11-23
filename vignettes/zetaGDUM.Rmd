@@ -1,0 +1,53 @@
+---
+title: "Zeta diversity with abundance and multi-site uniqueness models"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Zeta diversity with abundance and multi-site uniqueness models}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+library(zetaGDUM)
+```
+
+## Data
+
+```{r data}
+sim <- simulate_metacommunity(n_sites = 80, n_species = 80, seed = 1)
+dim(sim$comm)
+```
+
+## Zeta curve, retention rate and breakpoint
+
+```{r curve}
+cur <- zeta_curve(sim$comm)
+zeta_break(cur)
+head(zeta_curve(sim$comm, type = "abundance"), 4)
+```
+
+## Which species an order represents
+
+```{r weights}
+w2 <- zeta_weights(sim$comm, 2)
+w8 <- zeta_weights(sim$comm, 8)
+c(species_with_weight_k2 = sum(w2 > 0), species_with_weight_k8 = sum(w8 > 0))
+```
+
+## Turnover and nestedness for sets of sites
+
+```{r sets}
+idx <- sample_sets(80, 4, M = 500, seed = 1)
+head(zeta_sets(sim$comm, idx), 3)
+```
+
+## Multi-site GDUM across orders
+
+```{r orders}
+res <- zeta_orders(sim$comm, sim$env, sim$coords, M = 2000, ndraw = 20,
+                   groups = list(env1 = "env1", env2 = "env2", distance = "distance"))
+res
+compare_orders(res, "importance")
+compare_orders(res, "shapley")
+```

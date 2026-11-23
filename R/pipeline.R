@@ -20,7 +20,7 @@
 #' @param seed Random seed.
 #' @param cores Number of cores for the draws.
 #' @param paired If `TRUE` (default) the same site weights are used at every order within a draw; if `FALSE` each order uses independent draws (for comparison only).
-#' @param free_sign Allow directional effects of either sign (see [ugdm_fit()]). The default (`NULL`) leaves the sign free for the nestedness and abundance-gradient components, which have no expected direction along environmental gradients, and constrains it for the other responses.
+#' @param free_sign Allow directional effects of either sign (see [ugdm_fit()]). The default (`NULL`) constrains them to be non-negative, as in the pairwise GDUM; setting `TRUE` is advisable for the nestedness and abundance-gradient components, for which there is no expectation about the direction of richness or abundance gradients along environmental gradients.
 #' @return An object of class `zeta_orders`.
 #' @export
 #' @examples
@@ -32,7 +32,7 @@
 zeta_orders <- function(comm, env, coords = NULL, lonlat = FALSE, component = "turnover", orders = NULL, M = 1e4, ndraw = 100,
                         groups = NULL, min_share = 0.04, seed = 1, cores = 1, paired = TRUE, free_sign = NULL) {
   comm <- .as_abundance(comm)
-  fs <- if (is.null(free_sign)) component %in% c("nestedness", "gradient") else free_sign
+  fs <- isTRUE(free_sign)
   n <- nrow(comm)
   if (nrow(env) != n) stop("`comm` and `env` must have the same number of sites.")
   cur <- zeta_curve(comm, type = "presence")

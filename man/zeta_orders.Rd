@@ -49,7 +49,7 @@ zeta_orders(
 
 \item{paired}{If `TRUE` (default) the same site weights are used at every order within a draw; if `FALSE` each order uses independent draws (for comparison only).}
 
-\item{free_sign}{Allow directional effects of either sign (see [ugdm_fit()]). The default (`NULL`) leaves the sign free for the nestedness and abundance-gradient components, which have no expected direction along environmental gradients, and constrains it for the other responses.}
+\item{free_sign}{Allow directional effects of either sign (see [ugdm_fit()]). The default (`NULL`) constrains them to be non-negative, as in the pairwise GDUM; setting `TRUE` is advisable for the nestedness and abundance-gradient components, for which there is no expectation about the direction of richness or abundance gradients along environmental gradients.}
 }
 \value{
 An object of class `zeta_orders`.

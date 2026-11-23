@@ -84,3 +84,20 @@ test_that("linearly dependent predictors trigger a warning", {
   idx <- sample_sets(30, 2)
   expect_warning(ugdm_design(env, idx), "linearly dependent")
 })
+
+test_that("free-sign directional effects can recover a decline of dissimilarity with spread", {
+  set.seed(3)
+  n <- 60
+  env <- data.frame(a = rnorm(n), b = rnorm(n))
+  idx <- sample_sets(n, 2)
+  d <- ugdm_design(env, idx)
+  # response in which dissimilarity DEcreases with the spread of predictor a
+  spread <- abs(env$a[idx[, 1]] - env$a[idx[, 2]])
+  y <- plogis(0.5 - 1.2 * spread)
+  tr <- rep(50, length(y))
+  fc <- ugdm_fit(d, y, tr)
+  ff <- ugdm_fit(d, y, tr, free_sign = TRUE)
+  expect_gte(min(fc$height), -1e-8)
+  expect_lt(ff$height["a"], -0.3)
+  expect_gt(ff$D2, fc$D2)
+})

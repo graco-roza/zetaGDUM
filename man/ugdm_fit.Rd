@@ -4,7 +4,15 @@
 \alias{ugdm_fit}
 \title{Fit the multi-site GDUM}
 \usage{
-ugdm_fit(design, y, trials, weights = NULL, vars = NULL, distance = TRUE)
+ugdm_fit(
+  design,
+  y,
+  trials,
+  weights = NULL,
+  vars = NULL,
+  distance = TRUE,
+  free_sign = FALSE
+)
 }
 \arguments{
 \item{design}{An object from [ugdm_design()].}
@@ -18,6 +26,11 @@ ugdm_fit(design, y, trials, weights = NULL, vars = NULL, distance = TRUE)
 \item{vars}{Optional character vector: fit only these predictors.}
 
 \item{distance}{Include the distance term if the design has one.}
+
+\item{free_sign}{If `TRUE`, the directional effects may be non-decreasing or non-increasing
+(each spline basis function enters with both signs), as is appropriate for responses without an
+expected direction along environmental gradients, such as nestedness and abundance gradients.
+If `FALSE` (default) the directional effects are non-negative, as in the pairwise GDUM.}
 }
 \value{
 An object of class `ugdm_fit` with `height` (summed spline coefficients per predictor),

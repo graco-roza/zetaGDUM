@@ -17,7 +17,8 @@ zeta_orders(
   min_share = 0.04,
   seed = 1,
   cores = 1,
-  paired = TRUE
+  paired = TRUE,
+  free_sign = NULL
 )
 }
 \arguments{
@@ -47,6 +48,8 @@ zeta_orders(
 \item{cores}{Number of cores for the draws.}
 
 \item{paired}{If `TRUE` (default) the same site weights are used at every order within a draw; if `FALSE` each order uses independent draws (for comparison only).}
+
+\item{free_sign}{Allow directional effects of either sign (see [ugdm_fit()]). The default (`NULL`) leaves the sign free for the nestedness and abundance-gradient components, which have no expected direction along environmental gradients, and constrains it for the other responses.}
 }
 \value{
 An object of class `zeta_orders`.

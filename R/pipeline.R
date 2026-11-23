@@ -20,6 +20,7 @@
 #' @param seed Random seed.
 #' @param cores Number of cores for the draws.
 #' @param paired If `TRUE` (default) the same site weights are used at every order within a draw; if `FALSE` each order uses independent draws (for comparison only).
+#' @param free_sign Allow directional effects of either sign (see [ugdm_fit()]). The default (`NULL`) leaves the sign free for the nestedness and abundance-gradient components, which have no expected direction along environmental gradients, and constrains it for the other responses.
 #' @return An object of class `zeta_orders`.
 #' @export
 #' @examples
@@ -29,8 +30,9 @@
 #' res
 #' compare_orders(res, "importance")
 zeta_orders <- function(comm, env, coords = NULL, lonlat = FALSE, component = "turnover", orders = NULL, M = 1e4, ndraw = 100,
-                        groups = NULL, min_share = 0.04, seed = 1, cores = 1, paired = TRUE) {
+                        groups = NULL, min_share = 0.04, seed = 1, cores = 1, paired = TRUE, free_sign = NULL) {
   comm <- .as_abundance(comm)
+  fs <- if (is.null(free_sign)) component %in% c("nestedness", "gradient") else free_sign
   n <- nrow(comm)
   if (nrow(env) != n) stop("`comm` and `env` must have the same number of sites.")
   cur <- zeta_curve(comm, type = "presence")
@@ -64,13 +66,13 @@ zeta_orders <- function(comm, env, coords = NULL, lonlat = FALSE, component = "t
     tr <- r$trials[r$keep]
     des <- ugdm_design(env, idx, dm)
     Wo <- if (paired) W else site_weights(n, ndraw, seed + 1000 * oi)
-    point[[paste0("k", k)]] <- ugdm_fit(des, y, tr)
+    point[[paste0("k", k)]] <- ugdm_fit(des, y, tr, free_sign = fs)
     one <- function(b) {
       w <- set_weights(Wo[, b], idx)
-      f <- tryCatch(ugdm_fit(des, y, tr, w), error = function(e) NULL)
+      f <- tryCatch(ugdm_fit(des, y, tr, w, free_sign = fs), error = function(e) NULL)
       if (is.null(f)) return(NULL)
       list(imp = tryCatch(ugdm_importance(f, des, w, tr), error = function(e) NULL), d2 = f$D2, hgt = c(f$height, if (f$has_distance) c(distance = f$dist_height)), lam = f$lambda,
-           shp = if (!is.null(groups)) tryCatch(ugdm_shapley(des, y, tr, groups, w), error = function(e) NULL))
+           shp = if (!is.null(groups)) tryCatch(ugdm_shapley(des, y, tr, groups, w, free_sign = fs), error = function(e) NULL))
     }
     res <- if (cores > 1) parallel::mclapply(seq_len(ndraw), one, mc.cores = cores) else lapply(seq_len(ndraw), one)
     for (b in seq_len(ndraw)) {

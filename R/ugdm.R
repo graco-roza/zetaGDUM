@@ -181,6 +181,10 @@ ugdm_response <- function(x, idx, component = c("turnover", "total", "nestedness
 #' @param weights Optional set weights (e.g. from [site_weights()]).
 #' @param vars Optional character vector: fit only these predictors.
 #' @param distance Include the distance term if the design has one.
+#' @param free_sign If `TRUE`, the directional effects may be non-decreasing or non-increasing
+#'   (each spline basis function enters with both signs), as is appropriate for responses without an
+#'   expected direction along environmental gradients, such as nestedness and abundance gradients.
+#'   If `FALSE` (default) the directional effects are non-negative, as in the pairwise GDUM.
 #' @return An object of class `ugdm_fit` with `height` (summed spline coefficients per predictor),
 #'   `lambda` (position effect per standardised unit of the summed predictor), `D2`, `deviance`.
 #' @export
@@ -191,17 +195,22 @@ ugdm_response <- function(x, idx, component = c("turnover", "total", "nestedness
 #' r <- ugdm_response(sim$comm, idx, "turnover")
 #' f <- ugdm_fit(d, r$y[r$keep], r$trials[r$keep])
 #' f$height
-ugdm_fit <- function(design, y, trials, weights = NULL, vars = NULL, distance = TRUE) {
+ugdm_fit <- function(design, y, trials, weights = NULL, vars = NULL, distance = TRUE, free_sign = FALSE) {
   if (nrow(design$Xpos) != length(y) || length(y) != length(trials)) stop("`y`, `trials` and the design must refer to the same sets.")
   dm <- .design_matrix(design, vars, distance)
   w <- if (is.null(weights)) rep(1, length(y)) else weights
-  X <- cbind(-dm$Xdir, dm$Xpos, -dm$Xpos)
+  X <- if (free_sign) cbind(-dm$Xdir, dm$Xdir, dm$Xpos, -dm$Xpos) else cbind(-dm$Xdir, dm$Xpos, -dm$Xpos)
   f <- .fit_logit_nnls(X, y, w * trials)
   p <- ncol(dm$Xdir)
   q <- ncol(dm$Xpos)
   cf <- f$coef
-  beta <- -cf[seq_len(p)]
-  lambda <- cf[p + seq_len(q)] - cf[p + q + seq_len(q)]
+  if (free_sign) {
+    beta <- -cf[seq_len(p)] + cf[p + seq_len(p)]
+    lambda <- cf[2 * p + seq_len(q)] - cf[2 * p + q + seq_len(q)]
+  } else {
+    beta <- -cf[seq_len(p)]
+    lambda <- cf[p + seq_len(q)] - cf[p + q + seq_len(q)]
+  }
   vn <- design$vars[dm$sel]
   height <- sapply(seq_along(vn), function(j) sum(beta[3 * (j - 1) + 1:3]))
   names(height) <- vn
@@ -259,7 +268,7 @@ ugdm_importance <- function(fit, design, weights = NULL, trials = NULL) {
 #' model and shared variance between correlated groups is divided among them.
 #'
 #' @param design A `ugdm_design`.
-#' @param y,trials,weights As in [ugdm_fit()].
+#' @param y,trials,weights,free_sign As in [ugdm_fit()].
 #' @param groups Named list; each element is a character vector of predictor names (use
 #'   `"distance"` for the distance term). Every group can contain directional and position terms.
 #' @return A named numeric vector of contributions to D2 with attribute `D2` (full model).
@@ -270,7 +279,7 @@ ugdm_importance <- function(fit, design, weights = NULL, trials = NULL) {
 #' d <- ugdm_design(sim$env, idx, dist_matrix = coords_dist(sim$coords))
 #' r <- ugdm_response(sim$comm, idx, "turnover")
 #' ugdm_shapley(d, r$y, r$trials, groups = list(env1 = "env1", env2 = "env2", distance = "distance"))
-ugdm_shapley <- function(design, y, trials, groups, weights = NULL) {
+ugdm_shapley <- function(design, y, trials, groups, weights = NULL, free_sign = FALSE) {
   G <- length(groups)
   if (G < 2 || G > 8) stop("Between 2 and 8 groups are supported.")
   w <- if (is.null(weights)) rep(1, length(y)) else weights
@@ -289,7 +298,7 @@ ugdm_shapley <- function(design, y, trials, groups, weights = NULL) {
     }
     if (use_dist) Xdir <- cbind(Xdir, design$Xdist)
     if (is.null(Xpos)) Xpos <- matrix(0, length(y), 0)
-    X <- cbind(-Xdir, Xpos, -Xpos)
+    X <- if (free_sign) cbind(-Xdir, Xdir, Xpos, -Xpos) else cbind(-Xdir, Xpos, -Xpos)
     d2[m + 1] <- .fit_logit_nnls(X, y, w * trials)$D2
   }
   phi <- numeric(G)

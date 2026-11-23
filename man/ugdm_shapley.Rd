@@ -4,12 +4,12 @@
 \alias{ugdm_shapley}
 \title{Shapley decomposition of deviance explained among groups of predictors}
 \usage{
-ugdm_shapley(design, y, trials, groups, weights = NULL)
+ugdm_shapley(design, y, trials, groups, weights = NULL, free_sign = FALSE)
 }
 \arguments{
 \item{design}{A `ugdm_design`.}
 
-\item{y, trials, weights}{As in [ugdm_fit()].}
+\item{y, trials, weights, free_sign}{As in [ugdm_fit()].}
 
 \item{groups}{Named list; each element is a character vector of predictor names (use
 `"distance"` for the distance term). Every group can contain directional and position terms.}

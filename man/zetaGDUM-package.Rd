@@ -12,6 +12,14 @@ the zeta retention rate, (iii) partition set-wise similarity into turnover and
 nestedness components, and (iv) fit a multi-site extension of generalised
 dissimilarity uniqueness models (GDUM) with paired bootstrap importance.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/graco-roza/zetaGDUM}
+  \item Report bugs at \url{https://github.com/graco-roza/zetaGDUM/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Caio Graco-Roza \email{caio.roza@helsinki.fi}
 

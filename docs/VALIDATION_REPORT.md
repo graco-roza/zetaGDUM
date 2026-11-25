@@ -1,5 +1,8 @@
 # Validation of species-informed sampling
 
+Phase 2 investigates order-specific inference, ecological sampling uncertainty,
+and adaptive set sampling. [Phase 2 validation report](PHASE2_VALIDATION_REPORT.md)
+
 The mixture targets the same expected weighted model loss as conventional sampling. It is useful for drawing more shared sets, particularly when sharing is rare. That gain comes with lower weight-based effective sample size and sometimes a higher computational cost. The tests below evaluate numerical exactness, estimator behaviour, and sensitivity of selected manuscript results at the default targeted fraction of 0.5.
 
 ## Exhaustive verification

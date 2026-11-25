@@ -22,7 +22,9 @@ zeta_orders(
   weighting = c("direct", "product"),
   sampling = c("conventional", "species"),
   alpha = 0.5,
-  working_weights = c("default", "constant")
+  working_weights = c("default", "constant"),
+  pilot_M = 1000L,
+  pilot_nrep = 8L
 )
 }
 \arguments{
@@ -46,7 +48,9 @@ zeta_orders(
 
 \item{groups}{Optional named list of predictor groups for the Shapley decomposition.}
 
-\item{min_share}{Minimum share of sets sharing at least one species for an order to be used.}
+\item{min_share}{Legacy minimum estimated sharing fraction used only in
+automatic order selection. To assess numerical precision separately from
+the ecological breakpoint, use [zeta_order_precision()] with explicit orders.}
 
 \item{seed}{Random seed.}
 
@@ -61,15 +65,22 @@ zeta_orders(
 \item{sampling}{`"conventional"` (default) or `"species"` for the mixture
 in [sample_sets_species()]. Exhaustive pairs are always included when feasible.}
 
-\item{alpha}{Targeted mixture probability for species-informed sampling.}
+\item{alpha}{Targeted mixture probability for species-informed sampling.
+Supply one number, a numeric vector named by order (for example `k2`,
+`k5`), or `"adaptive"` to select the fraction by an independent pilot
+for each order. Adaptive selection requires `sampling = "species"`.}
 
 \item{working_weights}{Response weighting mode from [ugdm_response()].}
+
+\item{pilot_M, pilot_nrep}{Pilot budget and replicate count per fraction
+when `alpha = "adaptive"`. See [ugdm_sampling_pilot()].}
 }
 \value{
 An object of class `zeta_orders` with point fits, paired draws and
   sampling diagnostics. The diagnostics count retained draws and retained
   draws with shared species, and report Kish effective sample size based
   on the combined sampling and bootstrap weights before working weights.
+  The selected fractions and any independent pilot results are included.
 }
 \description{
 Convenience pipeline: computes the zeta retention curve and its breakpoint, chooses orders

@@ -17,7 +17,9 @@
 #' @param M Number of random sets per order (all pairs at order 2 when feasible).
 #' @param ndraw Number of paired bootstrap draws.
 #' @param groups Optional named list of predictor groups for the Shapley decomposition.
-#' @param min_share Minimum share of sets sharing at least one species for an order to be used.
+#' @param min_share Legacy minimum estimated sharing fraction used only in
+#'   automatic order selection. To assess numerical precision separately from
+#'   the ecological breakpoint, use [zeta_order_precision()] with explicit orders.
 #' @param seed Random seed.
 #' @param cores Number of cores for the draws.
 #' @param paired If `TRUE` (default) the same site weights are used at every order within a draw; if `FALSE` each order uses independent draws (for comparison only).
@@ -26,11 +28,17 @@
 #' @param sampling `"conventional"` (default) or `"species"` for the mixture
 #'   in [sample_sets_species()]. Exhaustive pairs are always included when feasible.
 #' @param alpha Targeted mixture probability for species-informed sampling.
+#'   Supply one number, a numeric vector named by order (for example `k2`,
+#'   `k5`), or `"adaptive"` to select the fraction by an independent pilot
+#'   for each order. Adaptive selection requires `sampling = "species"`.
+#' @param pilot_M,pilot_nrep Pilot budget and replicate count per fraction
+#'   when `alpha = "adaptive"`. See [ugdm_sampling_pilot()].
 #' @param working_weights Response weighting mode from [ugdm_response()].
 #' @return An object of class `zeta_orders` with point fits, paired draws and
 #'   sampling diagnostics. The diagnostics count retained draws and retained
 #'   draws with shared species, and report Kish effective sample size based
 #'   on the combined sampling and bootstrap weights before working weights.
+#'   The selected fractions and any independent pilot results are included.
 #' @export
 #' @examples
 #' sim <- simulate_metacommunity(60, 60, seed = 1)
@@ -40,11 +48,17 @@
 #' compare_orders(res, "importance")
 zeta_orders <- function(comm, env, coords = NULL, lonlat = FALSE, component = "turnover", orders = NULL, M = 1e4, ndraw = 100,
                         groups = NULL, min_share = 0.04, seed = 1, cores = 1, paired = TRUE, free_sign = NULL, weighting = c("direct", "product"),
-                        sampling = c("conventional", "species"), alpha = 0.5, working_weights = c("default", "constant")) {
+                        sampling = c("conventional", "species"), alpha = 0.5, working_weights = c("default", "constant"),
+                        pilot_M = 1000L, pilot_nrep = 8L) {
   weighting <- match.arg(weighting)
   sampling <- match.arg(sampling)
   working_weights <- match.arg(working_weights)
-  .check_alpha(alpha)
+  adaptive <- identical(alpha, "adaptive")
+  if (adaptive && sampling != "species") stop('Adaptive alpha requires `sampling = "species"`.')
+  if (!adaptive) {
+    if (!is.numeric(alpha) || !length(alpha)) stop("Supply numeric mixture fractions or `alpha = 'adaptive'`.")
+    for (fraction in alpha) .check_alpha(fraction)
+  }
   comm <- .as_abundance(comm)
   fs <- isTRUE(free_sign)
   n <- nrow(comm)
@@ -65,6 +79,24 @@ zeta_orders <- function(comm, env, coords = NULL, lonlat = FALSE, component = "t
   }
   dm <- if (!is.null(coords)) coords_dist(coords, lonlat) else NULL
   dr <- if (!is.null(dm)) .pair_distance_range(dm) else NULL
+  keys <- paste0("k", orders)
+  pilots <- stats::setNames(vector("list", length(orders)), keys)
+  if (adaptive) {
+    for (j in seq_along(orders)) {
+      pilots[[j]] <- ugdm_sampling_pilot(comm, env, orders[j], M = pilot_M, nrep = pilot_nrep,
+        component = component, working_weights = working_weights, free_sign = fs,
+        seed = seed + 100000L * j, coords = coords, lonlat = lonlat)
+    }
+    alpha_by_order <- vapply(pilots, function(p) p$alpha, numeric(1L))
+  } else if (length(alpha) == 1L) {
+    alpha_by_order <- stats::setNames(rep(alpha, length(keys)), keys)
+  } else {
+    if (anyDuplicated(names(alpha)) || !all(keys %in% names(alpha))) {
+      stop("Supply a named alpha value for every selected order.")
+    }
+    alpha_by_order <- alpha[keys]
+  }
+  if (sampling == "conventional") alpha_by_order[] <- 0
   W <- site_weights(n, ndraw, seed)
   terms <- c(colnames(env), if (!is.null(dm)) "distance")
   imp <- array(NA_real_, c(ndraw, length(orders), length(terms)), dimnames = list(NULL, paste0("k", orders), terms))
@@ -80,9 +112,10 @@ zeta_orders <- function(comm, env, coords = NULL, lonlat = FALSE, component = "t
                              dimnames = list(paste0("k", orders), metrics))
   for (oi in seq_along(orders)) {
     k <- orders[oi]
+    fraction <- alpha_by_order[[oi]]
     Wo <- if (paired) W else site_weights(n, ndraw, seed + 1000 * oi)
     direct <- weighting == "direct" && !(k == 2 && choose(n, 2) <= M)
-    sets0 <- .model_sets(P, k, M, sampling, alpha, seed = seed + k)
+    sets0 <- .model_sets(P, k, M, sampling, fraction, seed = seed + k)
     r0 <- ugdm_response(comm, sets0$idx, component, working_weights = working_weights)
     if (!any(r0$keep)) stop("No sets have a defined response at order ", k, ".")
     idx0 <- sets0$idx[r0$keep, , drop = FALSE]
@@ -94,7 +127,7 @@ zeta_orders <- function(comm, env, coords = NULL, lonlat = FALSE, component = "t
     point_diagnostic[oi, ] <- .sampling_diagnostics(sets0, r0$keep, sw0)
     one <- function(b) {
       if (direct) {
-        sets <- .model_sets(P, k, M, sampling, alpha, Wo[, b])
+        sets <- .model_sets(P, k, M, sampling, fraction, Wo[, b])
         rb <- ugdm_response(comm, sets$idx, component, working_weights = working_weights)
         if (!any(rb$keep)) return(NULL)
         sw <- sets$sampling_weights[rb$keep]
@@ -131,7 +164,8 @@ zeta_orders <- function(comm, env, coords = NULL, lonlat = FALSE, component = "t
   }
   structure(list(curve = cur, break_order = kb, orders = orders, component = component, point = point, importance = imp,
                  shapley = shp, D2 = d2, height = hgt, lambda = lam, n = n, sampling = sampling,
-                 point_diagnostics = point_diagnostic, draw_diagnostics = diagnostic), class = "zeta_orders")
+                 point_diagnostics = point_diagnostic, draw_diagnostics = diagnostic,
+                 alpha_by_order = alpha_by_order, pilots = if (adaptive) pilots else NULL), class = "zeta_orders")
 }
 
 #' @export

@@ -22,11 +22,6 @@ coords_dist <- function(coords, lonlat = FALSE) {
   range(stats::as.dist(dm))
 }
 
-.isp <- function(x) {
-  if (length(unique(x)) < 4) stop("A predictor needs at least four distinct values.")
-  unclass(splines2::isp(x, df = 3, degree = 2))[, 1:3, drop = FALSE]
-}
-
 #' Set-level design for the multi-site GDUM
 #'
 #' Extends the pairwise generalised dissimilarity uniqueness model (Hernandez-Carrasco et al.
@@ -44,7 +39,12 @@ coords_dist <- function(coords, lonlat = FALSE) {
 #' @param dist_matrix Optional sites x sites distance matrix (see [coords_dist()]).
 #' @param dist_range Optional fixed lower and upper bounds for mean set distance. A
 #'   reference design takes precedence. By default the bounds come from the design's sets.
-#' @param ref Optional `ugdm_design` whose distance scaling and spline basis are reused, so that sets that were not used to fit a model (for example sets of held-out sites) are described on the same scale; see [ugdm_predict()].
+#' @param ref Optional reference design. Its fitted environmental transformation
+#'   and distance scaling are reused for prediction or comparison. References
+#'   from older versions still supply the distance basis.
+#' @param basis_sites Optional indices of sites used to estimate predictor
+#'   centring, scaling and spline bounds. Defaults to every row of `env`.
+#'   An environmental basis in `ref` takes precedence.
 #' @return An object of class `ugdm_design`.
 #' @export
 #' @examples
@@ -52,26 +52,58 @@ coords_dist <- function(coords, lonlat = FALSE) {
 #' idx <- sample_sets(40, 3, M = 500, seed = 1)
 #' d <- ugdm_design(sim$env, idx, dist_matrix = coords_dist(sim$coords))
 #' dim(d$Xdir)
-ugdm_design <- function(env, idx, dist_matrix = NULL, ref = NULL, dist_range = NULL) {
-  env <- as.data.frame(env)
-  if (nrow(env) != max(idx)) { if (nrow(env) < max(idx)) stop("`idx` refers to sites that are not in `env`.") }
-  Z <- scale(as.matrix(env))
-  if (any(!is.finite(Z))) stop("`env` contains constant or missing predictors.")
-  if (qr(Z)$rank < ncol(Z)) warning("Predictors are linearly dependent (for example proportions that sum to one); importance and position effects are not identifiable. Drop one predictor.")
-  else if (ncol(Z) > 1) { vif <- tryCatch(diag(solve(stats::cor(Z))), error = function(e) Inf); if (any(vif > 10)) warning("High collinearity among predictors (VIF > 10 for: ", paste(colnames(Z)[vif > 10], collapse = ", "), "); importance shares may be unstable.") }
-  skew <- apply(Z, 2, function(z) mean(z^3))
-  if (any(abs(skew) > 2)) warning("Strongly skewed predictor(s) (|skewness| > 2): ", paste0(colnames(Z)[abs(skew) > 2], " (", round(skew[abs(skew) > 2], 1), ")", collapse = ", "), ". Transform them before fitting (for example log(1 + x)); the spread and position effects of skewed or zero-inflated predictors become unstable at high orders.")
+ugdm_design <- function(env, idx, dist_matrix = NULL, ref = NULL, dist_range = NULL,
+                        basis_sites = NULL) {
+  env <- as.matrix(as.data.frame(env))
+  if (!is.numeric(env) || any(!is.finite(env))) stop("`env` must contain finite numeric predictors.")
+  idx <- as.matrix(idx)
+  if (!nrow(idx)) stop("No sets have a defined response.")
+  if (!is.numeric(idx) || ncol(idx) < 2L || anyNA(idx) ||
+      any(idx < 1L | idx > nrow(env) | idx != floor(idx))) stop("Invalid site indices.")
+  if (is.null(basis_sites)) basis_sites <- seq_len(nrow(env))
+  transform <- ref$environment_basis
+  if (is.null(transform)) {
+    if (!is.numeric(basis_sites) || length(basis_sites) < 4L ||
+        anyNA(basis_sites) || anyDuplicated(basis_sites) ||
+        any(basis_sites != floor(basis_sites) | basis_sites < 1L | basis_sites > nrow(env))) {
+      stop("`basis_sites` must contain at least four distinct, valid site indices.")
+    }
+    training <- scale(env[basis_sites, , drop = FALSE])
+    if (any(!is.finite(training))) stop("Basis sites contain constant predictors.")
+    if (qr(training)$rank < ncol(training)) {
+      warning("Predictors are linearly dependent (for example proportions that sum to one); importance and position effects are not identifiable. Drop one predictor.")
+    } else if (ncol(training) > 1L) {
+      vif <- tryCatch(diag(solve(stats::cor(training))), error = function(e) rep(Inf, ncol(training)))
+      if (any(vif > 10)) warning("High collinearity among predictors (VIF > 10 for: ",
+                                 paste(colnames(training)[vif > 10], collapse = ", "),
+                                 "); importance shares may be unstable.")
+    }
+    skew <- colMeans(training^3)
+    if (any(abs(skew) > 2)) warning("Strongly skewed predictor(s) (|skewness| > 2): ",
+                                     paste(colnames(training)[abs(skew) > 2], collapse = ", "),
+                                     ". Transform them before fitting.")
+    splines <- lapply(seq_len(ncol(training)), function(v) {
+      z <- unname(training[, v])
+      if (length(unique(z)) < 4L) stop("A predictor needs at least four distinct values among basis sites.")
+      splines2::isp(z, df = 3, degree = 2)
+    })
+    transform <- list(center = attr(training, "scaled:center"),
+                      scale = attr(training, "scaled:scale"), splines = splines)
+  }
+  vars <- colnames(env)
+  if (!identical(vars, names(transform$center))) stop("Reference and design predictor names must agree.")
+  Z <- scale(env, center = transform$center, scale = transform$scale)
   M <- nrow(idx)
   k <- ncol(idx)
-  cr <- (2 * seq_len(k) - k - 1) / choose(k, 2)
   V <- ncol(Z)
-  vars <- colnames(env)
-  if (is.null(vars)) vars <- paste0("v", seq_len(V))
   Xdir <- matrix(0, M, 3 * V)
   Xpos <- matrix(0, M, V)
   for (v in seq_len(V)) {
-    B <- .isp(Z[, v])
-    Xdir[, 3 * (v - 1) + 1:3] <- mean_pair_isp_cpp(B, as.numeric(Z[, v]), idx)
+    basis <- transform$splines[[v]]
+    bounds <- attr(basis, "Boundary.knots")
+    z <- pmin(pmax(Z[, v], bounds[1]), bounds[2])
+    B <- unclass(stats::predict(basis, z))[, 1:3, drop = FALSE]
+    Xdir[, 3 * (v - 1) + 1:3] <- mean_pair_isp_cpp(B, z, idx)
     Xpos[, v] <- rowSums(matrix(Z[idx, v], M, k))
   }
   colnames(Xdir) <- paste0(rep(vars, each = 3), "_f", 1:3)
@@ -97,7 +129,8 @@ ugdm_design <- function(env, idx, dist_matrix = NULL, ref = NULL, dist_range = N
     }
     colnames(Xdist) <- paste0("distance_f", 1:3)
   }
-  structure(list(Xdir = Xdir, Xpos = Xpos, Xdist = Xdist, vars = vars, idx = idx, n = nrow(env), k = k, dist_range = dist_range, dist_basis = dist_basis), class = "ugdm_design")
+  structure(list(Xdir = Xdir, Xpos = Xpos, Xdist = Xdist, vars = vars, idx = idx, n = nrow(env), k = k, dist_range = dist_range, dist_basis = dist_basis,
+                 environment_basis = transform), class = "ugdm_design")
 }
 
 #' Response for the multi-site GDUM

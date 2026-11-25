@@ -1,0 +1,4 @@
+scenario,n,signal,structure,spatial,retention,confirmed
+1,24,weak,narrow,FALSE,4,NA
+2,48,strong,broad,FALSE,14,NA
+3,48,strong,patchy,TRUE,7,NA

@@ -71,7 +71,10 @@ A list with `summary` (one row per split: `D2_train`, `D2_test` (deviance explai
 Sets of sites share sites, so the fit to the sets used in a model overstates how well it predicts new data. This
 function repeatedly splits the sites into training and test sites, fits the model to sets of training sites, and
 predicts sets made only of test sites, as in the evaluation of multi-site generalised dissimilarity models
-(a 70/30 split of the sites).
+(a 70/30 split of the sites). Predictor standardisation and spline
+bounds are estimated from training sites. Held-out spread bases are
+clamped at training bounds, while position predictors retain their
+training-scaled values.
 }
 \examples{
 sim <- simulate_metacommunity(n_sites = 80, n_species = 60, seed = 1)

@@ -20,7 +20,10 @@ ugdm_predict <- function(fit, design, type = c("response", "link")) {
 #' Sets of sites share sites, so the fit to the sets used in a model overstates how well it predicts new data. This
 #' function repeatedly splits the sites into training and test sites, fits the model to sets of training sites, and
 #' predicts sets made only of test sites, as in the evaluation of multi-site generalised dissimilarity models
-#' (a 70/30 split of the sites).
+#' (a 70/30 split of the sites). Predictor standardisation and spline
+#' bounds are estimated from training sites. Held-out spread bases are
+#' clamped at training bounds, while position predictors retain their
+#' training-scaled values.
 #'
 #' @param comm Sites x species matrix.
 #' @param env Data frame of sites x predictors.
@@ -86,7 +89,7 @@ ugdm_validate <- function(comm, env, coords = NULL, lonlat = FALSE, order = 2, c
     tr <- evaluate_sets(train, sampling, M, NULL)
     te <- evaluate_sets(test, test_sampling, M_test, seed + nrep + r)
     dr <- if (!is.null(dm)) .pair_distance_range(dm[train, train, drop = FALSE]) else NULL
-    dtr <- suppressWarnings(ugdm_design(env, tr$idx, dm, dist_range = dr))
+    dtr <- suppressWarnings(ugdm_design(env, tr$idx, dm, dist_range = dr, basis_sites = train))
     dte <- suppressWarnings(ugdm_design(env, te$idx, dm, ref = dtr))
     fit <- ugdm_fit(dtr, tr$y, tr$trials, sampling_weights = tr$sw)
     ptr <- ugdm_predict(fit, dtr)

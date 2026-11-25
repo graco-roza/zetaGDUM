@@ -4,7 +4,13 @@
 \alias{ugdm_importance}
 \title{Importance of predictors in a fitted multi-site GDUM}
 \usage{
-ugdm_importance(fit, design, weights = NULL, trials = NULL)
+ugdm_importance(
+  fit,
+  design,
+  weights = NULL,
+  trials = NULL,
+  sampling_weights = NULL
+)
 }
 \arguments{
 \item{fit}{A `ugdm_fit`.}
@@ -13,7 +19,9 @@ ugdm_importance(fit, design, weights = NULL, trials = NULL)
 
 \item{weights}{Optional set weights used in the fit.}
 
-\item{trials}{Binomial trials used in the fit (weights are multiplied by them).}
+\item{trials}{Response-specific working weights used in the fit.}
+
+\item{sampling_weights}{Optional proposal corrections used in the fit, as in [ugdm_fit()].}
 }
 \value{
 Named numeric vector of shares (predictors and, if present, `distance`).

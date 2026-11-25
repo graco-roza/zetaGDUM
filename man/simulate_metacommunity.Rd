@@ -35,7 +35,8 @@ simulate_metacommunity(
 individuals is `plogis(2 - thin * u)`.}
 
 \item{species}{Optional data frame from a previous call's `truth`, to simulate new sites for
-the same species pool.}
+the same species pool. If it has columns `cx`, `cy` and `rad`, each species is also restricted
+to the sites within distance `rad` of the point (`cx`, `cy`) (a geographic range window).}
 
 \item{seed}{Optional random seed.}
 }

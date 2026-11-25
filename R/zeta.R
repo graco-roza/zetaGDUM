@@ -72,7 +72,7 @@ zeta_weights <- function(x, k, abundance = FALSE) {
 .species_zeta_abundance <- function(x, k) {
   n <- nrow(x)
   rs <- rowSums(x)
-  rs[rs == 0] <- 1
+  if (any(rs == 0)) stop("Relative-abundance zeta is undefined for sites with zero total abundance; remove or separately analyse empty sites.")
   Q <- x / rs
   Qs <- apply(Q, 2, sort, decreasing = FALSE)
   if (is.null(dim(Qs))) Qs <- matrix(Qs, nrow = n)
@@ -141,4 +141,34 @@ zeta_break <- function(curve, level = 0.97) {
   x[is.na(x)] <- 0
   if (any(x < 0)) stop("`x` cannot contain negative values.")
   x
+}
+
+
+#' Decompose the abundance zeta of an order into occurrence and local abundance
+#'
+#' The zeta diversity of abundance (mean summed minimum relative abundance of `k` sites) is a sum over
+#' species of the probability that the species is shared by a random set of `k` sites, `P_s(k) = C(o_s, k) / C(n, k)`,
+#' times `m_s(k)`, the mean minimum relative abundance of the species over the sets of `k` of the sites it occupies.
+#' The abundance weight of a species is therefore its occurrence weight multiplied by `m_s(k)` and renormalised, and
+#' the ratio of the abundance to the occurrence zeta is the occurrence-weighted mean of `m_s(k)`.
+#'
+#' @param x Numeric sites x species matrix (abundance).
+#' @param k Zeta order (integer >= 1).
+#' @return A data frame with one row per species: occupancy `o`, `P` (probability shared by `k` sites), `m` (mean minimum
+#'   relative abundance when shared, `NA` if the species is never shared), `term_abundance` (`P * m`), the
+#'   occurrence weight `w_occ` and the abundance weight `w_abu`; the attribute `ratio` is the abundance to occurrence zeta.
+#' @export
+#' @examples
+#' set.seed(1)
+#' x <- matrix(rpois(200, 1), 20, 10)
+#' zeta_decompose(x, 3)
+zeta_decompose <- function(x, k) {
+  x <- .as_abundance(x)
+  P <- .species_zeta_presence(x, k)
+  term <- .species_zeta_abundance(x, k)
+  m <- ifelse(P > 0, term / P, NA_real_)
+  out <- data.frame(o = colSums(x > 0), P = P, m = m, term_abundance = term,
+                    w_occ = if (sum(P) > 0) P / sum(P) else 0, w_abu = if (sum(term) > 0) term / sum(term) else 0)
+  attr(out, "ratio") <- if (sum(P) > 0) sum(term) / sum(P) else NA_real_
+  out
 }

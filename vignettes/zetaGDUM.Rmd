@@ -42,6 +42,24 @@ idx <- sample_sets(80, 4, M = 500, seed = 1)
 head(zeta_sets(sim$comm, idx), 3)
 ```
 
+For more than two sites these components describe species shared by every site, so
+replacement among subsets can be missed. Species can instead be attributed exactly
+to the *total* set-level response:
+
+```{r contributions}
+inc <- species_contributions(sim$comm, idx, "presence")
+rel <- species_contributions(sim$comm, idx, "relative")
+head(inc$response)
+head(rel$response)
+stopifnot(isTRUE(all.equal(rowSums(inc$dissimilarity), inc$response)))
+```
+
+The relative response uses proportions within each non-empty site. The existing
+balanced-variation and Bray--Curtis-type responses use raw counts, so they also
+reflect differences in total abundance. Similarity weights and species-level
+response contributions answer different questions; neither is an exact
+decomposition of fitted GDUM coefficients.
+
 ## Multi-site GDUM across orders
 
 ```{r orders}

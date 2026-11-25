@@ -46,11 +46,52 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// log_esym_cpp
+double log_esym_cpp(NumericVector log_weights, int k);
+RcppExport SEXP _zetaGDUM_log_esym_cpp(SEXP log_weightsSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type log_weights(log_weightsSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(log_esym_cpp(log_weights, k));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cps_sets_cpp
+IntegerMatrix cps_sets_cpp(NumericVector omega, int k, int M);
+RcppExport SEXP _zetaGDUM_cps_sets_cpp(SEXP omegaSEXP, SEXP kSEXP, SEXP MSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type omega(omegaSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    Rcpp::traits::input_parameter< int >::type M(MSEXP);
+    rcpp_result_gen = Rcpp::wrap(cps_sets_cpp(omega, k, M));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mean_pair_isp_cpp
+NumericMatrix mean_pair_isp_cpp(NumericMatrix B, NumericVector z, IntegerMatrix idx);
+RcppExport SEXP _zetaGDUM_mean_pair_isp_cpp(SEXP BSEXP, SEXP zSEXP, SEXP idxSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type B(BSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type z(zSEXP);
+    Rcpp::traits::input_parameter< IntegerMatrix >::type idx(idxSEXP);
+    rcpp_result_gen = Rcpp::wrap(mean_pair_isp_cpp(B, z, idx));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_zetaGDUM_shared_species_cpp", (DL_FUNC) &_zetaGDUM_shared_species_cpp, 2},
     {"_zetaGDUM_min_abundance_cpp", (DL_FUNC) &_zetaGDUM_min_abundance_cpp, 2},
     {"_zetaGDUM_meanpair_dist_cpp", (DL_FUNC) &_zetaGDUM_meanpair_dist_cpp, 2},
+    {"_zetaGDUM_log_esym_cpp", (DL_FUNC) &_zetaGDUM_log_esym_cpp, 2},
+    {"_zetaGDUM_cps_sets_cpp", (DL_FUNC) &_zetaGDUM_cps_sets_cpp, 3},
+    {"_zetaGDUM_mean_pair_isp_cpp", (DL_FUNC) &_zetaGDUM_mean_pair_isp_cpp, 3},
     {NULL, NULL, 0}
 };
 

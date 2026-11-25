@@ -4,14 +4,19 @@
 \alias{ugdm_design}
 \title{Set-level design for the multi-site GDUM}
 \usage{
-ugdm_design(env, idx, dist_matrix = NULL)
+ugdm_design(env, idx, dist_matrix = NULL, ref = NULL, dist_range = NULL)
 }
 \arguments{
-\item{env}{Data frame or matrix of sites x predictors (numeric). Predictors are standardised.}
+\item{env}{Data frame or matrix of sites x predictors (numeric). Predictors are standardised but not transformed: transform strongly skewed predictors (for example proportions with many zeros) beforehand; a warning is given when |skewness| > 2.}
 
 \item{idx}{Integer matrix of sets from [sample_sets()].}
 
 \item{dist_matrix}{Optional sites x sites distance matrix (see [coords_dist()]).}
+
+\item{ref}{Optional `ugdm_design` whose distance scaling and spline basis are reused, so that sets that were not used to fit a model (for example sets of held-out sites) are described on the same scale; see [ugdm_predict()].}
+
+\item{dist_range}{Optional fixed lower and upper bounds for mean set distance. A
+reference design takes precedence. By default the bounds come from the design's sets.}
 }
 \value{
 An object of class `ugdm_design`.

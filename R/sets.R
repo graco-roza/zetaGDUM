@@ -109,3 +109,26 @@ pair_partition <- function(x) {
   data.frame(i = idx[, 1], j = idx[, 2], a = a, b = b, c = cc, sorensen = sor, simpson = sim, nestedness = sor - sim,
              jaccard = jac, replacement = 2 * pmin(b, cc) / (a + b + cc), richness_difference = abs(b - cc) / (a + b + cc))
 }
+
+#' Sample sets of sites from a weighted distribution
+#'
+#' Draws `M` sets of `k` distinct sites with probability proportional to the product of the site weights
+#' (conditional Poisson sampling). This is the distribution that the set weights of [set_weights()] define over
+#' all sets, so every sampled set has the same weight and the effective number of sets equals `M`; weighting uniformly
+#' sampled sets instead concentrates the weight on a few sets at high orders.
+#'
+#' @param omega Positive site weights, for example one column of [site_weights()].
+#' @param k Number of sites per set.
+#' @param M Number of sets.
+#' @param seed Optional random seed.
+#' @return An integer matrix with `M` rows and `k` columns of site indices.
+#' @export
+#' @examples
+#' w <- site_weights(50, 1, seed = 1)[, 1]
+#' idx <- sample_sets_weighted(w, k = 5, M = 100, seed = 1)
+#' dim(idx)
+sample_sets_weighted <- function(omega, k, M = 1e4, seed = NULL) {
+  if (!is.null(seed)) set.seed(seed)
+  if (k < 2) stop("`k` must be at least 2.")
+  cps_sets_cpp(as.numeric(omega), as.integer(k), as.integer(M))
+}

@@ -7,8 +7,10 @@
 ugdm_response(
   x,
   idx,
-  component = c("turnover", "total", "nestedness", "balanced", "bray_curtis", "gradient"),
-  abundance_trials = 50
+  component = c("turnover", "total", "nestedness", "relative", "balanced", "bray_curtis",
+    "gradient"),
+  abundance_trials = 1,
+  working_weights = c("default", "constant")
 )
 }
 \arguments{
@@ -18,9 +20,17 @@ ugdm_response(
 
 \item{component}{One of `"turnover"` (Simpson-type: `1 - shared / min richness`), `"total"`
 (Sorensen-type: `1 - shared / mean richness`), `"nestedness"` (nestedness-resultant),
-or, for abundance data, `"balanced"`, `"bray_curtis"`, `"gradient"`.}
+or, for abundance data, `"relative"` (relative-abundance dissimilarity),
+`"balanced"`, `"bray_curtis"`, `"gradient"` (the last three use raw counts).}
 
-\item{abundance_trials}{Number of binomial trials used for abundance responses.}
+\item{abundance_trials}{Constant working weight for raw-count abundance
+responses (default 1). It is not an observed binomial trial count. A
+constant multiplier does not change fitted coefficients or D2.}
+
+\item{working_weights}{`"default"` uses the original richness weights for
+incidence and unit weights for relative abundance. `"constant"` uses unit
+weights for incidence and relative abundance. Raw-count weights are set
+by `abundance_trials` in either mode.}
 }
 \value{
 A list with `y` (response), `trials`, and `keep` (logical, sets with a defined response).

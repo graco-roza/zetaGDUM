@@ -18,6 +18,10 @@ coords_dist <- function(coords, lonlat = FALSE) {
   2 * 6371 * asin(pmin(sqrt(a), 1))
 }
 
+.pair_distance_range <- function(dm) {
+  range(stats::as.dist(dm))
+}
+
 .isp <- function(x) {
   if (length(unique(x)) < 4) stop("A predictor needs at least four distinct values.")
   unclass(splines2::isp(x, df = 3, degree = 2))[, 1:3, drop = FALSE]
@@ -35,9 +39,12 @@ coords_dist <- function(coords, lonlat = FALSE) {
 #' distance can be added as a further directional predictor through the mean pairwise distance
 #' of the set.
 #'
-#' @param env Data frame or matrix of sites x predictors (numeric). Predictors are standardised.
+#' @param env Data frame or matrix of sites x predictors (numeric). Predictors are standardised but not transformed: transform strongly skewed predictors (for example proportions with many zeros) beforehand; a warning is given when |skewness| > 2.
 #' @param idx Integer matrix of sets from [sample_sets()].
 #' @param dist_matrix Optional sites x sites distance matrix (see [coords_dist()]).
+#' @param dist_range Optional fixed lower and upper bounds for mean set distance. A
+#'   reference design takes precedence. By default the bounds come from the design's sets.
+#' @param ref Optional `ugdm_design` whose distance scaling and spline basis are reused, so that sets that were not used to fit a model (for example sets of held-out sites) are described on the same scale; see [ugdm_predict()].
 #' @return An object of class `ugdm_design`.
 #' @export
 #' @examples
@@ -45,13 +52,15 @@ coords_dist <- function(coords, lonlat = FALSE) {
 #' idx <- sample_sets(40, 3, M = 500, seed = 1)
 #' d <- ugdm_design(sim$env, idx, dist_matrix = coords_dist(sim$coords))
 #' dim(d$Xdir)
-ugdm_design <- function(env, idx, dist_matrix = NULL) {
+ugdm_design <- function(env, idx, dist_matrix = NULL, ref = NULL, dist_range = NULL) {
   env <- as.data.frame(env)
   if (nrow(env) != max(idx)) { if (nrow(env) < max(idx)) stop("`idx` refers to sites that are not in `env`.") }
   Z <- scale(as.matrix(env))
   if (any(!is.finite(Z))) stop("`env` contains constant or missing predictors.")
   if (qr(Z)$rank < ncol(Z)) warning("Predictors are linearly dependent (for example proportions that sum to one); importance and position effects are not identifiable. Drop one predictor.")
   else if (ncol(Z) > 1) { vif <- tryCatch(diag(solve(stats::cor(Z))), error = function(e) Inf); if (any(vif > 10)) warning("High collinearity among predictors (VIF > 10 for: ", paste(colnames(Z)[vif > 10], collapse = ", "), "); importance shares may be unstable.") }
+  skew <- apply(Z, 2, function(z) mean(z^3))
+  if (any(abs(skew) > 2)) warning("Strongly skewed predictor(s) (|skewness| > 2): ", paste0(colnames(Z)[abs(skew) > 2], " (", round(skew[abs(skew) > 2], 1), ")", collapse = ", "), ". Transform them before fitting (for example log(1 + x)); the spread and position effects of skewed or zero-inflated predictors become unstable at high orders.")
   M <- nrow(idx)
   k <- ncol(idx)
   cr <- (2 * seq_len(k) - k - 1) / choose(k, 2)
@@ -62,22 +71,33 @@ ugdm_design <- function(env, idx, dist_matrix = NULL) {
   Xpos <- matrix(0, M, V)
   for (v in seq_len(V)) {
     B <- .isp(Z[, v])
-    vals <- matrix(Z[idx, v], M, k)
-    o <- t(apply(vals, 1, order))
-    sidx <- idx[cbind(rep(seq_len(M), k), as.vector(o))]
-    for (b in 1:3) Xdir[, 3 * (v - 1) + b] <- drop(matrix(B[sidx, b], M, k) %*% cr)
-    Xpos[, v] <- rowSums(vals)
+    Xdir[, 3 * (v - 1) + 1:3] <- mean_pair_isp_cpp(B, as.numeric(Z[, v]), idx)
+    Xpos[, v] <- rowSums(matrix(Z[idx, v], M, k))
   }
   colnames(Xdir) <- paste0(rep(vars, each = 3), "_f", 1:3)
   colnames(Xpos) <- vars
   Xdist <- NULL
+  dist_basis <- NULL
   if (!is.null(dist_matrix)) {
     dd <- meanpair_dist_cpp(unname(as.matrix(dist_matrix)), idx)
-    d01 <- (dd - min(dd)) / max(diff(range(dd)), 1e-12)
-    Xdist <- unclass(splines2::isp(d01, df = 3, degree = 2))[, 1:3, drop = FALSE]
+    if (is.null(ref) || is.null(ref$dist_basis)) {
+      if (is.null(dist_range)) dist_range <- range(dd)
+      if (!is.numeric(dist_range) || length(dist_range) != 2L ||
+          any(!is.finite(dist_range)) || dist_range[1] > dist_range[2]) {
+        stop("`dist_range` must contain two finite bounds in ascending order.")
+      }
+      d01 <- pmin(pmax((dd - dist_range[1]) / max(diff(dist_range), 1e-12), 0), 1)
+      dist_basis <- splines2::isp(d01, df = 3, degree = 2, Boundary.knots = c(0, 1))
+      Xdist <- unclass(dist_basis)[, 1:3, drop = FALSE]
+    } else {
+      dist_range <- ref$dist_range
+      dist_basis <- ref$dist_basis
+      d01 <- pmin(pmax((dd - dist_range[1]) / max(diff(dist_range), 1e-12), 0), 1)
+      Xdist <- unclass(stats::predict(dist_basis, d01))[, 1:3, drop = FALSE]
+    }
     colnames(Xdist) <- paste0("distance_f", 1:3)
   }
-  structure(list(Xdir = Xdir, Xpos = Xpos, Xdist = Xdist, vars = vars, idx = idx, n = nrow(env), k = k), class = "ugdm_design")
+  structure(list(Xdir = Xdir, Xpos = Xpos, Xdist = Xdist, vars = vars, idx = idx, n = nrow(env), k = k, dist_range = dist_range, dist_basis = dist_basis), class = "ugdm_design")
 }
 
 #' Response for the multi-site GDUM
@@ -88,16 +108,36 @@ ugdm_design <- function(env, idx, dist_matrix = NULL) {
 #' @param idx Integer matrix of sets.
 #' @param component One of `"turnover"` (Simpson-type: `1 - shared / min richness`), `"total"`
 #'   (Sorensen-type: `1 - shared / mean richness`), `"nestedness"` (nestedness-resultant),
-#'   or, for abundance data, `"balanced"`, `"bray_curtis"`, `"gradient"`.
-#' @param abundance_trials Number of binomial trials used for abundance responses.
+#'   or, for abundance data, `"relative"` (relative-abundance dissimilarity),
+#'   `"balanced"`, `"bray_curtis"`, `"gradient"` (the last three use raw counts).
+#' @param abundance_trials Constant working weight for raw-count abundance
+#'   responses (default 1). It is not an observed binomial trial count. A
+#'   constant multiplier does not change fitted coefficients or D2.
+#' @param working_weights `"default"` uses the original richness weights for
+#'   incidence and unit weights for relative abundance. `"constant"` uses unit
+#'   weights for incidence and relative abundance. Raw-count weights are set
+#'   by `abundance_trials` in either mode.
 #' @return A list with `y` (response), `trials`, and `keep` (logical, sets with a defined response).
 #' @export
 #' @examples
 #' sim <- simulate_metacommunity(n_sites = 40, n_species = 30, seed = 1)
 #' idx <- sample_sets(40, 3, M = 200, seed = 1)
 #' str(ugdm_response(sim$comm, idx, "turnover"))
-ugdm_response <- function(x, idx, component = c("turnover", "total", "nestedness", "balanced", "bray_curtis", "gradient"), abundance_trials = 50) {
+ugdm_response <- function(x, idx, component = c("turnover", "total", "nestedness", "relative", "balanced", "bray_curtis", "gradient"), abundance_trials = 1, working_weights = c("default", "constant")) {
   component <- match.arg(component)
+  working_weights <- match.arg(working_weights)
+  if (component == "relative") {
+    x <- .as_abundance(x)
+    idx <- .species_indices(idx, nrow(x))
+    totals <- rowSums(x)
+    keep <- rowSums(matrix(totals[idx] > 0, nrow(idx))) == ncol(idx)
+    q <- x / ifelse(totals > 0, totals, 1)
+    y <- rep(NA_real_, nrow(idx))
+    if (any(keep)) {
+      y[keep] <- pmax(0, 1 - min_abundance_cpp(q, idx[keep, , drop = FALSE]))
+    }
+    return(list(y = y, trials = rep(1, length(y)), keep = keep))
+  }
   z <- zeta_sets(x, idx, abundance = component %in% c("balanced", "bray_curtis", "gradient"))
   if (component == "turnover") { y <- 1 - z$turnover; tr <- z$richness_min }
   if (component == "total") { y <- 1 - z$total; tr <- z$richness_mean }
@@ -106,20 +146,52 @@ ugdm_response <- function(x, idx, component = c("turnover", "total", "nestedness
   if (component == "bray_curtis") { y <- 1 - z$bray_curtis; tr <- rep(abundance_trials, nrow(z)) }
   if (component == "gradient") { y <- z$gradient; tr <- rep(abundance_trials, nrow(z)) }
   y <- pmin(pmax(y, 0), 1)
-  list(y = y, trials = pmax(tr, 1e-8), keep = is.finite(y) & tr > 0)
+  keep <- is.finite(y) & tr > 0
+  if (working_weights == "constant" && component %in% c("turnover", "total", "nestedness")) {
+    tr <- rep(1, length(y))
+  }
+  list(y = y, trials = pmax(tr, 1e-8), keep = keep)
+}
+
+.model_weights <- function(n, trials = NULL, weights = NULL, sampling_weights = NULL) {
+  if (n == 0L) stop("No sets have a defined response.")
+  for (w in list(trials, weights, sampling_weights)) {
+    if (!is.null(w) && (!is.numeric(w) || length(w) != n || any(!is.finite(w) | w < 0))) {
+      stop("Trial, set and sampling weights must be finite, non-negative and match the sets.")
+    }
+  }
+  effective <- rep(1, n)
+  for (w in list(trials, weights, sampling_weights)) {
+    if (!is.null(w)) effective <- effective * w
+  }
+  if (any(!is.finite(effective)) || !any(effective > 0)) {
+    stop("Combined model weights must be finite with at least one positive weight.")
+  }
+  effective
 }
 
 .binom_dev <- function(z, mu, w) {
   mu <- pmin(pmax(mu, 1e-12), 1 - 1e-12)
-  t1 <- ifelse(z > 0, z * log(z / mu), 0)
-  t2 <- ifelse(z < 1, (1 - z) * log((1 - z) / (1 - mu)), 0)
+  t1 <- t2 <- numeric(length(z))
+  pos <- z > 0
+  neg <- z < 1
+  t1[pos] <- z[pos] * log(z[pos] / mu[pos])
+  t2[neg] <- (1 - z[neg]) * log((1 - z[neg]) / (1 - mu[neg]))
   2 * sum(w * (t1 + t2))
 }
 
 # weighted binomial (logit) IRLS with all slopes <= 0 (callers flip signs); intercept free and profiled out
 .fit_logit_nnls <- function(X, z, w, maxit = 80, tol = 1e-9) {
+  w <- w / max(w)
   w <- w / mean(w)
   p <- ncol(X)
+  observed <- z[w > 0]
+  if (all(observed == observed[1])) {
+    mu <- min(max(observed[1], 1e-12), 1 - 1e-12)
+    dev <- .binom_dev(z, rep(mu, length(z)), w)
+    return(list(intercept = stats::qlogis(mu), coef = numeric(p), dev = dev,
+                null_dev = dev, D2 = NA_real_, converged = TRUE))
+  }
   wm <- min(max(sum(w * z) / sum(w), 1e-6), 1 - 1e-6)
   null_dev <- .binom_dev(z, rep(wm, length(z)), w)
   a <- stats::qlogis(wm)
@@ -177,8 +249,11 @@ ugdm_response <- function(x, idx, component = c("turnover", "total", "nestedness
 #'
 #' @param design An object from [ugdm_design()].
 #' @param y Response in `[0, 1]` (see [ugdm_response()]).
-#' @param trials Binomial trials (same length as `y`).
-#' @param weights Optional set weights (e.g. from [site_weights()]).
+#' @param trials Response-specific working weights (same length as `y`).
+#' @param weights Optional additional set weights (e.g. from [set_weights()]).
+#' @param sampling_weights Optional base-to-proposal corrections from
+#'   [sample_sets_species()]. The fitting criterion uses the product of
+#'   `trials`, `weights` and `sampling_weights`.
 #' @param vars Optional character vector: fit only these predictors.
 #' @param distance Include the distance term if the design has one.
 #' @param free_sign If `TRUE`, the directional effects may be non-decreasing or non-increasing
@@ -187,6 +262,7 @@ ugdm_response <- function(x, idx, component = c("turnover", "total", "nestedness
 #'   If `FALSE` (default) the directional effects are non-negative, as in the pairwise GDUM.
 #' @return An object of class `ugdm_fit` with `height` (summed spline coefficients per predictor),
 #'   `lambda` (position effect per standardised unit of the summed predictor), `D2`, `deviance`.
+#'   A constant response gives an intercept-only fit with undefined `D2`.
 #' @export
 #' @examples
 #' sim <- simulate_metacommunity(n_sites = 50, n_species = 40, seed = 1)
@@ -195,12 +271,12 @@ ugdm_response <- function(x, idx, component = c("turnover", "total", "nestedness
 #' r <- ugdm_response(sim$comm, idx, "turnover")
 #' f <- ugdm_fit(d, r$y[r$keep], r$trials[r$keep])
 #' f$height
-ugdm_fit <- function(design, y, trials, weights = NULL, vars = NULL, distance = TRUE, free_sign = FALSE) {
+ugdm_fit <- function(design, y, trials, weights = NULL, vars = NULL, distance = TRUE, free_sign = FALSE, sampling_weights = NULL) {
   if (nrow(design$Xpos) != length(y) || length(y) != length(trials)) stop("`y`, `trials` and the design must refer to the same sets.")
   dm <- .design_matrix(design, vars, distance)
-  w <- if (is.null(weights)) rep(1, length(y)) else weights
+  w <- .model_weights(length(y), trials, weights, sampling_weights)
   X <- if (free_sign) cbind(-dm$Xdir, dm$Xdir, dm$Xpos, -dm$Xpos) else cbind(-dm$Xdir, dm$Xpos, -dm$Xpos)
-  f <- .fit_logit_nnls(X, y, w * trials)
+  f <- .fit_logit_nnls(X, y, w)
   p <- ncol(dm$Xdir)
   q <- ncol(dm$Xpos)
   cf <- f$coef
@@ -244,19 +320,23 @@ print.ugdm_fit <- function(x, ...) {
 #' @param fit A `ugdm_fit`.
 #' @param design The design used to fit it.
 #' @param weights Optional set weights used in the fit.
-#' @param trials Binomial trials used in the fit (weights are multiplied by them).
+#' @param trials Response-specific working weights used in the fit.
+#' @param sampling_weights Optional proposal corrections used in the fit, as in [ugdm_fit()].
 #' @return Named numeric vector of shares (predictors and, if present, `distance`).
 #' @export
-ugdm_importance <- function(fit, design, weights = NULL, trials = NULL) {
+ugdm_importance <- function(fit, design, weights = NULL, trials = NULL, sampling_weights = NULL) {
   dm <- .design_matrix(design, fit$vars, fit$has_distance)
   V <- length(fit$vars)
-  w <- if (is.null(weights)) rep(1, nrow(dm$Xpos)) else weights
-  if (!is.null(trials)) w <- w * trials
-  eta <- sapply(seq_len(V), function(j) drop(dm$Xdir[, 3 * (j - 1) + 1:3, drop = FALSE] %*% fit$beta[3 * (j - 1) + 1:3]) + dm$Xpos[, j] * fit$lambda[j])
+  w <- .model_weights(nrow(dm$Xpos), trials, weights, sampling_weights)
+  eta <- vapply(seq_len(V), function(j) {
+    cols <- 3 * (j - 1) + 1:3
+    drop(dm$Xdir[, cols, drop = FALSE] %*% fit$beta[cols]) + dm$Xpos[, j] * fit$lambda[j]
+  }, numeric(length(w)))
+  dim(eta) <- c(length(w), V)
   if (fit$has_distance) eta <- cbind(eta, drop(dm$Xdir[, 3 * V + 1:3, drop = FALSE] %*% fit$beta[3 * V + 1:3]))
   tot <- rowSums(eta)
   vt <- .wcov(tot, tot, w)
-  out <- sapply(seq_len(ncol(eta)), function(j) .wcov(eta[, j], tot, w) / vt)
+  out <- if (vt > 0) vapply(seq_len(ncol(eta)), function(j) .wcov(eta[, j], tot, w) / vt, numeric(1)) else rep(NA_real_, ncol(eta))
   names(out) <- c(fit$vars, if (fit$has_distance) "distance")
   out
 }
@@ -268,7 +348,7 @@ ugdm_importance <- function(fit, design, weights = NULL, trials = NULL) {
 #' model and shared variance between correlated groups is divided among them.
 #'
 #' @param design A `ugdm_design`.
-#' @param y,trials,weights,free_sign As in [ugdm_fit()].
+#' @param y,trials,weights,free_sign,sampling_weights As in [ugdm_fit()].
 #' @param groups Named list; each element is a character vector of predictor names (use
 #'   `"distance"` for the distance term). Every group can contain directional and position terms.
 #' @return A named numeric vector of contributions to D2 with attribute `D2` (full model).
@@ -279,27 +359,28 @@ ugdm_importance <- function(fit, design, weights = NULL, trials = NULL) {
 #' d <- ugdm_design(sim$env, idx, dist_matrix = coords_dist(sim$coords))
 #' r <- ugdm_response(sim$comm, idx, "turnover")
 #' ugdm_shapley(d, r$y, r$trials, groups = list(env1 = "env1", env2 = "env2", distance = "distance"))
-ugdm_shapley <- function(design, y, trials, groups, weights = NULL, free_sign = FALSE) {
+ugdm_shapley <- function(design, y, trials, groups, weights = NULL, free_sign = FALSE, sampling_weights = NULL) {
   G <- length(groups)
   if (G < 2 || G > 8) stop("Between 2 and 8 groups are supported.")
-  w <- if (is.null(weights)) rep(1, length(y)) else weights
+  w <- .model_weights(length(y), trials, weights, sampling_weights)
+  if (all(y[w > 0] == y[which(w > 0)[1]])) {
+    return(structure(stats::setNames(rep(NA_real_, G), names(groups)), D2 = NA_real_))
+  }
   d2 <- numeric(2^G)
   for (m in seq_len(2^G - 1)) {
     sel <- which(bitwAnd(m, 2^(0:(G - 1))) > 0)
     vs <- unlist(groups[sel])
     env_vars <- setdiff(vs, "distance")
     use_dist <- "distance" %in% vs
-    Xdir <- NULL
-    Xpos <- NULL
+    Xdir <- Xpos <- matrix(0, length(y), 0)
     if (length(env_vars)) {
       dm <- .design_matrix(design, env_vars, FALSE)
       Xdir <- dm$Xdir
       Xpos <- dm$Xpos
     }
     if (use_dist) Xdir <- cbind(Xdir, design$Xdist)
-    if (is.null(Xpos)) Xpos <- matrix(0, length(y), 0)
     X <- if (free_sign) cbind(-Xdir, Xdir, Xpos, -Xpos) else cbind(-Xdir, Xpos, -Xpos)
-    d2[m + 1] <- .fit_logit_nnls(X, y, w * trials)$D2
+    d2[m + 1] <- .fit_logit_nnls(X, y, w)$D2
   }
   phi <- numeric(G)
   for (i in seq_len(G)) for (m in 0:(2^G - 1)) if (bitwAnd(m, 2^(i - 1)) == 0) {

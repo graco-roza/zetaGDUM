@@ -18,7 +18,11 @@ zeta_orders(
   seed = 1,
   cores = 1,
   paired = TRUE,
-  free_sign = NULL
+  free_sign = NULL,
+  weighting = c("direct", "product"),
+  sampling = c("conventional", "species"),
+  alpha = 0.5,
+  working_weights = c("default", "constant")
 )
 }
 \arguments{
@@ -31,7 +35,8 @@ zeta_orders(
 \item{lonlat}{Coordinates are decimal degrees (haversine distance).}
 
 \item{component}{Response: `"turnover"`, `"total"`, `"nestedness"`, or (abundance data)
-`"balanced"`, `"bray_curtis"`, `"gradient"`.}
+`"relative"` (relative-abundance dissimilarity), `"balanced"`,
+`"bray_curtis"`, `"gradient"` (raw-count responses).}
 
 \item{orders}{Integer vector of orders; default `c(2, midpoint, break)`.}
 
@@ -50,9 +55,21 @@ zeta_orders(
 \item{paired}{If `TRUE` (default) the same site weights are used at every order within a draw; if `FALSE` each order uses independent draws (for comparison only).}
 
 \item{free_sign}{Allow directional effects of either sign (see [ugdm_fit()]). The default (`NULL`) constrains them to be non-negative, as in the pairwise GDUM; setting `TRUE` is advisable for the nestedness and abundance-gradient components, for which there is no expectation about the direction of richness or abundance gradients along environmental gradients.}
+
+\item{weighting}{`"direct"` (default) samples, for every draw, `M` sets of sites with probability proportional to the product of the site weights ([sample_sets_weighted()]), so that all sets have the same weight; `"product"` samples sets uniformly once and weights them by that product ([set_weights()]), which concentrates the weight on a few sets at high orders (the effective number of sets falls to a small fraction of `M`) and inflates the deviance explained. At order 2 with all pairs available, the pairs are always weighted.}
+
+\item{sampling}{`"conventional"` (default) or `"species"` for the mixture
+in [sample_sets_species()]. Exhaustive pairs are always included when feasible.}
+
+\item{alpha}{Targeted mixture probability for species-informed sampling.}
+
+\item{working_weights}{Response weighting mode from [ugdm_response()].}
 }
 \value{
-An object of class `zeta_orders`.
+An object of class `zeta_orders` with point fits, paired draws and
+  sampling diagnostics. The diagnostics count retained draws and retained
+  draws with shared species, and report Kish effective sample size based
+  on the combined sampling and bootstrap weights before working weights.
 }
 \description{
 Convenience pipeline: computes the zeta retention curve and its breakpoint, chooses orders

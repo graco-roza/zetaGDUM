@@ -13,3 +13,15 @@ meanpair_dist_cpp <- function(D, idx) {
     .Call(`_zetaGDUM_meanpair_dist_cpp`, D, idx)
 }
 
+log_esym_cpp <- function(log_weights, k) {
+    .Call(`_zetaGDUM_log_esym_cpp`, log_weights, k)
+}
+
+cps_sets_cpp <- function(omega, k, M) {
+    .Call(`_zetaGDUM_cps_sets_cpp`, omega, k, M)
+}
+
+mean_pair_isp_cpp <- function(B, z, idx) {
+    .Call(`_zetaGDUM_mean_pair_isp_cpp`, B, z, idx)
+}
+

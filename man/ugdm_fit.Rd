@@ -11,7 +11,8 @@ ugdm_fit(
   weights = NULL,
   vars = NULL,
   distance = TRUE,
-  free_sign = FALSE
+  free_sign = FALSE,
+  sampling_weights = NULL
 )
 }
 \arguments{
@@ -19,9 +20,9 @@ ugdm_fit(
 
 \item{y}{Response in `[0, 1]` (see [ugdm_response()]).}
 
-\item{trials}{Binomial trials (same length as `y`).}
+\item{trials}{Response-specific working weights (same length as `y`).}
 
-\item{weights}{Optional set weights (e.g. from [site_weights()]).}
+\item{weights}{Optional additional set weights (e.g. from [set_weights()]).}
 
 \item{vars}{Optional character vector: fit only these predictors.}
 
@@ -31,10 +32,15 @@ ugdm_fit(
 (each spline basis function enters with both signs), as is appropriate for responses without an
 expected direction along environmental gradients, such as nestedness and abundance gradients.
 If `FALSE` (default) the directional effects are non-negative, as in the pairwise GDUM.}
+
+\item{sampling_weights}{Optional base-to-proposal corrections from
+[sample_sets_species()]. The fitting criterion uses the product of
+`trials`, `weights` and `sampling_weights`.}
 }
 \value{
 An object of class `ugdm_fit` with `height` (summed spline coefficients per predictor),
   `lambda` (position effect per standardised unit of the summed predictor), `D2`, `deviance`.
+  A constant response gives an intercept-only fit with undefined `D2`.
 }
 \description{
 Binomial (logit) model of the set-level dissimilarity response with monotone non-decreasing

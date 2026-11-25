@@ -10,6 +10,21 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// conditional_zeta_cpp
+List conditional_zeta_cpp(NumericMatrix x, int k, bool abundance, bool pairs, List include);
+RcppExport SEXP _zetaGDUM_conditional_zeta_cpp(SEXP xSEXP, SEXP kSEXP, SEXP abundanceSEXP, SEXP pairsSEXP, SEXP includeSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    Rcpp::traits::input_parameter< bool >::type abundance(abundanceSEXP);
+    Rcpp::traits::input_parameter< bool >::type pairs(pairsSEXP);
+    Rcpp::traits::input_parameter< List >::type include(includeSEXP);
+    rcpp_result_gen = Rcpp::wrap(conditional_zeta_cpp(x, k, abundance, pairs, include));
+    return rcpp_result_gen;
+END_RCPP
+}
 // shared_species_cpp
 NumericVector shared_species_cpp(IntegerMatrix PA, IntegerMatrix idx);
 RcppExport SEXP _zetaGDUM_shared_species_cpp(SEXP PASEXP, SEXP idxSEXP) {
@@ -86,6 +101,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_zetaGDUM_conditional_zeta_cpp", (DL_FUNC) &_zetaGDUM_conditional_zeta_cpp, 5},
     {"_zetaGDUM_shared_species_cpp", (DL_FUNC) &_zetaGDUM_shared_species_cpp, 2},
     {"_zetaGDUM_min_abundance_cpp", (DL_FUNC) &_zetaGDUM_min_abundance_cpp, 2},
     {"_zetaGDUM_meanpair_dist_cpp", (DL_FUNC) &_zetaGDUM_meanpair_dist_cpp, 2},

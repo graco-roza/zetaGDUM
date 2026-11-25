@@ -1,5 +1,8 @@
 # Phase 2 validation of inference across zeta orders
 
+The [manuscript-scale validation](MANUSCRIPT_SCALE_VALIDATION.md) follows this
+work at 70–250 sites and covers the five manuscript DD2 communities.
+
 This study separates numerical set-sampling error, variation across independent samples of sites, and loss of parameter information. Explained deviance and held-out prediction are reported as secondary outcomes. The original ecological retention breakpoint and legacy automatic order selection remain available. Pairs were consistently estimable in the tested ecological communities. By about .60n, only 29% of weak-signal and 50% of strong-signal ecological fits were identified and converged with a nonconstant response. Known-parameter calibration also depended on the effect and interval method, even at pairs. The evidence supports effect-specific diagnostic profiles and a separate numerical budget decision. A universal maximum informative order remains unsupported.
 
 ## Targets, simulation design, and common scales

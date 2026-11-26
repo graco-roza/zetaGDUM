@@ -16,7 +16,9 @@ ugdm_within_order_importance(
   evaluation_sampling_weights = NULL,
   permutations = 1000L,
   seed = NULL,
-  min_D2 = 1e-04
+  min_D2 = 1e-04,
+  exact_max = 8L,
+  failure = c("error", "warn")
 )
 }
 \arguments{
@@ -26,25 +28,41 @@ ugdm_within_order_importance(
 
 \item{y, trials, sampling_weights}{Training response and weights.}
 
-\item{evaluation}{Optional matching held-out design.}
+\item{evaluation}{Optional held-out design using the training basis.}
 
 \item{evaluation_y, evaluation_trials, evaluation_sampling_weights}{Held-out
 response and weights, required with evaluation.}
 
-\item{permutations}{Number of random predictor orderings above eight groups.}
+\item{permutations}{Number of random blocked predictor orderings when
+the number of predictors exceeds `exact_max`.}
 
 \item{seed}{Optional permutation seed.}
 
 \item{min_D2}{Minimum positive total for relative shares.}
+
+\item{exact_max}{Maximum group count for exact subset calculation, from
+zero through eight. Zero forces a permutation approximation.}
+
+\item{failure}{Use `"error"` to stop or `"warn"` to return affected
+allocations as missing with coalition failure details.}
 }
 \value{
-Absolute predictor, component and joint Shapley allocations;
-  relative shares only when full explained deviance exceeds `min_D2`.
+Predictor Shapley and aggregated component Owen contributions.
+  The hierarchy table gives one row per predictor-component pair.
+  Monte Carlo standard errors are conditional on the fitted data and
+  measure permutation error only. Diagnostics identify invalid coalition
+  fits and undefined intercept-only deviance.
 }
 \description{
-Each ecological predictor is a group of its directional and position
-basis columns. Spread, position and distance are also reported as
-separate component groupings. Coalitions are refitted with the same
-quadratic penalty, coefficient bounds and combination corrections as
-the supplied extended MS-GDUM design. Negative held-out gains remain.
+Each predictor is one group of its directional and position terms.
+Between predictors the allocation is Shapley. Within each predictor the
+Owen allocation averages the order of its spread and position terms,
+conditional on each other-predictor coalition. These component allocations
+sum to the corresponding predictor contributions. Geographic distance,
+when fitted, is a single-component group.
+}
+\details{
+Coalitions share the declared penalty, coefficient bounds and evaluation
+sets. Held-out gains can be negative. The intercept-only reference is
+estimated on the training sets, including for held-out evaluation.
 }

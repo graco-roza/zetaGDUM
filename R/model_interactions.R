@@ -73,7 +73,7 @@ ugdm_interaction_design <- function(design, env, position = c("linear", "nonline
     position = position, spread = spread, u = u, outside = raw_u < 0 | raw_u > 1,
     mean_position = mean_z, position_variance = pmax(variance, 0), order = k,
     basis = design$environment_basis, dist_basis = design$dist_basis, dist_range = design$dist_range,
-    idx = design$idx, vars = design$vars), class = "ugdm_interaction_design")
+    idx = design$idx, n = design$n, vars = design$vars), class = "ugdm_interaction_design")
 }
 
 .interaction_layout <- function(design, distance) {

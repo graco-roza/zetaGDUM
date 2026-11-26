@@ -71,12 +71,12 @@ ugdm_curvature_penalty <- function(design) {
   P
 }
 
-.variant_solution <- function(X, y, w, P, nonnegative, start = NULL) {
+.variant_solution <- function(X, y, w, P, nonnegative, start = NULL, score_shift = NULL) {
   w <- w / sum(w)
   mu0 <- pmin(pmax(sum(w * y), 1e-10), 1 - 1e-10)
   null <- .binom_dev(y, rep(mu0, length(y)), w)
   a <- stats::qlogis(mu0)
-  if (all(y[w > 0] == y[which(w > 0)[1L]])) {
+  if (is.null(score_shift) && all(y[w > 0] == y[which(w > 0)[1L]])) {
     return(list(coef = c(a, rep(0, ncol(X) - 1L)), converged = TRUE,
                 deviance = null, null_deviance = null, projected_gradient = 0, constant = TRUE))
   }
@@ -87,14 +87,16 @@ ugdm_curvature_penalty <- function(design) {
   scale[!is.finite(scale) | scale < 1e-12] <- 1
   Z <- sweep(S, 2L, scale, "/")
   Pscaled <- P / outer(scale, scale)
+  shift <- if (is.null(score_shift)) rep(0, ncol(X)) else
+    (score_shift - score_shift[1L] * m) / scale
   lower <- rep(-Inf, ncol(X))
   lower[nonnegative] <- 0
   fn <- function(b) {
     eta <- drop(Z %*% b)
-    sum(w * (.softplus(eta) - y * eta)) + drop(crossprod(b, Pscaled %*% b)) / 2
+    sum(w * (.softplus(eta) - y * eta)) + drop(crossprod(b, Pscaled %*% b)) / 2 - sum(shift * b)
   }
   gr <- function(b) {
-    drop(crossprod(Z, w * (stats::plogis(drop(Z %*% b)) - y)) + Pscaled %*% b)
+    drop(crossprod(Z, w * (stats::plogis(drop(Z %*% b)) - y)) + Pscaled %*% b - shift)
   }
   initial <- if (is.null(start)) c(a, rep(0, ncol(X) - 1L)) else {
     c(sum(start * c(1, m[-1L])), start[-1L] * scale[-1L])

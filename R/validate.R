@@ -3,13 +3,16 @@
 #' Fitted dissimilarity (or linear predictor) of the sets of a design, as in the observed versus predicted
 #' plots of generalised dissimilarity models.
 #'
-#' @param fit A `ugdm_fit`.
-#' @param design A `ugdm_design` (built with `ref =` the design used to fit the model when the sets were not used in the fit).
+#' @param fit An original or extended GDUM fit from \code{\link{ugdm_fit}} or
+#'   \code{\link{ugdm_fit_interactions}}.
+#' @param design A matching original or extended design. Reuse the training
+#'   reference when constructing evaluation sets.
 #' @param type `"response"` (default; expected dissimilarity) or `"link"` (linear predictor, the "predicted ecological distance").
 #' @return A numeric vector with one value per set.
 #' @export
 ugdm_predict <- function(fit, design, type = c("response", "link")) {
   type <- match.arg(type)
+  if (inherits(fit, "ugdm_interaction_fit")) return(.interaction_predict(fit, design, type))
   dm <- .design_matrix(design, fit$vars, fit$has_distance)
   eta <- fit$intercept + drop(dm$Xdir %*% fit$beta) + drop(dm$Xpos %*% fit$lambda)
   if (type == "link") eta else stats::plogis(eta)

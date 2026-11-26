@@ -7,9 +7,11 @@
 ugdm_predict(fit, design, type = c("response", "link"))
 }
 \arguments{
-\item{fit}{A `ugdm_fit`.}
+\item{fit}{An original or extended GDUM fit from \code{\link{ugdm_fit}} or
+\code{\link{ugdm_fit_interactions}}.}
 
-\item{design}{A `ugdm_design` (built with `ref =` the design used to fit the model when the sets were not used in the fit).}
+\item{design}{A matching original or extended design. Reuse the training
+reference when constructing evaluation sets.}
 
 \item{type}{`"response"` (default; expected dissimilarity) or `"link"` (linear predictor, the "predicted ecological distance").}
 }

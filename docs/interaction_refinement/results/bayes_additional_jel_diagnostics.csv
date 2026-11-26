@@ -1,0 +1,5 @@
+"mode","signal","r","M","order1","order2","method","ess","rhat","hull","unresolved","rank","p_gap","stable","seconds","mode_convergence","clipped","accept","error"
+"long_reference","null",1,900,2,8,"mcmc",597.796033499768,1.0078537558561,NA,NA,NA,NA,TRUE,78.838,0,0,0.2616640625,NA
+"long_reference","null",2,900,2,8,"mcmc",394.690347092629,1.01394698458647,NA,NA,NA,NA,TRUE,80.549,0,0,0.191875,NA
+"long_reference","weak",2,900,2,8,"mcmc",456.185156895511,1.0158547348609,NA,NA,NA,NA,TRUE,80.261,0,0,0.2022734375,NA
+"long_reference","weak",3,900,2,8,"mcmc",409.358786736129,1.01537921552824,NA,NA,NA,NA,TRUE,78.277,0,0,0.2215390625,NA

@@ -26,8 +26,10 @@
   p <- length(fit$beta)
   q <- length(fit$lambda)
   contrast <- matrix(0, length(.order_effects(fit)), 1L + p + q)
-  for (j in seq_len(p / 3L)) contrast[j, 1L + 3L * (j - 1L) + 1:3] <- 1
-  contrast[p / 3L + seq_len(q), 1L + p + seq_len(q)] <- diag(q)
+  width <- if (is.null(design$spread_width)) 3L else design$spread_width
+  for (j in seq_len(q)) contrast[j, 1L + width * (j - 1L) + seq_len(width)] <- 1
+  if (fit$has_distance) contrast[q + 1L, 1L + q * width + seq_len(3L)] <- 1
+  contrast[q + as.integer(fit$has_distance) + seq_len(q), 1L + p + seq_len(q)] <- diag(q)
   rownames(contrast) <- names(.order_effects(fit))
   contrast
 }
@@ -43,7 +45,7 @@
 }
 
 .subset_order_design <- function(d, keep) {
-  for (term in c("idx", "Xdir", "Xpos", "Xdist")) {
+  for (term in c("idx", "Xdir", "Xpos", "Xdist", "Xlinear")) {
     if (!is.null(d[[term]])) d[[term]] <- d[[term]][keep, , drop = FALSE]
   }
   d

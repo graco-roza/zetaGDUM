@@ -268,7 +268,8 @@ ugdm_response <- function(x, idx, component = c("turnover", "total", "nestedness
 .design_matrix <- function(d, vars = NULL, distance = TRUE) {
   V <- length(d$vars)
   sel <- if (is.null(vars)) seq_len(V) else match(vars, d$vars)
-  dcols <- as.vector(sapply(sel, function(v) 3 * (v - 1) + 1:3))
+  width <- if (is.null(d$spread_width)) 3L else d$spread_width
+  dcols <- as.vector(sapply(sel, function(v) width * (v - 1) + seq_len(width)))
   Xdir <- d$Xdir[, dcols, drop = FALSE]
   if (distance && !is.null(d$Xdist)) Xdir <- cbind(Xdir, d$Xdist)
   list(Xdir = Xdir, Xpos = d$Xpos[, sel, drop = FALSE], sel = sel)
@@ -321,7 +322,8 @@ ugdm_fit <- function(design, y, trials, weights = NULL, vars = NULL, distance = 
     lambda <- cf[p + seq_len(q)] - cf[p + q + seq_len(q)]
   }
   vn <- design$vars[dm$sel]
-  height <- sapply(seq_along(vn), function(j) sum(beta[3 * (j - 1) + 1:3]))
+  width <- if (is.null(design$spread_width)) 3L else design$spread_width
+  height <- sapply(seq_along(vn), function(j) sum(beta[width * (j - 1) + seq_len(width)]))
   names(height) <- vn
   names(lambda) <- vn
   dist_height <- if (distance && !is.null(design$Xdist)) sum(beta[p - 2:0]) else NA_real_
@@ -361,12 +363,13 @@ ugdm_importance <- function(fit, design, weights = NULL, trials = NULL, sampling
   dm <- .design_matrix(design, fit$vars, fit$has_distance)
   V <- length(fit$vars)
   w <- .model_weights(nrow(dm$Xpos), trials, weights, sampling_weights)
+  width <- if (is.null(design$spread_width)) 3L else design$spread_width
   eta <- vapply(seq_len(V), function(j) {
-    cols <- 3 * (j - 1) + 1:3
+    cols <- width * (j - 1) + seq_len(width)
     drop(dm$Xdir[, cols, drop = FALSE] %*% fit$beta[cols]) + dm$Xpos[, j] * fit$lambda[j]
   }, numeric(length(w)))
   dim(eta) <- c(length(w), V)
-  if (fit$has_distance) eta <- cbind(eta, drop(dm$Xdir[, 3 * V + 1:3, drop = FALSE] %*% fit$beta[3 * V + 1:3]))
+  if (fit$has_distance) eta <- cbind(eta, drop(dm$Xdir[, width * V + 1:3, drop = FALSE] %*% fit$beta[width * V + 1:3]))
   tot <- rowSums(eta)
   vt <- .wcov(tot, tot, w)
   out <- if (vt > 0) vapply(seq_len(ncol(eta)), function(j) .wcov(eta[, j], tot, w) / vt, numeric(1)) else rep(NA_real_, ncol(eta))

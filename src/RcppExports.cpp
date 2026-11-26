@@ -25,6 +25,37 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// path_kernels_cpp
+Rcpp::List path_kernels_cpp(Rcpp::List paths, Rcpp::NumericMatrix counts, Rcpp::NumericMatrix relative, Rcpp::NumericMatrix spread_basis, Rcpp::NumericMatrix position, Rcpp::NumericMatrix distance);
+RcppExport SEXP _zetaGDUM_path_kernels_cpp(SEXP pathsSEXP, SEXP countsSEXP, SEXP relativeSEXP, SEXP spread_basisSEXP, SEXP positionSEXP, SEXP distanceSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::List >::type paths(pathsSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type counts(countsSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type relative(relativeSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type spread_basis(spread_basisSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type position(positionSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type distance(distanceSEXP);
+    rcpp_result_gen = Rcpp::wrap(path_kernels_cpp(paths, counts, relative, spread_basis, position, distance));
+    return rcpp_result_gen;
+END_RCPP
+}
+// score_inclusion_cpp
+Rcpp::NumericMatrix score_inclusion_cpp(Rcpp::IntegerMatrix idx, Rcpp::NumericMatrix X, Rcpp::NumericVector weighted_residual, Rcpp::NumericVector weights, int n);
+RcppExport SEXP _zetaGDUM_score_inclusion_cpp(SEXP idxSEXP, SEXP XSEXP, SEXP weighted_residualSEXP, SEXP weightsSEXP, SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::IntegerMatrix >::type idx(idxSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type X(XSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type weighted_residual(weighted_residualSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type weights(weightsSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    rcpp_result_gen = Rcpp::wrap(score_inclusion_cpp(idx, X, weighted_residual, weights, n));
+    return rcpp_result_gen;
+END_RCPP
+}
 // shared_species_cpp
 NumericVector shared_species_cpp(IntegerMatrix PA, IntegerMatrix idx);
 RcppExport SEXP _zetaGDUM_shared_species_cpp(SEXP PASEXP, SEXP idxSEXP) {
@@ -102,6 +133,8 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_zetaGDUM_conditional_zeta_cpp", (DL_FUNC) &_zetaGDUM_conditional_zeta_cpp, 5},
+    {"_zetaGDUM_path_kernels_cpp", (DL_FUNC) &_zetaGDUM_path_kernels_cpp, 6},
+    {"_zetaGDUM_score_inclusion_cpp", (DL_FUNC) &_zetaGDUM_score_inclusion_cpp, 5},
     {"_zetaGDUM_shared_species_cpp", (DL_FUNC) &_zetaGDUM_shared_species_cpp, 2},
     {"_zetaGDUM_min_abundance_cpp", (DL_FUNC) &_zetaGDUM_min_abundance_cpp, 2},
     {"_zetaGDUM_meanpair_dist_cpp", (DL_FUNC) &_zetaGDUM_meanpair_dist_cpp, 2},

@@ -41,18 +41,19 @@
 ugdm_crossproducts <- function(x, env, design, type = c("relative", "incidence")) {
   type <- match.arg(type)
   e <- .environment_for_moments(env, design)
+  spread_basis <- if (is.null(design$spread_width)) e$spline else e$z
   k <- design$k
   x <- .conditional_community(x)
   n <- nrow(x)
   if (n != design$n) stop("The community matrix and design must have the same sites.")
   z <- conditional_zeta_dissimilarity(x, k, type, pairs = TRUE)
-  response <- .environment_moments(e$z, e$spline, k, z$mean, z$site, z$pair[lower.tri(z$pair)])
+  response <- .environment_moments(e$z, spread_basis, k, z$mean, z$site, z$pair[lower.tri(z$pair)])
   if (type == "incidence") {
-    predictor <- .environment_moments(e$z, e$spline, k,
+    predictor <- .environment_moments(e$z, spread_basis, k,
       z$mean + z$shared$mean, z$site + z$shared$site,
       (z$pair + z$shared$pair)[lower.tri(z$pair)])
   } else {
-    predictor <- .environment_moments(e$z, e$spline, k, 1, rep(1, n), rep(1, choose(n, 2)))
+    predictor <- .environment_moments(e$z, spread_basis, k, 1, rep(1, n), rep(1, choose(n, 2)))
   }
   nm <- c("intercept", colnames(design$Xdir), colnames(design$Xdist), colnames(design$Xpos))
   insert_distance <- function(v) {
@@ -120,6 +121,7 @@ ugdm_fit_analytical <- function(x, env, design, type = c("relative", "incidence"
     stop("Relative abundance requires positive finite site totals.")
   }
   check <- suppressWarnings(ugdm_design(env, design$idx, ref = design))
+  if (!is.null(design$spread_width)) check <- ugdm_model_design(check, "B", env)
   if (!isTRUE(all.equal(check$Xdir, design$Xdir)) || !isTRUE(all.equal(check$Xpos, design$Xpos))) {
     stop("`env` and the environmental design columns differ.")
   }
@@ -185,7 +187,9 @@ ugdm_fit_analytical <- function(x, env, design, type = c("relative", "incidence"
   base$intercept <- co[1L]
   base$beta <- unname(co[1L + seq_len(nd)])
   base$lambda[] <- co[1L + nd + seq_along(base$lambda)]
-  base$height[] <- rowSums(matrix(base$beta[seq_len(3L * length(base$vars))], ncol = 3L, byrow = TRUE))
+  width <- if (is.null(design$spread_width)) 3L else design$spread_width
+  base$height[] <- rowSums(matrix(base$beta[seq_len(width * length(base$vars))],
+                                  ncol = width, byrow = TRUE))
   if (base$has_distance) base$dist_height <- sum(utils::tail(base$beta, 3L))
   wt <- weights / mean(weights)
   base$deviance <- .binom_dev(y, stats::plogis(drop(X %*% co)), wt)

@@ -5,6 +5,14 @@ conditional_zeta_cpp <- function(x, k, abundance, pairs, include) {
     .Call(`_zetaGDUM_conditional_zeta_cpp`, x, k, abundance, pairs, include)
 }
 
+path_kernels_cpp <- function(paths, counts, relative, spread_basis, position, distance) {
+    .Call(`_zetaGDUM_path_kernels_cpp`, paths, counts, relative, spread_basis, position, distance)
+}
+
+score_inclusion_cpp <- function(idx, X, weighted_residual, weights, n) {
+    .Call(`_zetaGDUM_score_inclusion_cpp`, idx, X, weighted_residual, weights, n)
+}
+
 shared_species_cpp <- function(PA, idx) {
     .Call(`_zetaGDUM_shared_species_cpp`, PA, idx)
 }

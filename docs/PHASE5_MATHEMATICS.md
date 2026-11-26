@@ -1,0 +1,61 @@
+# Phase 5 mathematics
+
+## Coupled combinations and the finite-community target
+
+For each path, draw a uniform permutation $\pi$ of the sites. At order $k$ use its first $k$ labels. Every unordered $k$-set has $k!(n-k)!$ representations in the permutation, so its marginal probability is $1/\binom nk$. Independent permutation draws give independent paths. For the site-balanced variant, use cyclic starts of one random permutation in each full block of $n$ paths. Each start has the uniform marginal and each site occurs exactly $k$ times per full block. Truncation chooses a uniform subset of starts. Rows within a cyclic block are dependent. Independent across-order mode draws independent blocks with the same marginal law. Exhaustive orders replace the random paths when evaluating the complete population costs no more than the requested number of rows and fits the enumeration cap.
+
+For the species sampler fix the order-specific probability $\pi_{sk} \propto \binom{o_s}{k}$. A common uniform selects the mixture branch using $\alpha_k$, and a second common uniform selects a species by the inverse CDF in a fixed species order. The distribution of that selected species may differ with order. Independently of both uniforms, restrict the common random permutation to the selected species' sites and take the first $k$. This has the uniform within-species marginal. Summation over species gives $Q_k(S)=P_k(S)Z_k(S)/E_PZ_k$, including the multiplicity of shared species. With $\alpha_k<1$ the importance ratio remains $1/[1-\alpha_k+\alpha_k Z_k/E_PZ_k]$. When sharing is impossible the mixture reduces to its uniform component. Changing species or mixture branch can break nesting. No nesting condition is imposed on the species marginal.
+
+Conditional on the observed sites, the covariance between estimates at two orders determines the gain from coupling. The error variance of their difference is the sum of the marginal variances minus twice the covariance. Neither coupling nor site balance guarantees positive covariance for a given effect, especially for nonlinear Shapley ratios and boundary fits.
+
+For a path extending with site $i$, retain only species present at $i$ from the existing intersection and take the minimum of each running relative abundance and $q_{is}$. Sum site richness and position. Add $\sum_{j\in S}|B_b(z_i)-B_b(z_j)|$ to each accumulated pairwise spread numerator and add $\sum_{j\in S}d_{ij}$ to the geographic numerator. Divide by $\binom{k}{2}$ only when emitting the order. The geographic spline acts on that resulting mean distance. Model B accumulates absolute differences of the standardised original variable alongside the spline columns. When an individual sampled row stops extending the previous prefix its accumulator restarts. Exact orders are evaluated separately. Both responses use the same set rows. Normalised incidence is $1-Z_k/\bar r_S$, and relative-abundance dissimilarity is one minus the sum of the running minima.
+
+## Model, units and penalties
+
+All variants use an intercept and additive environmental spread, environmental position and optional geography on the logit scale. A retains three monotonic I-spline coefficients per environmental predictor. B uses one coefficient multiplying mean pairwise absolute differences of standardised site values. Geography retains its original spline in both. Nonnegative spread and unconstrained position are the defaults. A separately requested free-sign fit drops monotonicity.
+
+C minimises the average existing fractional logit loss plus half the quadratic penalty
+
+$$
+\rho\sum_v[(\beta_{v,2}-\beta_{v,1})^2+(\beta_{v,3}-\beta_{v,2})^2]
++\gamma\left(\sum \beta^2+\sum_v \lambda_{\mathrm{mean},v}^2\right).
+$$
+
+The second sum includes the geographic spread coefficients where present. The intercept is unpenalised. Adjacent differences suppress abrupt changes in the spline coefficient profile. Ridge also shrinks the amplitude and position coefficients. A smoothness-only comparison separates those effects. These are changes to the target rather than remedies for an implementation-specific condition number. The quadratic form has a Gaussian-prior analogue for a chosen loss temperature, but C's optimiser alone does not construct an ecological posterior from the overlapping sets.
+
+With $X_{\rm mean}=X_{\rm sum}/k$, $\lambda_{\rm mean}=k\lambda_{\rm sum}$. Fitting and priors use mean units internally. The prediction interface receives sum units. Expressing a fixed mean-unit prior in sum units divides its SD by $k$. For a quadratic penalty the corresponding weight on the sum-unit coefficient is multiplied by $k^2$. Internally the optimiser centres and scales columns while transforming the penalty accordingly. The reported correlation-scaled working Hessian removes arbitrary column units. A linear contrast can also be projected onto weak information directions. Its retained inverse curvature is only a local numerical diagnostic.
+
+The validation uses a fixed site interquartile span to report a one-site position contrast and 10% of an interquartile spread difference as a scale comparator. These coefficient contrasts do not assert that all corresponding counterfactual configurations exist. A separate observed-configuration comparison records the number of replaced sites and actual changes in the position and spread design. For a shift of every site by the same amount on one standardised gradient, mean and summed position change accordingly. An exact fixed-position spread contrast needs changes in spread with mean position held fixed. Observed pairs that merely approximate that condition are labelled as such. Geography is included in the spread allocation when fitted.
+
+Given link changes $s,p$ for two blocks and a starting logit $\eta$, the spread response-scale allocation is
+$$
+\tfrac12\{\sigma(\eta+s)-\sigma(\eta)+\sigma(\eta+s+p)-\sigma(\eta+p)\}.
+$$
+The position allocation is defined by exchanging $s,p$. They sum to the fitted dissimilarity difference. The LCZD decomposition averages the analogous intercept-reference allocations conditionally on each site. The residual is observed minus fitted conditional dissimilarity. This is a descriptive discrepancy. Deviance Shapley uses coalition refits instead, with C restricting the same penalty to each coalition. Explained-deviance shares can be unstable when the total explained deviance is near zero. Neither allocation adds an explicit interaction to the link model.
+
+## Site score pseudovalues
+
+Let $G$ be the expectation of a fixed score kernel and $G_i=E[g(S)\mid i\in S]$. Counting sets containing each site gives
+$$
+G_{-i}=(nG-kG_i)/(n-k),\qquad
+J_i=nG-(n-1)G_{-i}=G+\frac{k(n-1)}{n-k}(G_i-G).
+$$
+The site average of $G_i$ is $G$, so the site average of $J_i$ is $G$. With the dissimilarity kernel this connects exact local distinctiveness and exact site deletion. The regression kernel is $cX(Y-\mu_\theta)$. The response working weight $c$ is inside that kernel. Proposal ratios stay separate. LCZD does not enter the regression as a site weight.
+
+For incomplete samples, deletion-ratio pseudovalues compute each omitted-set score with its own surviving weight denominator. The centred option translates the resulting pseudovalue matrix so its average equals the full ratio score. The inclusion option uses raw importance averages with inverse inclusion probability $n/k$, and its centring identity follows from each set containing $k$ sites even when the observed weighted inclusion mass varies. These constructions differ at finite budgets. The centring identity does not make finite incomplete fits exact, and the ratio method can be numerically unreliable when a deletion leaves little effective support.
+
+For matched parameter or summary deletions, $V_i=n\widehat\theta-(n-1)\widehat\theta_{-i}$. Applying one shared Dirichlet site vector preserves the covariance between orders and summaries. Centred draws use $\widehat\theta+\sum p_i(V_i-\bar V)$, and raw draws use $\sum p_i V_i$. Both conditional covariance matrices are $\sum (V_i-\bar V)(V_i-\bar V)^T/[n(n+1)]$. The jackknife denominator is $n(n-1)$. No inflation or truncation is applied. Near active coefficients the pseudovalues can leave the constraint region. These draws are a bootstrap approximation and do not validate a likelihood.
+
+## Joint empirical-likelihood posterior
+
+For a proposed parameter vector, recompute the site score pseudovalues at that vector. Stack their columns across orders on the same site rows. With ordinary empirical likelihood, solve the dual zero-moment equation using weights $p_i=[n(1+t^TJ_i)]^{-1}$ and positive denominators. With exponential tilting use $p_i\propto\exp(t^TJ_i)$ chosen to satisfy the same moment equations. The relative log likelihood in both cases is $\sum \log(np_i)$. The solver scales the moment columns, uses a damped Newton iteration and reports unavailable solutions. Lack of a certified interior solution can reflect finite numerical support, a hull boundary, or rank deficiency. The numerical failure status is not an exact convex-hull separation certificate.
+
+The experimental posterior multiplies the empirical likelihood by independent Gaussian priors in canonical units. A multivariate Student importance proposal is centred on the unrestricted fit and scaled using joint site-score influence. Importance weights correct for the proposal density. Report effective importance sample size and invalid likelihood proposals. Event probabilities are weighted proportions of joint draws and can include a declared practical threshold. For empirical pseudovalue draws the same calculation describes approximate bootstrap probabilities, including order changes and position versus spread. For monotone models practical thresholds are more informative than a positivity event. The implementation restricts JEL to regular unconstrained fits and at most 12 joint coefficients. At an active spread constraint the score satisfies a KKT condition. Zero-score JEL cannot automatically be transferred to that fit.
+
+Cheng and Zhao develop Bayesian JEL for fixed-kernel U-statistic targets and study an adjusted version for insufficient hull support. Those results do not directly establish validity for regression score roots with increasing order or active constraints. Wang and colleagues treat infinite-order U-statistics under iid sites, nondegeneracy and rate conditions. Their incomplete construction uses partitioned subsamples and requires additional assumptions. The current coupled designs and fitted-vector moments require their own justification. The exponential-tilting implementation follows the moment restriction in Chib, Shin and Simoni, whose semiparametric calibration assumptions likewise do not transfer automatically to dependent jackknife scores. [Cheng & Zhao (2019)](https://doi.org/10.1093/biomet/asz031), [Wang et al. (2026)](https://doi.org/10.1017/S0266466626100681), [Chib, Shin & Simoni (2018)](https://doi.org/10.1080/01621459.2017.1358172)
+
+## Numerical and ecological decisions
+
+For contrast $T$, pilot replication estimates $\operatorname{Var}_{MC}(\widehat T_M)\simeq A_T/M$. Record the log-variance slope, add independent replication when it is far from $-1$, and estimate $A_T$ from the median of the pilot values $M s_M^2$. The raw candidate is $\lceil A_T/\tau_T^2\rceil$. Confirm every contrast at its own candidate after applying a pilot floor and an operational normal-theory SD margin. Confirmation uses new fits. Fixed absolute tolerances can be used directly. When a calibrated ecological SE is supplied, the procedure permits a fractional tolerance with a declared absolute floor. Small or unstable ecological SEs cannot force the numerical target below that floor.
+
+Select samplers by the worst tolerance-standardised variance-times-cost among the declared contrasts, with all relevant work timed inside the fit callback. The finite-sample variance relationship is an empirical approximation. Budget caps mark computational resolution, not a loss of ecological support. Classification is per effect and distinguishes ecological support, statistical precision and numerical confirmation. Site deletion stability, scientific tolerances and independent validation of uncertainty should be assessed separately. Retention remains descriptive.

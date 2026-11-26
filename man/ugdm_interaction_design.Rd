@@ -8,7 +8,7 @@ ugdm_interaction_design(
   design,
   env,
   position = c("linear", "nonlinear"),
-  spread = c("constant", "varying")
+  spread = c("constant", "varying", "contextual")
 )
 }
 \arguments{
@@ -18,7 +18,10 @@ ugdm_interaction_design(
 
 \item{position}{Linear or nonlinear local environmental position.}
 
-\item{spread}{Position-independent or position-dependent directional spread.}
+\item{spread}{Position-independent, set-position-dependent or contextual
+spread. The contextual option combines pair-midpoint and set-mean
+endpoint interpolation with nonnegative coefficients. It uses no
+product of the two interpolation coordinates.}
 }
 \value{
 Design for [ugdm_fit_interactions()].

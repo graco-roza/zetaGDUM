@@ -13,7 +13,12 @@ ugdm_fit_interactions(
   spread_smooth = 0,
   position_smooth = 0,
   interaction_shrink = 0,
-  ridge = 0
+  ridge = 0,
+  interaction_penalty = c("coefficients", "derivative"),
+  penalty_scale = c("native", "range"),
+  spread_null = 0,
+  position_null = 0,
+  start = NULL
 )
 }
 \arguments{
@@ -23,6 +28,18 @@ ugdm_fit_interactions(
 
 \item{spread_smooth, position_smooth, interaction_shrink, ridge}{Nonnegative
 penalty strengths in the average working loss.}
+
+\item{interaction_penalty}{Penalise endpoint coefficient differences
+or the integrated squared derivative difference on the environmental range.}
+
+\item{penalty_scale}{Use native standardised predictor units or express
+derivative and curvature penalties on a common unit range.}
+
+\item{spread_null, position_null}{Optional penalties on the linear component
+obtained by function-space projection, separate from curvature.}
+
+\item{start}{Optional previous fit or numeric vector in the same basis and
+coefficient layout for warm-starting the optimiser.}
 }
 \value{
 An extended GDUM fit for [ugdm_predict()].

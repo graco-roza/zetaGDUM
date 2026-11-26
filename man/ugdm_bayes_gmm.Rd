@@ -17,7 +17,9 @@ ugdm_bayes_gmm(
   tolerance = 1e-09,
   seed = NULL,
   design_matrix = NULL,
-  bounded = NULL
+  bounded = NULL,
+  moment_covariance = NULL,
+  penalty = NULL
 )
 }
 \arguments{
@@ -33,7 +35,9 @@ vector and returning sites by coefficients score pseudovalues in that order.
 Supply aligned, independently checked moments. By default, use centred
 deletion scores from pilot.}
 
-\item{prior_sd}{Positive normal prior SD, scalar or one per coefficient.}
+\item{prior_sd}{Positive normal prior SD, scalar or one per coefficient.
+Use Inf for prior-free Gaussian coordinates. Specify the prior separately
+from the penalty defining the estimand.}
 
 \item{integration}{Gaussian linearisation or nonlinear MCMC.}
 
@@ -58,6 +62,15 @@ position matrix with position-independent spread.}
 
 \item{bounded}{Optional indices of coefficients to project. Required for
 a custom design_matrix and otherwise defaults to environmental spread.}
+
+\item{moment_covariance}{Optional function of the joint pilot coefficients
+returning a fixed covariance matrix or a list with a covariance field and
+diagnostics. This replaces site_scores and must use the same units.}
+
+\item{penalty}{Optional list of positive-semidefinite quadratic penalty
+matrices in average working-loss units, one per order in the fitted
+coordinates. This changes the estimand. Its derivative enters the mean
+score and information, while centred site scores remain stochastic only.}
 }
 \value{
 Joint draws, score roots, Gaussian and sandwich covariance, frozen

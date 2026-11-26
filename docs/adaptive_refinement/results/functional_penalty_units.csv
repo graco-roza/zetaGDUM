@@ -1,0 +1,10 @@
+"pattern","range","coefficient_penalty","derivative_native","derivative_unit_range","max_quadrature_error","projected_linear_amplitude"
+"linear",1,3,9,9,3.5527136788005e-15,3
+"zero_endpoint",1,6,1.8,1.8,1.77635683940025e-15,-0.6
+"tilted",1,6.78,18.168,18.168,3.5527136788005e-15,3.99
+"linear",3,3,3,9,4.44089209850063e-16,3
+"zero_endpoint",3,6,0.6,1.8,0,-0.6
+"tilted",3,6.78,6.056,18.168,0,3.99
+"linear",7,3,1.28571428571429,9,2.22044604925031e-16,3
+"zero_endpoint",7,6,0.257142857142857,1.8,2.77555756156289e-16,-0.6
+"tilted",7,6.78,2.59542857142857,18.168,0,3.99

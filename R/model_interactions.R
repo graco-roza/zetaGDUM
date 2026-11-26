@@ -11,15 +11,19 @@
 #' @param design Original [ugdm_design()] or a design from [ugdm_path_data()].
 #' @param env Numeric site predictors in the same row order as `design`.
 #' @param position Linear or nonlinear local environmental position.
-#' @param spread Position-independent or position-dependent directional spread.
+#' @param spread Position-independent, set-position-dependent or contextual
+#'   spread. The contextual option combines pair-midpoint and set-mean
+#'   endpoint interpolation with nonnegative coefficients. It uses no
+#'   product of the two interpolation coordinates.
 #' @return Design for [ugdm_fit_interactions()].
 #' @export
 ugdm_interaction_design <- function(design, env, position = c("linear", "nonlinear"),
-                                    spread = c("constant", "varying")) {
+                                    spread = c("constant", "varying", "contextual")) {
   position <- match.arg(position)
   spread <- match.arg(spread)
   if (!is.null(design$spread_width)) stop("Supply the original environmental I-spline design.")
-  z <- .environment_for_moments(env, design)$z
+  details <- .environment_for_moments(env, design)
+  z <- details$z
   k <- design$k
   nr <- nrow(design$idx)
   p <- ncol(z)
@@ -58,7 +62,13 @@ ugdm_interaction_design <- function(design, env, position = c("linear", "nonline
       out
     }))
   }
+  context <- NULL
+  if (spread == "contextual") {
+    context <- .context_geometry(z, details$spline, design, mean_z, bounds, u)
+    dir <- context$dir
+  }
   structure(list(dir = dir, pos = pos, base = base, geo = design$Xdist,
+    contextual = context$context, pair_midpoint = context$pair, bounded_context = context$effective,
     curvature = ugdm_curvature_penalty(design), position_curvature = 1 / half^3,
     position = position, spread = spread, u = u, outside = raw_u < 0 | raw_u > 1,
     mean_position = mean_z, position_variance = pmax(variance, 0), order = k,
@@ -75,32 +85,69 @@ ugdm_interaction_design <- function(design, env, position = c("linear", "nonline
        distance = has_geo)
 }
 
-.interaction_penalties <- function(d, layout, strengths) {
-  P <- diag(c(0, rep(strengths[["ridge"]], ncol(layout$X) - 1L)))
+.interaction_penalties <- function(d, layout, strengths,
+                                   interaction_penalty = "coefficients", penalty_scale = "native") {
+  strength <- function(name) if (name %in% names(strengths)) strengths[[name]] else 0
+  ridge <- strength("ridge")
+  P <- diag(c(0, rep(ridge, ncol(layout$X) - 1L)))
+  curvature <- strength("spread_smooth")
+  position <- strength("position_smooth")
+  interaction <- strength("interaction_shrink")
+  spread_null <- strength("spread_null")
+  position_null <- strength("position_null")
+  I <- diag(3L)
   for (j in seq_along(d$vars)) {
-    width <- if (d$spread == "varying") 6L else 3L
+    width <- switch(d$spread, constant = 3L, varying = 6L, contextual = 12L)
     at <- 1L + width * (j - 1L) + seq_len(width)
-    C <- d$curvature[[j]]
+    basis <- d$basis$splines[[j]]
+    range <- diff(attr(basis, "Boundary.knots"))
+    rescale <- if (penalty_scale == "range") range else 1
+    M <- if (interaction_penalty == "derivative" || spread_null > 0) .context_penalty_basis(basis)
+    C <- d$curvature[[j]] * rescale^3
+    C <- curvature * C
+    if (spread_null > 0) C <- C + spread_null * tcrossprod(M$null_slope * rescale / range)
+    D <- if (interaction_penalty == "derivative") M$derivative * rescale else I
+    evaluate <- function(A, G) crossprod(A, G %*% A)
     if (d$spread == "constant") {
-      P[at, at] <- P[at, at] + strengths[["spread_smooth"]] * C
-    } else {
-      interaction <- cbind(-diag(3L), diag(3L))
+      P[at, at] <- P[at, at] + C
+    } else if (d$spread == "varying") {
+      delta <- cbind(-I, I)
       A <- matrix(0, 6L, 6L)
       A[1:3, 1:3] <- A[4:6, 4:6] <- C / 2
-      P[at, at] <- P[at, at] + strengths[["spread_smooth"]] * A +
-        strengths[["interaction_shrink"]] * crossprod(interaction)
+      P[at, at] <- P[at, at] + A + interaction * evaluate(delta, D)
+    } else {
+      zero <- matrix(0, 3L, 3L)
+      low_pair <- cbind(I, zero, zero, zero)
+      high_pair <- cbind(zero, I, zero, zero)
+      low_set <- cbind(zero, zero, I, zero)
+      high_set <- cbind(zero, zero, zero, I)
+      corners <- list(low_pair + low_set, high_pair + low_set, low_pair + high_set, high_pair + high_set)
+      A <- Reduce("+", lapply(corners, evaluate, G = C)) / 4
+      delta_pair <- high_pair - low_pair
+      delta_set <- high_set - low_set
+      # Use physical coordinates so the penalty is invariant to moving
+      # a common function between the pair and set endpoint representation.
+      R <- evaluate(Reduce("+", corners) / 4, I) +
+        evaluate(delta_pair + delta_set, I) + evaluate(delta_set, I)
+      P[at, at] <- A + ridge * R + interaction * (evaluate(delta_pair, D) + evaluate(delta_set, D))
     }
+    at <- layout$pos
     if (d$position == "nonlinear") {
-      at <- layout$pos[3L * (j - 1L) + 2:3]
-      P[at, at] <- P[at, at] + strengths[["position_smooth"]] *
-        d$position_curvature[j] * diag(c(8, 24))
+      at <- at[3L * (j - 1L) + seq_len(3L)]
+      P[at, at] <- P[at, at] + position * rescale^3 *
+        d$position_curvature[j] * diag(c(0, 8, 24))
+      slope <- c(1, 0, 1.2 / range)
+    } else {
+      at <- at[j]
+      slope <- 1
     }
+    P[at, at] <- P[at, at] + position_null * tcrossprod(slope * rescale)
   }
   P
 }
 
-.interaction_fit_core <- function(X, y, w, P, nonnegative) {
-  fit <- .variant_solution(X, y, w, P, nonnegative)
+.interaction_fit_core <- function(X, y, w, P, nonnegative, start = NULL) {
+  fit <- .variant_solution(X, y, w, P, nonnegative, start)
   fit$D2 <- if (!fit$constant && fit$null_deviance > 1e-15) {
     1 - fit$deviance / fit$null_deviance
   } else NA_real_
@@ -120,29 +167,54 @@ ugdm_interaction_design <- function(design, env, position = c("linear", "nonline
 #' @param y,trials,sampling_weights,distance As in [ugdm_fit_variant()].
 #' @param spread_smooth,position_smooth,interaction_shrink,ridge Nonnegative
 #'   penalty strengths in the average working loss.
+#' @param interaction_penalty Penalise endpoint coefficient differences
+#'   or the integrated squared derivative difference on the environmental range.
+#' @param penalty_scale Use native standardised predictor units or express
+#'   derivative and curvature penalties on a common unit range.
+#' @param spread_null,position_null Optional penalties on the linear component
+#'   obtained by function-space projection, separate from curvature.
+#' @param start Optional previous fit or numeric vector in the same basis and
+#'   coefficient layout for warm-starting the optimiser.
 #' @return An extended GDUM fit for [ugdm_predict()].
 #' @export
 ugdm_fit_interactions <- function(design, y, trials = rep(1, length(y)),
                                   sampling_weights = NULL, distance = TRUE,
                                   spread_smooth = 0, position_smooth = 0,
-                                  interaction_shrink = 0, ridge = 0) {
+                                  interaction_shrink = 0, ridge = 0,
+                                  interaction_penalty = c("coefficients", "derivative"),
+                                  penalty_scale = c("native", "range"),
+                                  spread_null = 0, position_null = 0, start = NULL) {
+  interaction_penalty <- match.arg(interaction_penalty)
+  penalty_scale <- match.arg(penalty_scale)
   if (!inherits(design, "ugdm_interaction_design")) stop("Supply an interaction design.")
   if (length(y) != nrow(design$idx) || any(!is.finite(y) | y < 0 | y > 1)) {
     stop("Supply one finite fractional response per design row.")
   }
   supplied <- list(spread_smooth = spread_smooth, position_smooth = position_smooth,
-                   interaction_shrink = interaction_shrink, ridge = ridge)
+                   interaction_shrink = interaction_shrink, ridge = ridge,
+                   spread_null = spread_null, position_null = position_null)
   valid <- function(x) is.numeric(x) && length(x) == 1L && is.finite(x) && x >= 0
   if (!all(vapply(supplied, valid, TRUE))) {
-    stop("Supply four finite nonnegative penalty strengths.")
+    stop("Supply finite nonnegative penalty strengths.")
   }
   strengths <- vapply(supplied, function(x) unname(x), numeric(1L))
   w <- .model_weights(length(y), trials, sampling_weights = sampling_weights)
   a <- .interaction_layout(design, distance)
-  P <- .interaction_penalties(design, a, strengths)
-  fit <- .interaction_fit_core(a$X, y, w, P, a$dir)
+  P <- .interaction_penalties(design, a, strengths, interaction_penalty, penalty_scale)
+  if (inherits(start, "ugdm_interaction_fit")) {
+    if (!identical(start$basis, design$basis) || !identical(names(start$coef), colnames(a$X)) ||
+        (a$distance && (!identical(start$dist_range, design$dist_range) ||
+         !identical(start$dist_basis, attributes(design$dist_basis)[names(start$dist_basis)])))) {
+      stop("Warm start must use the same basis and coefficient layout.")
+    }
+    start <- start$coef
+  }
+  if (!is.null(start) && (!is.numeric(start) || length(start) != ncol(a$X) ||
+      any(!is.finite(start)))) stop("Supply one finite initial value per coefficient.")
+  fit <- .interaction_fit_core(a$X, y, w, P, a$dir, start)
   fit$coef <- stats::setNames(fit$coef, colnames(a$X))
   structure(c(fit, list(strengths = strengths, penalty = P, vars = design$vars,
+    interaction_penalty = interaction_penalty, penalty_scale = penalty_scale,
     nd = a$nd, has_distance = a$distance, basis = design$basis, order = design$order,
     dist_basis = if (a$distance) attributes(design$dist_basis)[c("degree", "knots", "Boundary.knots", "intercept")],
     dist_range = if (a$distance) design$dist_range,
@@ -224,7 +296,9 @@ ugdm_interaction_diagnostics <- function(fit, design, y, trials = rep(1, length(
   additive$dir <- additive$base
   additive$spread <- "constant"
   b <- .interaction_layout(additive, fit$has_distance)
-  P <- .interaction_penalties(additive, b, fit$strengths)
+  P <- .interaction_penalties(additive, b, fit$strengths,
+    if (is.null(fit$interaction_penalty)) "coefficients" else fit$interaction_penalty,
+    if (is.null(fit$penalty_scale)) "native" else fit$penalty_scale)
   # Equal endpoint coefficients reproduce the original design and curvature.
   # Their total ridge penalty has twice the environmental spread strength.
   if (design$spread == "varying") {
@@ -263,6 +337,7 @@ ugdm_interaction_diagnostics <- function(fit, design, y, trials = rep(1, length(
     projected_gradient = fit$projected_gradient, converged = fit$converged,
     contrast_information = contrast,
     nonlinear_position_residual = pos_resid, interaction_residual = int_resid,
+    contextual = if (design$spread == "contextual") ugdm_contextual_diagnostics(design, v^2),
     support = data.frame(variable = design$vars, mean_min = apply(p, 2L, min),
       mean_max = apply(p, 2L, max), mean_sd = sd(p),
       within_set_variance_sd = sd(design$position_variance),
@@ -287,23 +362,43 @@ ugdm_interaction_diagnostics <- function(fit, design, y, trials = rep(1, length(
 #' of the selected strengths to the validation blocks.
 #'
 #' @param env Numeric site predictors.
-#' @param folds One block label per site. At least two blocks are required.
+#' @param folds One block label per site, or a list or matrix of repeated
+#'   partitions with one label per site per partition. Each partition needs
+#'   at least two blocks.
 #' @param order Order of the GDUM response.
 #' @param response Function accepting an index matrix with original site
 #'   numbers. Return a numeric response or a list with `y`, optionally
 #'   `trials` and `keep`, as in [ugdm_response()].
 #' @param penalties Data frame with candidate rows and columns
 #'   `spread_smooth`, `position_smooth`, `interaction_shrink` and `ridge`.
+#'   Optionally include `spread_null` and `position_null`.
 #' @param position,spread As in [ugdm_interaction_design()].
 #' @param dist_matrix Optional site distance matrix.
 #' @param M Combinations per training and per held-out fold.
 #' @param seed Optional seed for combination sampling.
+#' @param interaction_penalty,penalty_scale As in [ugdm_fit_interactions()].
+#' @param contrast_loss Optional function of fit, held-out interaction
+#'   design, response and working weights returning one nonnegative loss.
+#' @param selection Selection criterion. Use contrast loss alone or require
+#'   candidates to lie within a predeclared absolute held-out deviance
+#'   tolerance of the minimum before comparing contrasts.
+#' @param prediction_tolerance Held-out deviance tolerance for
+#'   `selection = "contrast_within_prediction"`.
+#' @param warm_start Reuse the preceding converged fit along the regularisation path.
 #' @return Candidate scores, fold scores, fold-omission choices and the
 #'   index of the selected row. Ties follow the supplied candidate order.
 #' @export
 ugdm_select_interactions <- function(env, folds, order, response, penalties,
                                      position = "nonlinear", spread = "varying",
-                                     dist_matrix = NULL, M = 1000L, seed = NULL) {
+                                     dist_matrix = NULL, M = 1000L, seed = NULL,
+                                     interaction_penalty = c("coefficients", "derivative"),
+                                     penalty_scale = c("native", "range"),
+                                     contrast_loss = NULL,
+                                     selection = c("predictive", "contrast", "contrast_within_prediction"),
+                                     prediction_tolerance = 0, warm_start = TRUE) {
+  interaction_penalty <- match.arg(interaction_penalty)
+  penalty_scale <- match.arg(penalty_scale)
+  selection <- match.arg(selection)
   fields <- c("spread_smooth", "position_smooth", "interaction_shrink", "ridge")
   if (!is.data.frame(penalties) || !nrow(penalties) ||
       !all(fields %in% names(penalties)) ||
@@ -311,13 +406,32 @@ ugdm_select_interactions <- function(env, folds, order, response, penalties,
       any(!is.finite(as.matrix(penalties[fields])) | as.matrix(penalties[fields]) < 0)) {
     stop("Provide a candidate data frame with four finite nonnegative strengths.")
   }
-  if (length(folds) != nrow(env) || anyNA(folds) || length(unique(folds)) < 2L) {
-    stop("Supply a block label for every site and at least two blocks.")
+  fields <- c(fields, intersect(c("spread_null", "position_null"), names(penalties)))
+  if (any(!vapply(penalties[fields], is.numeric, TRUE)) ||
+      any(!is.finite(as.matrix(penalties[fields])) | as.matrix(penalties[fields]) < 0)) {
+    stop("Supply finite nonnegative penalties.")
+  }
+  if (is.matrix(folds)) folds <- lapply(seq_len(ncol(folds)), function(j) folds[, j])
+  if (!is.list(folds)) folds <- list(folds)
+  valid_partition <- function(f) length(f) == nrow(env) && !anyNA(f) && length(unique(f)) >= 2L
+  if (!length(folds) || !all(vapply(folds, valid_partition, TRUE))) {
+    stop("Supply a block label for every site and at least two blocks per partition.")
+  }
+  if ((!is.null(contrast_loss) && !is.function(contrast_loss)) ||
+      (selection != "predictive" && is.null(contrast_loss))) {
+    stop("Supply a contrast-loss function when selecting a contrast criterion.")
+  }
+  if (!is.numeric(prediction_tolerance) || length(prediction_tolerance) != 1L ||
+      !is.finite(prediction_tolerance) || prediction_tolerance < 0) {
+    stop("Supply a finite nonnegative prediction tolerance.")
   }
   if (!is.function(response)) stop("Supply a set-level response function.")
   k <- .set_design_integer(order, "order", 2L)
   M <- .set_design_integer(M, "M", 1L)
-  blocks <- split(seq_len(nrow(env)), folds, drop = TRUE)
+  groups <- lapply(folds, function(cluster) split(seq_len(nrow(env)), cluster, drop = TRUE))
+  blocks <- if (length(groups) == 1L) groups[[1L]] else
+    do.call(c, stats::setNames(groups, paste0("partition", seq_along(groups))))
+  partition <- rep(seq_along(groups), lengths(groups))
   if (any(lengths(blocks) < k) || any(nrow(env) - lengths(blocks) < max(k, 4L))) {
     stop("Every fold needs at least order sites, and each training fold needs at least four sites.")
   }
@@ -329,7 +443,13 @@ ugdm_select_interactions <- function(env, folds, order, response, penalties,
   }
   if (!is.null(seed)) set.seed(seed)
   sample <- function(sites) matrix(sites[sample_sets(length(sites), k, M)], ncol = k)
-  fold_loss <- t(vapply(blocks, function(test) {
+  # The traversal changes computation only. Ties are still resolved in
+  # caller-supplied order, and failed warm fits are retried from scratch.
+  penalty_norm <- vapply(penalties[fields], max, numeric(1L))
+  penalty_norm[penalty_norm == 0] <- 1
+  path <- order(rowSums(sweep(as.matrix(penalties[fields]), 2L, penalty_norm, "/")),
+                decreasing = TRUE)
+  scores <- lapply(blocks, function(test) {
     train <- setdiff(seq_len(nrow(env)), test)
     distance <- if (is.null(dist_matrix)) NULL else .pair_distance_range(dist_matrix[train, train, drop = FALSE])
     define <- function(idx, ref = NULL) {
@@ -350,19 +470,52 @@ ugdm_select_interactions <- function(env, folds, order, response, penalties,
     a <- define(sample(train))
     b <- define(sample(test), a$ref)
     if (!any(b$w > 0)) stop("Each validation fold needs at least one positive working weight.")
-    vapply(seq_len(nrow(penalties)), function(j) {
-      f <- do.call(ugdm_fit_interactions, c(list(design = a$design, y = a$y, trials = a$w),
-                                         as.list(penalties[j, fields, drop = FALSE])))
-      if (f$converged) .binom_dev(b$y, ugdm_predict(f, b$design), b$w / sum(b$w)) else Inf
-    }, numeric(1L))
-  }, numeric(nrow(penalties))))
-  if (nrow(penalties) == 1L) fold_loss <- t(fold_loss)
-  mean_loss <- colMeans(fold_loss)
-  best <- function(x) if (any(is.finite(x))) which.min(x) else NA_integer_
-  choice <- best(mean_loss)
+    out <- matrix(Inf, nrow(penalties), 2L)
+    current <- NULL
+    for (j in path) {
+      args <- c(list(design = a$design, y = a$y, trials = a$w,
+                     interaction_penalty = interaction_penalty, penalty_scale = penalty_scale),
+                as.list(penalties[j, fields, drop = FALSE]))
+      f <- do.call(ugdm_fit_interactions, c(args, list(start = current)))
+      if (!f$converged && !is.null(current)) f <- do.call(ugdm_fit_interactions, args)
+      if (!f$converged) next
+      if (warm_start) current <- f
+      out[j, 1L] <- .binom_dev(b$y, ugdm_predict(f, b$design), b$w / sum(b$w))
+      if (!is.null(contrast_loss)) {
+        value <- contrast_loss(f, b$design, b$y, b$w)
+        if (is.numeric(value) && length(value) == 1L && !is.na(value) && value >= 0) {
+          out[j, 2L] <- value
+        } else stop("contrast_loss must return one nonnegative number.")
+      }
+    }
+    out
+  })
+  stack <- function(j) do.call(rbind, lapply(scores, function(s) t(s[, j, drop = FALSE])))
+  fold_loss <- stack(1L)
+  rownames(fold_loss) <- names(blocks)
+  fold_contrast <- if (!is.null(contrast_loss)) {
+    value <- stack(2L)
+    rownames(value) <- names(blocks)
+    value
+  }
+  average <- function(mat, rows = seq_along(blocks)) {
+    split_rows <- split(rows, partition[rows])
+    colMeans(do.call(rbind, lapply(split_rows, function(i) colMeans(mat[i, , drop = FALSE]))))
+  }
+  mean_loss <- average(fold_loss)
+  mean_contrast <- if (is.null(contrast_loss)) NULL else average(fold_contrast)
+  best <- function(p, c) {
+    score <- if (selection == "predictive") p else c
+    if (selection == "contrast_within_prediction") score[p > min(p) + prediction_tolerance] <- Inf
+    if (any(is.finite(p) & is.finite(score))) which.min(replace(score, !is.finite(p), Inf)) else NA_integer_
+  }
+  choice <- best(mean_loss, mean_contrast)
   alternative <- vapply(seq_along(blocks), function(i) {
-    best(colMeans(fold_loss[-i, , drop = FALSE]))
+    rows <- setdiff(seq_along(blocks), i)
+    best(average(fold_loss, rows), if (!is.null(fold_contrast)) average(fold_contrast, rows))
   }, integer(1L))
   list(penalties = penalties, mean_loss = mean_loss, fold_loss = fold_loss,
-       selected = choice, selected_without_fold = stats::setNames(alternative, names(blocks)))
+       mean_contrast_loss = mean_contrast, fold_contrast_loss = fold_contrast,
+       partition = partition, selected = choice, selection = selection,
+       selected_without_fold = stats::setNames(alternative, names(blocks)))
 }

@@ -14,13 +14,21 @@ ugdm_select_interactions(
   spread = "varying",
   dist_matrix = NULL,
   M = 1000L,
-  seed = NULL
+  seed = NULL,
+  interaction_penalty = c("coefficients", "derivative"),
+  penalty_scale = c("native", "range"),
+  contrast_loss = NULL,
+  selection = c("predictive", "contrast", "contrast_within_prediction"),
+  prediction_tolerance = 0,
+  warm_start = TRUE
 )
 }
 \arguments{
 \item{env}{Numeric site predictors.}
 
-\item{folds}{One block label per site. At least two blocks are required.}
+\item{folds}{One block label per site, or a list or matrix of repeated
+partitions with one label per site per partition. Each partition needs
+at least two blocks.}
 
 \item{order}{Order of the GDUM response.}
 
@@ -29,7 +37,8 @@ numbers. Return a numeric response or a list with `y`, optionally
 `trials` and `keep`, as in [ugdm_response()].}
 
 \item{penalties}{Data frame with candidate rows and columns
-`spread_smooth`, `position_smooth`, `interaction_shrink` and `ridge`.}
+`spread_smooth`, `position_smooth`, `interaction_shrink` and `ridge`.
+Optionally include `spread_null` and `position_null`.}
 
 \item{position, spread}{As in [ugdm_interaction_design()].}
 
@@ -38,6 +47,20 @@ numbers. Return a numeric response or a list with `y`, optionally
 \item{M}{Combinations per training and per held-out fold.}
 
 \item{seed}{Optional seed for combination sampling.}
+
+\item{interaction_penalty, penalty_scale}{As in [ugdm_fit_interactions()].}
+
+\item{contrast_loss}{Optional function of fit, held-out interaction
+design, response and working weights returning one nonnegative loss.}
+
+\item{selection}{Selection criterion. Use contrast loss alone or require
+candidates to lie within a predeclared absolute held-out deviance
+tolerance of the minimum before comparing contrasts.}
+
+\item{prediction_tolerance}{Held-out deviance tolerance for
+`selection = "contrast_within_prediction"`.}
+
+\item{warm_start}{Reuse the preceding converged fit along the regularisation path.}
 }
 \value{
 Candidate scores, fold scores, fold-omission choices and the

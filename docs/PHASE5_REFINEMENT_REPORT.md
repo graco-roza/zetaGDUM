@@ -1,5 +1,7 @@
 # Phase 5 refinement validation
 
+The [adaptive regularisation and Bayesian validation](MS_GDUM_ADAPTIVE_VALIDATION.md) extends the model, score and covariance experiments.
+
 The [subsequent MS-GDUM refinement](MS_GDUM_INTERACTION_REFINEMENT.md) evaluates nonlinear position, varying spread, focal-site scores and Bayesian estimating equations.
 
 Phase 5's original nonlinear MS-GDUM remains the reference model. This refinement adds independent-pool site-score diagnostics, curvature-whitened posterior integration and a penalty on the actual curvature of the environmental spline. The existing estimators and model defaults remain available.

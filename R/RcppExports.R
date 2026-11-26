@@ -13,6 +13,10 @@ score_inclusion_cpp <- function(idx, X, weighted_residual, weights, n) {
     .Call(`_zetaGDUM_score_inclusion_cpp`, idx, X, weighted_residual, weights, n)
 }
 
+site_score_kernel_cpp <- function(sites, design, y, effective, theta, n) {
+    .Call(`_zetaGDUM_site_score_kernel_cpp`, sites, design, y, effective, theta, n)
+}
+
 shared_species_cpp <- function(PA, idx) {
     .Call(`_zetaGDUM_shared_species_cpp`, PA, idx)
 }

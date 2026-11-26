@@ -104,3 +104,37 @@ Rcpp::NumericMatrix score_inclusion_cpp(Rcpp::IntegerMatrix idx, Rcpp::NumericMa
   }
   return out;
 }
+
+// [[Rcpp::export]]
+Rcpp::NumericMatrix site_score_kernel_cpp(Rcpp::IntegerMatrix sites,
+                                          Rcpp::NumericMatrix design,
+                                          Rcpp::NumericVector y,
+                                          Rcpp::NumericVector effective,
+                                          Rcpp::NumericVector theta, int n) {
+  const int k = sites.nrow(), p = design.nrow(), m = sites.ncol();
+  const int stride = n + 1;
+  const int* labels = INTEGER(sites);
+  const double* x = REAL(design);
+  const double* observed = REAL(y);
+  const double* weight = REAL(effective);
+  const double* coefficients = REAL(theta);
+  Rcpp::NumericMatrix result(stride, p);
+  double* totals = REAL(result);
+
+  for (int r = 0; r < m; ++r) {
+    double eta = 0;
+    for (int j = 0; j < p; ++j) eta += x[j] * coefficients[j];
+    const double exp_tail = std::exp(-std::abs(eta));
+    const double mu = eta >= 0 ? 1. / (1. + exp_tail) : exp_tail / (1. + exp_tail);
+    const double residual = weight[r] * (observed[r] - mu);
+    for (int j = 0; j < p; ++j) {
+      double* column = totals + j * stride;
+      const double contribution = x[j] * residual;
+      column[n] += contribution;
+      for (int i = 0; i < k; ++i) column[labels[i] - 1] += contribution;
+    }
+    labels += k;
+    x += p;
+  }
+  return result;
+}

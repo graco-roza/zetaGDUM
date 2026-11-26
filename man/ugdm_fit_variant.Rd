@@ -15,7 +15,8 @@ ugdm_fit_variant(
   sampling_weights = NULL,
   distance = TRUE,
   free_sign = FALSE,
-  start = NULL
+  start = NULL,
+  regularization = c("adjacent", "curvature")
 )
 }
 \arguments{
@@ -30,6 +31,9 @@ ugdm_fit_variant(
 \item{smooth, ridge}{Nonnegative strengths in the average working loss for C.}
 
 \item{start}{Optional fit with matching model and coefficient layout, for warm starts.}
+
+\item{regularization}{Environmental smoothness penalty for C. The
+integrated curvature leaves linear functions unpenalised.}
 }
 \value{
 A fit usable with [ugdm_predict()] on the matching variant design.
@@ -38,6 +42,6 @@ A fit usable with [ugdm_predict()] on the matching variant design.
 Fitting is done in canonical mean-position units, with scaling for the
 numerical optimiser. The standard prediction interface stores position
 coefficients in sum units. The requested representation is also returned.
-Model C penalises adjacent environmental spline coefficient differences
-and optionally shrinks all slopes in canonical units.
+Model C penalises adjacent coefficients or integrated curvature and
+optionally shrinks all slopes in canonical units.
 }

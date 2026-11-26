@@ -4,12 +4,21 @@
 \alias{ugdm_empirical_likelihood}
 \title{Empirical likelihood under zero site moments}
 \usage{
-ugdm_empirical_likelihood(moments, method = c("EL", "ETEL"))
+ugdm_empirical_likelihood(
+  moments,
+  method = c("EL", "ETEL"),
+  adjusted = FALSE,
+  certify = FALSE
+)
 }
 \arguments{
 \item{moments}{Sites by moments matrix.}
 
 \item{method}{Ordinary empirical likelihood or exponential tilting.}
+
+\item{adjusted}{Use the Cheng and Zhao artificial moment for ordinary EL.}
+
+\item{certify}{Attempt a strict convex-hull separation certificate on failure.}
 }
 \value{
 Log likelihood relative to uniform weights, estimated weights,

@@ -56,6 +56,22 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// site_score_kernel_cpp
+Rcpp::NumericMatrix site_score_kernel_cpp(Rcpp::IntegerMatrix sites, Rcpp::NumericMatrix design, Rcpp::NumericVector y, Rcpp::NumericVector effective, Rcpp::NumericVector theta, int n);
+RcppExport SEXP _zetaGDUM_site_score_kernel_cpp(SEXP sitesSEXP, SEXP designSEXP, SEXP ySEXP, SEXP effectiveSEXP, SEXP thetaSEXP, SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::IntegerMatrix >::type sites(sitesSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type design(designSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type y(ySEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type effective(effectiveSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    rcpp_result_gen = Rcpp::wrap(site_score_kernel_cpp(sites, design, y, effective, theta, n));
+    return rcpp_result_gen;
+END_RCPP
+}
 // shared_species_cpp
 NumericVector shared_species_cpp(IntegerMatrix PA, IntegerMatrix idx);
 RcppExport SEXP _zetaGDUM_shared_species_cpp(SEXP PASEXP, SEXP idxSEXP) {
@@ -135,6 +151,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_zetaGDUM_conditional_zeta_cpp", (DL_FUNC) &_zetaGDUM_conditional_zeta_cpp, 5},
     {"_zetaGDUM_path_kernels_cpp", (DL_FUNC) &_zetaGDUM_path_kernels_cpp, 6},
     {"_zetaGDUM_score_inclusion_cpp", (DL_FUNC) &_zetaGDUM_score_inclusion_cpp, 5},
+    {"_zetaGDUM_site_score_kernel_cpp", (DL_FUNC) &_zetaGDUM_site_score_kernel_cpp, 6},
     {"_zetaGDUM_shared_species_cpp", (DL_FUNC) &_zetaGDUM_shared_species_cpp, 2},
     {"_zetaGDUM_min_abundance_cpp", (DL_FUNC) &_zetaGDUM_min_abundance_cpp, 2},
     {"_zetaGDUM_meanpair_dist_cpp", (DL_FUNC) &_zetaGDUM_meanpair_dist_cpp, 2},

@@ -30,14 +30,42 @@ ugdm_model_design <- function(design, model = c("A", "B", "C"), env = NULL) {
   design
 }
 
-.variant_penalty <- function(d, D, smooth, ridge) {
+#' Integrated curvature of the environmental GDUM basis
+#'
+#' Returns the quadratic form for the integrated squared second derivative
+#' on each stored standardised environmental range. Two-point Gaussian
+#' quadrature is exact for the degree-two I-splines used by the design.
+#' @param design Original environmental spline design from [ugdm_design()].
+#' @return Named list of positive semidefinite matrices, one per predictor.
+#' @export
+ugdm_curvature_penalty <- function(design) {
+  basis <- design$environment_basis$splines
+  if (is.null(basis) || !is.null(design$spread_width)) stop("Supply an environmental I-spline design.")
+  out <- lapply(basis, function(b) {
+    limits <- attr(b, "Boundary.knots")
+    knots <- attr(b, "knots")
+    degree <- attr(b, "degree")
+    if (!identical(as.integer(degree), 2L)) stop("Curvature currently requires degree-two I-splines.")
+    breaks <- sort(unique(c(limits, knots)))
+    half <- diff(breaks) / 2
+    center <- utils::head(breaks, -1L) + half
+    nodes <- c(center - half / sqrt(3), center + half / sqrt(3))
+    d <- splines2::iSpline(nodes, knots = knots, degree = degree,
+      Boundary.knots = limits, intercept = attr(b, "intercept"), derivs = 2L)
+    crossprod(d * sqrt(rep(half, 2L)))
+  })
+  stats::setNames(out, design$vars)
+}
+
+.variant_penalty <- function(d, D, smooth, ridge, regularization = "adjacent") {
   p <- ncol(D) + ncol(d$Xpos)
   P <- diag(c(0, rep(ridge, p)), p + 1L)
   if (smooth > 0) {
-    diff <- diff(diag(3L))
+    blocks <- if (regularization == "curvature") ugdm_curvature_penalty(d) else
+      rep(list(crossprod(diff(diag(3L)))), length(d$vars))
     for (j in seq_along(d$vars)) {
       idx <- 1L + 3L * (j - 1L) + seq_len(3L)
-      P[idx, idx] <- P[idx, idx] + smooth * crossprod(diff)
+      P[idx, idx] <- P[idx, idx] + smooth * blocks[[j]]
     }
   }
   P
@@ -88,20 +116,24 @@ ugdm_model_design <- function(design, model = c("A", "B", "C"), env = NULL) {
 #' Fitting is done in canonical mean-position units, with scaling for the
 #' numerical optimiser. The standard prediction interface stores position
 #' coefficients in sum units. The requested representation is also returned.
-#' Model C penalises adjacent environmental spline coefficient differences
-#' and optionally shrinks all slopes in canonical units.
+#' Model C penalises adjacent coefficients or integrated curvature and
+#' optionally shrinks all slopes in canonical units.
 #' @param design Matching design from [ugdm_model_design()].
 #' @param y,trials,sampling_weights,distance,free_sign As in [ugdm_fit()].
 #' @param model Original A, reduced B or regularised C.
 #' @param position Representation of the reported position coefficients.
 #' @param smooth,ridge Nonnegative strengths in the average working loss for C.
 #' @param start Optional fit with matching model and coefficient layout, for warm starts.
+#' @param regularization Environmental smoothness penalty for C. The
+#'   integrated curvature leaves linear functions unpenalised.
 #' @return A fit usable with [ugdm_predict()] on the matching variant design.
 #' @export
 ugdm_fit_variant <- function(design, y, trials = rep(1, length(y)),
                               model = c("A", "B", "C"), position = c("sum", "mean"),
                               smooth = .001, ridge = .0001, sampling_weights = NULL,
-                              distance = TRUE, free_sign = FALSE, start = NULL) {
+                              distance = TRUE, free_sign = FALSE, start = NULL,
+                              regularization = c("adjacent", "curvature")) {
+  regularization <- match.arg(regularization)
   model <- match.arg(model)
   position <- match.arg(position)
   if ((model == "B") != !is.null(design$spread_width)) stop("Use the matching variant design.")
@@ -116,7 +148,7 @@ ugdm_fit_variant <- function(design, y, trials = rep(1, length(y)),
   nd <- ncol(d$Xdir)
   nc <- if (free_sign) integer() else 1L + seq_len(nd)
   P <- .variant_penalty(d = design, D = d$Xdir,
-    smooth = if (model == "C") smooth else 0, ridge = if (model == "C") ridge else 0)
+    smooth = if (model == "C") smooth else 0, ridge = if (model == "C") ridge else 0, regularization = regularization)
   initial <- if (!is.null(start)) c(start$intercept, start$beta, design$k * start$lambda)
   if (!is.null(initial) && (length(initial) != ncol(X) || any(!is.finite(initial)))) {
     stop("Start must match this coefficient layout.")
@@ -133,7 +165,7 @@ ugdm_fit_variant <- function(design, y, trials = rep(1, length(y)),
     intercept = unname(f$coef[1L]), D2 = if (!f$constant && f$null_deviance > 1e-15) 1 - f$deviance / f$null_deviance else NA_real_,
     deviance = f$deviance, null_deviance = f$null_deviance, converged = f$converged,
     projected_gradient = f$projected_gradient, vars = design$vars, has_distance = has_geo,
-    model = model, free_sign = free_sign, position = position, penalty = P,
+    model = model, free_sign = free_sign, position = position, penalty = P, regularization = regularization,
     position_coefficients = if (position == "mean") mean_coef else mean_coef / design$k),
     class = "ugdm_fit")
 }

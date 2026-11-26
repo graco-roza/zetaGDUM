@@ -6,7 +6,7 @@
   if (d$k >= d$n) stop("Site score deletions require k < n.")
   if (is.null(trials)) trials <- rep(1, length(y))
   if (is.null(sampling_weights)) sampling_weights <- rep(1, length(y))
-  eff <- .model_weights(length(y), trials, sampling_weights = sampling_weights)
+  .model_weights(length(y), trials, sampling_weights = sampling_weights)
   x <- .design_matrix(d, distance = distance)
   pos <- if (position == "mean") x$Xpos / d$k else x$Xpos
   colnames(pos) <- paste0(colnames(pos), ".position")
@@ -14,15 +14,15 @@
   W <- sampling_weights / sum(sampling_weights)
   mass <- score_inclusion_cpp(idx, X[, 1L, drop = FALSE], W * 0, W, d$n)[seq_len(d$n), 1L]
   if (any(mass >= 1 - 1e-12)) stop("At least one deletion has no proposal support.")
-  list(idx = idx, X = X, y = y, w = W, effective = W * trials, raw = eff / length(y),
+  list(idx = idx, X = X, y = y, w = W, effective = W * trials, proposal_mean = mean(sampling_weights),
+       sites_by_row = t(idx), design_by_row = t(X),
        mass = mass, n = d$n, k = d$k)
 }
 
 .site_score <- function(p, theta, method) {
-  mu <- stats::plogis(drop(p$X %*% theta))
-  inc <- score_inclusion_cpp(p$idx, p$X, p$effective * (p$y - mu), p$w, p$n)
-  full <- inc[p$n + 1L, -1L]
-  incl <- inc[seq_len(p$n), -1L, drop = FALSE]
+  inc <- site_score_kernel_cpp(p$sites_by_row, p$design_by_row, p$y, p$effective, theta, p$n)
+  full <- inc[p$n + 1L, ]
+  incl <- inc[seq_len(p$n), , drop = FALSE]
   deleted <- sweep(-incl, 2L, full, "+") / (1 - p$mass)
   adjusted <- switch(method, deletion = sweep(-(p$n - 1) * deleted, 2L, p$n * full, "+"),
     centered = {
@@ -31,12 +31,11 @@
     },
     inclusion = {
       # Horvitz--Thompson inclusion averages use the raw correction ratios.
-      raw <- score_inclusion_cpp(p$idx, p$X, p$raw * (p$y - mu), p$w, p$n)
-      full <- raw[p$n + 1L, -1L]
-      cond <- raw[seq_len(p$n), -1L, drop = FALSE] * (p$n / p$k)
+      full <- full * p$proposal_mean
+      cond <- incl * (p$proposal_mean * p$n / p$k)
       sweep(sweep(cond, 2L, full) * (p$k * (p$n - 1) / (p$n - p$k)), 2L, full, "+")
     })
-  colnames(adjusted) <- colnames(deleted) <- colnames(p$X)
+  colnames(adjusted) <- colnames(deleted) <- colnames(incl) <- colnames(p$X)
   names(full) <- colnames(p$X)
   list(pseudovalues = adjusted, full = full, deleted = deleted,
        conditional_ratio = incl / ifelse(p$mass > 0, p$mass, NA_real_),
@@ -99,16 +98,38 @@ ugdm_pseudovalue_bootstrap <- function(estimate, deletions, draws = 1000L, weigh
        jackknife_covariance = cp / (n * (n - 1)))
 }
 
+.jel_separates <- function(x) {
+  scale <- sqrt(colMeans(x^2))
+  scale[scale == 0] <- 1
+  z <- sweep(x, 2L, scale, "/")
+  u <- colMeans(z)
+  for (i in seq_len(200L)) {
+    norm <- sqrt(sum(u^2))
+    if (norm <= 1e-10) return(FALSE)
+    margin <- drop(z %*% u)
+    j <- which.min(margin)
+    if (margin[j] > 1e-8 * norm) return(TRUE)
+    e <- z[j, ] - u
+    d <- sum(e^2)
+    if (d == 0) break
+    u <- u + pmin(1, pmax(0, -sum(u * e) / d)) * e
+  }
+  FALSE
+}
+
 #' Empirical likelihood under zero site moments
 #'
 #' Solves the ordinary dual or the exponentially tilted alternative.
 #' A failure to find a full-rank interior solution is reported explicitly.
 #' @param moments Sites by moments matrix.
 #' @param method Ordinary empirical likelihood or exponential tilting.
+#' @param adjusted Use the Cheng and Zhao artificial moment for ordinary EL.
+#' @param certify Attempt a strict convex-hull separation certificate on failure.
 #' @return Log likelihood relative to uniform weights, estimated weights,
 #'   and an interior-solution diagnostic.
 #' @export
-ugdm_empirical_likelihood <- function(moments, method = c("EL", "ETEL")) {
+ugdm_empirical_likelihood <- function(moments, method = c("EL", "ETEL"),
+                                      adjusted = FALSE, certify = FALSE) {
   method <- match.arg(method)
   x <- as.matrix(moments)
   n <- nrow(x)
@@ -116,7 +137,17 @@ ugdm_empirical_likelihood <- function(moments, method = c("EL", "ETEL")) {
   if (!is.numeric(x) || any(!is.finite(x)) || p < 1L || n <= p) {
     stop("Need finite moments with more sites than moment columns.")
   }
-  fail <- function(reason) list(loglik = -Inf, weights = rep(NA_real_, n), ok = FALSE, reason = reason)
+  if (adjusted) {
+    if (method != "EL") stop("The adjusted likelihood is only implemented for ordinary EL.")
+    x <- rbind(x, -log(n) / 2 * colMeans(x))
+    n <- n + 1L
+  }
+  fail <- function(reason) {
+    if (certify && reason != "rank-deficient moments" && .jel_separates(x)) {
+      reason <- "zero strictly outside the moment hull"
+    }
+    list(loglik = -Inf, weights = rep(NA_real_, n), ok = FALSE, reason = reason)
+  }
   U <- tryCatch(chol(crossprod(x) / n), error = function(e) NULL)
   if (is.null(U) || rcond(U) < 1e-10) return(fail("rank-deficient moments"))
   z <- x %*% backsolve(U, diag(p))

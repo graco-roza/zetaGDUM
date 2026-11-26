@@ -1,5 +1,7 @@
 # Phase 5 validation report
 
+The [Phase 5 refinement validation](PHASE5_REFINEMENT_REPORT.md) follows this baseline with higher-budget site deletions, independent posterior integration checks and full-model empirical refits.
+
 ## Decisions
 
 Keep the existing MS-GDUM and its defaults. The reduced linear-spread model is a useful comparator and often reduces numerical conditioning problems, but changed spread bias when the generating effect was nonlinear. Coupled sampling reduced error for some across-order summaries and increased it for others. Select the sampler with an independent pilot for the declared contrasts. The centred pseudovalue bootstrap is a computationally inexpensive uncertainty sensitivity analysis. The joint empirical-likelihood posterior showed uneven interval calibration, low importance ESS and limited power for paired changes. These results do not support adopting it as the primary inferential method.

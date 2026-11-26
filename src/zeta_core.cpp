@@ -147,3 +147,26 @@ NumericMatrix mean_pair_isp_cpp(NumericMatrix B, NumericVector z, IntegerMatrix 
   }
   return out;
 }
+
+// Partition dissimilarity on relative abundance into contributions of species
+// missing from at least one site and heterogeneity among all-site species.
+// [[Rcpp::export]]
+NumericMatrix relative_partition_cpp(const NumericMatrix& q, const IntegerMatrix& idx) {
+  const int k = idx.ncol();
+  NumericMatrix result(idx.nrow(), 2);
+  for (int r = 0; r < idx.nrow(); ++r) {
+    for (int s = 0; s < q.ncol(); ++s) {
+      double minimum = q(idx(r, 0) - 1, s);
+      double sum = minimum;
+      for (int j = 1; j < k; ++j) {
+        const double value = q(idx(r, j) - 1, s);
+        minimum = std::min(minimum, value);
+        sum += value;
+      }
+      const double mean = sum / k;
+      if (minimum == 0) result(r, 0) += mean;
+      else result(r, 1) += std::max(0.0, mean - minimum);
+    }
+  }
+  return result;
+}

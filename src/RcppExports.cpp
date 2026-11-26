@@ -146,6 +146,18 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// relative_partition_cpp
+NumericMatrix relative_partition_cpp(const NumericMatrix& q, const IntegerMatrix& idx);
+RcppExport SEXP _zetaGDUM_relative_partition_cpp(SEXP qSEXP, SEXP idxSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const NumericMatrix& >::type q(qSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix& >::type idx(idxSEXP);
+    rcpp_result_gen = Rcpp::wrap(relative_partition_cpp(q, idx));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_zetaGDUM_conditional_zeta_cpp", (DL_FUNC) &_zetaGDUM_conditional_zeta_cpp, 5},
@@ -158,6 +170,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_zetaGDUM_log_esym_cpp", (DL_FUNC) &_zetaGDUM_log_esym_cpp, 2},
     {"_zetaGDUM_cps_sets_cpp", (DL_FUNC) &_zetaGDUM_cps_sets_cpp, 3},
     {"_zetaGDUM_mean_pair_isp_cpp", (DL_FUNC) &_zetaGDUM_mean_pair_isp_cpp, 3},
+    {"_zetaGDUM_relative_partition_cpp", (DL_FUNC) &_zetaGDUM_relative_partition_cpp, 2},
     {NULL, NULL, 0}
 };
 

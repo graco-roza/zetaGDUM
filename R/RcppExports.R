@@ -41,3 +41,7 @@ mean_pair_isp_cpp <- function(B, z, idx) {
     .Call(`_zetaGDUM_mean_pair_isp_cpp`, B, z, idx)
 }
 
+relative_partition_cpp <- function(q, idx) {
+    .Call(`_zetaGDUM_relative_partition_cpp`, q, idx)
+}
+

@@ -1,0 +1,8 @@
+"target","rule","parameters"
+"prediction","zeta_decline","variable=zeta_remaining;limit=0.986822015858364;sign=-1"
+"prediction","retention","variable=retention_rate;limit=0.984206015696798;sign=-1"
+"prediction","absolute_variance","variable=response_variance;limit=5.5055423958771e-06;sign=1"
+"prediction","relative_variance","variable=relative_information;limit=0.00152966785104312;sign=1"
+"prediction","environmental","variable=geometry;limit=0.016777863496403;sign=1"
+"prediction","retention_breakpoint","variable=breakpoint"
+"prediction","combined","variance=2.22421027734435e-05;geometry=-Inf;rcond=-Inf"

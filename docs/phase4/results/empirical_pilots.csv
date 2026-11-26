@@ -1,0 +1,721 @@
+"community","n","predictor","component","order","preceding","effect","budget","mc_variance","fits_regular"
+"Forest Hemiptera",147,"SMI","relative",2,NA,"spread",1000,6.76764400021603e-05,TRUE
+"Forest Hemiptera",147,"SMI","relative",2,NA,"position",1000,0.00150755554937604,TRUE
+"Forest Hemiptera",147,"SMI","relative",2,NA,"shapley_spread",1000,9.07145952283824e-05,TRUE
+"Forest Hemiptera",147,"SMI","relative",2,NA,"shapley_position",1000,9.82899239667966e-05,TRUE
+"Forest Hemiptera",147,"SMI","relative",2,NA,"spread",4000,7.56218955550105e-06,TRUE
+"Forest Hemiptera",147,"SMI","relative",2,NA,"position",4000,0.000211278004794159,TRUE
+"Forest Hemiptera",147,"SMI","relative",2,NA,"shapley_spread",4000,3.36812233870471e-05,TRUE
+"Forest Hemiptera",147,"SMI","relative",2,NA,"shapley_position",4000,2.28519007252507e-05,TRUE
+"Forest Hemiptera",147,"SMI","relative",6,NA,"spread",1000,0.00067465154668969,TRUE
+"Forest Hemiptera",147,"SMI","relative",6,NA,"position",1000,0.00217847590125736,TRUE
+"Forest Hemiptera",147,"SMI","relative",6,NA,"shapley_spread",1000,0.000146052525555066,TRUE
+"Forest Hemiptera",147,"SMI","relative",6,NA,"shapley_position",1000,0.000102987144686347,TRUE
+"Forest Hemiptera",147,"SMI","relative",6,NA,"spread",4000,0.000160155739276574,TRUE
+"Forest Hemiptera",147,"SMI","relative",6,NA,"position",4000,0.000174675487877968,TRUE
+"Forest Hemiptera",147,"SMI","relative",6,NA,"shapley_spread",4000,4.28999262327988e-05,TRUE
+"Forest Hemiptera",147,"SMI","relative",6,NA,"shapley_position",4000,2.0952453089453e-05,TRUE
+"Forest Hemiptera",147,"SMI","relative",6,2,"spread",1000,0.000802211348456831,TRUE
+"Forest Hemiptera",147,"SMI","relative",6,2,"position",1000,0.00535770133181078,TRUE
+"Forest Hemiptera",147,"SMI","relative",6,2,"shapley_spread",1000,0.000225122495741546,TRUE
+"Forest Hemiptera",147,"SMI","relative",6,2,"shapley_position",1000,0.00026156426524155,TRUE
+"Forest Hemiptera",147,"SMI","relative",6,2,"spread",4000,0.000161910691399733,TRUE
+"Forest Hemiptera",147,"SMI","relative",6,2,"position",4000,0.000627781914764438,TRUE
+"Forest Hemiptera",147,"SMI","relative",6,2,"shapley_spread",4000,6.58613408209364e-05,TRUE
+"Forest Hemiptera",147,"SMI","relative",6,2,"shapley_position",4000,4.89109892098424e-05,TRUE
+"Forest Hemiptera",147,"SMI","relative",11,NA,"spread",1000,0.00217018911476649,TRUE
+"Forest Hemiptera",147,"SMI","relative",11,NA,"position",1000,0.000307497747353431,TRUE
+"Forest Hemiptera",147,"SMI","relative",11,NA,"shapley_spread",1000,5.35839656299487e-05,TRUE
+"Forest Hemiptera",147,"SMI","relative",11,NA,"shapley_position",1000,3.78178420911441e-05,TRUE
+"Forest Hemiptera",147,"SMI","relative",11,NA,"spread",4000,0.000502450557444055,TRUE
+"Forest Hemiptera",147,"SMI","relative",11,NA,"position",4000,0.000271220704267218,TRUE
+"Forest Hemiptera",147,"SMI","relative",11,NA,"shapley_spread",4000,1.09743212479491e-05,TRUE
+"Forest Hemiptera",147,"SMI","relative",11,NA,"shapley_position",4000,5.05116287003557e-05,TRUE
+"Forest Hemiptera",147,"SMI","relative",11,6,"spread",1000,0.00185926066206308,TRUE
+"Forest Hemiptera",147,"SMI","relative",11,6,"position",1000,0.00197446281362498,TRUE
+"Forest Hemiptera",147,"SMI","relative",11,6,"shapley_spread",1000,0.000155504435858236,TRUE
+"Forest Hemiptera",147,"SMI","relative",11,6,"shapley_position",1000,0.000119617970284594,TRUE
+"Forest Hemiptera",147,"SMI","relative",11,6,"spread",4000,0.0007172914862988,TRUE
+"Forest Hemiptera",147,"SMI","relative",11,6,"position",4000,0.000244511626697943,TRUE
+"Forest Hemiptera",147,"SMI","relative",11,6,"shapley_spread",4000,3.2895282556299e-05,TRUE
+"Forest Hemiptera",147,"SMI","relative",11,6,"shapley_position",4000,4.87316116398464e-05,TRUE
+"Forest Hemiptera",147,"SMI","relative",30,NA,"spread",1000,0.0155007113389254,TRUE
+"Forest Hemiptera",147,"SMI","relative",30,NA,"position",1000,0.00700264452519449,TRUE
+"Forest Hemiptera",147,"SMI","relative",30,NA,"shapley_spread",1000,6.83007607490771e-05,TRUE
+"Forest Hemiptera",147,"SMI","relative",30,NA,"shapley_position",1000,0.000797900259620438,TRUE
+"Forest Hemiptera",147,"SMI","relative",30,NA,"spread",4000,0.00941311912100087,TRUE
+"Forest Hemiptera",147,"SMI","relative",30,NA,"position",4000,0.00191398194562797,TRUE
+"Forest Hemiptera",147,"SMI","relative",30,NA,"shapley_spread",4000,2.02049234926131e-05,TRUE
+"Forest Hemiptera",147,"SMI","relative",30,NA,"shapley_position",4000,0.000101627339772504,TRUE
+"Forest Hemiptera",147,"SMI","relative",30,11,"spread",1000,0.0214395576217113,TRUE
+"Forest Hemiptera",147,"SMI","relative",30,11,"position",1000,0.00896372147047478,TRUE
+"Forest Hemiptera",147,"SMI","relative",30,11,"shapley_spread",1000,0.000165729597033307,TRUE
+"Forest Hemiptera",147,"SMI","relative",30,11,"shapley_position",1000,0.000973515896627099,TRUE
+"Forest Hemiptera",147,"SMI","relative",30,11,"spread",4000,0.00944042687738333,TRUE
+"Forest Hemiptera",147,"SMI","relative",30,11,"position",4000,0.00134746507940171,TRUE
+"Forest Hemiptera",147,"SMI","relative",30,11,"shapley_spread",4000,2.8038429502219e-05,TRUE
+"Forest Hemiptera",147,"SMI","relative",30,11,"shapley_position",4000,7.01747298219502e-05,TRUE
+"Forest Hemiptera",147,"SMI","relative",147,NA,"spread",1000,0,FALSE
+"Forest Hemiptera",147,"SMI","relative",147,NA,"position",1000,0,FALSE
+"Forest Hemiptera",147,"SMI","relative",147,NA,"shapley_spread",1000,NA,FALSE
+"Forest Hemiptera",147,"SMI","relative",147,NA,"shapley_position",1000,NA,FALSE
+"Forest Hemiptera",147,"SMI","relative",147,NA,"spread",4000,0,FALSE
+"Forest Hemiptera",147,"SMI","relative",147,NA,"position",4000,0,FALSE
+"Forest Hemiptera",147,"SMI","relative",147,NA,"shapley_spread",4000,NA,FALSE
+"Forest Hemiptera",147,"SMI","relative",147,NA,"shapley_position",4000,NA,FALSE
+"Forest Hemiptera",147,"SMI","relative",147,30,"spread",1000,0.0155007113389254,FALSE
+"Forest Hemiptera",147,"SMI","relative",147,30,"position",1000,0.00700264452519449,FALSE
+"Forest Hemiptera",147,"SMI","relative",147,30,"shapley_spread",1000,NA,FALSE
+"Forest Hemiptera",147,"SMI","relative",147,30,"shapley_position",1000,NA,FALSE
+"Forest Hemiptera",147,"SMI","relative",147,30,"spread",4000,0.00941311912100087,FALSE
+"Forest Hemiptera",147,"SMI","relative",147,30,"position",4000,0.00191398194562797,FALSE
+"Forest Hemiptera",147,"SMI","relative",147,30,"shapley_spread",4000,NA,FALSE
+"Forest Hemiptera",147,"SMI","relative",147,30,"shapley_position",4000,NA,FALSE
+"Forest Hemiptera",147,"SMI","total",2,NA,"spread",1000,1.41540248421763e-05,TRUE
+"Forest Hemiptera",147,"SMI","total",2,NA,"position",1000,0.000959630849631244,TRUE
+"Forest Hemiptera",147,"SMI","total",2,NA,"shapley_spread",1000,6.41004983436994e-05,TRUE
+"Forest Hemiptera",147,"SMI","total",2,NA,"shapley_position",1000,7.63663688726676e-05,TRUE
+"Forest Hemiptera",147,"SMI","total",2,NA,"spread",4000,5.46469896093134e-06,TRUE
+"Forest Hemiptera",147,"SMI","total",2,NA,"position",4000,0.000272068406676269,TRUE
+"Forest Hemiptera",147,"SMI","total",2,NA,"shapley_spread",4000,2.44766072650263e-05,TRUE
+"Forest Hemiptera",147,"SMI","total",2,NA,"shapley_position",4000,4.24627361788407e-05,TRUE
+"Forest Hemiptera",147,"SMI","total",6,NA,"spread",1000,0.000244825790787172,TRUE
+"Forest Hemiptera",147,"SMI","total",6,NA,"position",1000,0.000559607921191448,TRUE
+"Forest Hemiptera",147,"SMI","total",6,NA,"shapley_spread",1000,5.65620641679156e-05,TRUE
+"Forest Hemiptera",147,"SMI","total",6,NA,"shapley_position",1000,0.000152860701856079,TRUE
+"Forest Hemiptera",147,"SMI","total",6,NA,"spread",4000,9.25298380068147e-05,TRUE
+"Forest Hemiptera",147,"SMI","total",6,NA,"position",4000,0.000145664788564833,TRUE
+"Forest Hemiptera",147,"SMI","total",6,NA,"shapley_spread",4000,2.11909087914086e-05,TRUE
+"Forest Hemiptera",147,"SMI","total",6,NA,"shapley_position",4000,2.89287300850144e-05,TRUE
+"Forest Hemiptera",147,"SMI","total",6,2,"spread",1000,0.000236993974334834,TRUE
+"Forest Hemiptera",147,"SMI","total",6,2,"position",1000,0.00124943539906434,TRUE
+"Forest Hemiptera",147,"SMI","total",6,2,"shapley_spread",1000,0.000128248602347409,TRUE
+"Forest Hemiptera",147,"SMI","total",6,2,"shapley_position",1000,0.000257235966732632,TRUE
+"Forest Hemiptera",147,"SMI","total",6,2,"spread",4000,0.000101550146497864,TRUE
+"Forest Hemiptera",147,"SMI","total",6,2,"position",4000,0.00051592275984713,TRUE
+"Forest Hemiptera",147,"SMI","total",6,2,"shapley_spread",4000,4.05973461931472e-05,TRUE
+"Forest Hemiptera",147,"SMI","total",6,2,"shapley_position",4000,8.50815912876877e-05,TRUE
+"Forest Hemiptera",147,"SMI","total",11,NA,"spread",1000,0.000383905833876359,TRUE
+"Forest Hemiptera",147,"SMI","total",11,NA,"position",1000,0.000505510958806097,TRUE
+"Forest Hemiptera",147,"SMI","total",11,NA,"shapley_spread",1000,1.35645070105523e-05,TRUE
+"Forest Hemiptera",147,"SMI","total",11,NA,"shapley_position",1000,0.000109311083154706,TRUE
+"Forest Hemiptera",147,"SMI","total",11,NA,"spread",4000,0.000160030979850895,TRUE
+"Forest Hemiptera",147,"SMI","total",11,NA,"position",4000,0.000163397521918437,TRUE
+"Forest Hemiptera",147,"SMI","total",11,NA,"shapley_spread",4000,5.46646585034774e-06,TRUE
+"Forest Hemiptera",147,"SMI","total",11,NA,"shapley_position",4000,3.4898189232062e-05,TRUE
+"Forest Hemiptera",147,"SMI","total",11,6,"spread",1000,0.000734466112244357,TRUE
+"Forest Hemiptera",147,"SMI","total",11,6,"position",1000,0.0012632579878545,TRUE
+"Forest Hemiptera",147,"SMI","total",11,6,"shapley_spread",1000,8.58213445918896e-05,TRUE
+"Forest Hemiptera",147,"SMI","total",11,6,"shapley_position",1000,0.000293542318528842,TRUE
+"Forest Hemiptera",147,"SMI","total",11,6,"spread",4000,0.000353926518350572,TRUE
+"Forest Hemiptera",147,"SMI","total",11,6,"position",4000,0.000192111475273997,TRUE
+"Forest Hemiptera",147,"SMI","total",11,6,"shapley_spread",4000,1.94609588627407e-05,TRUE
+"Forest Hemiptera",147,"SMI","total",11,6,"shapley_position",4000,4.3192227822721e-05,TRUE
+"Forest Hemiptera",147,"SMI","total",30,NA,"spread",1000,0.00464126360908737,TRUE
+"Forest Hemiptera",147,"SMI","total",30,NA,"position",1000,0.00390641478651802,TRUE
+"Forest Hemiptera",147,"SMI","total",30,NA,"shapley_spread",1000,5.14246729533637e-05,TRUE
+"Forest Hemiptera",147,"SMI","total",30,NA,"shapley_position",1000,0.000420284436687051,TRUE
+"Forest Hemiptera",147,"SMI","total",30,NA,"spread",4000,0.00337187770393335,TRUE
+"Forest Hemiptera",147,"SMI","total",30,NA,"position",4000,0.000458518411248631,TRUE
+"Forest Hemiptera",147,"SMI","total",30,NA,"shapley_spread",4000,7.44517668615035e-06,TRUE
+"Forest Hemiptera",147,"SMI","total",30,NA,"shapley_position",4000,5.32564245015466e-05,TRUE
+"Forest Hemiptera",147,"SMI","total",30,11,"spread",1000,0.0052315038450963,TRUE
+"Forest Hemiptera",147,"SMI","total",30,11,"position",1000,0.00625836758938152,TRUE
+"Forest Hemiptera",147,"SMI","total",30,11,"shapley_spread",1000,8.83471657569023e-05,TRUE
+"Forest Hemiptera",147,"SMI","total",30,11,"shapley_position",1000,0.00078931238012354,TRUE
+"Forest Hemiptera",147,"SMI","total",30,11,"spread",4000,0.00343493565369686,TRUE
+"Forest Hemiptera",147,"SMI","total",30,11,"position",4000,0.000314895613117888,TRUE
+"Forest Hemiptera",147,"SMI","total",30,11,"shapley_spread",4000,1.04891481304066e-05,TRUE
+"Forest Hemiptera",147,"SMI","total",30,11,"shapley_position",4000,3.99741434571633e-05,TRUE
+"Forest Hemiptera",147,"SMI","total",147,NA,"spread",1000,0,FALSE
+"Forest Hemiptera",147,"SMI","total",147,NA,"position",1000,0,FALSE
+"Forest Hemiptera",147,"SMI","total",147,NA,"shapley_spread",1000,NA,FALSE
+"Forest Hemiptera",147,"SMI","total",147,NA,"shapley_position",1000,NA,FALSE
+"Forest Hemiptera",147,"SMI","total",147,NA,"spread",4000,0,FALSE
+"Forest Hemiptera",147,"SMI","total",147,NA,"position",4000,0,FALSE
+"Forest Hemiptera",147,"SMI","total",147,NA,"shapley_spread",4000,NA,FALSE
+"Forest Hemiptera",147,"SMI","total",147,NA,"shapley_position",4000,NA,FALSE
+"Forest Hemiptera",147,"SMI","total",147,30,"spread",1000,0.00464126360908737,FALSE
+"Forest Hemiptera",147,"SMI","total",147,30,"position",1000,0.00390641478651802,FALSE
+"Forest Hemiptera",147,"SMI","total",147,30,"shapley_spread",1000,NA,FALSE
+"Forest Hemiptera",147,"SMI","total",147,30,"shapley_position",1000,NA,FALSE
+"Forest Hemiptera",147,"SMI","total",147,30,"spread",4000,0.00337187770393335,FALSE
+"Forest Hemiptera",147,"SMI","total",147,30,"position",4000,0.000458518411248631,FALSE
+"Forest Hemiptera",147,"SMI","total",147,30,"shapley_spread",4000,NA,FALSE
+"Forest Hemiptera",147,"SMI","total",147,30,"shapley_position",4000,NA,FALSE
+"Finnish birds",241,"AprMay","relative",2,NA,"spread",1000,1.39516078996924e-05,TRUE
+"Finnish birds",241,"AprMay","relative",2,NA,"position",1000,0.00109749906530095,TRUE
+"Finnish birds",241,"AprMay","relative",2,NA,"shapley_spread",1000,0.000333701261549923,TRUE
+"Finnish birds",241,"AprMay","relative",2,NA,"shapley_position",1000,0.000288761496282582,TRUE
+"Finnish birds",241,"AprMay","relative",2,NA,"spread",4000,2.13095190460649e-06,TRUE
+"Finnish birds",241,"AprMay","relative",2,NA,"position",4000,0.000259087293601616,TRUE
+"Finnish birds",241,"AprMay","relative",2,NA,"shapley_spread",4000,9.83710346035885e-05,TRUE
+"Finnish birds",241,"AprMay","relative",2,NA,"shapley_position",4000,3.05021507792509e-05,TRUE
+"Finnish birds",241,"AprMay","relative",15,NA,"spread",1000,0.00144888684848763,TRUE
+"Finnish birds",241,"AprMay","relative",15,NA,"position",1000,0.000161530576114243,TRUE
+"Finnish birds",241,"AprMay","relative",15,NA,"shapley_spread",1000,0.000411415719518783,TRUE
+"Finnish birds",241,"AprMay","relative",15,NA,"shapley_position",1000,0.000114618721313216,TRUE
+"Finnish birds",241,"AprMay","relative",15,NA,"spread",4000,0.00012457211225685,TRUE
+"Finnish birds",241,"AprMay","relative",15,NA,"position",4000,2.81002358865585e-05,TRUE
+"Finnish birds",241,"AprMay","relative",15,NA,"shapley_spread",4000,5.94003011352181e-05,TRUE
+"Finnish birds",241,"AprMay","relative",15,NA,"shapley_position",4000,1.59209117544566e-05,TRUE
+"Finnish birds",241,"AprMay","relative",15,2,"spread",1000,0.00147998140798065,TRUE
+"Finnish birds",241,"AprMay","relative",15,2,"position",1000,0.00148929776094326,TRUE
+"Finnish birds",241,"AprMay","relative",15,2,"shapley_spread",1000,0.000906419611819087,TRUE
+"Finnish birds",241,"AprMay","relative",15,2,"shapley_position",1000,0.000189129862258768,TRUE
+"Finnish birds",241,"AprMay","relative",15,2,"spread",4000,0.000136366863240633,TRUE
+"Finnish birds",241,"AprMay","relative",15,2,"position",4000,0.000284350559617408,TRUE
+"Finnish birds",241,"AprMay","relative",15,2,"shapley_spread",4000,0.000151974884351146,TRUE
+"Finnish birds",241,"AprMay","relative",15,2,"shapley_position",4000,6.58181311712354e-05,TRUE
+"Finnish birds",241,"AprMay","relative",28,NA,"spread",1000,0.00441925012636813,TRUE
+"Finnish birds",241,"AprMay","relative",28,NA,"position",1000,0.000222153874857669,TRUE
+"Finnish birds",241,"AprMay","relative",28,NA,"shapley_spread",1000,0.0003664520294956,TRUE
+"Finnish birds",241,"AprMay","relative",28,NA,"shapley_position",1000,4.50280976223885e-05,TRUE
+"Finnish birds",241,"AprMay","relative",28,NA,"spread",4000,0.000476278486332902,TRUE
+"Finnish birds",241,"AprMay","relative",28,NA,"position",4000,3.15742031326879e-05,TRUE
+"Finnish birds",241,"AprMay","relative",28,NA,"shapley_spread",4000,0.000111410792584868,TRUE
+"Finnish birds",241,"AprMay","relative",28,NA,"shapley_position",4000,1.15477546598481e-05,TRUE
+"Finnish birds",241,"AprMay","relative",28,15,"spread",1000,0.00444240930141368,TRUE
+"Finnish birds",241,"AprMay","relative",28,15,"position",1000,0.000138986197377939,TRUE
+"Finnish birds",241,"AprMay","relative",28,15,"shapley_spread",1000,0.000606157427591551,TRUE
+"Finnish birds",241,"AprMay","relative",28,15,"shapley_position",1000,0.000227083316200419,TRUE
+"Finnish birds",241,"AprMay","relative",28,15,"spread",4000,0.000767177571505589,TRUE
+"Finnish birds",241,"AprMay","relative",28,15,"position",4000,5.17694012935494e-05,TRUE
+"Finnish birds",241,"AprMay","relative",28,15,"shapley_spread",4000,0.000115868443293332,TRUE
+"Finnish birds",241,"AprMay","relative",28,15,"shapley_position",4000,3.17307988251316e-05,TRUE
+"Finnish birds",241,"AprMay","relative",49,NA,"spread",1000,0.0080212390361889,TRUE
+"Finnish birds",241,"AprMay","relative",49,NA,"position",1000,3.95452864204301e-05,TRUE
+"Finnish birds",241,"AprMay","relative",49,NA,"shapley_spread",1000,0.000200108367072298,TRUE
+"Finnish birds",241,"AprMay","relative",49,NA,"shapley_position",1000,1.35927911873947e-05,TRUE
+"Finnish birds",241,"AprMay","relative",49,NA,"spread",4000,0.00315564132050517,TRUE
+"Finnish birds",241,"AprMay","relative",49,NA,"position",4000,3.56373256320272e-05,TRUE
+"Finnish birds",241,"AprMay","relative",49,NA,"shapley_spread",4000,1.86982439388324e-05,TRUE
+"Finnish birds",241,"AprMay","relative",49,NA,"shapley_position",4000,6.12788502621907e-06,TRUE
+"Finnish birds",241,"AprMay","relative",49,28,"spread",1000,0.0129492627280496,TRUE
+"Finnish birds",241,"AprMay","relative",49,28,"position",1000,0.000201021948877301,TRUE
+"Finnish birds",241,"AprMay","relative",49,28,"shapley_spread",1000,0.000691584807670325,TRUE
+"Finnish birds",241,"AprMay","relative",49,28,"shapley_position",1000,6.37890006683571e-05,TRUE
+"Finnish birds",241,"AprMay","relative",49,28,"spread",4000,0.00258280875561239,TRUE
+"Finnish birds",241,"AprMay","relative",49,28,"position",4000,5.79790378580639e-05,TRUE
+"Finnish birds",241,"AprMay","relative",49,28,"shapley_spread",4000,0.000112167110972711,TRUE
+"Finnish birds",241,"AprMay","relative",49,28,"shapley_position",4000,2.275381943934e-05,TRUE
+"Finnish birds",241,"AprMay","relative",241,NA,"spread",1000,0,FALSE
+"Finnish birds",241,"AprMay","relative",241,NA,"position",1000,0,FALSE
+"Finnish birds",241,"AprMay","relative",241,NA,"shapley_spread",1000,NA,FALSE
+"Finnish birds",241,"AprMay","relative",241,NA,"shapley_position",1000,NA,FALSE
+"Finnish birds",241,"AprMay","relative",241,NA,"spread",4000,0,FALSE
+"Finnish birds",241,"AprMay","relative",241,NA,"position",4000,0,FALSE
+"Finnish birds",241,"AprMay","relative",241,NA,"shapley_spread",4000,NA,FALSE
+"Finnish birds",241,"AprMay","relative",241,NA,"shapley_position",4000,NA,FALSE
+"Finnish birds",241,"AprMay","relative",241,49,"spread",1000,0.0080212390361889,FALSE
+"Finnish birds",241,"AprMay","relative",241,49,"position",1000,3.95452864204301e-05,FALSE
+"Finnish birds",241,"AprMay","relative",241,49,"shapley_spread",1000,NA,FALSE
+"Finnish birds",241,"AprMay","relative",241,49,"shapley_position",1000,NA,FALSE
+"Finnish birds",241,"AprMay","relative",241,49,"spread",4000,0.00315564132050517,FALSE
+"Finnish birds",241,"AprMay","relative",241,49,"position",4000,3.56373256320272e-05,FALSE
+"Finnish birds",241,"AprMay","relative",241,49,"shapley_spread",4000,NA,FALSE
+"Finnish birds",241,"AprMay","relative",241,49,"shapley_position",4000,NA,FALSE
+"Finnish birds",241,"AprMay","total",2,NA,"spread",1000,1.85310412535905e-05,TRUE
+"Finnish birds",241,"AprMay","total",2,NA,"position",1000,0.000385147451482411,TRUE
+"Finnish birds",241,"AprMay","total",2,NA,"shapley_spread",1000,0.000221497138182442,TRUE
+"Finnish birds",241,"AprMay","total",2,NA,"shapley_position",1000,0.000151944916191804,TRUE
+"Finnish birds",241,"AprMay","total",2,NA,"spread",4000,1.5221467681935e-06,TRUE
+"Finnish birds",241,"AprMay","total",2,NA,"position",4000,0.000144564050809076,TRUE
+"Finnish birds",241,"AprMay","total",2,NA,"shapley_spread",4000,6.27625071863188e-05,TRUE
+"Finnish birds",241,"AprMay","total",2,NA,"shapley_position",4000,3.70120722487238e-05,TRUE
+"Finnish birds",241,"AprMay","total",15,NA,"spread",1000,0.000412350373691829,TRUE
+"Finnish birds",241,"AprMay","total",15,NA,"position",1000,0.000303974336710289,TRUE
+"Finnish birds",241,"AprMay","total",15,NA,"shapley_spread",1000,0.000390131769640957,TRUE
+"Finnish birds",241,"AprMay","total",15,NA,"shapley_position",1000,0.00012372026101329,TRUE
+"Finnish birds",241,"AprMay","total",15,NA,"spread",4000,9.77241531170338e-05,TRUE
+"Finnish birds",241,"AprMay","total",15,NA,"position",4000,4.43120122752636e-05,TRUE
+"Finnish birds",241,"AprMay","total",15,NA,"shapley_spread",4000,6.61241866936307e-05,TRUE
+"Finnish birds",241,"AprMay","total",15,NA,"shapley_position",4000,3.83124028080473e-05,TRUE
+"Finnish birds",241,"AprMay","total",15,2,"spread",1000,0.000440107597825796,TRUE
+"Finnish birds",241,"AprMay","total",15,2,"position",1000,0.00071951807282477,TRUE
+"Finnish birds",241,"AprMay","total",15,2,"shapley_spread",1000,0.000678213795505052,TRUE
+"Finnish birds",241,"AprMay","total",15,2,"shapley_position",1000,0.00017799683757886,TRUE
+"Finnish birds",241,"AprMay","total",15,2,"spread",4000,9.12462976248421e-05,TRUE
+"Finnish birds",241,"AprMay","total",15,2,"position",4000,0.000130893513604103,TRUE
+"Finnish birds",241,"AprMay","total",15,2,"shapley_spread",4000,0.000141413397300952,TRUE
+"Finnish birds",241,"AprMay","total",15,2,"shapley_position",4000,6.68455786606513e-05,TRUE
+"Finnish birds",241,"AprMay","total",28,NA,"spread",1000,0.00166038447489632,TRUE
+"Finnish birds",241,"AprMay","total",28,NA,"position",1000,0.000189349251345196,TRUE
+"Finnish birds",241,"AprMay","total",28,NA,"shapley_spread",1000,0.000325653247899137,TRUE
+"Finnish birds",241,"AprMay","total",28,NA,"shapley_position",1000,1.96472857715112e-05,TRUE
+"Finnish birds",241,"AprMay","total",28,NA,"spread",4000,0.000313551900147254,TRUE
+"Finnish birds",241,"AprMay","total",28,NA,"position",4000,2.6079901669841e-05,TRUE
+"Finnish birds",241,"AprMay","total",28,NA,"shapley_spread",4000,0.000107432634896448,TRUE
+"Finnish birds",241,"AprMay","total",28,NA,"shapley_position",4000,1.57646132061365e-05,TRUE
+"Finnish birds",241,"AprMay","total",28,15,"spread",1000,0.00223990455185628,TRUE
+"Finnish birds",241,"AprMay","total",28,15,"position",1000,0.000226497936628331,TRUE
+"Finnish birds",241,"AprMay","total",28,15,"shapley_spread",1000,0.00048453057033956,TRUE
+"Finnish birds",241,"AprMay","total",28,15,"shapley_position",1000,0.000172907233129461,TRUE
+"Finnish birds",241,"AprMay","total",28,15,"spread",4000,0.000407002203542686,TRUE
+"Finnish birds",241,"AprMay","total",28,15,"position",4000,7.47601500905839e-05,TRUE
+"Finnish birds",241,"AprMay","total",28,15,"shapley_spread",4000,0.00016432805354826,TRUE
+"Finnish birds",241,"AprMay","total",28,15,"shapley_position",4000,5.72342279879045e-05,TRUE
+"Finnish birds",241,"AprMay","total",49,NA,"spread",1000,0.00197441606571578,TRUE
+"Finnish birds",241,"AprMay","total",49,NA,"position",1000,8.05153369055726e-05,TRUE
+"Finnish birds",241,"AprMay","total",49,NA,"shapley_spread",1000,8.725495625624e-05,TRUE
+"Finnish birds",241,"AprMay","total",49,NA,"shapley_position",1000,1.01189721246219e-05,TRUE
+"Finnish birds",241,"AprMay","total",49,NA,"spread",4000,0.00111797079384792,TRUE
+"Finnish birds",241,"AprMay","total",49,NA,"position",4000,1.57625210774771e-05,TRUE
+"Finnish birds",241,"AprMay","total",49,NA,"shapley_spread",4000,1.05179009682415e-05,TRUE
+"Finnish birds",241,"AprMay","total",49,NA,"shapley_position",4000,1.76903762560463e-06,TRUE
+"Finnish birds",241,"AprMay","total",49,28,"spread",1000,0.00502157033263246,TRUE
+"Finnish birds",241,"AprMay","total",49,28,"position",1000,0.000167690427017661,TRUE
+"Finnish birds",241,"AprMay","total",49,28,"shapley_spread",1000,0.000288948393050363,TRUE
+"Finnish birds",241,"AprMay","total",49,28,"shapley_position",1000,2.56923226842266e-05,TRUE
+"Finnish birds",241,"AprMay","total",49,28,"spread",4000,0.00124791637049227,TRUE
+"Finnish birds",241,"AprMay","total",49,28,"position",4000,3.35275329141279e-05,TRUE
+"Finnish birds",241,"AprMay","total",49,28,"shapley_spread",4000,0.000142213273112629,TRUE
+"Finnish birds",241,"AprMay","total",49,28,"shapley_position",4000,2.35886915359406e-05,TRUE
+"Finnish birds",241,"AprMay","total",241,NA,"spread",1000,0,FALSE
+"Finnish birds",241,"AprMay","total",241,NA,"position",1000,0,FALSE
+"Finnish birds",241,"AprMay","total",241,NA,"shapley_spread",1000,NA,FALSE
+"Finnish birds",241,"AprMay","total",241,NA,"shapley_position",1000,NA,FALSE
+"Finnish birds",241,"AprMay","total",241,NA,"spread",4000,0,FALSE
+"Finnish birds",241,"AprMay","total",241,NA,"position",4000,0,FALSE
+"Finnish birds",241,"AprMay","total",241,NA,"shapley_spread",4000,NA,FALSE
+"Finnish birds",241,"AprMay","total",241,NA,"shapley_position",4000,NA,FALSE
+"Finnish birds",241,"AprMay","total",241,49,"spread",1000,0.00197441606571578,FALSE
+"Finnish birds",241,"AprMay","total",241,49,"position",1000,8.05153369055726e-05,FALSE
+"Finnish birds",241,"AprMay","total",241,49,"shapley_spread",1000,NA,FALSE
+"Finnish birds",241,"AprMay","total",241,49,"shapley_position",1000,NA,FALSE
+"Finnish birds",241,"AprMay","total",241,49,"spread",4000,0.00111797079384792,FALSE
+"Finnish birds",241,"AprMay","total",241,49,"position",4000,1.57625210774771e-05,FALSE
+"Finnish birds",241,"AprMay","total",241,49,"shapley_spread",4000,NA,FALSE
+"Finnish birds",241,"AprMay","total",241,49,"shapley_position",4000,NA,FALSE
+"Pond diatoms",102,"ph","relative",2,NA,"spread",1000,5.28477930380099e-05,TRUE
+"Pond diatoms",102,"ph","relative",2,NA,"position",1000,0.00171643103799779,TRUE
+"Pond diatoms",102,"ph","relative",2,NA,"shapley_spread",1000,0.000589420471363,TRUE
+"Pond diatoms",102,"ph","relative",2,NA,"shapley_position",1000,8.98638894460231e-05,TRUE
+"Pond diatoms",102,"ph","relative",2,NA,"spread",4000,3.15322085538296e-06,TRUE
+"Pond diatoms",102,"ph","relative",2,NA,"position",4000,0.000259278306797166,TRUE
+"Pond diatoms",102,"ph","relative",2,NA,"shapley_spread",4000,2.87739589132159e-05,TRUE
+"Pond diatoms",102,"ph","relative",2,NA,"shapley_position",4000,1.74212439009061e-05,TRUE
+"Pond diatoms",102,"ph","relative",8,NA,"spread",1000,0.000920162488705112,TRUE
+"Pond diatoms",102,"ph","relative",8,NA,"position",1000,0.000638316310198282,TRUE
+"Pond diatoms",102,"ph","relative",8,NA,"shapley_spread",1000,0.000516348903025864,TRUE
+"Pond diatoms",102,"ph","relative",8,NA,"shapley_position",1000,5.85242951946352e-05,TRUE
+"Pond diatoms",102,"ph","relative",8,NA,"spread",4000,0.000166085863840005,TRUE
+"Pond diatoms",102,"ph","relative",8,NA,"position",4000,0.000103312649930962,TRUE
+"Pond diatoms",102,"ph","relative",8,NA,"shapley_spread",4000,0.000101810458057734,TRUE
+"Pond diatoms",102,"ph","relative",8,NA,"shapley_position",4000,1.04208074018575e-05,TRUE
+"Pond diatoms",102,"ph","relative",8,2,"spread",1000,0.000860534959517225,TRUE
+"Pond diatoms",102,"ph","relative",8,2,"position",1000,0.00227187714798461,TRUE
+"Pond diatoms",102,"ph","relative",8,2,"shapley_spread",1000,0.00156660766899584,TRUE
+"Pond diatoms",102,"ph","relative",8,2,"shapley_position",1000,8.1202378067883e-05,TRUE
+"Pond diatoms",102,"ph","relative",8,2,"spread",4000,0.000180131932722312,TRUE
+"Pond diatoms",102,"ph","relative",8,2,"position",4000,0.000444604547056454,TRUE
+"Pond diatoms",102,"ph","relative",8,2,"shapley_spread",4000,0.000181097645694668,TRUE
+"Pond diatoms",102,"ph","relative",8,2,"shapley_position",4000,4.62413789676182e-05,TRUE
+"Pond diatoms",102,"ph","relative",15,NA,"spread",1000,0.00422712217240568,TRUE
+"Pond diatoms",102,"ph","relative",15,NA,"position",1000,0.000420290514713686,TRUE
+"Pond diatoms",102,"ph","relative",15,NA,"shapley_spread",1000,0.000944560525554244,TRUE
+"Pond diatoms",102,"ph","relative",15,NA,"shapley_position",1000,6.31195345661587e-05,TRUE
+"Pond diatoms",102,"ph","relative",15,NA,"spread",4000,0.000832357183026277,TRUE
+"Pond diatoms",102,"ph","relative",15,NA,"position",4000,0.000316199421024692,TRUE
+"Pond diatoms",102,"ph","relative",15,NA,"shapley_spread",4000,0.000174164676907072,TRUE
+"Pond diatoms",102,"ph","relative",15,NA,"shapley_position",4000,3.6947420688005e-06,TRUE
+"Pond diatoms",102,"ph","relative",15,8,"spread",1000,0.00441840766628124,TRUE
+"Pond diatoms",102,"ph","relative",15,8,"position",1000,0.0014213855225284,TRUE
+"Pond diatoms",102,"ph","relative",15,8,"shapley_spread",1000,0.0016898183875866,TRUE
+"Pond diatoms",102,"ph","relative",15,8,"shapley_position",1000,0.000161532644908926,TRUE
+"Pond diatoms",102,"ph","relative",15,8,"spread",4000,0.000736014799948208,TRUE
+"Pond diatoms",102,"ph","relative",15,8,"position",4000,0.0003518224933056,TRUE
+"Pond diatoms",102,"ph","relative",15,8,"shapley_spread",4000,0.000190162251383765,TRUE
+"Pond diatoms",102,"ph","relative",15,8,"shapley_position",4000,1.7382317676008e-05,TRUE
+"Pond diatoms",102,"ph","relative",21,NA,"spread",1000,0.00493474083995787,TRUE
+"Pond diatoms",102,"ph","relative",21,NA,"position",1000,0.00226750934556397,TRUE
+"Pond diatoms",102,"ph","relative",21,NA,"shapley_spread",1000,0.0002749737017953,TRUE
+"Pond diatoms",102,"ph","relative",21,NA,"shapley_position",1000,3.82377190594586e-05,TRUE
+"Pond diatoms",102,"ph","relative",21,NA,"spread",4000,0.00226633919590895,TRUE
+"Pond diatoms",102,"ph","relative",21,NA,"position",4000,0.00029195901555654,TRUE
+"Pond diatoms",102,"ph","relative",21,NA,"shapley_spread",4000,5.70360420042961e-05,TRUE
+"Pond diatoms",102,"ph","relative",21,NA,"shapley_position",4000,2.59627149326312e-06,TRUE
+"Pond diatoms",102,"ph","relative",21,15,"spread",1000,0.0107818498749211,TRUE
+"Pond diatoms",102,"ph","relative",21,15,"position",1000,0.00331232397682704,TRUE
+"Pond diatoms",102,"ph","relative",21,15,"shapley_spread",1000,0.00140952485951435,TRUE
+"Pond diatoms",102,"ph","relative",21,15,"shapley_position",1000,0.000162228695190941,TRUE
+"Pond diatoms",102,"ph","relative",21,15,"spread",4000,0.00285376374877574,TRUE
+"Pond diatoms",102,"ph","relative",21,15,"position",4000,0.00085570366827117,TRUE
+"Pond diatoms",102,"ph","relative",21,15,"shapley_spread",4000,0.000243309723647142,TRUE
+"Pond diatoms",102,"ph","relative",21,15,"shapley_position",4000,6.8550917317067e-06,TRUE
+"Pond diatoms",102,"ph","relative",102,NA,"spread",1000,0,FALSE
+"Pond diatoms",102,"ph","relative",102,NA,"position",1000,0,FALSE
+"Pond diatoms",102,"ph","relative",102,NA,"shapley_spread",1000,NA,FALSE
+"Pond diatoms",102,"ph","relative",102,NA,"shapley_position",1000,NA,FALSE
+"Pond diatoms",102,"ph","relative",102,NA,"spread",4000,0,FALSE
+"Pond diatoms",102,"ph","relative",102,NA,"position",4000,0,FALSE
+"Pond diatoms",102,"ph","relative",102,NA,"shapley_spread",4000,NA,FALSE
+"Pond diatoms",102,"ph","relative",102,NA,"shapley_position",4000,NA,FALSE
+"Pond diatoms",102,"ph","relative",102,21,"spread",1000,0.00493474083995787,FALSE
+"Pond diatoms",102,"ph","relative",102,21,"position",1000,0.00226750934556397,FALSE
+"Pond diatoms",102,"ph","relative",102,21,"shapley_spread",1000,NA,FALSE
+"Pond diatoms",102,"ph","relative",102,21,"shapley_position",1000,NA,FALSE
+"Pond diatoms",102,"ph","relative",102,21,"spread",4000,0.00226633919590895,FALSE
+"Pond diatoms",102,"ph","relative",102,21,"position",4000,0.00029195901555654,FALSE
+"Pond diatoms",102,"ph","relative",102,21,"shapley_spread",4000,NA,FALSE
+"Pond diatoms",102,"ph","relative",102,21,"shapley_position",4000,NA,FALSE
+"Pond diatoms",102,"ph","total",2,NA,"spread",1000,1.69165845106859e-05,TRUE
+"Pond diatoms",102,"ph","total",2,NA,"position",1000,0.000239347419032542,TRUE
+"Pond diatoms",102,"ph","total",2,NA,"shapley_spread",1000,0.00104593445410887,TRUE
+"Pond diatoms",102,"ph","total",2,NA,"shapley_position",1000,6.18930591430009e-05,TRUE
+"Pond diatoms",102,"ph","total",2,NA,"spread",4000,1.40231838127074e-06,TRUE
+"Pond diatoms",102,"ph","total",2,NA,"position",4000,0.000256769323494943,TRUE
+"Pond diatoms",102,"ph","total",2,NA,"shapley_spread",4000,0.000106983282870906,TRUE
+"Pond diatoms",102,"ph","total",2,NA,"shapley_position",4000,1.65354245807444e-05,TRUE
+"Pond diatoms",102,"ph","total",8,NA,"spread",1000,0.000275371815787438,TRUE
+"Pond diatoms",102,"ph","total",8,NA,"position",1000,0.000100457122998994,TRUE
+"Pond diatoms",102,"ph","total",8,NA,"shapley_spread",1000,0.000489776632425734,TRUE
+"Pond diatoms",102,"ph","total",8,NA,"shapley_position",1000,3.15873334537326e-05,TRUE
+"Pond diatoms",102,"ph","total",8,NA,"spread",4000,4.82930939818334e-05,TRUE
+"Pond diatoms",102,"ph","total",8,NA,"position",4000,8.07631979784313e-05,TRUE
+"Pond diatoms",102,"ph","total",8,NA,"shapley_spread",4000,0.00012768646671725,TRUE
+"Pond diatoms",102,"ph","total",8,NA,"shapley_position",4000,4.00189275335229e-06,TRUE
+"Pond diatoms",102,"ph","total",8,2,"spread",1000,0.000227127267948758,TRUE
+"Pond diatoms",102,"ph","total",8,2,"position",1000,0.000218875824132402,TRUE
+"Pond diatoms",102,"ph","total",8,2,"shapley_spread",1000,0.00160518758819023,TRUE
+"Pond diatoms",102,"ph","total",8,2,"shapley_position",1000,0.00010568795909289,TRUE
+"Pond diatoms",102,"ph","total",8,2,"spread",4000,4.13045725640363e-05,TRUE
+"Pond diatoms",102,"ph","total",8,2,"position",4000,0.00032307474663151,TRUE
+"Pond diatoms",102,"ph","total",8,2,"shapley_spread",4000,0.000177808620750127,TRUE
+"Pond diatoms",102,"ph","total",8,2,"shapley_position",4000,3.09617847269145e-05,TRUE
+"Pond diatoms",102,"ph","total",15,NA,"spread",1000,0.00177625720807397,TRUE
+"Pond diatoms",102,"ph","total",15,NA,"position",1000,0.000150525593655261,TRUE
+"Pond diatoms",102,"ph","total",15,NA,"shapley_spread",1000,0.000386877533044864,TRUE
+"Pond diatoms",102,"ph","total",15,NA,"shapley_position",1000,1.82493921868821e-05,TRUE
+"Pond diatoms",102,"ph","total",15,NA,"spread",4000,0.000319388767211413,TRUE
+"Pond diatoms",102,"ph","total",15,NA,"position",4000,0.000100376261067344,TRUE
+"Pond diatoms",102,"ph","total",15,NA,"shapley_spread",4000,0.000205512745407491,TRUE
+"Pond diatoms",102,"ph","total",15,NA,"shapley_position",4000,2.6051266415729e-06,TRUE
+"Pond diatoms",102,"ph","total",15,8,"spread",1000,0.00107981670144624,TRUE
+"Pond diatoms",102,"ph","total",15,8,"position",1000,0.000357182015644635,TRUE
+"Pond diatoms",102,"ph","total",15,8,"shapley_spread",1000,0.000833545024642695,TRUE
+"Pond diatoms",102,"ph","total",15,8,"shapley_position",1000,6.77654872479397e-05,TRUE
+"Pond diatoms",102,"ph","total",15,8,"spread",4000,0.000249366267514323,TRUE
+"Pond diatoms",102,"ph","total",15,8,"position",4000,0.000139192233323443,TRUE
+"Pond diatoms",102,"ph","total",15,8,"shapley_spread",4000,0.000311166264217683,TRUE
+"Pond diatoms",102,"ph","total",15,8,"shapley_position",4000,6.6023199590402e-06,TRUE
+"Pond diatoms",102,"ph","total",21,NA,"spread",1000,0.00348690715608598,TRUE
+"Pond diatoms",102,"ph","total",21,NA,"position",1000,0.000853943335059538,TRUE
+"Pond diatoms",102,"ph","total",21,NA,"shapley_spread",1000,0.000213402638091273,TRUE
+"Pond diatoms",102,"ph","total",21,NA,"shapley_position",1000,7.3737069199057e-06,TRUE
+"Pond diatoms",102,"ph","total",21,NA,"spread",4000,0.0015352314100332,TRUE
+"Pond diatoms",102,"ph","total",21,NA,"position",4000,0.000128843706137185,TRUE
+"Pond diatoms",102,"ph","total",21,NA,"shapley_spread",4000,9.85022065078253e-05,TRUE
+"Pond diatoms",102,"ph","total",21,NA,"shapley_position",4000,4.54315791919191e-06,TRUE
+"Pond diatoms",102,"ph","total",21,15,"spread",1000,0.00371940942428393,TRUE
+"Pond diatoms",102,"ph","total",21,15,"position",1000,0.00103171323757693,TRUE
+"Pond diatoms",102,"ph","total",21,15,"shapley_spread",1000,0.000607904246523663,TRUE
+"Pond diatoms",102,"ph","total",21,15,"shapley_position",1000,3.41980600232745e-05,TRUE
+"Pond diatoms",102,"ph","total",21,15,"spread",4000,0.00155510840547403,TRUE
+"Pond diatoms",102,"ph","total",21,15,"position",4000,0.00025227135939754,TRUE
+"Pond diatoms",102,"ph","total",21,15,"shapley_spread",4000,0.000354650732432658,TRUE
+"Pond diatoms",102,"ph","total",21,15,"shapley_position",4000,9.60330320261998e-06,TRUE
+"Pond diatoms",102,"ph","total",102,NA,"spread",1000,0,FALSE
+"Pond diatoms",102,"ph","total",102,NA,"position",1000,0,FALSE
+"Pond diatoms",102,"ph","total",102,NA,"shapley_spread",1000,NA,FALSE
+"Pond diatoms",102,"ph","total",102,NA,"shapley_position",1000,NA,FALSE
+"Pond diatoms",102,"ph","total",102,NA,"spread",4000,0,FALSE
+"Pond diatoms",102,"ph","total",102,NA,"position",4000,0,FALSE
+"Pond diatoms",102,"ph","total",102,NA,"shapley_spread",4000,NA,FALSE
+"Pond diatoms",102,"ph","total",102,NA,"shapley_position",4000,NA,FALSE
+"Pond diatoms",102,"ph","total",102,21,"spread",1000,0.00348690715608598,FALSE
+"Pond diatoms",102,"ph","total",102,21,"position",1000,0.000853943335059538,FALSE
+"Pond diatoms",102,"ph","total",102,21,"shapley_spread",1000,NA,FALSE
+"Pond diatoms",102,"ph","total",102,21,"shapley_position",1000,NA,FALSE
+"Pond diatoms",102,"ph","total",102,21,"spread",4000,0.0015352314100332,FALSE
+"Pond diatoms",102,"ph","total",102,21,"position",4000,0.000128843706137185,FALSE
+"Pond diatoms",102,"ph","total",102,21,"shapley_spread",4000,NA,FALSE
+"Pond diatoms",102,"ph","total",102,21,"shapley_position",4000,NA,FALSE
+"Arctic plants",72,"Mesotopo","relative",2,NA,"spread",1000,1.72544565677953e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",2,NA,"position",1000,0.00112553493144486,TRUE
+"Arctic plants",72,"Mesotopo","relative",2,NA,"shapley_spread",1000,3.63089025273419e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",2,NA,"shapley_position",1000,3.96544102565717e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",2,NA,"spread",4000,0,TRUE
+"Arctic plants",72,"Mesotopo","relative",2,NA,"position",4000,0,TRUE
+"Arctic plants",72,"Mesotopo","relative",2,NA,"shapley_spread",4000,0,TRUE
+"Arctic plants",72,"Mesotopo","relative",2,NA,"shapley_position",4000,0,TRUE
+"Arctic plants",72,"Mesotopo","relative",4,NA,"spread",1000,6.63842882072858e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",4,NA,"position",1000,0.000595235622584754,TRUE
+"Arctic plants",72,"Mesotopo","relative",4,NA,"shapley_spread",1000,3.12835231038907e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",4,NA,"shapley_position",1000,6.0841111737327e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",4,NA,"spread",4000,3.357026184235e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",4,NA,"position",4000,0.000464114474190771,TRUE
+"Arctic plants",72,"Mesotopo","relative",4,NA,"shapley_spread",4000,9.43838159711051e-06,TRUE
+"Arctic plants",72,"Mesotopo","relative",4,NA,"shapley_position",4000,4.41459110647889e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",4,2,"spread",1000,5.76369002809725e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",4,2,"position",1000,0.00174376796527668,TRUE
+"Arctic plants",72,"Mesotopo","relative",4,2,"shapley_spread",1000,4.789713424749e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",4,2,"shapley_position",1000,7.73124091508457e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",4,2,"spread",4000,3.357026184235e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",4,2,"position",4000,0.000464114474190771,TRUE
+"Arctic plants",72,"Mesotopo","relative",4,2,"shapley_spread",4000,9.43838159711051e-06,TRUE
+"Arctic plants",72,"Mesotopo","relative",4,2,"shapley_position",4000,4.41459110647889e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",7,NA,"spread",1000,1.65160940205328e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",7,NA,"position",1000,0.000173386707016286,TRUE
+"Arctic plants",72,"Mesotopo","relative",7,NA,"shapley_spread",1000,3.44353979722303e-07,TRUE
+"Arctic plants",72,"Mesotopo","relative",7,NA,"shapley_position",1000,4.36094476930053e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",7,NA,"spread",4000,3.1498247247096e-06,TRUE
+"Arctic plants",72,"Mesotopo","relative",7,NA,"position",4000,0.000102419414925838,TRUE
+"Arctic plants",72,"Mesotopo","relative",7,NA,"shapley_spread",4000,4.32342592490427e-07,TRUE
+"Arctic plants",72,"Mesotopo","relative",7,NA,"shapley_position",4000,1.915341775303e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",7,4,"spread",1000,8.26845884258907e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",7,4,"position",1000,0.000849375953118102,TRUE
+"Arctic plants",72,"Mesotopo","relative",7,4,"shapley_spread",1000,3.32611749163995e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",7,4,"shapley_position",1000,0.000122482060595447,TRUE
+"Arctic plants",72,"Mesotopo","relative",7,4,"spread",4000,3.70542644869312e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",7,4,"position",4000,0.000568922405225349,TRUE
+"Arctic plants",72,"Mesotopo","relative",7,4,"shapley_spread",4000,7.21070087248749e-06,TRUE
+"Arctic plants",72,"Mesotopo","relative",7,4,"shapley_position",4000,7.00680282355557e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",15,NA,"spread",1000,3.62957355366457e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",15,NA,"position",1000,9.7709432913128e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",15,NA,"shapley_spread",1000,4.85584609123211e-09,TRUE
+"Arctic plants",72,"Mesotopo","relative",15,NA,"shapley_position",1000,1.05405088059799e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",15,NA,"spread",4000,0,TRUE
+"Arctic plants",72,"Mesotopo","relative",15,NA,"position",4000,6.9773286842252e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",15,NA,"shapley_spread",4000,4.58376668009875e-28,TRUE
+"Arctic plants",72,"Mesotopo","relative",15,NA,"shapley_position",4000,5.92380062611063e-06,TRUE
+"Arctic plants",72,"Mesotopo","relative",15,7,"spread",1000,2.58698405613976e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",15,7,"position",1000,3.59978087872322e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",15,7,"shapley_spread",1000,3.24688630066769e-07,TRUE
+"Arctic plants",72,"Mesotopo","relative",15,7,"shapley_position",1000,1.25686129349039e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",15,7,"spread",4000,3.1498247247096e-06,TRUE
+"Arctic plants",72,"Mesotopo","relative",15,7,"position",4000,3.8446507952564e-05,TRUE
+"Arctic plants",72,"Mesotopo","relative",15,7,"shapley_spread",4000,4.32342592478513e-07,TRUE
+"Arctic plants",72,"Mesotopo","relative",15,7,"shapley_position",4000,9.51314809196826e-06,TRUE
+"Arctic plants",72,"Mesotopo","relative",72,NA,"spread",1000,0,FALSE
+"Arctic plants",72,"Mesotopo","relative",72,NA,"position",1000,0,FALSE
+"Arctic plants",72,"Mesotopo","relative",72,NA,"shapley_spread",1000,NA,FALSE
+"Arctic plants",72,"Mesotopo","relative",72,NA,"shapley_position",1000,NA,FALSE
+"Arctic plants",72,"Mesotopo","relative",72,NA,"spread",4000,0,FALSE
+"Arctic plants",72,"Mesotopo","relative",72,NA,"position",4000,0,FALSE
+"Arctic plants",72,"Mesotopo","relative",72,NA,"shapley_spread",4000,NA,FALSE
+"Arctic plants",72,"Mesotopo","relative",72,NA,"shapley_position",4000,NA,FALSE
+"Arctic plants",72,"Mesotopo","relative",72,15,"spread",1000,3.62957355366457e-05,FALSE
+"Arctic plants",72,"Mesotopo","relative",72,15,"position",1000,9.7709432913128e-05,FALSE
+"Arctic plants",72,"Mesotopo","relative",72,15,"shapley_spread",1000,NA,FALSE
+"Arctic plants",72,"Mesotopo","relative",72,15,"shapley_position",1000,NA,FALSE
+"Arctic plants",72,"Mesotopo","relative",72,15,"spread",4000,0,FALSE
+"Arctic plants",72,"Mesotopo","relative",72,15,"position",4000,6.9773286842252e-05,FALSE
+"Arctic plants",72,"Mesotopo","relative",72,15,"shapley_spread",4000,NA,FALSE
+"Arctic plants",72,"Mesotopo","relative",72,15,"shapley_position",4000,NA,FALSE
+"Arctic plants",72,"Mesotopo","total",2,NA,"spread",1000,5.34368326801427e-06,TRUE
+"Arctic plants",72,"Mesotopo","total",2,NA,"position",1000,0.000467716148597212,TRUE
+"Arctic plants",72,"Mesotopo","total",2,NA,"shapley_spread",1000,2.81352367100647e-05,TRUE
+"Arctic plants",72,"Mesotopo","total",2,NA,"shapley_position",1000,5.21511432644062e-06,TRUE
+"Arctic plants",72,"Mesotopo","total",2,NA,"spread",4000,0,TRUE
+"Arctic plants",72,"Mesotopo","total",2,NA,"position",4000,0,TRUE
+"Arctic plants",72,"Mesotopo","total",2,NA,"shapley_spread",4000,0,TRUE
+"Arctic plants",72,"Mesotopo","total",2,NA,"shapley_position",4000,0,TRUE
+"Arctic plants",72,"Mesotopo","total",4,NA,"spread",1000,1.26894710368565e-06,TRUE
+"Arctic plants",72,"Mesotopo","total",4,NA,"position",1000,0.000125850436191877,TRUE
+"Arctic plants",72,"Mesotopo","total",4,NA,"shapley_spread",1000,1.82800294733164e-07,TRUE
+"Arctic plants",72,"Mesotopo","total",4,NA,"shapley_position",1000,1.91144654727282e-05,TRUE
+"Arctic plants",72,"Mesotopo","total",4,NA,"spread",4000,2.1600343730484e-07,TRUE
+"Arctic plants",72,"Mesotopo","total",4,NA,"position",4000,4.6297921860143e-05,TRUE
+"Arctic plants",72,"Mesotopo","total",4,NA,"shapley_spread",4000,1.28089077234418e-10,TRUE
+"Arctic plants",72,"Mesotopo","total",4,NA,"shapley_position",4000,6.58204126988797e-06,TRUE
+"Arctic plants",72,"Mesotopo","total",4,2,"spread",1000,7.55713842306373e-06,TRUE
+"Arctic plants",72,"Mesotopo","total",4,2,"position",1000,0.000491363214747703,TRUE
+"Arctic plants",72,"Mesotopo","total",4,2,"shapley_spread",1000,2.73712285798688e-05,TRUE
+"Arctic plants",72,"Mesotopo","total",4,2,"shapley_position",1000,2.39677955055892e-05,TRUE
+"Arctic plants",72,"Mesotopo","total",4,2,"spread",4000,2.1600343730484e-07,TRUE
+"Arctic plants",72,"Mesotopo","total",4,2,"position",4000,4.6297921860143e-05,TRUE
+"Arctic plants",72,"Mesotopo","total",4,2,"shapley_spread",4000,1.28089077234418e-10,TRUE
+"Arctic plants",72,"Mesotopo","total",4,2,"shapley_position",4000,6.58204126988797e-06,TRUE
+"Arctic plants",72,"Mesotopo","total",7,NA,"spread",1000,0,TRUE
+"Arctic plants",72,"Mesotopo","total",7,NA,"position",1000,8.21344101410212e-05,TRUE
+"Arctic plants",72,"Mesotopo","total",7,NA,"shapley_spread",1000,3.28842694362182e-30,TRUE
+"Arctic plants",72,"Mesotopo","total",7,NA,"shapley_position",1000,5.48111381516821e-06,TRUE
+"Arctic plants",72,"Mesotopo","total",7,NA,"spread",4000,0,TRUE
+"Arctic plants",72,"Mesotopo","total",7,NA,"position",4000,2.80997988278557e-05,TRUE
+"Arctic plants",72,"Mesotopo","total",7,NA,"shapley_spread",4000,5.52916169299882e-29,TRUE
+"Arctic plants",72,"Mesotopo","total",7,NA,"shapley_position",4000,1.10798166368306e-06,TRUE
+"Arctic plants",72,"Mesotopo","total",7,4,"spread",1000,1.26894710368565e-06,TRUE
+"Arctic plants",72,"Mesotopo","total",7,4,"position",1000,0.000120677460759503,TRUE
+"Arctic plants",72,"Mesotopo","total",7,4,"shapley_spread",1000,1.82800294733744e-07,TRUE
+"Arctic plants",72,"Mesotopo","total",7,4,"shapley_position",1000,1.29270472931275e-05,TRUE
+"Arctic plants",72,"Mesotopo","total",7,4,"spread",4000,2.1600343730484e-07,TRUE
+"Arctic plants",72,"Mesotopo","total",7,4,"position",4000,8.35234951284412e-05,TRUE
+"Arctic plants",72,"Mesotopo","total",7,4,"shapley_spread",4000,1.2808907722497e-10,TRUE
+"Arctic plants",72,"Mesotopo","total",7,4,"shapley_position",4000,7.96656233795232e-06,TRUE
+"Arctic plants",72,"Mesotopo","total",15,NA,"spread",1000,1.72211948193317e-06,TRUE
+"Arctic plants",72,"Mesotopo","total",15,NA,"position",1000,0.0001357826630309,TRUE
+"Arctic plants",72,"Mesotopo","total",15,NA,"shapley_spread",1000,1.07896234885117e-11,TRUE
+"Arctic plants",72,"Mesotopo","total",15,NA,"shapley_position",1000,2.34519233665431e-06,TRUE
+"Arctic plants",72,"Mesotopo","total",15,NA,"spread",4000,0,TRUE
+"Arctic plants",72,"Mesotopo","total",15,NA,"position",4000,4.3173048057356e-05,TRUE
+"Arctic plants",72,"Mesotopo","total",15,NA,"shapley_spread",4000,3.63117878963926e-28,TRUE
+"Arctic plants",72,"Mesotopo","total",15,NA,"shapley_position",4000,4.20985822087541e-07,TRUE
+"Arctic plants",72,"Mesotopo","total",15,7,"spread",1000,1.72211948193317e-06,TRUE
+"Arctic plants",72,"Mesotopo","total",15,7,"position",1000,0.000147690500134164,TRUE
+"Arctic plants",72,"Mesotopo","total",15,7,"shapley_spread",1000,1.07896234826943e-11,TRUE
+"Arctic plants",72,"Mesotopo","total",15,7,"shapley_position",1000,6.32649613452449e-06,TRUE
+"Arctic plants",72,"Mesotopo","total",15,7,"spread",4000,0,TRUE
+"Arctic plants",72,"Mesotopo","total",15,7,"position",4000,5.70993373794618e-05,TRUE
+"Arctic plants",72,"Mesotopo","total",15,7,"shapley_spread",4000,4.14831272131638e-28,TRUE
+"Arctic plants",72,"Mesotopo","total",15,7,"shapley_position",4000,1.13133433661691e-06,TRUE
+"Arctic plants",72,"Mesotopo","total",72,NA,"spread",1000,0,FALSE
+"Arctic plants",72,"Mesotopo","total",72,NA,"position",1000,0,FALSE
+"Arctic plants",72,"Mesotopo","total",72,NA,"shapley_spread",1000,NA,FALSE
+"Arctic plants",72,"Mesotopo","total",72,NA,"shapley_position",1000,NA,FALSE
+"Arctic plants",72,"Mesotopo","total",72,NA,"spread",4000,0,FALSE
+"Arctic plants",72,"Mesotopo","total",72,NA,"position",4000,0,FALSE
+"Arctic plants",72,"Mesotopo","total",72,NA,"shapley_spread",4000,NA,FALSE
+"Arctic plants",72,"Mesotopo","total",72,NA,"shapley_position",4000,NA,FALSE
+"Arctic plants",72,"Mesotopo","total",72,15,"spread",1000,1.72211948193317e-06,FALSE
+"Arctic plants",72,"Mesotopo","total",72,15,"position",1000,0.0001357826630309,FALSE
+"Arctic plants",72,"Mesotopo","total",72,15,"shapley_spread",1000,NA,FALSE
+"Arctic plants",72,"Mesotopo","total",72,15,"shapley_position",1000,NA,FALSE
+"Arctic plants",72,"Mesotopo","total",72,15,"spread",4000,0,FALSE
+"Arctic plants",72,"Mesotopo","total",72,15,"position",4000,4.3173048057356e-05,FALSE
+"Arctic plants",72,"Mesotopo","total",72,15,"shapley_spread",4000,NA,FALSE
+"Arctic plants",72,"Mesotopo","total",72,15,"shapley_position",4000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",2,NA,"spread",1000,0.00015536690668056,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",2,NA,"position",1000,0.011917695512951,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",2,NA,"shapley_spread",1000,0.000599470691719713,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",2,NA,"shapley_position",1000,0.000268655167928182,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",2,NA,"spread",4000,2.57381040615936e-05,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",2,NA,"position",4000,0.00253806147369694,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",2,NA,"shapley_spread",4000,9.16268165066489e-05,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",2,NA,"shapley_position",4000,5.26161249716485e-05,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",8,NA,"spread",1000,0.00189046081386058,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",8,NA,"position",1000,0.00310767380693103,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",8,NA,"shapley_spread",1000,0.00034114571264649,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",8,NA,"shapley_position",1000,0.000129180341319463,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",8,NA,"spread",4000,0.00138249987373709,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",8,NA,"position",4000,0.00081890852010302,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",8,NA,"shapley_spread",4000,0.000171249291011009,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",8,NA,"shapley_position",4000,4.61650789881048e-05,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",8,2,"spread",1000,0.00240449128100687,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",8,2,"position",1000,0.00733803718718737,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",8,2,"shapley_spread",1000,0.00125854454964167,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",8,2,"shapley_position",1000,0.000619825635398196,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",8,2,"spread",4000,0.00153983286784387,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",8,2,"position",4000,0.00365287289977216,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",8,2,"shapley_spread",4000,0.000303025750315491,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",8,2,"shapley_position",4000,0.000124483372784543,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",14,NA,"spread",1000,0.0449714373076928,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",14,NA,"position",1000,0.0139244121997982,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",14,NA,"shapley_spread",1000,0.00129808165237823,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",14,NA,"shapley_position",1000,7.10732285888851e-05,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",14,NA,"spread",4000,0.0109706212455934,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",14,NA,"position",4000,0.00790975739055383,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",14,NA,"shapley_spread",4000,0.000201065578887112,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",14,NA,"shapley_position",4000,4.25798515220452e-05,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",14,8,"spread",1000,0.0456020923564076,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",14,8,"position",1000,0.0162759537411258,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",14,8,"shapley_spread",1000,0.0014898550098762,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",14,8,"shapley_position",1000,0.000232239610661575,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",14,8,"spread",4000,0.0153402993934047,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",14,8,"position",4000,0.00820929441696699,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",14,8,"shapley_spread",4000,0.00054794751029972,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",14,8,"shapley_position",4000,9.26472315014273e-05,TRUE
+"Atlantic marine fish",202,"Temp_mean","relative",41,NA,"spread",1000,0,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",41,NA,"position",1000,0,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",41,NA,"shapley_spread",1000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",41,NA,"shapley_position",1000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",41,NA,"spread",4000,1.85946459023488,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",41,NA,"position",4000,0.0143968928450034,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",41,NA,"shapley_spread",4000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",41,NA,"shapley_position",4000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",41,14,"spread",1000,0.0449714373076928,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",41,14,"position",1000,0.0139244121997982,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",41,14,"shapley_spread",1000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",41,14,"shapley_position",1000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",41,14,"spread",4000,1.67342281671389,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",41,14,"position",4000,0.022885319449394,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",41,14,"shapley_spread",4000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",41,14,"shapley_position",4000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",202,NA,"spread",1000,0,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",202,NA,"position",1000,0,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",202,NA,"shapley_spread",1000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",202,NA,"shapley_position",1000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",202,NA,"spread",4000,0,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",202,NA,"position",4000,0,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",202,NA,"shapley_spread",4000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",202,NA,"shapley_position",4000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",202,41,"spread",1000,0,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",202,41,"position",1000,0,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",202,41,"shapley_spread",1000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",202,41,"shapley_position",1000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",202,41,"spread",4000,1.85946459023488,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",202,41,"position",4000,0.0143968928450034,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",202,41,"shapley_spread",4000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","relative",202,41,"shapley_position",4000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",2,NA,"spread",1000,8.818462605766e-05,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",2,NA,"position",1000,0.00404812191265524,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",2,NA,"shapley_spread",1000,0.0003932810465665,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",2,NA,"shapley_position",1000,7.6086465904205e-05,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",2,NA,"spread",4000,1.65786026183047e-05,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",2,NA,"position",4000,0.000542023505106091,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",2,NA,"shapley_spread",4000,8.57944622802621e-05,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",2,NA,"shapley_position",4000,3.51818868722345e-06,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",8,NA,"spread",1000,0.00181242545121259,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",8,NA,"position",1000,0.00210557715408101,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",8,NA,"shapley_spread",1000,0.000117954131737683,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",8,NA,"shapley_position",1000,5.10411274013976e-06,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",8,NA,"spread",4000,0.00079745720789861,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",8,NA,"position",4000,0.00116185194726723,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",8,NA,"shapley_spread",4000,3.02286824797024e-05,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",8,NA,"shapley_position",4000,3.94747500763041e-06,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",8,2,"spread",1000,0.00141990547235387,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",8,2,"position",1000,0.00663897836431635,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",8,2,"shapley_spread",1000,0.000261850193273803,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",8,2,"shapley_position",1000,9.04134524116921e-05,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",8,2,"spread",4000,0.000702646643339527,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",8,2,"position",4000,0.00150539518415051,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",8,2,"shapley_spread",4000,8.48991366921213e-05,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",8,2,"shapley_position",4000,6.51615731528399e-06,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",14,NA,"spread",1000,0.0150714305476488,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",14,NA,"position",1000,0.00730686502430728,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",14,NA,"shapley_spread",1000,0.00016833234199522,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",14,NA,"shapley_position",1000,1.26279111584565e-05,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",14,NA,"spread",4000,0.00720575948627542,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",14,NA,"position",4000,0.00133755236272262,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",14,NA,"shapley_spread",4000,0.000156266714374305,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",14,NA,"shapley_position",4000,4.27420651717209e-07,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",14,8,"spread",1000,0.0192298082002435,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",14,8,"position",1000,0.00724995230573334,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",14,8,"shapley_spread",1000,0.000350819848842716,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",14,8,"shapley_position",1000,2.28342297586182e-05,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",14,8,"spread",4000,0.00589791259775663,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",14,8,"position",4000,0.00240438859637033,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",14,8,"shapley_spread",4000,0.000100964914090111,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",14,8,"shapley_position",4000,5.50745634264727e-06,TRUE
+"Atlantic marine fish",202,"Temp_mean","total",41,NA,"spread",1000,0,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",41,NA,"position",1000,0,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",41,NA,"shapley_spread",1000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",41,NA,"shapley_position",1000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",41,NA,"spread",4000,1.80729309263531,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",41,NA,"position",4000,0.0127588252108889,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",41,NA,"shapley_spread",4000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",41,NA,"shapley_position",4000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",41,14,"spread",1000,0.0150714305476488,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",41,14,"position",1000,0.00730686502430728,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",41,14,"shapley_spread",1000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",41,14,"shapley_position",1000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",41,14,"spread",4000,1.6913678459588,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",41,14,"position",4000,0.0154357431767662,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",41,14,"shapley_spread",4000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",41,14,"shapley_position",4000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",202,NA,"spread",1000,0,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",202,NA,"position",1000,0,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",202,NA,"shapley_spread",1000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",202,NA,"shapley_position",1000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",202,NA,"spread",4000,0,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",202,NA,"position",4000,0,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",202,NA,"shapley_spread",4000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",202,NA,"shapley_position",4000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",202,41,"spread",1000,0,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",202,41,"position",1000,0,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",202,41,"shapley_spread",1000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",202,41,"shapley_position",1000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",202,41,"spread",4000,1.80729309263531,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",202,41,"position",4000,0.0127588252108889,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",202,41,"shapley_spread",4000,NA,FALSE
+"Atlantic marine fish",202,"Temp_mean","total",202,41,"shapley_position",4000,NA,FALSE

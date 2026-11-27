@@ -1,0 +1,337 @@
+"community","order","response","predictor","component","abs_mean","abs_lo","abs_hi","heldout_D2","n_valid_folds","rel","term","pred","panel"
+"EPA macroinvertebrates",2,"incidence","Chla","position",0.04293783381546,0.0140646827819809,0.0880175448342993,0.229587810429186,5,0.187021400374842,"Position","Chl-a","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",2,"incidence","Chla","spread",0.014697156966676,-0.00248651489481365,0.0249252847976854,0.229587810429186,5,0.0640154063022838,"Spread","Chl-a","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",2,"incidence","TN","position",-0.0256637137140457,-0.119633531049466,0.0107365517854485,0.229587810429186,5,-0.111781691136261,"Position","TN","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",2,"incidence","TN","spread",0.0621094495128717,0.0417196436240082,0.094549623872084,0.229587810429186,5,0.270525902036201,"Spread","TN","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",2,"incidence","TP","position",0.0230586348920879,0.00209269633564226,0.0464147022956891,0.229587810429186,5,0.100434926614713,"Position","TP","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",2,"incidence","TP","spread",0.0374842841907745,0.0201366023519799,0.0456653590911065,0.229587810429186,5,0.163267745446513,"Spread","TP","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",2,"incidence","distance","distance",0.0759282777469606,-0.125471722590925,0.233991720828053,0.229587810429186,5,0.330715631657544,"Distance","Geographic distance","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",2,"relative","Chla","position",-0.00386066034616377,-0.0206157241979705,0.00548503352717989,0.117772365601875,5,-0.032780697971327,"Position","Chl-a","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",2,"relative","Chla","spread",0.0120022071694557,0.00490036718444255,0.0177810555573,0.117772365601875,5,0.101910215593602,"Spread","Chl-a","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",2,"relative","TN","position",-0.0152022480487156,-0.0660120596327053,0.00332742874287236,0.117772365601875,5,-0.129081622594779,"Position","TN","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",2,"relative","TN","spread",0.0415352324752408,0.0165974066771613,0.0701146033383662,0.117772365601875,5,0.352673840446146,"Spread","TN","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",2,"relative","TP","position",0.0184782414139241,0.00185316913611937,0.0365191358172352,0.117772365601875,5,0.156897938828783,"Position","TP","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",2,"relative","TP","spread",0.019432998689367,0.0138845603519448,0.0331291532237739,0.117772365601875,5,0.165004741053257,"Spread","TP","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",2,"relative","distance","distance",0.045386298495694,-0.114080298768114,0.17535250091898,0.117772365601875,5,0.385373073417924,"Distance","Geographic distance","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",3,"incidence","Chla","position",0.0501670436902726,0.0228019164392535,0.10834156169083,0.242151141612677,5,0.207172443442432,"Position","Chl-a","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",3,"incidence","Chla","spread",0.0170841968299473,-0.00413689422718573,0.0327762563571771,0.242151141612677,5,0.070551791398422,"Spread","Chl-a","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",3,"incidence","TN","position",-0.0283491979720271,-0.128913093060549,0.0128087796907131,0.242151141612677,5,-0.117072328394685,"Position","TN","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",3,"incidence","TN","spread",0.0714971221940321,0.0478380994422478,0.111738128046555,0.242151141612677,5,0.2952582495291,"Spread","TN","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",3,"incidence","TP","position",0.0298440003047505,-0.00469788853585076,0.0663679905872557,0.242151141612677,5,0.123245342169339,"Position","TP","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",3,"incidence","TP","spread",0.0390329382679612,0.0112991221343835,0.0595909744899522,0.242151141612677,5,0.16119246024615,"Spread","TP","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",3,"incidence","distance","distance",0.0628747401531227,-0.163674726469886,0.279511732872394,0.242151141612677,5,0.25965081037566,"Distance","Geographic distance","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",3,"relative","Chla","position",-0.00410993407416738,-0.0223777522623305,0.00776287595141058,0.15314975221397,5,-0.0268360478208626,"Position","Chl-a","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",3,"relative","Chla","spread",0.0148957096976014,0.00562622741457719,0.0219548842143774,0.15314975221397,5,0.0972623819644845,"Spread","Chl-a","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",3,"relative","TN","position",-0.0235329501732424,-0.127754557212458,0.0130530942711221,0.15314975221397,5,-0.153659733907788,"Position","TN","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",3,"relative","TN","spread",0.055687750023151,0.0179472851534477,0.105615051686654,0.15314975221397,5,0.363616324663378,"Spread","TN","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",3,"relative","TP","position",0.0356753731540625,0.0021591003859053,0.0803474984985451,0.15314975221397,5,0.232944373975998,"Position","TP","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",3,"relative","TP","spread",0.0242461090516245,0.0110155801459896,0.0450099411954905,0.15314975221397,5,0.158316345283729,"Spread","TP","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",3,"relative","distance","distance",0.0502880277486355,-0.168830905576237,0.234844942423666,0.15314975221397,5,0.328358531578794,"Distance","Geographic distance","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",4,"incidence","Chla","position",0.0507867094161402,0.0168527502935002,0.107284187058919,0.236634062687071,5,0.214621296864185,"Position","Chl-a","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",4,"incidence","Chla","spread",0.0188766217718954,-0.00214901298900277,0.0398609984747502,0.236634062687071,5,0.0797713632498385,"Spread","Chl-a","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",4,"incidence","TN","position",-0.0315164046169489,-0.158396404239743,0.0166076388192704,0.236634062687071,5,-0.133186255009393,"Position","TN","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",4,"incidence","TN","spread",0.0803470298802425,0.06034553593215,0.135294731689767,0.236634062687071,5,0.339541268775386,"Spread","TN","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",4,"incidence","TP","position",0.040889104043751,-0.0026678801913952,0.0818365067818638,0.236634062687071,5,0.172794666919206,"Position","TP","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",4,"incidence","TP","spread",0.0411161650005536,0.013504753037033,0.0599401490006935,0.236634062687071,5,0.173754211602775,"Spread","TP","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",4,"incidence","distance","distance",0.036135400815042,-0.26534818428376,0.301458692242222,0.236634062687071,5,0.15270582943432,"Distance","Geographic distance","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",4,"relative","Chla","position",-0.00679280028645526,-0.0338961396514555,0.0082031495978554,0.144734536191103,5,-0.046932822429377,"Position","Chl-a","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",4,"relative","Chla","spread",0.0162287540658377,0.00738668771937379,0.0252731402484262,0.144734536191103,5,0.112127723575317,"Spread","Chl-a","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",4,"relative","TN","position",-0.0355925317886687,-0.192986379185605,0.01599900676796,0.144734536191103,5,-0.245915955689204,"Position","TN","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",4,"relative","TN","spread",0.0652841676579966,0.0189141157648954,0.143893457520257,0.144734536191103,5,0.451061435480731,"Spread","TN","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",4,"relative","TP","position",0.0474653249250291,0.00272647139449669,0.116752884335742,0.144734536191103,5,0.327947469720409,"Position","TP","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",4,"relative","TP","spread",0.0278836666762683,0.0145288946297849,0.0464151049312574,0.144734536191103,5,0.192653857262179,"Spread","TP","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",4,"relative","distance","distance",0.0302584650554635,-0.274416573488038,0.266435667017683,0.144734536191103,5,0.209061816562643,"Distance","Geographic distance","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",5,"incidence","Chla","position",0.0528914123825391,0.0145975497193573,0.116154053154823,0.217248484012592,5,0.24346044402995,"Position","Chl-a","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",5,"incidence","Chla","spread",0.0186816339930979,-0.000913888210557663,0.0335968083055393,0.217248484012592,5,0.085992010844205,"Spread","Chl-a","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",5,"incidence","TN","position",-0.0423408923948664,-0.220043630614149,0.0220800330133938,0.217248484012592,5,-0.194896146628173,"Position","TN","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",5,"incidence","TN","spread",0.089145979230162,0.0668176818148619,0.159838806842789,0.217248484012592,5,0.410341087696589,"Spread","TN","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",5,"incidence","TP","position",0.0504329153965992,-0.00822870060489272,0.105145481373428,0.217248484012592,5,0.232143923239879,"Position","TP","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",5,"incidence","TP","spread",0.0370761496736705,0.0101840295940698,0.0613136675605723,0.217248484012592,5,0.170662409186347,"Spread","TP","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",5,"incidence","distance","distance",0.0113602174641782,-0.312752629531658,0.32339372800961,0.217248484012592,5,0.0522913543715212,"Distance","Geographic distance","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",5,"relative","Chla","position",-0.00545478808622492,-0.0505381129554776,0.0135973188157019,0.130395980914153,5,-0.041832486308118,"Position","Chl-a","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",5,"relative","Chla","spread",0.0162416310671291,0.00625065415282392,0.0258328601620401,0.130395980914153,5,0.12455622445773,"Spread","Chl-a","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",5,"relative","TN","position",-0.050660240635533,-0.267365757415524,0.0201245481486704,0.130395980914153,5,-0.388510752251525,"Position","TN","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",5,"relative","TN","spread",0.066962641630377,0.0367520321289297,0.152935107462834,0.130395980914153,5,0.513533018126243,"Spread","TN","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",5,"relative","TP","position",0.0670824353411359,-0.0124544369219252,0.18569882219723,0.130395980914153,5,0.5144517098675,"Position","TP","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",5,"relative","TP","spread",0.0294177533290236,0.015162534408869,0.0517268838901799,0.130395980914153,5,0.225603221224977,"Spread","TP","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",5,"relative","distance","distance",0.00680690079198267,-0.412667092987438,0.270738009419296,0.130395980914153,5,0.0522017683694104,"Distance","Geographic distance","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",6,"incidence","Chla","position",0.054468827640582,0.0124148285397941,0.119369493948744,0.199369662479461,5,0.273205195630972,"Position","Chl-a","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",6,"incidence","Chla","spread",0.0158373558386723,-0.00189350637507062,0.0285492564049999,0.199369662479461,5,0.0794371402434605,"Spread","Chl-a","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",6,"incidence","TN","position",-0.040358662613375,-0.254815151109803,0.0304884657102553,0.199369662479461,5,-0.202431313327486,"Position","TN","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",6,"incidence","TN","spread",0.0842553023401789,0.060411722640422,0.159522143925184,0.199369662479461,5,0.422608441486723,"Spread","TN","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",6,"incidence","TP","position",0.063746859879608,-0.00641252100606628,0.130056614202436,0.199369662479461,5,0.319742026378638,"Position","TP","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",6,"incidence","TP","spread",0.0365141311458692,0.013177643826432,0.056933586560187,0.199369662479461,5,0.183147880634201,"Spread","TP","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",6,"incidence","distance","distance",-0.0150939266067402,-0.444561400254798,0.3509892692356,0.199369662479461,5,-0.07570824176068,"Distance","Geographic distance","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",6,"relative","Chla","position",-0.0017415381981179,-0.0309283631057458,0.0172859089161705,0.115703026718032,5,-0.0150517946463235,"Position","Chl-a","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",6,"relative","Chla","spread",0.0148828092402712,0.0056234242261148,0.0290451560980802,0.115703026718032,5,0.128629385612708,"Spread","Chl-a","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",6,"relative","TN","position",-0.0549950955719493,-0.329121295655363,0.0273324842748859,0.115703026718032,5,-0.47531250592063,"Position","TN","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",6,"relative","TN","spread",0.0537644877908122,0.0259516053833153,0.129076769547965,0.115703026718032,5,0.464676588987047,"Spread","TN","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",6,"relative","TP","position",0.0783106960443309,-0.0149728274694997,0.195952760606868,0.115703026718032,5,0.676824956664046,"Position","TP","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",6,"relative","TP","spread",0.0262947683488052,0.013915973665958,0.0509447030876472,0.115703026718032,5,0.227260851290308,"Spread","TP","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",6,"relative","distance","distance",-0.000815776161029569,-0.44587341933496,0.265577421919028,0.115703026718032,5,-0.00705060346448511,"Distance","Geographic distance","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",8,"incidence","Chla","position",0.0606697480945452,0.0114022953324971,0.154244853632887,0.136074758031064,5,0.445856005716321,"Position","Chl-a","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",8,"incidence","Chla","spread",0.0132652003298917,-0.00525706703927834,0.0311149892968867,0.136074758031064,5,0.0974846512448942,"Spread","Chl-a","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",8,"incidence","TN","position",-0.050628896863862,-0.349558332210856,0.0367098575046644,0.136074758031064,5,-0.372066778559357,"Position","TN","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",8,"incidence","TN","spread",0.0792695680844783,0.0456613058332712,0.170172975728454,0.136074758031064,5,0.582544251641308,"Spread","TN","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",8,"incidence","TP","position",0.0840177865971986,-0.0198198923780732,0.175573731119552,0.136074758031064,5,0.617438442021836,"Position","TP","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",8,"incidence","TP","spread",0.0367719258917906,0.0106233503506488,0.0703214863171713,0.136074758031064,5,0.270233263125818,"Spread","TP","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",8,"incidence","distance","distance",-0.0872892822845106,-0.513670329314057,0.196221148385155,0.136074758031064,5,-0.641480341744084,"Distance","Geographic distance","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",8,"relative","Chla","position",0.0175135842051588,0.000180647260050464,0.0581868666169733,0.0456843669380199,5,0.383360553708001,"Position","Chl-a","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",8,"relative","Chla","spread",0.00920502006574112,0.000625260935711186,0.023319725344503,0.0456843669380199,5,0.201491684852055,"Spread","Chl-a","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",8,"relative","TN","position",-0.070968538945174,-0.446768714907581,0.0445393030425922,0.0456843669380199,5,-1.55345348314572,"Position","TN","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",8,"relative","TN","spread",0.0334327529969287,0.0141080867162222,0.0872531904195636,0.0456843669380199,5,0.731820428688155,"Spread","TN","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",8,"relative","TP","position",0.0812978056285126,-0.0258225063880894,0.200282607660334,0.0456843669380199,5,1.77955416868991,"Position","TP","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",8,"relative","TP","spread",0.0205851874577142,0.00750758010489455,0.0522935790707795,0.0456843669380199,5,0.450595878577943,"Spread","TP","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",8,"relative","distance","distance",-0.0453938222942172,-0.495568323789741,0.166491958345358,0.0456843669380199,5,-0.993640173580672,"Distance","Geographic distance","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",10,"incidence","Chla","position",0.0439740828948774,0.00640027380629708,0.141119841143322,0.101521759012427,5,0.433149339832602,"Position","Chl-a","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",10,"incidence","Chla","spread",0.00903046343796473,-0.00314418407350441,0.019067947444202,0.101521759012427,5,0.0889510143028483,"Spread","Chl-a","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",10,"incidence","TN","position",-0.0749680902189677,-0.50671391374652,0.0434460962618379,0.101521759012427,5,-0.738443570602347,"Position","TN","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",10,"incidence","TN","spread",0.0634766947881517,0.0263806441817022,0.171792153113516,0.101521759012427,5,0.625252117434072,"Spread","TN","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",10,"incidence","TP","position",0.0940015595315974,-0.0337921855496389,0.232032855326506,0.101521759012427,5,0.925925244460065,"Position","TP","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",10,"incidence","TP","spread",0.0307334379777785,0.00934456302431408,0.0715999386309704,0.101521759012427,5,0.302727595313006,"Spread","TP","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",10,"incidence","distance","distance",-0.0647233819116219,-0.43397445202903,0.236917114515882,0.101521759012427,5,-0.63753211667362,"Distance","Geographic distance","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",10,"relative","Chla","position",0.0024896158270494,-0.0183387806703138,0.021466083665186,-0.0214525709216612,5,NA,"Position","Chl-a","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",10,"relative","Chla","spread",0.00443609606530187,0.000541292096854113,0.0106567117302275,-0.0214525709216612,5,NA,"Spread","Chl-a","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",10,"relative","TN","position",-0.0759275689553401,-0.449557099680703,0.032525743571854,-0.0214525709216612,5,NA,"Position","TN","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",10,"relative","TN","spread",0.0157045544740986,0.00595170160582206,0.0439436585162705,-0.0214525709216612,5,NA,"Spread","TN","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",10,"relative","TP","position",0.0524740698754435,-0.021672213244922,0.104748839582395,-0.0214525709216612,5,NA,"Position","TP","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",10,"relative","TP","spread",0.0104254360971036,0.00422454671999819,0.0268195062578786,-0.0214525709216612,5,NA,"Spread","TP","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",10,"relative","distance","distance",-0.0310654151461972,-0.403173635619826,0.148091456177334,-0.0214525709216612,5,NA,"Distance","Geographic distance","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",12,"incidence","Chla","position",0.034999576253716,0.0022874329950978,0.133895955361295,-0.0113045666038798,5,NA,"Position","Chl-a","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",12,"incidence","Chla","spread",0.00768849128007726,-0.00216847665566205,0.0240025917836768,-0.0113045666038798,5,NA,"Spread","Chl-a","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",12,"incidence","TN","position",-0.102305925355446,-0.667173638425947,0.0561543921811956,-0.0113045666038798,5,NA,"Position","TN","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",12,"incidence","TN","spread",0.0412294193912239,0.015201644769805,0.130374078204357,-0.0113045666038798,5,NA,"Spread","TN","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",12,"incidence","TP","position",0.0955735462762745,-0.0300763991685144,0.249598943748844,-0.0113045666038798,5,NA,"Position","TP","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",12,"incidence","TP","spread",0.0231156997736589,0.00633384911821357,0.0644660001653336,-0.0113045666038798,5,NA,"Spread","TP","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",12,"incidence","distance","distance",-0.111606421409349,-0.674641671759459,0.160876513019619,-0.0113045666038798,5,NA,"Distance","Geographic distance","macroinvertebrates
+Incidence"
+"EPA macroinvertebrates",12,"relative","Chla","position",-0.0145079612001928,-0.061520919690512,0.0032529299544143,-0.0622484055349175,5,NA,"Position","Chl-a","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",12,"relative","Chla","spread",0.00181681795298009,6.68951568862094e-06,0.00414895235874661,-0.0622484055349175,5,NA,"Spread","Chl-a","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",12,"relative","TN","position",-0.0521775475131604,-0.321673046814097,0.0367786984020971,-0.0622484055349175,5,NA,"Position","TN","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",12,"relative","TN","spread",0.00609534381269089,0.00212251516340539,0.0167070862739621,-0.0622484055349175,5,NA,"Spread","TN","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",12,"relative","TP","position",0.0239719498063603,-0.0150187475210162,0.0516432322013278,-0.0622484055349175,5,NA,"Position","TP","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",12,"relative","TP","spread",0.00444841338935204,0.0015854413226433,0.0108419919502439,-0.0622484055349175,5,NA,"Spread","TP","macroinvertebrates
+Relative abundance"
+"EPA macroinvertebrates",12,"relative","distance","distance",-0.03190170065806,-0.26568005839733,0.0493828613172111,-0.0622484055349175,5,NA,"Distance","Geographic distance","macroinvertebrates
+Relative abundance"
+"EPA zooplankton",2,"incidence","Chla","position",0.0148420339121685,-0.00543018102821362,0.0517632428253283,0.0914329219886097,5,0.162327021704692,"Position","Chl-a","zooplankton
+Incidence"
+"EPA zooplankton",2,"incidence","Chla","spread",0.0146511128784532,-0.000560264507042109,0.0288279479712588,0.0914329219886097,5,0.160238922259079,"Spread","Chl-a","zooplankton
+Incidence"
+"EPA zooplankton",2,"incidence","TN","position",-0.00698595186773232,-0.0224566015091803,0.000781651961583617,0.0914329219886097,5,-0.0764052128685399,"Position","TN","zooplankton
+Incidence"
+"EPA zooplankton",2,"incidence","TN","spread",0.021273296244399,0.00932607691568597,0.0400960825730269,0.0914329219886097,5,0.232665606454633,"Spread","TN","zooplankton
+Incidence"
+"EPA zooplankton",2,"incidence","TP","position",0.00914123741740533,-0.00556420933515419,0.0208439545676013,0.0914329219886097,5,0.0999775268971947,"Position","TP","zooplankton
+Incidence"
+"EPA zooplankton",2,"incidence","TP","spread",0.00771725930422897,-0.00319637776579479,0.0126401862348798,0.0914329219886097,5,0.0844035073623739,"Spread","TP","zooplankton
+Incidence"
+"EPA zooplankton",2,"incidence","distance","distance",0.0307939558312079,-0.100883338702222,0.186565596840228,0.0914329219886097,5,0.336792865867768,"Distance","Geographic distance","zooplankton
+Incidence"
+"EPA zooplankton",2,"relative","Chla","position",0.00254427944377347,-0.0098384488179681,0.0149478353511728,0.0459442334691832,5,0.0553775577838301,"Position","Chl-a","zooplankton
+Relative abundance"
+"EPA zooplankton",2,"relative","Chla","spread",0.00867147070144445,-0.00244000412072753,0.0203038613286941,0.0459442334691832,5,0.188739043981674,"Spread","Chl-a","zooplankton
+Relative abundance"
+"EPA zooplankton",2,"relative","TN","position",-0.00448638293899207,-0.0110897322444375,-0.00121051285496832,0.0459442334691832,5,-0.0976484446519558,"Position","TN","zooplankton
+Relative abundance"
+"EPA zooplankton",2,"relative","TN","spread",0.00277628215396632,-0.0118279055078225,0.0115023318412254,0.0459442334691832,5,0.060427216743718,"Spread","TN","zooplankton
+Relative abundance"
+"EPA zooplankton",2,"relative","TP","position",-0.000521260316708678,-0.00449089492451543,0.00340808296339468,0.0459442334691832,5,-0.0113455003457248,"Position","TP","zooplankton
+Relative abundance"
+"EPA zooplankton",2,"relative","TP","spread",0.00524597190456069,0.00157331987286364,0.00993554869457533,0.0459442334691832,5,0.114181291283908,"Spread","TP","zooplankton
+Relative abundance"
+"EPA zooplankton",2,"relative","distance","distance",0.0317138080186038,-0.00332193865901814,0.0707192201785934,0.0459442334691832,5,0.690267431273516,"Distance","Geographic distance","zooplankton
+Relative abundance"
+"EPA zooplankton",3,"incidence","Chla","position",0.013088621220862,-0.0303143159500052,0.072083955309809,0.0576228618156257,5,0.227142852827083,"Position","Chl-a","zooplankton
+Incidence"
+"EPA zooplankton",3,"incidence","Chla","spread",0.0152633809564736,-0.00417885987118059,0.0332842774223294,0.0576228618156257,5,0.264884118482547,"Spread","Chl-a","zooplankton
+Incidence"
+"EPA zooplankton",3,"incidence","TN","position",-0.0121250106736286,-0.0416058714494895,-0.000566611830678926,0.0576228618156257,5,-0.210420140402341,"Position","TN","zooplankton
+Incidence"
+"EPA zooplankton",3,"incidence","TN","spread",0.0240730343057907,0.00482438514277344,0.0536013118748576,0.0576228618156257,5,0.41776880820006,"Spread","TN","zooplankton
+Incidence"
+"EPA zooplankton",3,"incidence","TP","position",0.0144766987007383,-0.0150576798492517,0.0385374302728032,0.0576228618156257,5,0.251231859102365,"Position","TP","zooplankton
+Incidence"
+"EPA zooplankton",3,"incidence","TP","spread",0.0070076553595824,-0.00251580280932958,0.0105966283320776,0.0576228618156257,5,0.121612414565674,"Spread","TP","zooplankton
+Incidence"
+"EPA zooplankton",3,"incidence","distance","distance",-0.0041615817891608,-0.17302703818916,0.207572985227296,0.0576228618156257,5,-0.0722210188462436,"Distance","Geographic distance","zooplankton
+Incidence"
+"EPA zooplankton",3,"relative","Chla","position",0.00856569415676223,-0.0276722491960978,0.0367419260913837,0.0601730306506274,5,0.142351051029751,"Position","Chl-a","zooplankton
+Relative abundance"
+"EPA zooplankton",3,"relative","Chla","spread",0.00943024136630836,-0.00256694764842744,0.0157281133281948,0.0601730306506274,5,0.156718737021268,"Spread","Chl-a","zooplankton
+Relative abundance"
+"EPA zooplankton",3,"relative","TN","position",-0.00406559617681922,-0.0186329137897335,0.00194993619476285,0.0601730306506274,5,-0.0675650890915668,"Position","TN","zooplankton
+Relative abundance"
+"EPA zooplankton",3,"relative","TN","spread",0.00632851266191488,-0.0101769972738173,0.0174896798244107,0.0601730306506274,5,0.105171911626972,"Spread","TN","zooplankton
+Relative abundance"
+"EPA zooplankton",3,"relative","TP","position",0.00170486493796263,-0.00388518582526186,0.00786828931882912,0.0601730306506274,5,0.0283327085162339,"Position","TP","zooplankton
+Relative abundance"
+"EPA zooplankton",3,"relative","TP","spread",0.00609325867298577,-7.09545235162247e-05,0.0103035567679947,0.0601730306506274,5,0.101262286560969,"Spread","TP","zooplankton
+Relative abundance"
+"EPA zooplankton",3,"relative","distance","distance",0.0321155236365426,-0.0171403350690831,0.109531843486007,0.0601730306506274,5,0.533719563221098,"Distance","Geographic distance","zooplankton
+Relative abundance"
+"EPA zooplankton",4,"incidence","Chla","position",0.0236565975351762,-0.0396200709255682,0.120992241787146,0.00293316933760644,5,NA,"Position","Chl-a","zooplankton
+Incidence"
+"EPA zooplankton",4,"incidence","Chla","spread",0.0148005260504505,-0.00484287835333401,0.0381183986968053,0.00293316933760644,5,NA,"Spread","Chl-a","zooplankton
+Incidence"
+"EPA zooplankton",4,"incidence","TN","position",-0.0272874270104172,-0.0960237651261053,-0.0023935450914897,0.00293316933760644,5,NA,"Position","TN","zooplankton
+Incidence"
+"EPA zooplankton",4,"incidence","TN","spread",0.0279764912469685,-0.00456007128210282,0.0766385306426272,0.00293316933760644,5,NA,"Spread","TN","zooplankton
+Incidence"
+"EPA zooplankton",4,"incidence","TP","position",0.020450555126258,-0.0122063948462033,0.0565960263292871,0.00293316933760644,5,NA,"Position","TP","zooplankton
+Incidence"
+"EPA zooplankton",4,"incidence","TP","spread",0.00697159611164269,-0.000528369924162372,0.013331737444819,0.00293316933760644,5,NA,"Spread","TP","zooplankton
+Incidence"
+"EPA zooplankton",4,"incidence","distance","distance",-0.0636352174896153,-0.343738040821928,0.211774070590471,0.00293316933760644,5,NA,"Distance","Geographic distance","zooplankton
+Incidence"
+"EPA zooplankton",4,"relative","Chla","position",0.0239916105406032,-0.0267890135058983,0.0637213135555928,0.0752276338370124,5,0.318920180217062,"Position","Chl-a","zooplankton
+Relative abundance"
+"EPA zooplankton",4,"relative","Chla","spread",0.00916623469916725,-1.51684700137426e-05,0.0150106073458839,0.0752276338370124,5,0.121846643735023,"Spread","Chl-a","zooplankton
+Relative abundance"
+"EPA zooplankton",4,"relative","TN","position",-0.0122887776398829,-0.0484329244124586,0.00208313452693587,0.0752276338370124,5,-0.163354568169825,"Position","TN","zooplankton
+Relative abundance"
+"EPA zooplankton",4,"relative","TN","spread",0.00845580587712311,-0.00216774032471612,0.0241891000588809,0.0752276338370124,5,0.112402922248537,"Spread","TN","zooplankton
+Relative abundance"
+"EPA zooplankton",4,"relative","TP","position",0.00985818566315875,0.00317615218077656,0.0167506788797204,0.0752276338370124,5,0.131044739284468,"Position","TP","zooplankton
+Relative abundance"
+"EPA zooplankton",4,"relative","TP","spread",0.00668263856914201,0.00414612828834525,0.0100496871727844,0.0752276338370124,5,0.0888322312997449,"Spread","TP","zooplankton
+Relative abundance"
+"EPA zooplankton",4,"relative","distance","distance",0.0293622863852448,-0.0441844291640047,0.130631120186264,0.0752276338370124,5,0.390312507354158,"Distance","Geographic distance","zooplankton
+Relative abundance"
+"EPA zooplankton",5,"incidence","Chla","position",0.0471960398022596,-0.0458933890704123,0.201949539423261,0.0161870149641522,5,NA,"Position","Chl-a","zooplankton
+Incidence"
+"EPA zooplankton",5,"incidence","Chla","spread",0.0164197971285312,-0.00955055116507961,0.0540814507485759,0.0161870149641522,5,NA,"Spread","Chl-a","zooplankton
+Incidence"
+"EPA zooplankton",5,"incidence","TN","position",-0.0421559816593728,-0.167613455198974,0.00313087689086825,0.0161870149641522,5,NA,"Position","TN","zooplankton
+Incidence"
+"EPA zooplankton",5,"incidence","TN","spread",0.0288419131141678,-0.00798150042846667,0.100496377340691,0.0161870149641522,5,NA,"Spread","TN","zooplankton
+Incidence"
+"EPA zooplankton",5,"incidence","TP","position",0.0318878215715567,-0.0140224597229423,0.100438956510987,0.0161870149641522,5,NA,"Position","TP","zooplankton
+Incidence"
+"EPA zooplankton",5,"incidence","TP","spread",0.00675777701862614,0.00204153052146381,0.0183930935501723,0.0161870149641522,5,NA,"Spread","TP","zooplankton
+Incidence"
+"EPA zooplankton",5,"incidence","distance","distance",-0.0727604053472166,-0.317002985575722,0.208663587981209,0.0161870149641522,5,NA,"Distance","Geographic distance","zooplankton
+Incidence"
+"EPA zooplankton",5,"relative","Chla","position",0.0530125905440453,5.35838956818013e-05,0.166965852971179,0.0792727497228607,5,0.668736617934643,"Position","Chl-a","zooplankton
+Relative abundance"
+"EPA zooplankton",5,"relative","Chla","spread",0.00670210554882088,0.00171943643200197,0.0167070070884739,0.0792727497228607,5,0.0845448855029198,"Spread","Chl-a","zooplankton
+Relative abundance"
+"EPA zooplankton",5,"relative","TN","position",-0.0311679267680898,-0.141635820156809,0.0134390866337133,0.0792727497228607,5,-0.39317327678242,"Position","TN","zooplankton
+Relative abundance"
+"EPA zooplankton",5,"relative","TN","spread",0.0075107239955914,0.000222729409756887,0.0249681597529404,0.0792727497228607,5,0.0947453446720223,"Spread","TN","zooplankton
+Relative abundance"
+"EPA zooplankton",5,"relative","TP","position",0.0139384892739523,0.00689373379787808,0.0295443581879315,0.0792727497228607,5,0.175829516734081,"Position","TP","zooplankton
+Relative abundance"
+"EPA zooplankton",5,"relative","TP","spread",0.00417995430284652,0.000922865116637681,0.00775180714085812,0.0792727497228607,5,0.0527287664103962,"Spread","TP","zooplankton
+Relative abundance"
+"EPA zooplankton",5,"relative","distance","distance",0.0250948796218486,-0.130316958957796,0.141559296236243,0.0792727497228607,5,0.316563758789507,"Distance","Geographic distance","zooplankton
+Relative abundance"

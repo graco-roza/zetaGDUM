@@ -1,0 +1,6 @@
+# 10_orders.R: evaluated zeta orders for Figure 3 and the exact support diagnostics. zeta_order_information() (response "all") on each community; informative orders are those at which the probability that a random set of k sites shares at least one taxon is >= 0.10
+# (the criterion used for the EPA lakes in the eutrophication analysis). Seeds fixed.
+source("common.R"); GRID <- c(2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 30, 40, 60, 80, 120, 160, 240, 320, 480, 640); res <- list()
+for (cc in names(COMM)) for (pool in if (cc == "BCI") "bci" else c("shared", "full")) { x <- get_comm(cc, if (pool == "bci") "shared" else pool); g <- GRID[GRID <= nrow(x)]; t0 <- Sys.time()
+  oi <- as.data.frame(zeta_order_information(x, orders = g, response = "relative", seed = 1)); oi$community <- COMM[[cc]]; oi$pool <- pool; res[[length(res) + 1]] <- oi[, c("community", "pool", "order", "sharing_probability", "mean_zeta", "abundance_zeta", "incidence_zeta", "effective_species", "response_variance", "relative_information", "recommended_status")]; cat(cc, pool, format(Sys.time() - t0), "\n") }
+O <- bind_rows(res); O$informative <- O$sharing_probability >= .10; write.csv(O, "tables/evaluated_orders.csv", row.names = FALSE); print(O |> group_by(community, pool) |> summarise(orders = paste(order[informative], collapse = ","), .groups = "drop"))

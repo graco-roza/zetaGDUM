@@ -1,0 +1,9 @@
+# lib_ugdm.R: helpers for the original/extended MS-GDUM analyses (Figures 5 and 6 supplement). Package functions only (ugdm_response, ugdm_design, ugdm_interaction_design, ugdm_fit_interactions, ugdm_predict, ugdm_within_order_importance).
+hav <- function(xy) { r <- pi / 180; lo <- xy[, 1] * r; la <- xy[, 2] * r; n <- nrow(xy); m <- matrix(0, n, n); for (i in seq_len(n)) { dl <- lo - lo[i]; a <- sin((la - la[i]) / 2)^2 + cos(la[i]) * cos(la) * sin(dl / 2)^2; m[i, ] <- 2 * 6371 * asin(pmin(1, sqrt(a))) }; m }
+spatial_folds <- function(xy, nblk = 5) cutree(hclust(as.dist(hav(xy)), "complete"), nblk)       # complete-linkage blocks on great-circle distance, no randomness
+get_env <- function(env) data.frame(TP = log10(env$TP), TN = log10(env$TN), Chla = log10(env$Chla))
+MODELS <- data.frame(model = c("linear_const", "nonlinear_const"), position = c("linear", "nonlinear"), spread = c("constant", "constant"), stringsAsFactors = FALSE)
+PEN <- list(spread_smooth = .002, position_smooth = .002, interaction_shrink = .005, ridge = 1e-4)
+build <- function(e, il, dmat, model, ref = NULL) { m <- MODELS[MODELS$model == model, ]; d0 <- if (is.null(ref)) ugdm_design(e, il, dist_matrix = dmat) else ugdm_design(e, il, dist_matrix = dmat, ref = ref$base); list(base = d0, int = ugdm_interaction_design(d0, e, position = m$position, spread = m$spread)) }
+fit1 <- function(dsg, r, pen = PEN) { k <- r$keep; ugdm_fit_interactions(dsg$int, r$y[k], r$trials[k], spread_smooth = pen$spread_smooth, position_smooth = pen$position_smooth, interaction_shrink = pen$interaction_shrink, ridge = pen$ridge) }
+heldout_D2 <- function(r, rt, p) { k <- r$keep; kk <- rt$keep; mu0 <- sum(r$y[k] * r$trials[k]) / sum(r$trials[k]); nd <- zetaGDUM:::.binom_dev(rt$y[kk], rep(mu0, sum(kk)), rt$trials[kk]); 1 - zetaGDUM:::.binom_dev(rt$y[kk], p[kk], rt$trials[kk]) / nd }

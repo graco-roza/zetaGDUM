@@ -1,0 +1,29 @@
+# Final empirical analysis batch (Figures 3-6)
+
+Communities: **BCI trees, 1985 census** (tree records, status alive, dbh >= 10 mm; 1250 20 m x 20 m quadrats; documented in `../bci/README.md`), **EPA National Lakes Assessment 2017 macroinvertebrates** and **zooplankton** (workbooks LUSBM_2 and LUSZP_2 of the shared Liu Guohao eutrophication synthesis folder; `../fig6/01_prep.R`). Distance Decay 2.0 data and Polish phytoplankton are not used anywhere. Package: zetaGDUM at commit f7e115f, unmodified; no new statistical procedures. No manuscript text is included.
+
+**EPA pools.** The *shared pool* (principal) is the 1,077 lakes with valid TP, TN, Chl-a, coordinates and non-empty samples in both taxon tables; environmental values are identical in the two tables (checked). The *full pools* (1,081 macroinvertebrate and 1,093 zooplankton lakes) are sensitivity analyses. Taxa (not species) are the EPA units; macroinvertebrates are mostly genus-level.
+
+## Layout and run order (set `ZG_LIB6` to the library containing the f7e115f build)
+| Step | Script | Output |
+|---|---|---|
+| Data pools | `00_data.R` | `out/pools.rds` (not committed), `tables/dataset_characteristics.csv` |
+| Evaluated orders | `10_orders.R` | `tables/evaluated_orders.csv`, `evaluated_orders_summary.csv` |
+| Fig. 3 exact calculations | `11_fig3_calc.R` (POOL=shared and full) | `tables/fig3_*` (observed, taxon contributions, bootstrap and permutation draws) |
+| Fig. 3 figures | `12_fig3_figure.R` | `figures/Figure3_main`, `FigureS3_*`, `tables/fig3_plotted_values_*.csv` |
+| Fig. 4 | `40_fig4_copy.sh` (analysis in `../bci`) | `figures/Figure4_main`, `FigureS4_*`, `tables/fig4/` |
+| Fig. 5 fits | `20_fig5_fit.R` (POOL=shared and full) | `tables/fig5_validation_folds_*`, `fig5_importance_folds_*`, `fig5_response_curves_*` |
+| Fig. 5 figures | `21_fig5_figure.R` | `figures/Figure5_main`, `FigureS5_*`, `tables/fig5_plotted_*` |
+| Fig. 6 and supplement | `30_setup_fig6.R`, then `fig6_shared/run_fig6.sh` and `fig6_full/run_fig6.sh` | `fig6_<pool>/figures`, `figures_repl`, `tables`, `tables_repl` |
+| Documentation | `41_documentation_tables.R` | `tables/model_settings.csv` |
+
+All stochastic steps have fixed seeds (listed in `tables/model_settings.csv` and the script headers). Large intermediate `.rds` files are not committed.
+
+## Evaluated orders
+Orders at which a random set of k sites shares at least one taxon with probability >= 0.10 (`zeta_order_information`, grid 2-640): macroinvertebrates 2-12 (2,3,4,5,6,8,10,12), zooplankton 2-5, BCI 2-480 (19 orders). The same criterion is used in Figures 3, 5 and 6. The earlier eutrophication analysis used macroinvertebrates 2-10 and zooplankton 2-6 (a looser reading of the same criterion); orders are harmonised here.
+
+## Deviations from the earlier analyses (stated for transparency)
+* Figure 3 (formerly five-community letter analysis): the exact analytical contributions of `expected_species_contributions()` replace the sampled-set estimates (4,000 sets) and the paired Bayesian site-weight draws; uncertainty is shown with 100 site-resampling draws of the exact quantities. Within-site abundance permutations (499) are retained. Hold-out and position-share analyses of the earlier letter now appear in Figure 5.
+* Figure 5 uses the original MS-GDUM structure (spread terms, linear position, geographic distance) for incidence ("total") and relative-abundance dissimilarity and is distinct from the coherent component analysis of Figure 6 (total, occupancy-associated and heterogeneity components, nonlinear position, optional interaction).
+* The held-out D2 is computed against the training-set mean on sets drawn only from held-out blocks; it can exceed the training D2 when block compositions differ.
+* Importance allocations can be negative (held-out gains); relative importance is shown only where the held-out D2 >= 0.02.

@@ -1,0 +1,53 @@
+"quad","pair","k","representation","z"
+"x005_y024","Q1",1,"Relative abundance",1
+"x014_y012","Q2",1,"Relative abundance",1
+"x005_y024","Q1",1,"Occurrence",1
+"x014_y012","Q2",1,"Occurrence",1
+"x005_y024","Q1",2,"Relative abundance",0.458425744903609
+"x014_y012","Q2",2,"Relative abundance",0.456813614660978
+"x005_y024","Q1",2,"Occurrence",0.375259111398708
+"x014_y012","Q2",2,"Occurrence",0.595476381104883
+"x005_y024","Q1",3,"Relative abundance",0.318204177916373
+"x014_y012","Q2",3,"Relative abundance",0.323283759408448
+"x005_y024","Q1",3,"Occurrence",0.230226014320413
+"x014_y012","Q2",3,"Occurrence",0.449619631602716
+"x005_y024","Q1",4,"Relative abundance",0.251452276163531
+"x014_y012","Q2",4,"Relative abundance",0.257566263825993
+"x005_y024","Q1",4,"Occurrence",0.168211400470306
+"x014_y012","Q2",4,"Occurrence",0.370179255841556
+"x005_y024","Q1",5,"Relative abundance",0.21130447887758
+"x014_y012","Q2",5,"Relative abundance",0.217353805763367
+"x005_y024","Q1",5,"Occurrence",0.134221699134001
+"x014_y012","Q2",5,"Occurrence",0.320033843833343
+"x005_y024","Q1",8,"Relative abundance",0.149968536313204
+"x014_y012","Q2",8,"Relative abundance",0.154735556960438
+"x005_y024","Q1",8,"Occurrence",0.089422630523286
+"x014_y012","Q2",8,"Occurrence",0.240372663616065
+"x005_y024","Q1",12,"Relative abundance",0.114163191334344
+"x014_y012","Q2",12,"Relative abundance",0.117046241813928
+"x005_y024","Q1",12,"Occurrence",0.0693226326579309
+"x014_y012","Q2",12,"Occurrence",0.191786323212977
+"x005_y024","Q1",20,"Relative abundance",0.081387762424999
+"x014_y012","Q2",20,"Relative abundance",0.082294779496298
+"x005_y024","Q1",20,"Occurrence",0.0544347951249957
+"x014_y012","Q2",20,"Occurrence",0.14664653532134
+"x005_y024","Q1",40,"Relative abundance",0.048535308106469
+"x014_y012","Q2",40,"Relative abundance",0.048585883904622
+"x005_y024","Q1",40,"Occurrence",0.0389730125016899
+"x014_y012","Q2",40,"Occurrence",0.101922664570523
+"x005_y024","Q1",80,"Relative abundance",0.024867732822738
+"x014_y012","Q2",80,"Relative abundance",0.024867922805564
+"x005_y024","Q1",80,"Occurrence",0.0257581958358355
+"x014_y012","Q2",80,"Occurrence",0.0671565901145572
+"x005_y024","Q1",160,"Relative abundance",0.00960504983965405
+"x014_y012","Q2",160,"Relative abundance",0.00960504984196497
+"x005_y024","Q1",160,"Occurrence",0.0144804164908008
+"x014_y012","Q2",160,"Occurrence",0.0377525144382996
+"x005_y024","Q1",320,"Relative abundance",0.00241057495033403
+"x014_y012","Q2",320,"Relative abundance",0.00241057495033403
+"x005_y024","Q1",320,"Occurrence",0.0056489759009937
+"x014_y012","Q2",320,"Occurrence",0.0147276871704476
+"x005_y024","Q1",640,"Relative abundance",0.000253034511685013
+"x014_y012","Q2",640,"Relative abundance",0.000253034511685013
+"x005_y024","Q1",640,"Occurrence",0.000819027683564835
+"x014_y012","Q2",640,"Occurrence",0.00213532217500883

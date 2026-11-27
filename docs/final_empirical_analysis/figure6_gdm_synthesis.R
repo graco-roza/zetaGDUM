@@ -375,7 +375,7 @@ for(pool in POOLS){
   # A and B combined: A 2x2; B 3x4; small multiples with real data units.
   g<-gtable(widths=unit.c(unit(8,'mm'),unit(1,'null'),unit(3,'mm'),unit(1,'null')),heights=unit.c(unit(7,'mm'),unit(7,'mm'),unit(5,'mm'),unit(1,'null'),unit(5,'mm'),unit(1,'null'),unit(5,'mm'),unit(6,'mm'),unit(6,'mm'),unit(7,'mm'),unit(2.5,'null'),unit(6,'mm'),unit(5,'mm'),unit(6,'mm')))
   add<-function(o,t,l,b=t,r=l)g<<-gtable_add_grob(g,o,t=t,l=l,b=b,r=r,clip='off')
-  add(label('A',11,TRUE),1,1);add(label('Component responses to phosphorus heterogeneity',10,TRUE,hjust=0,x=0),1,2,r=4)
+  add(label('A',11,TRUE),1,1)
   for(j in 1:2){tx<-TX[j];cl<-2*j;add(label(TXL[tx],9.5,TRUE),2,cl)
    for(slot in 1:2){r<-if(slot==1)3 else 5;add(label(paste0('k = ',ORD[[tx]][slot]),8.5,TRUE),r,cl);add(bars[[paste(slot,tx)]],r+1,cl)}
   }
@@ -384,7 +384,7 @@ for(pool in POOLS){
   # Explicitly report distinct raw-spread contrasts. k=2-only is not an order comparison.
   note<-paste(vapply(TX,function(tx){z<-selection[selection$group==tx,];paste0(if(tx=='BM')'BM'else'ZP',': ',if(is.na(z$spread_from))'unsupported'else sprintf('%.2f-%.2f',z$spread_from,z$spread_to),if(!z$matched)' (k=2 only)'else'')},character(1)),collapse='; ')
   add(label(paste0('TP spread interval (log10 units): ',note),7.5),9,2,r=4)
-  add(label('B',11,TRUE),10,1);add(label('Position-dependent fitted phosphorus transformations',10,TRUE,hjust=0,x=0),10,2,r=4)
+  add(label('B',11,TRUE),10,1)
   add(gg[[1]],11,2);add(gg[[2]],11,4);add(label('Centred fitted f(TP | position)\n(logit scale)',8,rot=90),11,1)
   add(label(if(logaxis)expression('Site TP ('*mu*'g/L, log axis)')else expression('Site TP ('*mu*'g/L)'),8.5),12,2,r=4)
   add(label(expression('Geometric mean TP position ('*mu*'g/L)'),8),13,2,r=4);add(legend(poscol,poslab,TRUE),14,2,r=4)

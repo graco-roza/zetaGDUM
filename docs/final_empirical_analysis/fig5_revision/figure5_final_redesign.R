@@ -67,8 +67,17 @@ add_panel <- function(d) {
     TRUE ~ NA_character_),levels=panels))
   stopifnot(!anyNA(d$panel)); d
 }
-facets <- function() facet_grid(cols=vars(panel),scales='free_x',space='fixed',
-  drop=FALSE,labeller=labeller(panel=as_labeller(labels_rep)))
+# Alignment fallback (see header of taxon_y): one plot per taxon, two facets
+# (incidence, relative abundance) with a fixed shared y scale; facet_wrap(scales='free')
+# misaligned panel edges across rows, so plots are combined in a patchwork grid.
+facets <- function() {
+  facet_grid(cols=vars(panel), scales='free_x', space='fixed', drop=TRUE,
+    labeller=labeller(panel=as_labeller(labels_rep)))
+}
+sub_tx <- function(d, tx) {
+  f <- function(x) { x <- x[substr(as.character(x$panel),1,2)==tx,,drop=FALSE]; x$panel <- droplevels(x$panel); x }
+  d$F <- f(d$F); d$S <- f(d$S); d$I <- f(d$I); d$C <- f(d$C); d
+}
 order_breaks <- function(lim) if(max(lim)<=6.5) 2:5 else c(2,4,6,8,10,12)
 order_scale <- function() scale_x_continuous(breaks=order_breaks,
   expand=expansion(mult=c(.05,.05)))
@@ -122,62 +131,55 @@ prepare <- function(pool) {
   list(F=F,S=S,I=I,C=C,ranges=mutate(ranges,pool=pool))
 }
 D <- list(shared=prepare('shared'),full=prepare('full'))
-# One scale per row, identical across both pools. All extrema are retained.
-limits <- function(x) {
-  x <- x[is.finite(x)]; stopifnot(length(x)>0)
-  r <- range(c(0,x)); if(diff(r)==0) r <- r+c(-.01,.01); r
+# Taxon-specific y scales: incidence and relative abundance of a taxon share one scale
+# (min/max over both representations AND both pools, zero always included); the two
+# taxa are independent. Implemented with invisible anchor points so each facet receives
+# identical limits and breaks.
+taxon_y <- function(metric, labels = waiver(), tx = NULL) {
+  values <- bind_rows(lapply(D, function(d) {
+    switch(metric,
+      A = transmute(d$S, panel, y = median),
+      A_folds = bind_rows(transmute(d$F, panel, y = delta_D2), transmute(d$S, panel, y = median)),
+      B = transmute(d$I, panel, y = abs_mean),
+      C = transmute(d$C, panel, y = link_change),
+      D = transmute(d$C, panel, y = response_change))
+  }))
+  ranges <- values |> mutate(taxon = substr(as.character(panel), 1, 2)) |> group_by(taxon) |>
+    summarise(ymin = min(c(0, y), na.rm = TRUE), ymax = max(c(0, y), na.rm = TRUE), .groups = "drop")
+  anchors <- data.frame(panel = factor(panels, levels = panels), taxon = substr(panels, 1, 2)) |>
+    left_join(ranges, by = "taxon")
+  if (!is.null(tx)) { anchors <- anchors[anchors$taxon == tx, ]; anchors$panel <- droplevels(anchors$panel) }
+  anchors <- bind_rows(transmute(anchors, panel, y = ymin), transmute(anchors, panel, y = ymax))
+  list(geom_blank(data = anchors, aes(y = y), inherit.aes = FALSE),
+    scale_y_continuous(breaks = scales::breaks_extended(4), labels = labels, expand = expansion(mult = c(.05, .08))))
 }
-med_rng <- range(unlist(lapply(D,function(d)d$S$median)))
-pad <- .15*diff(med_rng)
-L <- list(A=limits(unlist(lapply(D,function(d)d$F$delta_D2))),
-          Am=c(floor((min(med_rng,0)-pad)/.05)*.05,ceiling((max(med_rng,0)+pad)/.05)*.05),
-          B=limits(unlist(lapply(D,function(d)d$I$abs_mean))),
-          C=limits(unlist(lapply(D,function(d)d$C$link_change))),
-          D=limits(unlist(lapply(D,function(d)d$C$response_change))))
-y_scale <- function(lim,labels=waiver()) scale_y_continuous(limits=lim,
-  breaks=breaks_extended(4),labels=labels,expand=expansion(mult=c(.045,.065)))
 
 # A: paired held-out improvement. Transparent individual fold points (not CIs),
 # slight horizontal dodge purely for legibility. Median lines at true orders.
-make_A <- function(d, folds=FALSE, show_x=FALSE) {
-  # Main figure: medians only. Supplement (folds=TRUE): all fold values, nothing clipped.
-  # Each of the four columns (taxon x representation) has its OWN y range, from its own
-  # values (medians; plus fold values in the supplement), zero always included. To keep the
-  # panel geometry identical to B-D, values are mapped linearly to [0,1] within each column
-  # (layout only; no value is altered) and gridlines/tick labels are drawn at the true values
-  # inside the panels.
-  rng <- lapply(panels,function(pn){
-    v <- d$S$median[d$S$panel==pn]; if(folds) v <- c(v,d$F$delta_D2[d$F$panel==pn])
-    r <- range(c(0,v)); pd <- (if(folds) .06 else .12)*diff(r); r+c(-pd,pd) })
-  names(rng) <- panels
-  tf <- function(y,pn) { lo <- vapply(as.character(pn),function(q)rng[[q]][1],0); hi <- vapply(as.character(pn),function(q)rng[[q]][2],0); (y-lo)/(hi-lo) }
-  grd <- do.call(rbind,lapply(panels,function(pn){ r <- rng[[pn]]; b <- breaks_extended(5)(r); sp <- diff(r); b <- b[b>=r[1]+.03*sp & b<=r[2]-.10*sp]
-    data.frame(panel=factor(pn,levels=panels),v=b,y=tf(b,pn),label=label_number(accuracy=.01,trim=TRUE)(b)) }))
-  Fd <- d$F; Fd$y <- tf(Fd$delta_D2,Fd$panel); Sd <- d$S; Sd$y <- tf(Sd$median,Sd$panel)
-  zr <- data.frame(panel=factor(panels,levels=panels),y=tf(rep(0,4),panels))
-  p <- ggplot()+geom_hline(data=grd,aes(yintercept=y),colour=grid_col,linewidth=.25)+
-    geom_hline(data=zr,aes(yintercept=y),colour='#A2AAAC',linewidth=.35)
-  if(folds) p <- p+geom_point(data=Fd,aes(order,y,colour=position,shape=position),
-      position=position_dodge(width=.23),size=1.05,alpha=.45,show.legend=FALSE)
-  p <- p+
-    geom_line(data=Sd,aes(order,y,colour=position,linetype=position),linewidth=.85)+
-    geom_point(data=Sd,aes(order,y,colour=position,shape=position),size=1.65)+
-    geom_label(data=grd,aes(x=-Inf,y=y,label=label),hjust=-.1,vjust=-.2,size=2.5,colour=ink,fill=NA,linewidth=0,label.padding=grid::unit(.5,'mm'))+
-    facets()+order_scale()+scale_y_continuous(limits=c(0,1),breaks=NULL,expand=expansion(mult=0))+
-    scale_colour_manual(values=contrast_col)+
-    scale_shape_manual(values=c('Linear position'=16,'Nonlinear position'=17))+
-    scale_linetype_manual(values=c('Linear position'='solid','Nonlinear position'='42'))+
-    guides(colour=guide_legend(nrow=1),shape=guide_legend(nrow=1),linetype=guide_legend(nrow=1))+
-    labs(tag='A',y=expression(atop('Paired held-out '*Delta*D^2,'vs spread only')),x=if(show_x) 'Zeta order, k' else NULL,
-      colour=NULL,shape=NULL,linetype=NULL)+base+
-    theme(axis.text.y=element_blank(),axis.ticks.y=element_blank(),axis.ticks.length.y=grid::unit(0,'mm'),panel.grid.major.y=element_blank())
-  if(show_x) p else p+no_x
+make_A <- function(d, tx, folds = FALSE, show_x = FALSE) {
+  d <- sub_tx(d, tx)
+  p <- ggplot() + zero
+  if (folds) {
+    p <- p + geom_point(data = d$F, aes(order, delta_D2, colour = position, shape = position),
+      position = position_dodge(width = .23), size = 1.05, alpha = .38, show.legend = FALSE)
+  }
+  p <- p +
+    geom_line(data = d$S, aes(order, median, colour = position, linetype = position), linewidth = .85) +
+    geom_point(data = d$S, aes(order, median, colour = position, shape = position), size = 1.65) +
+    facets() + order_scale() + taxon_y(if (folds) "A_folds" else "A", tx = tx) +
+    scale_colour_manual(values = contrast_col) +
+    scale_shape_manual(values = c("Linear position" = 16, "Nonlinear position" = 17)) +
+    scale_linetype_manual(values = c("Linear position" = "solid", "Nonlinear position" = "42")) +
+    labs(tag = "A", y = expression(atop("Paired held-out " * Delta * D^2, "vs spread only")),
+      x = if (show_x) "Zeta order, k" else NULL, colour = NULL, shape = NULL, linetype = NULL) + base
+  if (show_x) p else p + no_x
 }
 # B: absolute, signed Shapley/Owen allocations from the nonlinear position fit.
-make_B <- function(d) {
+make_B <- function(d, tx) {
+  d <- sub_tx(d, tx)
   ggplot(d$I,aes(order,abs_mean,colour=pred,linetype=term,group=interaction(pred,term)))+zero+
     geom_line(linewidth=.65)+geom_point(size=1.05,show.legend=FALSE)+
-    facets()+order_scale()+y_scale(L$B)+scale_colour_manual(values=pred_col)+
+    facets()+order_scale()+taxon_y('B', tx = tx)+scale_colour_manual(values=pred_col)+
     scale_linetype_manual(values=c('Spread or distance'='solid',Position='42'))+
     guides(colour=guide_legend(order=1,nrow=1,override.aes=list(linetype='solid')),
       linetype=guide_legend(order=2,nrow=1,override.aes=list(colour=ink,linetype=c('solid','42'))))+
@@ -187,13 +189,14 @@ make_B <- function(d) {
 # C/D: same fitted conditional contrast, two scales. Unlike the candidate
 # curves, the order-specific intercept does not obscure the contrast magnitude.
 # D expressed in percentage points, not relative percent change.
-make_effect <- function(d,link=TRUE) {
+make_effect <- function(d,tx,link=TRUE) {
+  d <- sub_tx(d,tx)
   v <- if(link) 'link_change' else 'response_change'
   yy <- if(link) 'Conditional change in\nlogit dissimilarity' else 'Conditional change in\ndissimilarity (pp)'
   fmt <- if(link) label_number(accuracy=.01,trim=TRUE) else function(x) label_number(accuracy=.1,trim=TRUE)(100*x)
   p <- ggplot(d$C,aes(order,.data[[v]],colour=tp_axis,linetype=tp_axis,shape=tp_axis,group=tp_axis))+zero+
     geom_line(linewidth=.75)+geom_point(size=1.65)+facets()+order_scale()+
-    y_scale(if(link)L$C else L$D,labels=fmt)+scale_colour_manual(values=tp_col)+
+    taxon_y(if(link) 'C' else 'D',labels=fmt,tx=tx)+scale_colour_manual(values=tp_col)+
     scale_linetype_manual(values=tp_type)+scale_shape_manual(values=c('TP spread'=16,'TP position'=17))+
     guides(colour=guide_legend(nrow=1),linetype=guide_legend(nrow=1),shape=guide_legend(nrow=1))+
     labs(tag=if(link)'C' else 'D',y=yy,x='Zeta order, k',colour=NULL,linetype=NULL,shape=NULL)+base+no_strip
@@ -202,7 +205,8 @@ make_effect <- function(d,link=TRUE) {
 
 # Supplemental ceiling diagnostic (not a new analysis). Both TP axes have
 # separately computed mean fitted dissimilarity over their common grids.
-make_ceiling <- function(d) {
+make_ceiling <- function(d, tx) {
+  d <- sub_tx(d, tx)
   ggplot(d$C,aes(order,mean_dissimilarity,colour=tp_axis,linetype=tp_axis,shape=tp_axis,group=tp_axis))+
     geom_hline(yintercept=1,colour=grey,linetype='dotted',linewidth=.5)+
     geom_line(linewidth=.7)+geom_point(size=1.5)+facets()+order_scale()+
@@ -211,8 +215,12 @@ make_ceiling <- function(d) {
     scale_shape_manual(values=c('TP spread'=16,'TP position'=17))+
     labs(y='Mean fitted\ndissimilarity',x='Zeta order, k',colour=NULL,linetype=NULL,shape=NULL)+base
 }
-stack <- function(plots,hs) wrap_plots(c(list(header),plots),ncol=1,
-  heights=grid::unit(c(6,hs),c('mm',rep('null',length(hs)))))
+nol <- theme(legend.position='none')
+rp <- function(p) p + labs(tag=NULL,y=NULL)          # right (zooplankton) plot: no tag / y title
+leg <- function(p) { g <- ggplotGrob(p + theme(legend.position='bottom')); i <- which(g$layout$name=='guide-box-bottom')
+  stopifnot(length(i)==1); wrap_elements(full=g$grobs[[i]]) }
+WID <- grid::unit(c(1.015,1),'null')
+mm <- function(...) grid::unit(c(...),'mm')
 export <- function(p,name,h) {
   for(ext in c('pdf','svg','png')) {
     device <- switch(ext,pdf=grDevices::cairo_pdf,svg=svglite::svglite,png='png')
@@ -220,19 +228,39 @@ export <- function(p,name,h) {
   }
 }
 dump <- function(d,name,suffix) write.csv(d,file.path(out_dir,paste0(name,'_',suffix,'.csv')),row.names=FALSE)
+# Verify: within each taxon plot the two facets (incidence, relative abundance) share identical y ranges and breaks.
+check_scales <- function(p) {
+  pp <- ggplot_build(p)$layout$panel_params
+  stopifnot(length(pp) == 2,
+    isTRUE(all.equal(pp[[1]]$y.range, pp[[2]]$y.range)),
+    isTRUE(all.equal(pp[[1]]$y$get_breaks(), pp[[2]]$y$get_breaks())))
+}
+for (d in D) for (tx in c('BM','ZP')) {
+  check_scales(make_A(d,tx)); check_scales(make_A(d,tx,folds = TRUE)); check_scales(make_B(d,tx))
+  check_scales(make_effect(d,tx,TRUE)); check_scales(make_effect(d,tx,FALSE))
+}
+# The y ranges of the two taxa are independent, and identical across pools (see taxon_y).
 for(pool in names(D)) {
   d <- D[[pool]]
   nm <- if(pool=='shared') 'Figure5_final' else 'FigureS5_final_full_pool'
-  fig <- stack(list(make_A(d),make_B(d),make_effect(d,TRUE),make_effect(d,FALSE)),c(1.15,1.20,1,1.08))
+  A1 <- make_A(d,'BM'); A2 <- make_A(d,'ZP'); B1 <- make_B(d,'BM'); B2 <- make_B(d,'ZP')
+  C1 <- make_effect(d,'BM',TRUE); C2 <- make_effect(d,'ZP',TRUE); D1 <- make_effect(d,'BM',FALSE); D2 <- make_effect(d,'ZP',FALSE)
+  design <- 'AA\nBC\nDD\nEF\nGG\nHI\nJK\nLL'
+  fig <- wrap_plots(header, A1+nol, rp(A2)+nol, leg(A1), B1+nol, rp(B2)+nol, leg(B1), C1, rp(C2), D1+nol, rp(D2)+nol, leg(D1),
+    design=design, widths=WID, heights=grid::unit(c(6,1.15,5,1.1,11,.95,1.15,5),c('mm','null','mm','null','mm','null','null','mm')))
   export(fig,nm,H)
   dump(d$F,nm,'A_folds'); dump(d$S,nm,'A_medians'); dump(d$I,nm,'B_importance')
   dump(mutate(d$C,response_change_pp=100*response_change),nm,'CD_TP_contrasts')
   dump(d$ranges,nm,'TP_common_ranges')
   sn <- paste0('FigureS5_final_panelA_folds_',pool)
-  export(stack(list(make_A(d,folds=TRUE,show_x=TRUE)),1),sn,80)
+  F1 <- make_A(d,'BM',folds=TRUE,show_x=TRUE); F2 <- make_A(d,'ZP',folds=TRUE,show_x=TRUE)
+  export(wrap_plots(header, F1+nol, rp(F2)+nol, leg(F1), design='AA\nBC\nDD', widths=WID,
+    heights=grid::unit(c(6,1,7),c('mm','null','mm'))),sn,86)
   dump(d$F,sn,'fold_values'); dump(d$S,sn,'medians')
   cn <- paste0('FigureS5_final_ceiling_',pool)
-  export(stack(list(make_ceiling(d)),1),cn,76)
+  K1 <- make_ceiling(d,'BM'); K2 <- make_ceiling(d,'ZP')
+  export(wrap_plots(header, K1+nol, rp(K2)+nol, leg(K1), design='AA\nBC\nDD', widths=WID,
+    heights=grid::unit(c(6,1,7),c('mm','null','mm'))),cn,80)
   dump(d$C,cn,'values')
   message('Saved ',nm,' and ',cn)
 }

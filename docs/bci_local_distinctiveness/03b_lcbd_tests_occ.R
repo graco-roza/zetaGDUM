@@ -1,0 +1,5 @@
+# 03b_lcbd_tests_occ.R: permutation tests of the occurrence LCBD (Hellinger transformation of presence-absence), 99,999 permutations, Holm over 1250 quadrats. Usage: CENSUS=1985_tree Rscript 03b_lcbd_tests_occ.R
+.libPaths(c(Sys.getenv("ZG_LIB6"), .libPaths())); suppressMessages({library(adespatial); library(dplyr)}); B <- readRDS("out/bci_matrices.rds"); h <- B$habitat; nm <- Sys.getenv("CENSUS", "1985_tree"); NP <- as.integer(Sys.getenv("NPERM", "99999"))
+x <- B$mat[[nm]]; x <- 1 * (x[, colSums(x) > 0] > 0); set.seed(2019); t0 <- Sys.time(); bd <- beta.div(x, method = "hellinger", nperm = NP, adj = TRUE, save.D = FALSE); cat(nm, "elapsed", format(Sys.time() - t0), "\n")
+d <- data.frame(set = nm, quad = rownames(x), habitat = h$habitat[match(rownames(x), h$quad)], LCBD_occ = bd$LCBD, p = bd$p.LCBD, p_holm = bd$p.adj); write.csv(d, sprintf("out/lcbd_tests_occ_%s.csv", nm), row.names = FALSE)
+cat("significant p<=0.05:", sum(d$p <= .05), " Holm:", sum(d$p_holm <= .05), " swamp sig p:", sum(d$p[d$habitat == "swamp"] <= .05), " swamp Holm:", sum(d$p_holm[d$habitat == "swamp"] <= .05), "\n"); print(table(d$habitat[d$p_holm <= .05]))

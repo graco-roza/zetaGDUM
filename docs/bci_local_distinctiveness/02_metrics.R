@@ -12,13 +12,15 @@ for (nm in names(B$mat)) { x <- B$mat[[nm]]; x <- x[, colSums(x) > 0, drop = FAL
   chk[[nm]] <- data.frame(set = nm, own_vs_adespatial_max_abs_diff = max(abs(hel[["LCBD"]] - bd$LCBD)), BDtotal_own = hel$BDtotal, BDtotal_adespatial = bd$beta[["BDtotal"]], n_sig_p05 = sum(bd$p.LCBD <= .05), n_sig_holm = sum(bd$p.adj <= .05), swamp_sig_p05 = sum(bd$p.LCBD[h$habitat == "swamp"] <= .05), swamp_sig_holm = sum(bd$p.adj[h$habitat == "swamp"] <= .05))
   # incidence LCBD: Sorensen-based (Legendre & De Caceres 2013) on presence-absence
   bdi <- beta.div(1 * (x > 0), method = "sorensen", nperm = 0, save.D = FALSE)
+  pa <- 1 * (x > 0); heo <- lcbd_hel(pa); set.seed(1); bdo <- beta.div(pa, method = "hellinger", sqrt.D = FALSE, nperm = NPERM, adj = TRUE, save.D = FALSE)
+  chk[[nm]]$occ_own_vs_adespatial_max_abs_diff <- max(abs(heo$LCBD - bdo$LCBD)); chk[[nm]]$BDtotal_occ <- heo$BDtotal; chk[[nm]]$n_sig_p05_occ <- sum(bdo$p.LCBD <= .05); chk[[nm]]$swamp_sig_p05_occ <- sum(bdo$p.LCBD[h$habitat == "swamp"] <= .05)
   # --- exact LCZD
   lr <- zeta_lczd(x, K, "relative"); li <- zeta_lczd(x, K, "incidence")
   # --- retention over all orders
   t0 <- Sys.time(); rr <- zeta_local_retention(x, "relative", max_order = NULL); ro <- zeta_local_retention(x, "occurrence", max_order = NULL); cat("retention", format(Sys.time() - t0), "\n")
   chk[[nm]]$T_vs_Tfull_rel <- max(abs(rr$summary$T - rr$summary$T_full), na.rm = TRUE); chk[[nm]]$T_vs_Tfull_occ <- max(abs(ro$summary$T - ro$summary$T_full), na.rm = TRUE)
   site <- data.frame(set = nm, quad = rownames(x), x_m = h$x[match(rownames(x), h$quad)], y_m = h$y[match(rownames(x), h$quad)], habitat = h$habitat[match(rownames(x), h$quad)], individuals = rowSums(x), richness = rowSums(x > 0),
-                     LCBD_hel = bd$LCBD, p_LCBD = bd$p.LCBD, p_LCBD_holm = bd$p.adj, LCBD_sorensen = bdi$LCBD, T_rel = rr$summary$T, T_plus_rel = rr$summary$T_plus, T_full_rel = rr$summary$T_full, T_occ = ro$summary$T, T_plus_occ = ro$summary$T_plus, T_full_occ = ro$summary$T_full,
+                     LCBD_hel = bd$LCBD, p_LCBD = bd$p.LCBD, p_LCBD_holm = bd$p.adj, LCBD_sorensen = bdi$LCBD, LCBD_hel_occ = bdo$LCBD, p_LCBD_occ = bdo$p.LCBD, T_rel = rr$summary$T, T_plus_rel = rr$summary$T_plus, T_full_rel = rr$summary$T_full, T_occ = ro$summary$T, T_plus_occ = ro$summary$T_plus, T_full_occ = ro$summary$T_full,
                      zeta2_rel = rr$profile[, 2], zeta2_occ = ro$profile[, 2])
   for (k in K) { a <- lr[lr$order == k, ]; b <- li[li$order == k, ]; site[[paste0("LCZD_rel_", k)]] <- a$LCZD; site[[paste0("LCZD_inc_", k)]] <- b$LCZD; site[[paste0("ED_rel_", k)]] <- a$expected_dissimilarity; site[[paste0("ED_inc_", k)]] <- b$expected_dissimilarity }
   res[[nm]] <- site; prof[[nm]] <- list(relative = rr$profile, occurrence = ro$profile, loss_rel = rr$loss) }

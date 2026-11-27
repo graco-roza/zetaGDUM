@@ -6,6 +6,7 @@
 #   Rscript figure2_rarity.R figures figure2_summary.csv figure2_balanced_forms.csv
 # Optional summary CSV: one row per scenario with columns scenario, w_occ, w_ab, ratio; optional w_occ_lo/hi, w_ab_lo/hi, ratio_lo/hi.
 # Optional balanced CSV: rows for forms Lr-Bn-La and Lr-Bn-Sa with w_occ, w_ab and optional *_lo/_hi.
+# No panel titles or subtitles (the dashed reference lines and the bar colour rule belong in the caption: 70% of the species pool in A, 1 = equal effective numbers in B, 12.5% of species per form in C; bar orange when abundance > incidence).
 # Dumbbell version: incidence and relative abundance share one row per form (no vertical offset); the bar between them is coloured by the direction of the change.
 # Edits to the original script: (1) third argument for the balanced-pool intervals and interval bars in panel C; (2) the shaded band now covers the four large-range forms (ymin 5.5; it was 4.5 and also shaded 'Small / Broad / High'); (3) one legend instead of two; (4) wider right margin in A so '100%' does not touch panel B. Everything else is unchanged.
 
@@ -126,8 +127,7 @@ A <- ggplot() +
                                limits = c(0, 1.03), expand = c(0, 0)) +
   scale_colour_manual(values = pal, drop = FALSE) + scale_fill_manual(values = pal, drop = FALSE) +
   scale_shape_manual(values = c("Incidence" = 21, "Relative abundance" = 24)) +
-  labs(title = "Dominant rarity form", subtitle = "Dashed line: 70% of the species pool\nBar: orange if abundance > incidence, petrol if lower",
-       x = "Share of shared composition", y = "Range / niche / abundance") + th +
+  labs(x = "Share of shared composition", y = "Range / niche / abundance") + th +
   guides(colour = "none", fill = "none", shape = "none") + theme(plot.margin = margin(4, 14, 4, 5))
 
 # B. Effective number of contributing species (abundance/incidence).
@@ -143,8 +143,7 @@ B <- ggplot(s, aes(ratio, row)) +
   geom_text(aes(label = label_ratio), hjust = -.5, size = 2.6, colour = ink) +
   scale_y_continuous(limits = c(.55, 9.45), breaks = 9:1, expand = c(0, 0)) +
   scale_x_continuous(limits = c(0, 1.12), breaks = c(0, .25, .5, .75, 1), expand = c(0, 0)) +
-  labs(title = "Concentration of sharing", subtitle = "1 = equal effective numbers",
-       x = "Effective species number ratio", y = NULL) + th +
+  labs(x = "Effective species number ratio", y = NULL) + th +
   theme(axis.text.y = element_blank(), axis.ticks.y = element_blank())
 
 # C. Same range and niche, opposite local abundance in the balanced pool.
@@ -167,8 +166,7 @@ C <- ggplot() +
   scale_x_continuous(breaks = seq(0, 1, .25), labels = pct, limits = c(0, 1.03), expand = c(0, 0)) +
   scale_colour_manual(values = pal, drop = FALSE) + scale_fill_manual(values = pal, drop = FALSE) +
   scale_shape_manual(values = c("Incidence" = 21, "Relative abundance" = 24)) +
-  labs(title = "Balanced species pool", subtitle = "Two selected forms; dashed line: 12.5% of species per form",
-       x = "Share of shared composition", y = NULL) + th
+  labs(x = "Share of shared composition", y = NULL) + th
 
 fig <- (A | B) / C +
   plot_layout(widths = c(1.55, 1), heights = c(3.2, 1.25), guides = "collect") +

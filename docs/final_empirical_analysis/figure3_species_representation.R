@@ -32,7 +32,7 @@ boot <- read_input("fig3_bootstrap_draws")
 perm <- read_input("fig3_permutation_draws")
 
 community_levels <- c("BCI trees (1985)", "EPA macroinvertebrates", "EPA zooplankton")
-community_labels <- c("BCI trees", "EPA macroinvertebrates", "EPA zooplankton")
+community_labels <- c("BCI trees (1985)", "EPA macroinvertebrates", "EPA zooplankton")
 occ_cols <- c("occ_w_sim_inc", "occ_w_sim_rel", "occ_w_dis_inc", "occ_w_dis_rel")
 required <- c("community", "order", occ_cols, "neff_sim_inc", "neff_sim_rel", "zeta_rel", "D_O", "D_H")
 stopifnot(all(required %in% names(obs)), all(c("community", "order", "draw", occ_cols) %in% names(boot)),
@@ -101,7 +101,7 @@ C_data <- bind_rows(
 ink <- "#252B2D"; muted <- "#677378"; grid_col <- "#E5E9E9"
 col_inc <- "#246878"; col_ab <- "#C45C19"; col_null <- "#777D81"; col_shared <- "#A8B89C"
 repr_pal <- c("Incidence" = col_inc, "Relative abundance" = col_ab)
-comp_pal <- c("Shared abundance" = col_shared, "Occupancy-associated" = col_inc,
+comp_pal <- c("Shared abundance" = col_shared, "Occupancy-associated" = "#615A83",
               "Abundance heterogeneity" = col_ab)
 base <- theme_minimal(base_size = 9, base_family = "sans") +
   theme(text = element_text(colour = ink),
@@ -115,8 +115,8 @@ base <- theme_minimal(base_size = 9, base_family = "sans") +
         panel.spacing.x = grid::unit(4, "mm"),
         legend.position = "bottom", legend.title = element_blank(),
         legend.text = element_text(size = 7.5), legend.key.width = grid::unit(7, "mm"),
-        legend.key.height = grid::unit(3.5, "mm"),
-        legend.spacing.x = grid::unit(1.5, "mm"), legend.margin = margin(1, 0, 0, 0),
+        legend.key.height = grid::unit(2.8, "mm"),
+        legend.spacing.x = grid::unit(1.5, "mm"), legend.margin = margin(0, 0, 0, 0), legend.box.spacing = grid::unit(2, "mm"), legend.box.margin = margin(0, 0, 0, 0),
         plot.margin = margin(3, 4, 2, 3), plot.tag = element_text(size = 11, face = "bold"))
 # Different informative orders require free x axes, not free y axes.
 # All rows use the same data keys and the same log-order breaks.
@@ -133,10 +133,10 @@ no_strip <- theme(strip.text = element_blank())
 A <- ggplot(A_data, aes(order, value, colour = representation,
                         linetype = contribution, group = interaction(representation, contribution))) +
   geom_ribbon(aes(ymin = lo, ymax = hi, fill = representation), colour = NA, alpha = .10, show.legend = FALSE) +
-  geom_line(linewidth = .65) + geom_point(size = 1.3, show.legend = FALSE) +
+  geom_line(linewidth = .65) + geom_point(size = 1.04, show.legend = FALSE) +
   facets() + xscale() + scale_y_continuous(breaks = seq(0, 1, .25), labels = label_percent(accuracy = 1), limits = c(0, 1.02), expand = expansion(mult = c(.01, .02))) +
   scale_colour_manual(values = repr_pal) + scale_fill_manual(values = repr_pal, guide = "none") +
-  scale_linetype_manual(values = c("Similarity" = "dashed", "Dissimilarity" = "solid")) +
+  scale_linetype_manual(values = c("Similarity" = "84", "Dissimilarity" = "solid")) +   # longer dash (8 on, 4 off) for similarity
   labs(x = NULL, y = "Contribution-weighted\noccupancy", colour = NULL, linetype = NULL) + base + no_x +
   guides(colour = guide_legend(order = 1, override.aes = list(linetype = "solid")),
          linetype = guide_legend(order = 2, override.aes = list(colour = ink)))
@@ -145,26 +145,27 @@ A <- ggplot(A_data, aes(order, value, colour = representation,
 # Separate observed incidence and abundance with the same colors as A.
 B <- ggplot() +
   geom_ribbon(data = N_data, aes(order, ymin = neff_lo, ymax = neff_hi), fill = col_null, alpha = .20) +
-  geom_line(data = N_data, aes(order, neff_med, colour = "Within-site shuffle"), linewidth = .7, linetype = "dashed") +
   geom_line(data = B_data, aes(order, value, colour = representation), linewidth = .65) +
   geom_point(data = B_data, aes(order, value, colour = representation), size = 1.3, show.legend = FALSE) +
-  facets() + xscale() + scale_y_log10(breaks = c(1, 3, 10, 30, 100), labels = label_number(accuracy = 1)) +
-  scale_colour_manual(values = c(repr_pal, "Within-site shuffle" = col_null),
-                      breaks = c("Incidence", "Relative abundance", "Within-site shuffle")) +
+  # shuffled-abundance median drawn above the observed curves, dotted in near-black to contrast with both
+  geom_line(data = N_data, aes(order, neff_med, colour = "Shuffled abundance"), linewidth = .8, linetype = "dotted") +
+  facets() + xscale() + scale_y_log10(breaks = c(1, 3, 10, 30, 100), labels = label_number(accuracy = 1), limits = c(1, NA), expand = expansion(mult = c(0, .04))) +
+  scale_colour_manual(values = c(repr_pal, "Shuffled abundance" = ink),
+                      breaks = c("Incidence", "Relative abundance", "Shuffled abundance")) +
   labs(x = NULL, y = "Effective number of taxa\ncontributing to similarity", colour = NULL) + base + no_x + no_strip +
-  guides(colour = guide_legend(override.aes = list(linetype = c("solid", "solid", "dashed"))))
+  guides(colour = guide_legend(override.aes = list(linetype = c("solid", "solid", "dotted"))))
 
 # C. Exact decomposition of a unit of relative abundance.
 C <- ggplot(C_data, aes(order, ymin = lo, ymax = hi, fill = component, group = component)) +
   geom_ribbon(colour = "white", linewidth = .20) +
-  geom_line(data = N_data, aes(order, DH_med, linetype = "Shuffled heterogeneity"), inherit.aes = FALSE,
+  geom_line(data = N_data, aes(order, DH_med, linetype = "Heterogeneity after shuffling"), inherit.aes = FALSE,
             colour = ink, linewidth = .6) +
   facets() + xscale() + scale_y_continuous(breaks = seq(0, 1, .25), labels = label_percent(accuracy = 1),
                                            limits = c(0, 1), expand = c(0, 0)) +
-  scale_fill_manual(values = comp_pal) + scale_linetype_manual(values = c("Shuffled heterogeneity" = "dashed")) +
-  labs(x = "Zeta order, k (number of sites)", y = "Partition of\nrelative abundance", fill = NULL, linetype = NULL) + base + no_strip +
+  scale_fill_manual(values = comp_pal) + scale_linetype_manual(values = c("Heterogeneity after shuffling" = "dashed")) +
+  labs(x = "Zeta order, k (number of sites)", y = "Relative-abundance\npartition", fill = NULL, linetype = NULL) + base + no_strip +
   guides(fill = guide_legend(order = 1, nrow = 1), linetype = guide_legend(order = 2, nrow = 1)) +
-  theme(legend.box = "vertical")
+  theme(legend.box = "horizontal")
 
 fig <- (A / B / C) + plot_layout(heights = c(1.13, 1, 1.12)) +
   plot_annotation(tag_levels = "A", theme = theme(plot.tag = element_text(size = 11, face = "bold")))

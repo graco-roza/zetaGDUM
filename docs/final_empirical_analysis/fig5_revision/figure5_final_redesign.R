@@ -127,7 +127,10 @@ limits <- function(x) {
   x <- x[is.finite(x)]; stopifnot(length(x)>0)
   r <- range(c(0,x)); if(diff(r)==0) r <- r+c(-.01,.01); r
 }
+med_rng <- range(unlist(lapply(D,function(d)d$S$median)))
+pad <- .15*diff(med_rng)
 L <- list(A=limits(unlist(lapply(D,function(d)d$F$delta_D2))),
+          Am=c(floor((min(med_rng,0)-pad)/.05)*.05,ceiling((max(med_rng,0)+pad)/.05)*.05),
           B=limits(unlist(lapply(D,function(d)d$I$abs_mean))),
           C=limits(unlist(lapply(D,function(d)d$C$link_change))),
           D=limits(unlist(lapply(D,function(d)d$C$response_change))))
@@ -136,19 +139,27 @@ y_scale <- function(lim,labels=waiver()) scale_y_continuous(limits=lim,
 
 # A: paired held-out improvement. Transparent individual fold points (not CIs),
 # slight horizontal dodge purely for legibility. Median lines at true orders.
-make_A <- function(d) {
-  ggplot()+zero+
-    geom_point(data=d$F,aes(order,delta_D2,colour=position,shape=position),
-      position=position_dodge(width=.23),size=1.05,alpha=.38,show.legend=FALSE)+
+make_A <- function(d, folds=FALSE, show_x=FALSE) {
+  # Main figure: medians only, y range from all medians of both pools (padded),
+  # breaks every 0.05. Supplement (folds=TRUE): all fold values, nothing clipped.
+  lim <- if(folds) L$A else L$Am
+  step <- if(folds) .25 else .05
+  ysc <- scale_y_continuous(limits=lim,breaks=seq(ceiling(lim[1]/step)*step,floor(lim[2]/step)*step,by=step),
+    labels=label_number(accuracy=if(folds) .01 else .01,trim=TRUE),expand=expansion(mult=if(folds) .04 else 0))
+  p <- ggplot()+zero
+  if(folds) p <- p+geom_point(data=d$F,aes(order,delta_D2,colour=position,shape=position),
+      position=position_dodge(width=.23),size=1.05,alpha=.45,show.legend=FALSE)
+  p <- p+
     geom_line(data=d$S,aes(order,median,colour=position,linetype=position),linewidth=.85)+
     geom_point(data=d$S,aes(order,median,colour=position,shape=position),size=1.65)+
-    facets()+order_scale()+y_scale(L$A)+
+    facets()+order_scale()+ysc+
     scale_colour_manual(values=contrast_col)+
     scale_shape_manual(values=c('Linear position'=16,'Nonlinear position'=17))+
     scale_linetype_manual(values=c('Linear position'='solid','Nonlinear position'='42'))+
     guides(colour=guide_legend(nrow=1),shape=guide_legend(nrow=1),linetype=guide_legend(nrow=1))+
-    labs(tag='A',y=expression('Paired held-out '*Delta*D^2*'\nvs spread only'),x=NULL,
-      colour=NULL,shape=NULL,linetype=NULL)+base+no_x
+    labs(tag='A',y=expression(atop('Paired held-out '*Delta*D^2,'vs spread only')),x=if(show_x) 'Zeta order, k' else NULL,
+      colour=NULL,shape=NULL,linetype=NULL)+base
+  if(show_x) p else p+no_x
 }
 # B: absolute, signed Shapley/Owen allocations from the nonlinear position fit.
 make_B <- function(d) {
@@ -205,6 +216,9 @@ for(pool in names(D)) {
   dump(d$F,nm,'A_folds'); dump(d$S,nm,'A_medians'); dump(d$I,nm,'B_importance')
   dump(mutate(d$C,response_change_pp=100*response_change),nm,'CD_TP_contrasts')
   dump(d$ranges,nm,'TP_common_ranges')
+  sn <- paste0('FigureS5_final_panelA_folds_',pool)
+  export(stack(list(make_A(d,folds=TRUE,show_x=TRUE)),1),sn,80)
+  dump(d$F,sn,'fold_values'); dump(d$S,sn,'medians')
   cn <- paste0('FigureS5_final_ceiling_',pool)
   export(stack(list(make_ceiling(d)),1),cn,76)
   dump(d$C,cn,'values')

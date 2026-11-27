@@ -139,7 +139,7 @@ A <- ggplot(A_data, aes(order, value, colour = representation,
   scale_linetype_manual(values = c("Similarity" = "84", "Dissimilarity" = "solid")) +   # longer dash (8 on, 4 off) for similarity
   labs(x = NULL, y = "Contribution-weighted\noccupancy", colour = NULL, linetype = NULL) + base + no_x +
   guides(colour = guide_legend(order = 1, override.aes = list(linetype = "solid")),
-         linetype = guide_legend(order = 2, override.aes = list(colour = ink)))
+         linetype = guide_legend(order = 2, override.aes = list(colour = ink, linetype = c("dashed", "solid"))))
 
 # B. Show the permutation reference as a grey envelope and dashed median.
 # Separate observed incidence and abundance with the same colors as A.

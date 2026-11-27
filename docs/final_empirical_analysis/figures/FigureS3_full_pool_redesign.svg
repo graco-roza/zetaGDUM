@@ -344,7 +344,7 @@
 <line x1='209.36' y1='166.85' x2='225.23' y2='166.85' style='stroke-width: 1.39; stroke: #C45C19; stroke-linecap: butt;' />
 <text x='170.78' y='169.54' style='font-size: 7.50px;fill: #252B2D; font-family: "Arial";' textLength='32.11px' lengthAdjust='spacingAndGlyphs'>Incidence</text>
 <text x='231.70' y='169.54' style='font-size: 7.50px;fill: #252B2D; font-family: "Arial";' textLength='66.31px' lengthAdjust='spacingAndGlyphs'>Relative abundance</text>
-<line x1='304.25' y1='166.85' x2='320.12' y2='166.85' style='stroke-width: 1.39; stroke: #252B2D; stroke-dasharray: 14.80,7.40; stroke-linecap: butt;' />
+<line x1='304.25' y1='166.85' x2='320.12' y2='166.85' style='stroke-width: 1.39; stroke: #252B2D; stroke-dasharray: 7.40,7.40; stroke-linecap: butt;' />
 <line x1='363.50' y1='166.85' x2='379.37' y2='166.85' style='stroke-width: 1.39; stroke: #252B2D; stroke-linecap: butt;' />
 <text x='326.59' y='169.54' style='font-size: 7.50px;fill: #252B2D; font-family: "Arial";' textLength='30.44px' lengthAdjust='spacingAndGlyphs'>Similarity</text>
 <text x='385.84' y='169.54' style='font-size: 7.50px;fill: #252B2D; font-family: "Arial";' textLength='40.03px' lengthAdjust='spacingAndGlyphs'>Dissimilarity</text>

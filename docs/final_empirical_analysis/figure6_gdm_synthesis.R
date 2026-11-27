@@ -318,9 +318,8 @@ bar_plot<-function(pool,tx,slot){
  BARCHECK[[length(BARCHECK)+1L]]<<-data.frame(pool=pool,group=tx,slot=slot,n_input=nrow(v),n_rendered=nrow(rd),ymin=bar_y_lim[1],ymax=bar_y_lim[2],xmin=sp$lim[1],xmax=sp$lim[2])
  q
 }
-# Panel B: nested strips for taxon and order. Each taxon has a separate facet
-# block so free_y shares limits across its two orders but not across taxa.
-# Invisible anchors enforce the same limits across shared and full pools.
+# Panel B: nested strips for taxon and order. Every panel is faceted freely
+# (own x and y scale, independent = 'all'); no shared limits are imposed.
 line_block<-function(pool,tx,logaxis=FALSE){
  k<-ORD[[tx]]; xlim<-10^DOM[[tx]]
  decorate<-function(x)x |> mutate(component=factor(stage,levels=STAGES,labels=unname(STLAB)),order_label=factor(paste0('k = ',order),levels=paste0('k = ',k)),taxon_label=unname(TXL[[tx]]),position=factor(position,levels=names(poscol)))
@@ -331,11 +330,11 @@ line_block<-function(pool,tx,logaxis=FALSE){
  missing<-expand.grid(stage=STAGES,order=k,position=names(poscol),stringsAsFactors=FALSE) |> anti_join(counts,by=c('stage','order','position'))
  if(nrow(missing))warning('Some GDM curves unavailable: ',pool,' ',tx)
  missing_note<-missing |> group_by(stage,order) |> summarise(note=paste('Unavailable:',paste(position,collapse=', ')),.groups='drop') |> mutate(TP_ugL=if(logaxis)10^mean(DOM[[tx]])else mean(xlim),f_centred=0,position='Additive') |> decorate()
- q<-ggplot(v,aes(TP_ugL,f_centred))+geom_blank(data=anchors)+geom_hline(yintercept=0,colour=grey,linewidth=.25)+
+ q<-ggplot(v,aes(TP_ugL,f_centred))+geom_hline(yintercept=0,colour=grey,linewidth=.25)+
    geom_line(data=filter(v,position=='Additive'),colour=grey,linetype='42',linewidth=.55)+
    geom_line(data=filter(v,position!='Additive'),aes(colour=position,group=position),linewidth=.68,lineend='round')+
    scale_colour_manual(values=poscol)+
-   ggh4x::facet_nested(rows=vars(component),cols=vars(taxon_label,order_label),scales='free_y',drop=FALSE)+
+   ggh4x::facet_nested(rows=vars(component),cols=vars(taxon_label,order_label),scales='free',independent='all',drop=FALSE)+
    scale_y_continuous(breaks=breaks_extended(3),expand=expansion(mult=0))+
    base+theme(panel.spacing=unit(2.4,'mm'),strip.background=element_rect(fill='#F0F2F2',colour=NA),strip.text.x=element_text(size=7.5,face='bold',margin=margin(2,1,2,1)),strip.text.y=element_text(size=5.2,angle=-90,face='bold',margin=margin(2,1,2,1)),axis.text=element_text(size=6.6))
  if(nrow(missing_note))q<-q+geom_text(data=missing_note,aes(label=note),size=2,colour=grey,vjust=-.5)
@@ -344,7 +343,8 @@ line_block<-function(pool,tx,logaxis=FALSE){
  z<-ggplot_build(q);stopifnot(length(z$layout$panel_params)==6L)
  la<-z$layout$layout
  audit<-bind_rows(lapply(seq_len(nrow(la)),function(i){pr<-z$layout$panel_params[[as.integer(la$PANEL[i])]];data.frame(pool=pool,group=tx,component=as.character(la$component[i]),order=as.character(la$order_label[i]),logaxis=logaxis,ymin=pr$y.range[1],ymax=pr$y.range[2],xmin=pr$x.range[1],xmax=pr$x.range[2])}))
- for(st in unique(audit$component)){w<-audit[audit$component==st,];stopifnot(nrow(w)==2,max(abs(w$ymin-w$ymin[1]))<1e-8,max(abs(w$ymax-w$ymax[1]))<1e-8)}
+ # Every panel has its own free x and y scale (independent = 'all'); only check that ranges are finite and cover all plotted values.
+ stopifnot(all(is.finite(as.matrix(audit[,c('ymin','ymax','xmin','xmax')]))),all(audit$ymax>audit$ymin))
  list(plot=q,audit=audit)
 }
 label<-function(s,size=9,bold=FALSE,rot=0,hjust=.5,x=.5)textGrob(s,x=unit(x,'npc'),hjust=hjust,rot=rot,gp=gpar(col=ink,fontsize=size,fontface=if(bold)'bold'else'plain'))

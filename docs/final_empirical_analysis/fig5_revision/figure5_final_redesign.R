@@ -140,28 +140,37 @@ y_scale <- function(lim,labels=waiver()) scale_y_continuous(limits=lim,
 # A: paired held-out improvement. Transparent individual fold points (not CIs),
 # slight horizontal dodge purely for legibility. Median lines at true orders.
 make_A <- function(d, folds=FALSE, show_x=FALSE) {
-  # Main figure: medians only, y range from all medians of both pools (padded),
-  # breaks every 0.05. Supplement (folds=TRUE): all fold values, nothing clipped.
-  # Per-dataset scale (each pool uses only its own values).
-  if(folds) lim <- limits(c(d$F$delta_D2,d$S$median)) else {
-    mr <- range(d$S$median); pd <- .15*diff(mr)
-    lim <- c(floor((min(mr,0)-pd)/.05)*.05,ceiling((max(mr,0)+pd)/.05)*.05) }
-  step <- if(folds) .25 else .05
-  ysc <- scale_y_continuous(limits=lim,breaks=seq(ceiling(lim[1]/step)*step,floor(lim[2]/step)*step,by=step),
-    labels=label_number(accuracy=if(folds) .01 else .01,trim=TRUE),expand=expansion(mult=if(folds) .04 else 0))
-  p <- ggplot()+zero
-  if(folds) p <- p+geom_point(data=d$F,aes(order,delta_D2,colour=position,shape=position),
+  # Main figure: medians only. Supplement (folds=TRUE): all fold values, nothing clipped.
+  # Each of the four columns (taxon x representation) has its OWN y range, from its own
+  # values (medians; plus fold values in the supplement), zero always included. To keep the
+  # panel geometry identical to B-D, values are mapped linearly to [0,1] within each column
+  # (layout only; no value is altered) and gridlines/tick labels are drawn at the true values
+  # inside the panels.
+  rng <- lapply(panels,function(pn){
+    v <- d$S$median[d$S$panel==pn]; if(folds) v <- c(v,d$F$delta_D2[d$F$panel==pn])
+    r <- range(c(0,v)); pd <- (if(folds) .06 else .12)*diff(r); r+c(-pd,pd) })
+  names(rng) <- panels
+  tf <- function(y,pn) { lo <- vapply(as.character(pn),function(q)rng[[q]][1],0); hi <- vapply(as.character(pn),function(q)rng[[q]][2],0); (y-lo)/(hi-lo) }
+  grd <- do.call(rbind,lapply(panels,function(pn){ r <- rng[[pn]]; b <- breaks_extended(5)(r); sp <- diff(r); b <- b[b>=r[1]+.03*sp & b<=r[2]-.10*sp]
+    data.frame(panel=factor(pn,levels=panels),v=b,y=tf(b,pn),label=label_number(accuracy=.01,trim=TRUE)(b)) }))
+  Fd <- d$F; Fd$y <- tf(Fd$delta_D2,Fd$panel); Sd <- d$S; Sd$y <- tf(Sd$median,Sd$panel)
+  zr <- data.frame(panel=factor(panels,levels=panels),y=tf(rep(0,4),panels))
+  p <- ggplot()+geom_hline(data=grd,aes(yintercept=y),colour=grid_col,linewidth=.25)+
+    geom_hline(data=zr,aes(yintercept=y),colour='#A2AAAC',linewidth=.35)
+  if(folds) p <- p+geom_point(data=Fd,aes(order,y,colour=position,shape=position),
       position=position_dodge(width=.23),size=1.05,alpha=.45,show.legend=FALSE)
   p <- p+
-    geom_line(data=d$S,aes(order,median,colour=position,linetype=position),linewidth=.85)+
-    geom_point(data=d$S,aes(order,median,colour=position,shape=position),size=1.65)+
-    facets()+order_scale()+ysc+
+    geom_line(data=Sd,aes(order,y,colour=position,linetype=position),linewidth=.85)+
+    geom_point(data=Sd,aes(order,y,colour=position,shape=position),size=1.65)+
+    geom_label(data=grd,aes(x=-Inf,y=y,label=label),hjust=-.1,vjust=-.2,size=2.5,colour=ink,fill=NA,linewidth=0,label.padding=grid::unit(.5,'mm'))+
+    facets()+order_scale()+scale_y_continuous(limits=c(0,1),breaks=NULL,expand=expansion(mult=0))+
     scale_colour_manual(values=contrast_col)+
     scale_shape_manual(values=c('Linear position'=16,'Nonlinear position'=17))+
     scale_linetype_manual(values=c('Linear position'='solid','Nonlinear position'='42'))+
     guides(colour=guide_legend(nrow=1),shape=guide_legend(nrow=1),linetype=guide_legend(nrow=1))+
     labs(tag='A',y=expression(atop('Paired held-out '*Delta*D^2,'vs spread only')),x=if(show_x) 'Zeta order, k' else NULL,
-      colour=NULL,shape=NULL,linetype=NULL)+base
+      colour=NULL,shape=NULL,linetype=NULL)+base+
+    theme(axis.text.y=element_blank(),axis.ticks.y=element_blank(),axis.ticks.length.y=grid::unit(0,'mm'),panel.grid.major.y=element_blank())
   if(show_x) p else p+no_x
 }
 # B: absolute, signed Shapley/Owen allocations from the nonlinear position fit.

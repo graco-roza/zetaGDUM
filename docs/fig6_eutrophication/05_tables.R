@@ -1,0 +1,36 @@
+# 05_tables.R: summary tables from the replicate-level results (all CSVs in tables/)
+source("lib6.R"); dir.create("tables", FALSE); grp <- c(BM = "Macroinvertebrates", ZP = "Zooplankton", PP = "Phytoplankton")
+# ---- order information
+OI <- bind_rows(lapply(names(D), function(g) { o <- as.data.frame(readRDS(sprintf("out/orderinfo_%s.rds", g))); o$group <- g; o })) |> filter(response %in% c("relative", "occupancy", "heterogeneity"))
+oi_tab <- OI |> select(group, order, response, sharing_probability, mean_zeta_abund = abundance_zeta, response_mean, response_variance, relative_information, design_rank, design_columns, design_condition, recommended_status) |> distinct()
+write.csv(oi_tab, "tables/order_information.csv", row.names = FALSE)
+# ---- spatial validation (fold-level, averaged over combination-sampling repeats within fold)
+V <- readRDS("out/validation_folds.rds"); V <- V |> filter(converged)
+vf <- V |> filter(architecture == "coherent") |> group_by(group, chla, order, component, model, fold) |> summarise(D2 = mean(D2, na.rm = TRUE), supp = mean(supported_fraction), RMSE = mean(RMSE), .groups = "drop")
+vs <- vf |> group_by(group, chla, order, component, model) |> summarise(D2_median = median(D2), D2_min = min(D2), D2_max = max(D2), supported_fraction = mean(supp), RMSE = mean(RMSE), n_folds = n(), .groups = "drop")
+write.csv(vs, "tables/validation_summary_coherent.csv", row.names = FALSE)
+gain <- vf |> select(group, chla, order, component, model, fold, D2) |> pivot_wider(names_from = model, values_from = D2) |> mutate(position = additive - spread_only, interaction = interaction - additive, full_vs_spread = interaction - spread_only) |>
+  group_by(group, chla, order, component) |> summarise(across(c(position, interaction, full_vs_spread), list(med = median, lo = min, hi = max, pos_folds = ~mean(. > 0))), n_folds = n(), .groups = "drop")
+write.csv(gain, "tables/validation_gains.csv", row.names = FALSE)
+# coherent vs independent architecture, and repeat-to-repeat spread of fold D2 (numerical sensitivity)
+arch <- V |> filter(chla, model == "additive") |> group_by(group, order, component, architecture, fold, rep) |> summarise(D2 = mean(D2), .groups = "drop") |> group_by(group, order, component, architecture) |> summarise(D2 = median(D2), .groups = "drop") |> pivot_wider(names_from = architecture, values_from = D2) |> mutate(coherent_minus_independent = coherent - independent)
+write.csv(arch, "tables/architecture_comparison.csv", row.names = FALSE)
+rep_sd <- V |> filter(chla, architecture == "coherent") |> group_by(group, order, component, model, fold) |> summarise(sd_rep = sd(D2), .groups = "drop") |> group_by(group, order, component, model) |> summarise(median_sd_across_repeats = median(sd_rep), .groups = "drop")
+write.csv(rep_sd, "tables/validation_repeat_sd.csv", row.names = FALSE)
+cat("non-converged fits:", sum(!readRDS("out/validation_folds.rds")$converged), "of", nrow(readRDS("out/validation_folds.rds")), "\n")
+# ---- penalty sensitivity
+Pn <- readRDS("out/penalty_folds.rds"); pw <- Pn |> filter(converged) |> group_by(group, order, component, pen, model, fold) |> summarise(D2 = mean(D2, na.rm = TRUE), sup = mean(supported_D2, na.rm = TRUE), .groups = "drop") |> pivot_wider(names_from = model, values_from = c(D2, sup)) |> mutate(gain = D2_interaction - D2_additive)
+pen <- pw |> group_by(group, order, component, pen) |> summarise(gain_median = median(gain), gain_min = min(gain), gain_max = max(gain), folds_positive = mean(gain > 0), .groups = "drop"); write.csv(pen, "tables/interaction_penalty_sensitivity.csv", row.names = FALSE)
+# ---- importance
+pick <- function(f, tag) { I <- readRDS(f); I$penalty <- tag; I }
+I <- bind_rows(pick("out/importance_folds.rds", "0.01"), pick("out/importance_folds_pen1e-4.rds", "1e-4"))
+pred <- I |> group_by(group, chla, penalty, order, seed, fold, response, predictor) |> summarise(absolute = if (all(is.na(absolute))) NA_real_ else sum(absolute), D2 = first(D2), .groups = "drop")
+pred_fold <- pred |> group_by(group, chla, penalty, order, fold, response, predictor) |> summarise(absolute = mean(absolute, na.rm = TRUE), D2 = mean(D2), .groups = "drop") |> mutate(absolute = ifelse(is.nan(absolute), NA, absolute))
+imp <- pred_fold |> group_by(group, chla, penalty, order, response, predictor) |> summarise(absolute_mean = mean(absolute, na.rm = TRUE), abs_lo = min(absolute, na.rm = TRUE), abs_hi = max(absolute, na.rm = TRUE), n_valid_folds = sum(!is.na(absolute)), n_failed_folds = sum(is.na(absolute)), heldout_D2 = mean(D2), .groups = "drop") |> mutate(across(c(absolute_mean, abs_lo, abs_hi), ~ ifelse(is.finite(.), ., NA)))
+tot <- pred_fold |> group_by(group, chla, penalty, order, response, fold) |> summarise(tot = sum(absolute, na.rm = TRUE), .groups = "drop"); write.csv(imp, "tables/importance_predictor.csv", row.names = FALSE)
+terms <- I |> group_by(group, chla, penalty, order, response, predictor, term, fold, seed) |> summarise(a = mean(absolute, na.rm = TRUE), .groups = "drop") |> group_by(group, chla, penalty, order, response, predictor, term) |> summarise(absolute_mean = mean(a, na.rm = TRUE), .groups = "drop"); write.csv(terms, "tables/importance_terms.csv", row.names = FALSE)
+cat("failed-coalition (NA) fold x seed x term allocations:\n"); print(I |> filter(is.na(absolute)) |> count(group, chla, penalty, predictor))
+# ---- collinearity (log10 scale), prediction environment
+cl <- bind_rows(lapply(names(D), function(g) { e <- get_env(D[[g]]); data.frame(group = g, pair = c("TP-TN", "TP-Chla", "TN-Chla"), r = c(cor(e$TP, e$TN), cor(e$TP, e$Chla), cor(e$TN, e$Chla))) })); write.csv(cl, "tables/collinearity.csv", row.names = FALSE)
+vif <- bind_rows(lapply(names(D), function(g) { e <- get_env(D[[g]]); r <- solve(cor(e)); data.frame(group = g, predictor = names(e), VIF = diag(r)) })); write.csv(vif, "tables/vif.csv", row.names = FALSE); print(vif |> pivot_wider(names_from = predictor, values_from = VIF))
+print(gain |> filter(chla) |> select(group, order, component, position_med, position_pos_folds, interaction_med, interaction_pos_folds) |> as.data.frame(), digits = 3)

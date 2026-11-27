@@ -142,7 +142,10 @@ y_scale <- function(lim,labels=waiver()) scale_y_continuous(limits=lim,
 make_A <- function(d, folds=FALSE, show_x=FALSE) {
   # Main figure: medians only, y range from all medians of both pools (padded),
   # breaks every 0.05. Supplement (folds=TRUE): all fold values, nothing clipped.
-  lim <- if(folds) L$A else L$Am
+  # Per-dataset scale (each pool uses only its own values).
+  if(folds) lim <- limits(c(d$F$delta_D2,d$S$median)) else {
+    mr <- range(d$S$median); pd <- .15*diff(mr)
+    lim <- c(floor((min(mr,0)-pd)/.05)*.05,ceiling((max(mr,0)+pd)/.05)*.05) }
   step <- if(folds) .25 else .05
   ysc <- scale_y_continuous(limits=lim,breaks=seq(ceiling(lim[1]/step)*step,floor(lim[2]/step)*step,by=step),
     labels=label_number(accuracy=if(folds) .01 else .01,trim=TRUE),expand=expansion(mult=if(folds) .04 else 0))

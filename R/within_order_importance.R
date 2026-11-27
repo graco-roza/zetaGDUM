@@ -99,18 +99,22 @@ ugdm_within_order_importance <- function(fit, design, y, trials = rep(1, length(
     start = fit$coef, idx = design$idx, n = design$n, order = design$order)
 }
 
-.within_importance_plan <- function(groups, permutations, exact_max) {
+.within_importance_plan <- function(groups, permutations, exact_max, interaction_last = FALSE) {
   exact_max <- .set_design_integer(exact_max, "exact_max", 0L, 8L)
+  kinds <- unlist(lapply(groups, names), use.names = FALSE)
   groups <- lapply(groups, unname)
   blocks <- lengths(groups)
   group <- rep(seq_along(groups), blocks)
   cells <- unlist(groups, recursive = FALSE, use.names = FALSE)
   cell_ids <- split(seq_along(cells), group)
   group_count <- length(groups)
+  late <- if (interaction_last) which(kinds == "interaction") else integer()
   exact <- group_count <= exact_max
   path <- function(ordering) {
-    order <- unlist(lapply(cell_ids[ordering], function(i) i[sample.int(length(i))]),
-      use.names = FALSE)
+    order <- unlist(lapply(cell_ids[ordering], function(i) {
+      early <- setdiff(i, late)
+      c(early[sample.int(length(early))], intersect(i, late))
+    }), use.names = FALSE)
     list(before = lapply(seq_along(order), function(i) order[seq_len(i - 1L)]), enter = order)
   }
   if (!exact) {
@@ -125,13 +129,14 @@ ugdm_within_order_importance <- function(fit, design, y, trials = rep(1, length(
   terms <- lapply(seq_along(cells), function(i) {
     same <- group[i]
     outer <- subset(setdiff(seq_along(groups), same))
-    inner <- subset(setdiff(cell_ids[[same]], i))
+    early <- setdiff(cell_ids[[same]], late)
+    inner <- if (i %in% late) list(early) else subset(setdiff(early, i))
     before <- unlist(lapply(outer, function(other) {
       ext <- unlist(cell_ids[other], use.names = FALSE)
       lapply(inner, function(partial) c(ext, partial))
     }), recursive = FALSE)
     outer_weight <- 1 / (group_count * choose(group_count - 1L, lengths(outer)))
-    inner_weight <- 1 / (blocks[same] * choose(blocks[same] - 1L, lengths(inner)))
+    inner_weight <- if (i %in% late) 1 else 1 / (length(early) * choose(length(early) - 1L, lengths(inner)))
     list(before = before, weight = rep(outer_weight, each = length(inner)) *
       rep(inner_weight, times = length(outer)))
   })

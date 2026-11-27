@@ -8,6 +8,8 @@ recovery for three uncertainty methods. [Within-order calibration report](MS_GDU
 
 The pre-fit information diagnostic profiles compositional and environmental variation by order. [Order-information validation](INFORMATIVE_ORDER_VALIDATION.md)
 
+The final component-model development compares independent and coherent predictions and validates an optional context-dependent design. [Final MS-GDUM validation](MS_GDUM_FINAL_VALIDATION.md)
+
 The mixture targets the same expected weighted model loss as conventional sampling. It is useful for drawing more shared sets, particularly when sharing is rare. That gain comes with lower weight-based effective sample size and sometimes a higher computational cost. The tests below evaluate numerical exactness, estimator behaviour, and sensitivity of selected manuscript results at the default targeted fraction of 0.5.
 
 ## Exhaustive verification

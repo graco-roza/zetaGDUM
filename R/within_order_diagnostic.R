@@ -5,7 +5,7 @@
 #' keep sites, model specification and ecological draw fixed. Widths
 #' describe uncertainty across ecological draws. A successful flag
 #' requires a method calibrated for the conditions of the analysis.
-#' @param fit,design Matching fitted additive MS-GDUM and its design.
+#' @param fit,design Matching fitted additive MS-GDUM or component model and its design.
 #' @param y Dissimilarity for each set.
 #' @param integration Sites-fixed repeat integrations by predictor matrix.
 #' @param draws Ecological resampling draws by predictor matrix.
@@ -18,13 +18,18 @@
 #'   ecological 95 percent interval width and scaled information.
 #' @param calibrated Whether the ecological uncertainty procedure has
 #'   coverage evidence for the conditions of this fit.
+#' @param component Response name for a component fit. Coherent occupancy and
+#'   heterogeneity require information in both fitted stages.
 #' @return Response, sharing, design and precision diagnostics with status.
 #' @export
 ugdm_within_order_diagnostic <- function(fit, design, y, integration, draws,
     heldout_D2, sharing = NULL, min_response_sd, min_heldout_D2, max_mc_se,
-    max_width, max_condition, calibrated = FALSE, sampling_weights = NULL) {
-  if (!inherits(fit, "ugdm_interaction_fit") ||
-      !inherits(design, "ugdm_interaction_design") || design$spread != "constant") {
+    max_width, max_condition, calibrated = FALSE, sampling_weights = NULL,
+    component = c("total", "occupancy", "heterogeneity")) {
+  compositional <- inherits(fit, "ugdm_component_fit")
+  component <- match.arg(component)
+  if (!compositional && (!inherits(fit, "ugdm_interaction_fit") ||
+      !inherits(design, "ugdm_interaction_design") || design$spread != "constant")) {
     stop("Supply the additive extended MS-GDUM and matching design.")
   }
   if (length(y) != nrow(design$idx) || any(!is.finite(y) | y < 0 | y > 1) ||
@@ -35,7 +40,10 @@ ugdm_within_order_diagnostic <- function(fit, design, y, integration, draws,
       any(limits[c(1L, 3L, 4L, 5L)] < 0) || length(calibrated) != 1L ||
       !is.logical(calibrated) || is.na(calibrated)) stop("Invalid diagnostic criteria.")
   if (!is.numeric(heldout_D2) || length(heldout_D2) != 1L) stop("Supply one held-out D2.")
-  target_names <- names(.within_importance_setup(fit, design, y)$groups)
+  if (compositional && !identical(fit$sets, design$idx)) stop("Supply the original component design.")
+  target_names <- if (compositional) names(.component_problem(design, fit$ridge, fit$interaction_shrink)$groups) else
+    names(.within_importance_setup(fit, design, y)$groups)
+  if (compositional && is.null(sampling_weights)) sampling_weights <- fit$weights
   weights <- .model_weights(length(y), sampling_weights = sampling_weights)
   weights <- weights / max(weights)
   weights <- weights / sum(weights)
@@ -63,15 +71,28 @@ ugdm_within_order_diagnostic <- function(fit, design, y, integration, draws,
   width <- if (!is.null(ecological_draws) && nrow(ecological_draws) >= 20L &&
       all(is.finite(ecological_draws))) apply(ecological_draws, 2L, function(value)
         diff(stats::quantile(value, c(.025, .975), names = FALSE))) else NA_real_
-  X <- .interaction_layout(design, fit$has_distance)$X
-  mu <- ugdm_predict(fit, design)
-  Z <- X * sqrt(weights * mu * (1 - mu))
-  scale <- sqrt(colSums(Z^2))
-  scale[scale == 0] <- 1
-  eigenvalues <- eigen(crossprod(sweep(Z, 2L, scale, "/")), symmetric = TRUE,
-                       only.values = TRUE)$values
-  rank <- sum(eigenvalues > max(eigenvalues) * ncol(X) * .Machine$double.eps)
-  condition <- if (rank == ncol(X)) max(eigenvalues) / min(eigenvalues) else Inf
+  X <- if (compositional) .component_prediction_matrix(fit, design) else
+    .interaction_layout(design, fit$has_distance)$X
+  working_information <- function(mu, working) {
+    Z <- X * sqrt(working * mu * (1 - mu))
+    scale <- sqrt(colSums(Z^2))
+    scale[scale == 0] <- 1
+    eigenvalues <- eigen(crossprod(sweep(Z, 2L, scale, "/")), symmetric = TRUE,
+                         only.values = TRUE)$values
+    rank <- sum(eigenvalues > max(eigenvalues) * ncol(X) * .Machine$double.eps)
+    c(rank = rank, condition = if (rank == ncol(X)) max(eigenvalues) / min(eigenvalues) else Inf)
+  }
+  information <- if (compositional) {
+    stages <- if (component != "total" && fit$architecture == "coherent") c("total", "share") else component
+    values <- vapply(stages, function(stage) {
+      f <- fit$fits[[stage]]
+      mu <- if (is.finite(f$constant_value)) rep(f$constant_value, nrow(X)) else plogis(drop(X %*% f$coef))
+      working_information(mu, weights * if (stage == "share") fit$share_trials else 1)
+    }, numeric(2L))
+    c(rank = min(values[1L, ]), condition = max(values[2L, ]))
+  } else working_information(ugdm_predict(fit, design), weights)
+  rank <- information[["rank"]]
+  condition <- information[["condition"]]
   sd <- weighted_sd(y)
   variation <- sd >= min_response_sd && sd > 0
   predict <- fit$converged && is.finite(heldout_D2) && heldout_D2 > min_heldout_D2

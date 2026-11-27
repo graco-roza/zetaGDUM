@@ -18,11 +18,12 @@ ugdm_within_order_diagnostic(
   max_width,
   max_condition,
   calibrated = FALSE,
-  sampling_weights = NULL
+  sampling_weights = NULL,
+  component = c("total", "occupancy", "heterogeneity")
 )
 }
 \arguments{
-\item{fit, design}{Matching fitted additive MS-GDUM and its design.}
+\item{fit, design}{Matching fitted additive MS-GDUM or component model and its design.}
 
 \item{y}{Dissimilarity for each set.}
 
@@ -42,6 +43,9 @@ coverage evidence for the conditions of this fit.}
 
 \item{sampling_weights}{Optional importance weights targeting the original
 set distribution. These are distinct from the model's working weights.}
+
+\item{component}{Response name for a component fit. Coherent occupancy and
+heterogeneity require information in both fitted stages.}
 }
 \value{
 Response, sharing, design and precision diagnostics with status.

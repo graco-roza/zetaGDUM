@@ -11,8 +11,8 @@ args <- commandArgs(TRUE)
 in_dir <- if(length(args)) args[1] else 'tables/fig4'
 out_dir <- if(length(args)>1) args[2] else 'figures'
 dir.create(out_dir, recursive=TRUE, showWarnings=FALSE)
-# Layout constant (mm): panel height of the two map rows. patchwork aligns the map panels with the C-D panels, so their width is fixed by the layout; the height is set to half that width (2:1 aspect, 20 m tiles stay square).
-FIG_W <- 183; FIG_H <- 210; hA <- 40.55; hB <- 40.55
+# Layout constant (mm): panel height of the two map rows (= half the width of a C-D panel, 76.2 mm). Maps use coord_equal(), so the 2:1 aspect and the square 20 m quadrats are exact by construction.
+FIG_W <- 183; FIG_H <- 201; hA <- 38.1; hB <- 38.1
 d <- read.csv(file.path(in_dir,'site_metrics.csv'), check.names=FALSE) |> filter(set=='1985_tree')
 stopifnot(nrow(d)==1250L, !anyDuplicated(d$quad), sum(d$habitat=='swamp')==30L)
 qids <- c('x005_y024','x014_y012')
@@ -25,7 +25,7 @@ rank_pct <- function(x) 100*(rank(x,ties.method='average')-1)/(length(x)-1)
 ink <- '#252B2D'; petrol <- '#246878'; orange <- '#C45C19'; purple <- '#615A83'; grey <- '#AAB1B3'
 qcol <- c(Q1=petrol,Q2=purple); qshape <- c(Q1=21,Q2=24)
 reprs <- c('Relative abundance','Incidence')
-base <- theme_minimal(base_size=9,base_family='sans')+theme(text=element_text(colour=ink), axis.text=element_text(size=8,colour=ink),axis.title=element_text(size=8.5),panel.grid.major=element_line(colour='#E5E9E9',linewidth=.25),panel.grid.minor=element_blank(),axis.line=element_line(colour=ink,linewidth=.3),axis.ticks=element_line(colour=ink,linewidth=.25),axis.ticks.length=grid::unit(1,'mm'),legend.position='bottom',legend.title=element_blank(),legend.text=element_text(size=7.5),legend.key.width=grid::unit(8,'mm'),plot.margin=margin(3,4,2,3),plot.tag=element_text(size=11,face='bold'))
+base <- theme_minimal(base_size=9,base_family='sans')+theme(text=element_text(colour=ink), axis.text=element_text(size=8,colour=ink),axis.title=element_text(size=8.5),panel.grid.major=element_line(colour='#E5E9E9',linewidth=.25),panel.grid.minor=element_blank(),axis.line=element_line(colour=ink,linewidth=.3),axis.ticks=element_line(colour=ink,linewidth=.25),axis.ticks.length=grid::unit(1,'mm'),legend.position='bottom',legend.title=element_blank(),legend.text=element_text(size=7.5),legend.key.width=grid::unit(8,'mm'),legend.box.spacing=grid::unit(1,'mm'),legend.margin=margin(0,0,0,0),plot.margin=margin(3,4,1,3),plot.tag=element_text(size=11,face='bold'))
 # Within-representation percentile ranks remove the need for four colourbars.
 # Higher ranks ALWAYS indicate higher values of the metric; raw metrics appear in D.
 mapdat <- bind_rows(transmute(d,quad,habitat,pair,x,y,representation=reprs[1],metric='LCBD',rank=rank_pct(LCBDa)),
@@ -45,9 +45,9 @@ map_plot <- function(metric_name,show_titles=FALSE){
     geom_text(data=sb,aes(x=(x0+x1)/2,y=y0+20,label='200 m'),inherit.aes=FALSE,colour=ink,size=2.4,vjust=0)+
     geom_point(data=filter(z,!is.na(pair)),aes(shape=pair),size=2.5,stroke=.65,fill='white',colour=ink,show.legend=FALSE)+
     geom_label(data=filter(z,!is.na(pair)),aes(x=x+ifelse(pair=='Q1',62,0),y=y+ifelse(pair=='Q1',0,-66),label=pair),colour=ink,fill=scales::alpha('white',.85),linewidth=0,label.padding=unit(1,'pt'),size=2.6,fontface='bold')+
-    facet_wrap(vars(representation),nrow=1)+coord_cartesian(expand=FALSE,clip='off')+
+    facet_wrap(vars(representation),nrow=1)+coord_equal(expand=FALSE,clip='off')+
     scale_shape_manual(values=qshape)+scale_fill_gradientn(colours=c('#F0F4EF','#BCD2C6','#6A9F9E',petrol,'#183D48'),limits=c(0,100),breaks=c(0,25,50,75,100),labels=function(x)paste0(x,'%'),name='Within-representation percentile',guide=guide_colourbar(title.position='left',barwidth=grid::unit(45,'mm'),barheight=grid::unit(2.6,'mm')))+
-    labs(x=NULL,y=NULL)+theme_void(base_size=9)+theme(strip.text=element_text(face='bold',size=9,margin=margin(b=5)),panel.spacing.x=grid::unit(5,'mm'),legend.position='bottom',legend.title=element_text(size=7.5),legend.text=element_text(size=7.5),plot.tag=element_text(face='bold',size=11),plot.margin=margin(3,4,1,3))
+    labs(x=NULL,y=NULL)+theme_void(base_size=9)+theme(strip.text=element_text(face='bold',size=9,margin=margin(b=5)),panel.spacing.x=grid::unit(5,'mm'),legend.position='bottom',legend.title=element_text(size=7.5),legend.text=element_text(size=7.5),plot.tag=element_text(face='bold',size=11),legend.box.spacing=grid::unit(1.2,'mm'),legend.margin=margin(0,0,0,0),plot.margin=margin(3,4,1,3))
   if(!show_titles) p<-p+theme(strip.text=element_blank())
   p
 }

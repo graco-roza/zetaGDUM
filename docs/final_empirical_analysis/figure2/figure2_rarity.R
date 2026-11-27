@@ -6,6 +6,7 @@
 #   Rscript figure2_rarity.R figures figure2_summary.csv figure2_balanced_forms.csv
 # Optional summary CSV: one row per scenario with columns scenario, w_occ, w_ab, ratio; optional w_occ_lo/hi, w_ab_lo/hi, ratio_lo/hi.
 # Optional balanced CSV: rows for forms Lr-Bn-La and Lr-Bn-Sa with w_occ, w_ab and optional *_lo/_hi.
+# Dumbbell version: incidence and relative abundance share one row per form (no vertical offset); the bar between them is coloured by the direction of the change.
 # Edits to the original script: (1) third argument for the balanced-pool intervals and interval bars in panel C; (2) the shaded band now covers the four large-range forms (ymin 5.5; it was 4.5 and also shaded 'Small / Broad / High'); (3) one legend instead of two; (4) wider right margin in A so '100%' does not touch panel B. Everything else is unchanged.
 
 suppressPackageStartupMessages({
@@ -102,31 +103,32 @@ paired <- function(d) {
                       lo = w_ab_lo, hi = w_ab_hi)) |>
     mutate(repr = factor(repr, levels = names(pal)),
            # Slightly separate representations vertically to avoid overlap.
-           yy = row + ifelse(repr == "Incidence", .12, -.12))
+           yy = row)
 }
 wa <- paired(s[1:8, ])
 # A. Share of expected shared composition attributed to dominant rarity form.
+dumb <- function(d) mutate(d, dir = ifelse(w_ab >= w_occ, "Relative abundance", "Incidence"))
 A <- ggplot() +
   annotate("rect", xmin = 0, xmax = 1.03, ymin = 5.5, ymax = 9.45,
            fill = "#F5F7F7", colour = NA) +
   geom_vline(xintercept = .70, colour = ref, linewidth = .45, linetype = "22") +
-  geom_segment(data = s[1:8, ], aes(x = w_occ, xend = w_ab,
-                                  y = row + .12, yend = row - .12),
-               colour = link, linewidth = .7) +
+  # dumbbell bar: coloured by the direction of the change (abundance minus incidence)
+  geom_segment(data = dumb(s[1:8, ]), aes(x = w_occ, xend = w_ab, y = row, yend = row, colour = dir),
+               linewidth = 2.6, alpha = .32, lineend = "round", show.legend = FALSE) +
   geom_segment(data = filter(wa, is.finite(lo), is.finite(hi)),
-               aes(x = lo, xend = hi, y = yy, yend = yy, colour = repr),
-               linewidth = .5, alpha = .75, show.legend = FALSE) +
-  geom_point(data = wa, aes(weight, yy, colour = repr, shape = repr),
-             size = 2.4, stroke = .65) +
+               aes(x = lo, xend = hi, y = row, yend = row, colour = repr),
+               linewidth = .35, alpha = .9, show.legend = FALSE) +
+  geom_point(data = wa, aes(weight, row, fill = repr, shape = repr), colour = "white",
+             size = 3.3, stroke = .8) +
   annotate("text", x = .02, y = 1, label = "No dominant form",
            colour = muted, hjust = 0, size = 2.6, fontface = "italic") +
   y_scale + scale_x_continuous(breaks = seq(0, 1, .25), labels = pct,
                                limits = c(0, 1.03), expand = c(0, 0)) +
-  scale_colour_manual(values = pal, drop = FALSE) +
-  scale_shape_manual(values = c("Incidence" = 16, "Relative abundance" = 17)) +
-  labs(title = "Dominant rarity form", subtitle = "Dashed line: 70% of the species pool",
+  scale_colour_manual(values = pal, drop = FALSE) + scale_fill_manual(values = pal, drop = FALSE) +
+  scale_shape_manual(values = c("Incidence" = 21, "Relative abundance" = 24)) +
+  labs(title = "Dominant rarity form", subtitle = "Dashed line: 70% of the species pool\nBar: orange if abundance > incidence, petrol if lower",
        x = "Share of shared composition", y = "Range / niche / abundance") + th +
-  guides(colour = "none", shape = "none") + theme(plot.margin = margin(4, 14, 4, 5))
+  guides(colour = "none", fill = "none", shape = "none") + theme(plot.margin = margin(4, 14, 4, 5))
 
 # B. Effective number of contributing species (abundance/incidence).
 B <- ggplot(s, aes(ratio, row)) +
@@ -150,22 +152,21 @@ B <- ggplot(s, aes(ratio, row)) +
 bal_long <- bind_rows(transmute(bal, row, repr = "Incidence", weight = w_occ, lo = w_occ_lo, hi = w_occ_hi),
                       transmute(bal, row, repr = "Relative abundance", weight = w_ab, lo = w_ab_lo, hi = w_ab_hi)) |>
   mutate(repr = factor(repr, levels = names(pal)),
-         yy = row + ifelse(repr == "Incidence", .12, -.12))
+         yy = row)
 C <- ggplot() +
   geom_vline(xintercept = .125, colour = ref, linewidth = .45, linetype = "22") +
-  geom_segment(data = bal, aes(x = w_occ, xend = w_ab,
-                              y = row + .12, yend = row - .12),
-               colour = link, linewidth = .7) +
+  geom_segment(data = dumb(bal), aes(x = w_occ, xend = w_ab, y = row, yend = row, colour = dir),
+               linewidth = 2.6, alpha = .32, lineend = "round", show.legend = FALSE) +
   geom_segment(data = filter(bal_long, is.finite(lo), is.finite(hi), hi > lo),
-               aes(x = lo, xend = hi, y = yy, yend = yy, colour = repr),
-               linewidth = .5, alpha = .75, show.legend = FALSE) +
-  geom_point(data = bal_long, aes(weight, yy, colour = repr, shape = repr), size = 2.4) +
-  geom_text(data = bal_long, aes(weight, yy, label = pct(weight)),
-            nudge_x = .025, hjust = 0, size = 2.6, colour = ink, show.legend = FALSE) +
+               aes(x = lo, xend = hi, y = row, yend = row, colour = repr),
+               linewidth = .35, alpha = .9, show.legend = FALSE) +
+  geom_point(data = bal_long, aes(weight, row, fill = repr, shape = repr), colour = "white", size = 3.3, stroke = .8) +
+  geom_text(data = bal_long, aes(weight, row + .22, label = pct(weight)),
+            hjust = .5, size = 2.6, colour = ink, show.legend = FALSE) +
   scale_y_continuous(breaks = 2:1, labels = bal$form, limits = c(.55, 2.45), expand = c(0, 0)) +
   scale_x_continuous(breaks = seq(0, 1, .25), labels = pct, limits = c(0, 1.03), expand = c(0, 0)) +
-  scale_colour_manual(values = pal, drop = FALSE) +
-  scale_shape_manual(values = c("Incidence" = 16, "Relative abundance" = 17)) +
+  scale_colour_manual(values = pal, drop = FALSE) + scale_fill_manual(values = pal, drop = FALSE) +
+  scale_shape_manual(values = c("Incidence" = 21, "Relative abundance" = 24)) +
   labs(title = "Balanced species pool", subtitle = "Two selected forms; dashed line: 12.5% of species per form",
        x = "Share of shared composition", y = NULL) + th
 

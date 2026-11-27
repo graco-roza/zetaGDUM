@@ -1,0 +1,6 @@
+"group","order","n_common_intervals","best_interval"
+"BM",6,0,NA
+"BM",5,3,"10:15"
+"BM",4,34,"5:14"
+"BM",3,165,"2:23"
+"ZP",3,165,"2:23"

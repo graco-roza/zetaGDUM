@@ -1,0 +1,3 @@
+"group","k50","k_selected","spread_from","spread_to","sharing_at_selected","selection_rule"
+"BM",6,5,0.45,0.7,0.821,"Highest k>2 with P(shared)>=0.50 and same supported interval as k=2"
+"ZP",3,3,0.05,1.1,0.5115,"Highest k>2 with P(shared)>=0.50 and same supported interval as k=2"

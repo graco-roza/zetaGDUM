@@ -1,0 +1,3 @@
+"group","order","n_common_shared","n_common_both_pools","selected_interval","matched","selection_rule"
+"BM",5,3,0,"10:15",TRUE,"Common interval: both shared-pool orders"
+"ZP",4,34,34,"5:14",TRUE,"Common interval: both orders and pools"

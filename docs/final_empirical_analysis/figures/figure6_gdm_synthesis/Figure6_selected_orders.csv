@@ -1,0 +1,3 @@
+"group","k_selected","matched","spread_from","spread_to","sharing_at_selected","selection_rule"
+"BM",5,TRUE,0.45,0.7,0.821,"Common interval: both shared-pool orders"
+"ZP",4,TRUE,0.2,0.65,0.3055,"Common interval: both orders and pools"

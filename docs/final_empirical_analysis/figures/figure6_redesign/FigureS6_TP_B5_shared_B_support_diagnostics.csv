@@ -1,0 +1,3 @@
+"pool","group","order","models","n_positions","n_common_spread_bins","common_spread_min","common_spread_max","plotted","positions"
+"shared","BM",5,"additive;interaction",3,4,0.288259,0.694455,TRUE,"Eutrophic=112.30;Mesotrophic=36.76;Oligotrophic=12.03"
+"shared","ZP",5,"additive;interaction",3,4,0.288259,0.694455,TRUE,"Eutrophic=112.30;Mesotrophic=36.76;Oligotrophic=12.03"

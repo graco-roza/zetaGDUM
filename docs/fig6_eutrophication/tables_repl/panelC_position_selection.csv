@@ -1,0 +1,17 @@
+"group","order","positions","n_common_spread_bins"
+"BM",2,"Oligotrophic 10.8; Mesotrophic 30.7; Eutrophic 87.7",3
+"BM",3,"Oligotrophic 9.1; Mesotrophic 36.4; Eutrophic 91.6",4
+"BM",4,"Oligotrophic 8.3; Mesotrophic 38.3; Eutrophic 120.2",2
+"BM",5,"Oligotrophic 11.8; Mesotrophic 31.3; Eutrophic 115.3",3
+"BM",6,"Oligotrophic 10.8; Mesotrophic 30.7; Eutrophic 87.5",2
+"BM",8,"Oligotrophic 12.3; Mesotrophic 38.2; Eutrophic 89.4",2
+"BM",10,"Oligotrophic 13.1; Mesotrophic 36.5; Eutrophic 102",1
+"ZP",2,"Oligotrophic 9.8; Mesotrophic 29; Eutrophic 85.8",4
+"ZP",3,"Oligotrophic 10.9; Mesotrophic 28.7; Eutrophic 122.1",4
+"ZP",4,"Oligotrophic 10.8; Mesotrophic 38.3; Eutrophic 89.4",4
+"ZP",5,"Oligotrophic 9.5; Mesotrophic 40.3; Eutrophic 118.7",2
+"ZP",6,"Oligotrophic 8.7; Mesotrophic 32.1; Eutrophic 85.4",1
+"PP",2,"Oligotrophic 11.9; Mesotrophic 34.8; Eutrophic 101.2",2
+"PP",3,"Mesotrophic 31.5; Eutrophic 117",5
+"PP",4,"Mesotrophic 39.5; Eutrophic 113.7",5
+"PP",5,"Mesotrophic 38.5; Eutrophic 104.2",5

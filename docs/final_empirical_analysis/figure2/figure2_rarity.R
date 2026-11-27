@@ -110,7 +110,7 @@ wa <- paired(s[1:8, ])
 # A. Share of expected shared composition attributed to dominant rarity form.
 dumb <- function(d) mutate(d, dir = ifelse(w_ab >= w_occ, "Relative abundance", "Incidence"))
 A <- ggplot() +
-  annotate("rect", xmin = 0, xmax = 1.03, ymin = 5.5, ymax = 9.45,
+  annotate("rect", xmin = -.04, xmax = 1.03, ymin = 5.5, ymax = 9.45,
            fill = "#F5F7F7", colour = NA) +
   geom_vline(xintercept = .70, colour = ref, linewidth = .45, linetype = "22") +
   # dumbbell bar: coloured by the direction of the change (abundance minus incidence)
@@ -118,13 +118,13 @@ A <- ggplot() +
                linewidth = 2.6, alpha = .32, lineend = "round", show.legend = FALSE) +
   geom_segment(data = filter(wa, is.finite(lo), is.finite(hi)),
                aes(x = lo, xend = hi, y = row, yend = row, colour = repr),
-               linewidth = .35, alpha = .9, show.legend = FALSE) +
+               linewidth = .8, alpha = .9, show.legend = FALSE) +
   geom_point(data = wa, aes(weight, row, fill = repr, shape = repr), colour = "white",
              size = 3.3, stroke = .8) +
-  annotate("text", x = .02, y = 1, label = "No dominant form",
+  annotate("text", x = .01, y = 1, label = "No dominant form",
            colour = muted, hjust = 0, size = 2.6, fontface = "italic") +
   y_scale + scale_x_continuous(breaks = seq(0, 1, .25), labels = pct,
-                               limits = c(0, 1.03), expand = c(0, 0)) +
+                               limits = c(-.04, 1.03), expand = c(0, 0)) +
   scale_colour_manual(values = pal, drop = FALSE) + scale_fill_manual(values = pal, drop = FALSE) +
   scale_shape_manual(values = c("Incidence" = 21, "Relative abundance" = 24)) +
   labs(x = "Share of shared composition", y = "Range / niche / abundance") + th +
@@ -143,7 +143,7 @@ B <- ggplot(s, aes(ratio, row)) +
   geom_text(aes(label = label_ratio), hjust = -.5, size = 2.6, colour = ink) +
   scale_y_continuous(limits = c(.55, 9.45), breaks = 9:1, expand = c(0, 0)) +
   scale_x_continuous(limits = c(0, 1.12), breaks = c(0, .25, .5, .75, 1), expand = c(0, 0)) +
-  labs(x = "Effective species number ratio", y = NULL) + th +
+  labs(x = "Effective species number\n(abundance/incidence)", y = NULL) + th +
   theme(axis.text.y = element_blank(), axis.ticks.y = element_blank())
 
 # C. Same range and niche, opposite local abundance in the balanced pool.
@@ -158,7 +158,7 @@ C <- ggplot() +
                linewidth = 2.6, alpha = .32, lineend = "round", show.legend = FALSE) +
   geom_segment(data = filter(bal_long, is.finite(lo), is.finite(hi), hi > lo),
                aes(x = lo, xend = hi, y = row, yend = row, colour = repr),
-               linewidth = .35, alpha = .9, show.legend = FALSE) +
+               linewidth = .8, alpha = .9, show.legend = FALSE) +
   geom_point(data = bal_long, aes(weight, row, fill = repr, shape = repr), colour = "white", size = 3.3, stroke = .8) +
   geom_text(data = bal_long, aes(weight, row + .22, label = pct(weight)),
             hjust = .5, size = 2.6, colour = ink, show.legend = FALSE) +

@@ -5,7 +5,7 @@ hab_col <- c(swamp = "#C8641E", stream = "#1F5F6B", slope = "#8AA37B", low_plate
 hab_lab <- c(swamp = "Swamp", stream = "Stream", slope = "Slope", low_plateau = "Low plateau", hi_plateau = "High plateau", mixed = "Mixed", young = "Young forest")
 th <- function(b = 7) theme_classic(base_size = b) + theme(panel.grid = element_blank(), strip.background = element_blank(), strip.text = element_text(face = "bold", size = b), legend.key.size = unit(3, "mm"), legend.margin = margin(0, 0, 0, 0), plot.tag = element_text(face = "bold", size = 9), axis.line = element_line(linewidth = .3), axis.ticks = element_line(linewidth = .3))
 thm <- function(b = 7) theme_void(base_size = b) + theme(plot.tag = element_text(face = "bold", size = 9), legend.key.size = unit(3, "mm"), legend.margin = margin(0, 0, 0, 0), legend.position = "bottom", legend.key.width = unit(10, "mm"), legend.title = element_text(size = b), plot.title = element_text(size = b, face = "bold"))
-S <- readRDS("out/site_metrics.rds"); S$habitat <- factor(S$habitat, names(hab_col)); K <- c(2, 3, 4, 5, 8, 12, 20, 40, 80, 160, 320, 640)
+source("merge_norm.R"); S <- add_norm(readRDS("out/site_metrics.rds")); S$habitat <- factor(S$habitat, names(hab_col)); K <- c(2, 3, 4, 5, 8, 12, 20, 40, 80, 160, 320, 640)
 sv <- function(p, name, w, h) for (e in c("pdf", "svg", "png")) ggsave(sprintf("figures/%s.%s", name, e), p, width = w, height = h, dpi = 220, device = if (e == "pdf") cairo_pdf else NULL)
 # significance (Holm) from the large permutation test when available
 SIG <- if (file.exists("out/lcbd_tests.csv")) read.csv("out/lcbd_tests.csv") else NULL

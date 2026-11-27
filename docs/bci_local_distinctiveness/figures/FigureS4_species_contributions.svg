@@ -405,43 +405,43 @@
 <text x='448.31' y='608.76' text-anchor='middle' style='font-size: 7.00px; font-family: "Arial";' textLength='37.70px' lengthAdjust='spacingAndGlyphs'>Zeta order k</text>
 <text transform='translate(329.48,469.55) rotate(-90)' text-anchor='middle' style='font-size: 7.00px; font-family: "Arial";' textLength='102.28px' lengthAdjust='spacingAndGlyphs'>Share of local dissimilarity due to</text>
 <text transform='translate(337.04,469.55) rotate(-90)' text-anchor='middle' style='font-size: 7.00px; font-family: "Arial";' textLength='135.72px' lengthAdjust='spacingAndGlyphs'>abundance heterogeneity of shared species</text>
-<rect x='552.44' y='422.81' width='24.43' height='26.97' style='stroke-width: 0.68; stroke: none; fill: #FFFFFF;' />
-<text x='552.44' y='428.55' style='font-size: 7.00px; font-family: "Arial";' textLength='23.73px' lengthAdjust='spacingAndGlyphs'>Census</text>
-<rect x='552.44' y='432.77' width='8.50' height='8.50' style='stroke-width: 0.68; stroke: none; fill: #FFFFFF;' />
-<line x1='553.29' y1='437.03' x2='560.09' y2='437.03' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<rect x='552.44' y='441.28' width='8.50' height='8.50' style='stroke-width: 0.68; stroke: none; fill: #FFFFFF;' />
-<line x1='553.29' y1='445.53' x2='560.09' y2='445.53' style='stroke-width: 1.07; stroke-dasharray: 2.85,2.85; stroke-linecap: butt;' />
-<text x='564.43' y='439.03' style='font-size: 5.60px; font-family: "Arial";' textLength='12.44px' lengthAdjust='spacingAndGlyphs'>1985</text>
-<text x='564.43' y='447.53' style='font-size: 5.60px; font-family: "Arial";' textLength='12.44px' lengthAdjust='spacingAndGlyphs'>2015</text>
-<rect x='552.44' y='456.76' width='43.40' height='59.53' style='stroke-width: 0.68; stroke: none; fill: #FFFFFF;' />
-<rect x='552.44' y='456.76' width='8.50' height='8.50' style='stroke-width: 0.68; stroke: none; fill: #FFFFFF;' />
-<line x1='553.29' y1='461.01' x2='560.09' y2='461.01' style='stroke-width: 1.07; stroke: #C8641E; stroke-linecap: butt;' />
-<circle cx='556.69' cy='461.01' r='1.08' style='stroke-width: 0.45; stroke: #C8641E; fill: #C8641E;' />
-<rect x='552.44' y='465.26' width='8.50' height='8.50' style='stroke-width: 0.68; stroke: none; fill: #FFFFFF;' />
-<line x1='553.29' y1='469.51' x2='560.09' y2='469.51' style='stroke-width: 1.07; stroke: #1F5F6B; stroke-linecap: butt;' />
-<circle cx='556.69' cy='469.51' r='1.08' style='stroke-width: 0.45; stroke: #1F5F6B; fill: #1F5F6B;' />
-<rect x='552.44' y='473.76' width='8.50' height='8.50' style='stroke-width: 0.68; stroke: none; fill: #FFFFFF;' />
-<line x1='553.29' y1='478.02' x2='560.09' y2='478.02' style='stroke-width: 1.07; stroke: #8AA37B; stroke-linecap: butt;' />
-<circle cx='556.69' cy='478.02' r='1.08' style='stroke-width: 0.45; stroke: #8AA37B; fill: #8AA37B;' />
-<rect x='552.44' y='482.27' width='8.50' height='8.50' style='stroke-width: 0.68; stroke: none; fill: #FFFFFF;' />
-<line x1='553.29' y1='486.52' x2='560.09' y2='486.52' style='stroke-width: 1.07; stroke: #7A7F85; stroke-linecap: butt;' />
-<circle cx='556.69' cy='486.52' r='1.08' style='stroke-width: 0.45; stroke: #7A7F85; fill: #7A7F85;' />
-<rect x='552.44' y='490.77' width='8.50' height='8.50' style='stroke-width: 0.68; stroke: none; fill: #FFFFFF;' />
-<line x1='553.29' y1='495.02' x2='560.09' y2='495.02' style='stroke-width: 1.07; stroke: #B9C4C8; stroke-linecap: butt;' />
-<circle cx='556.69' cy='495.02' r='1.08' style='stroke-width: 0.45; stroke: #B9C4C8; fill: #B9C4C8;' />
+<rect x='552.44' y='422.81' width='43.40' height='59.53' style='stroke-width: 0.68; stroke: none; fill: #FFFFFF;' />
+<rect x='552.44' y='422.81' width='8.50' height='8.50' style='stroke-width: 0.68; stroke: none; fill: #FFFFFF;' />
+<line x1='553.29' y1='427.06' x2='560.09' y2='427.06' style='stroke-width: 1.07; stroke: #C8641E; stroke-linecap: butt;' />
+<circle cx='556.69' cy='427.06' r='1.08' style='stroke-width: 0.45; stroke: #C8641E; fill: #C8641E;' />
+<rect x='552.44' y='431.31' width='8.50' height='8.50' style='stroke-width: 0.68; stroke: none; fill: #FFFFFF;' />
+<line x1='553.29' y1='435.56' x2='560.09' y2='435.56' style='stroke-width: 1.07; stroke: #1F5F6B; stroke-linecap: butt;' />
+<circle cx='556.69' cy='435.56' r='1.08' style='stroke-width: 0.45; stroke: #1F5F6B; fill: #1F5F6B;' />
+<rect x='552.44' y='439.82' width='8.50' height='8.50' style='stroke-width: 0.68; stroke: none; fill: #FFFFFF;' />
+<line x1='553.29' y1='444.07' x2='560.09' y2='444.07' style='stroke-width: 1.07; stroke: #8AA37B; stroke-linecap: butt;' />
+<circle cx='556.69' cy='444.07' r='1.08' style='stroke-width: 0.45; stroke: #8AA37B; fill: #8AA37B;' />
+<rect x='552.44' y='448.32' width='8.50' height='8.50' style='stroke-width: 0.68; stroke: none; fill: #FFFFFF;' />
+<line x1='553.29' y1='452.57' x2='560.09' y2='452.57' style='stroke-width: 1.07; stroke: #7A7F85; stroke-linecap: butt;' />
+<circle cx='556.69' cy='452.57' r='1.08' style='stroke-width: 0.45; stroke: #7A7F85; fill: #7A7F85;' />
+<rect x='552.44' y='456.82' width='8.50' height='8.50' style='stroke-width: 0.68; stroke: none; fill: #FFFFFF;' />
+<line x1='553.29' y1='461.07' x2='560.09' y2='461.07' style='stroke-width: 1.07; stroke: #B9C4C8; stroke-linecap: butt;' />
+<circle cx='556.69' cy='461.07' r='1.08' style='stroke-width: 0.45; stroke: #B9C4C8; fill: #B9C4C8;' />
+<rect x='552.44' y='465.33' width='8.50' height='8.50' style='stroke-width: 0.68; stroke: none; fill: #FFFFFF;' />
+<line x1='553.29' y1='469.58' x2='560.09' y2='469.58' style='stroke-width: 1.07; stroke: #D8C7A0; stroke-linecap: butt;' />
+<circle cx='556.69' cy='469.58' r='1.08' style='stroke-width: 0.45; stroke: #D8C7A0; fill: #D8C7A0;' />
+<rect x='552.44' y='473.83' width='8.50' height='8.50' style='stroke-width: 0.68; stroke: none; fill: #FFFFFF;' />
+<line x1='553.29' y1='478.08' x2='560.09' y2='478.08' style='stroke-width: 1.07; stroke: #6F4E7C; stroke-linecap: butt;' />
+<circle cx='556.69' cy='478.08' r='1.08' style='stroke-width: 0.45; stroke: #6F4E7C; fill: #6F4E7C;' />
+<text x='564.43' y='429.06' style='font-size: 5.60px; font-family: "Arial";' textLength='18.66px' lengthAdjust='spacingAndGlyphs'>Swamp</text>
+<text x='564.43' y='437.56' style='font-size: 5.60px; font-family: "Arial";' textLength='18.02px' lengthAdjust='spacingAndGlyphs'>Stream</text>
+<text x='564.43' y='446.07' style='font-size: 5.60px; font-family: "Arial";' textLength='14.31px' lengthAdjust='spacingAndGlyphs'>Slope</text>
+<text x='564.43' y='454.57' style='font-size: 5.60px; font-family: "Arial";' textLength='30.16px' lengthAdjust='spacingAndGlyphs'>Low plateau</text>
+<text x='564.43' y='463.08' style='font-size: 5.60px; font-family: "Arial";' textLength='31.41px' lengthAdjust='spacingAndGlyphs'>High plateau</text>
+<text x='564.43' y='471.58' style='font-size: 5.60px; font-family: "Arial";' textLength='14.92px' lengthAdjust='spacingAndGlyphs'>Mixed</text>
+<text x='564.43' y='480.08' style='font-size: 5.60px; font-family: "Arial";' textLength='31.17px' lengthAdjust='spacingAndGlyphs'>Young forest</text>
+<rect x='552.44' y='489.31' width='24.43' height='26.97' style='stroke-width: 0.68; stroke: none; fill: #FFFFFF;' />
+<text x='552.44' y='495.05' style='font-size: 7.00px; font-family: "Arial";' textLength='23.73px' lengthAdjust='spacingAndGlyphs'>Census</text>
 <rect x='552.44' y='499.28' width='8.50' height='8.50' style='stroke-width: 0.68; stroke: none; fill: #FFFFFF;' />
-<line x1='553.29' y1='503.53' x2='560.09' y2='503.53' style='stroke-width: 1.07; stroke: #D8C7A0; stroke-linecap: butt;' />
-<circle cx='556.69' cy='503.53' r='1.08' style='stroke-width: 0.45; stroke: #D8C7A0; fill: #D8C7A0;' />
+<line x1='553.29' y1='503.53' x2='560.09' y2='503.53' style='stroke-width: 1.07; stroke-linecap: butt;' />
 <rect x='552.44' y='507.78' width='8.50' height='8.50' style='stroke-width: 0.68; stroke: none; fill: #FFFFFF;' />
-<line x1='553.29' y1='512.03' x2='560.09' y2='512.03' style='stroke-width: 1.07; stroke: #6F4E7C; stroke-linecap: butt;' />
-<circle cx='556.69' cy='512.03' r='1.08' style='stroke-width: 0.45; stroke: #6F4E7C; fill: #6F4E7C;' />
-<text x='564.43' y='463.01' style='font-size: 5.60px; font-family: "Arial";' textLength='18.66px' lengthAdjust='spacingAndGlyphs'>Swamp</text>
-<text x='564.43' y='471.51' style='font-size: 5.60px; font-family: "Arial";' textLength='18.02px' lengthAdjust='spacingAndGlyphs'>Stream</text>
-<text x='564.43' y='480.02' style='font-size: 5.60px; font-family: "Arial";' textLength='14.31px' lengthAdjust='spacingAndGlyphs'>Slope</text>
-<text x='564.43' y='488.52' style='font-size: 5.60px; font-family: "Arial";' textLength='30.16px' lengthAdjust='spacingAndGlyphs'>Low plateau</text>
-<text x='564.43' y='497.03' style='font-size: 5.60px; font-family: "Arial";' textLength='31.41px' lengthAdjust='spacingAndGlyphs'>High plateau</text>
-<text x='564.43' y='505.53' style='font-size: 5.60px; font-family: "Arial";' textLength='14.92px' lengthAdjust='spacingAndGlyphs'>Mixed</text>
-<text x='564.43' y='514.03' style='font-size: 5.60px; font-family: "Arial";' textLength='31.17px' lengthAdjust='spacingAndGlyphs'>Young forest</text>
+<line x1='553.29' y1='512.03' x2='560.09' y2='512.03' style='stroke-width: 1.07; stroke-dasharray: 2.85,2.85; stroke-linecap: butt;' />
+<text x='564.43' y='505.53' style='font-size: 5.60px; font-family: "Arial";' textLength='12.44px' lengthAdjust='spacingAndGlyphs'>1985</text>
+<text x='564.43' y='514.03' style='font-size: 5.60px; font-family: "Arial";' textLength='12.44px' lengthAdjust='spacingAndGlyphs'>2015</text>
 <text x='321.22' y='333.20' text-anchor='middle' style='font-size: 9.00px; font-weight: bold; font-family: "Arial";' textLength='6.50px' lengthAdjust='spacingAndGlyphs'>D</text>
 </g>
 </g>

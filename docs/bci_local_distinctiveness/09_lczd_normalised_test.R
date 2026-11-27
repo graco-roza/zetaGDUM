@@ -1,0 +1,5 @@
+# 09_lczd_normalised_test.R: precision of the richness-normalised incidence LCZD (zeta_lczd(type = "normalised"), sampled sets) at BCI size
+.libPaths(c(Sys.getenv("ZG_LIB6"), .libPaths())); suppressMessages({library(zetaGDUM); library(dplyr)}); B <- readRDS("out/bci_matrices.rds"); x <- B$mat$`1985_tree`; x <- x[, colSums(x) > 0]; n <- nrow(x); rho <- function(a, b) cor(a, b, method = "spearman")
+S <- readRDS("out/site_metrics.rds"); d <- S[S$set == "1985_tree", ]; ex <- d$LCBD_hel_occ
+for (k in c(2, 5, 20, 80)) { for (M in c(2e5, 1e6)) { r <- lapply(1:2, function(s) { t0 <- Sys.time(); idx <- if (k == 2 && M >= choose(n, 2)) t(combn(n, 2)) else sample_sets(n, k, M = M, seed = 100 * s + k); z <- zeta_lczd(x, k, "normalised", idx = idx); list(z = z$expected_dissimilarity, l = z$LCZD, t = as.numeric(difftime(Sys.time(), t0, units = "secs")), m = nrow(idx)) })
+  cat(sprintf("k=%d M=%d sets: %.1fs | seed-to-seed rho of LCZD %.3f, max rel diff of expected dissimilarity %.4f | rho(LCBD_occ, LCZD_norm) %.2f\n", k, r[[1]]$m, r[[1]]$t, rho(r[[1]]$l, r[[2]]$l), max(abs(r[[1]]$z - r[[2]]$z) / r[[1]]$z), rho(ex, r[[1]]$l))) } }

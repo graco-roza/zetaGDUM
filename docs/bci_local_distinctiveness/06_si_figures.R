@@ -1,0 +1,28 @@
+# 06_si_figures.R: Supporting Information figures for the BCI analysis
+source("fig_common.R"); prof <- readRDS("out/retention_profiles.rds"); q1 <- read.csv("tables/q1_persistence_across_orders.csv"); q4 <- read.csv("tables/q4_abundance_vs_incidence.csv"); sp <- readRDS("out/bci_matrices.rds")$spp
+d85 <- S[S$set == "1985_tree", ]; d15 <- S[S$set == "2015_tree", ]; yr <- function(s) sub("_.*", "", s)
+# ---------- S1: incidence versus abundance representation
+mm <- function(d, k, ty) { v <- paste0("LCZD_", ty, "_", k); d$val <- d[[v]] * 1e3; map_layer(d, "val", sprintf("%s, k = %d", ifelse(ty == "rel", "Relative abundance", "Incidence"), k), option = "mako", dir = -1, lab = expression("LCZD" ~ (10^-3))) }
+maps <- lapply(c(2, 20, 80), function(k) list(mm(d85, k, "rel"), mm(d85, k, "inc")))
+m1 <- (maps[[1]][[1]] | maps[[1]][[2]]) / (maps[[2]][[1]] | maps[[2]][[2]]) / (maps[[3]][[1]] | maps[[3]][[2]])
+l1 <- q1 |> filter(set %in% c("1985_tree", "2015_tree")) |> mutate(year = yr(set)) |> select(year, order, `LCBD vs LCZD (relative)` = rho_LCBD_LCZDrel, `LCBD vs LCZD (incidence)` = rho_LCBD_LCZDinc) |> pivot_longer(c(3, 4)) |>
+  bind_rows(q4 |> filter(set %in% c("1985_tree", "2015_tree")) |> transmute(year = yr(set), order, name = "LCZD relative vs incidence", value = rho_rel_inc))
+pl <- ggplot(l1, aes(order, value, colour = name, linetype = year)) + geom_hline(yintercept = 0, linewidth = .3, colour = "grey70") + geom_line(linewidth = .5) + geom_point(size = .8) + scale_x_log10(breaks = c(2, 5, 20, 80, 320, 640)) + scale_colour_manual(values = c(pal[["petrol"]], pal[["orange"]], pal[["grey"]]), name = NULL) + labs(x = "Zeta order k", y = "Spearman rho across 1250 quadrats", linetype = "Census") + th() + theme(legend.position = "right")
+swp <- q1 |> filter(set %in% c("1985_tree", "2015_tree")) |> mutate(year = yr(set)) |> select(year, order, Relative = swamp_rank_pct_LCZDrel, Incidence = swamp_rank_pct_LCZDinc) |> pivot_longer(c(3, 4))
+ps <- ggplot(swp, aes(order, value, colour = name, linetype = year)) + geom_hline(yintercept = .5, linewidth = .3, colour = "grey70") + geom_line(linewidth = .5) + geom_point(size = .8) + scale_x_log10(breaks = c(2, 5, 20, 80, 320, 640)) + scale_colour_manual(values = c(Relative = pal[["petrol"]], Incidence = pal[["orange"]]), name = "LCZD") + coord_cartesian(ylim = c(0, 1)) + labs(x = "Zeta order k", y = "Mean percentile rank of swamp quadrats", linetype = "Census") + th() + theme(legend.position = "right")
+sv(wrap_plots(m1, (pl / ps), ncol = 2, widths = c(1.5, 1)) + plot_annotation(tag_levels = "A"), "FigureS1_incidence_vs_abundance", 8.2, 8.4)
+# ---------- S2: characteristic versus conditional retention
+mp <- function(d, v, t, dir = -1, lab = v) map_layer(d, v, t, option = "viridis", dir = dir, lab = lab)
+sc <- function(d, x, y, xl, yl) ggplot(d, aes(.data[[x]], .data[[y]], colour = habitat)) + geom_point(size = .6, alpha = .75) + geom_point(data = d[d$habitat == "swamp", ], size = 1, colour = pal[["orange"]]) + scale_colour_manual(values = hab_col, labels = hab_lab, name = NULL) + labs(x = xl, y = yl) + th() + theme(legend.position = "none")
+d85$LCBD3 <- d85$LCBD_hel * 1e3
+p2 <- (mp(d85, "T_plus_rel", "Conditional order T+ (relative abundance)", lab = "T+") | mp(d85, "T_plus_occ", "Conditional order T+ (occurrence)", lab = "T+")) / (sc(d85, "T_rel", "T_plus_rel", "T (abundance)", "T+ (abundance)") | sc(d85, "LCBD3", "T_plus_rel", expression("LCBD" ~ (10^-3)), "T+ (abundance)") | sc(d85, "T_occ", "T_plus_occ", "T (occurrence)", "T+ (occurrence)")) + plot_layout(heights = c(1.4, 1))
+sv(p2 + plot_annotation(tag_levels = "A"), "FigureS2_conditional_retention", 7.6, 6.6)
+# ---------- S3: census years
+c1 <- map_layer(d15 |> mutate(LCBD3 = LCBD_hel * 1e3), "LCBD3", "LCBD 2015", sig = TRUE, option = "mako", dir = -1, lab = expression("LCBD" ~ (10^-3))); c2 <- map_layer(d15, "T_occ", "T (occurrence) 2015", option = "viridis", dir = -1, lab = "T")
+ch <- inner_join(d85 |> select(quad, habitat, LCBD85 = LCBD_hel, Trel85 = T_rel, Tocc85 = T_occ, Tp85 = T_plus_rel), d15 |> select(quad, LCBD15 = LCBD_hel, Trel15 = T_rel, Tocc15 = T_occ, Tp15 = T_plus_rel), by = "quad")
+long <- bind_rows(ch |> transmute(habitat, a = LCBD85 * 1e3, b = LCBD15 * 1e3, m = "LCBD (1e-3)"), ch |> transmute(habitat, a = Trel85, b = Trel15, m = "T (abundance)"), ch |> transmute(habitat, a = Tocc85, b = Tocc15, m = "T (occurrence)")) |> mutate(m = factor(m, unique(m)))
+c3 <- ggplot(long, aes(a, b, colour = habitat)) + geom_abline(colour = "grey60", linewidth = .3) + geom_point(size = .5, alpha = .7) + geom_point(data = long[long$habitat == "swamp", ], size = 1, colour = pal[["orange"]]) + facet_wrap(~m, scales = "free", nrow = 1) + scale_colour_manual(values = hab_col, labels = hab_lab, name = NULL) + labs(x = "1985", y = "2015") + th() + theme(legend.position = "bottom", legend.text = element_text(size = 5.5))
+hs <- ch |> group_by(habitat) |> summarise(`LCBD (1e-3)` = median(LCBD15 - LCBD85) * 1e3, `T (abundance)` = median(Trel15 - Trel85), `T (occurrence)` = median(Tocc15 - Tocc85), .groups = "drop") |> pivot_longer(-habitat) |> mutate(name = factor(name, c("LCBD (1e-3)", "T (abundance)", "T (occurrence)")))
+c4 <- ggplot(hs, aes(habitat, value, fill = habitat)) + geom_hline(yintercept = 0, linewidth = .3) + geom_col(width = .7) + facet_wrap(~name, scales = "free_y", nrow = 1) + scale_fill_manual(values = hab_col, guide = "none") + scale_x_discrete(labels = hab_lab) + labs(x = NULL, y = "Median change 1985 to 2015") + th() + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+sv(((c1 | c2) / c3 / c4) + plot_layout(heights = c(1.5, 1, 1)) + plot_annotation(tag_levels = "A"), "FigureS3_census_years", 7.4, 9)
+cat("S1-S3 done\n")

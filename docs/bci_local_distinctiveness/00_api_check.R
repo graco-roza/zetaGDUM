@@ -1,0 +1,8 @@
+# 00_api_check.R: exercise the zetaGDUM local-metric functions on vegan::BCI (50 x 1-ha plots, preliminary check only) and time them at 1250 x 330 size
+.libPaths(c(Sys.getenv("ZG_LIB6"), .libPaths())); suppressMessages({library(zetaGDUM); library(vegan)}); options(width = 200)
+data(BCI); data(BCI.env); x <- as.matrix(BCI); cat("vegan::BCI", dim(x), "habitats:", table(BCI.env$Habitat), "\n")
+t0 <- Sys.time(); lc <- zeta_lczd(x, k = c(2, 3, 5, 10), type = "relative"); cat("lczd relative", format(Sys.time() - t0), "\n"); print(head(lc, 3))
+lci <- zeta_lczd(x, k = c(2, 3, 5, 10), type = "incidence"); t0 <- Sys.time(); rr <- zeta_local_retention(x, "relative", max_order = 30); ri <- zeta_local_retention(x, "occurrence", max_order = 30); cat("retention", format(Sys.time() - t0), "\n"); print(head(rr$summary, 3)); print(round(rr$profile[1:2, 1:6], 3))
+print(names(formals(species_contributions))); print(names(formals(expected_species_contributions))); print(names(formals(conditional_zeta)))
+hel <- sqrt(x / rowSums(x)); lcbd <- rowSums(scale(hel, scale = FALSE)^2) / sum(scale(hel, scale = FALSE)^2); cat("Hellinger LCBD vs LCZD(2) rho:", round(cor(lcbd, lc$LCZD[lc$order == 2], method = "spearman"), 3), "\n")
+set.seed(1); big <- matrix(rpois(1250 * 330, rexp(330, 1) * 0.6), 1250, 330); rownames(big) <- paste0("q", 1:1250); t0 <- Sys.time(); a <- zeta_lczd(big, k = c(2, 5, 20), type = "relative"); cat("1250x330 lczd relative", format(Sys.time() - t0), "\n"); t0 <- Sys.time(); b <- zeta_local_retention(big, "relative", max_order = 60); cat("1250x330 retention (60)", format(Sys.time() - t0), "\n")

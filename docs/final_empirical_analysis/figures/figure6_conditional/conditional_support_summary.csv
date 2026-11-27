@@ -1,0 +1,9 @@
+"pool","group","order","available","n_profiles","n_cells","spread_from","spread_to","n_valid_deletion_fits"
+"shared","BM",3,TRUE,10,4,0.28600839,0.84183574,0
+"shared","ZP",3,TRUE,10,4,0.28600839,0.84183574,0
+"shared","BM",5,FALSE,0,0,NA,NA,0
+"shared","ZP",5,FALSE,0,0,NA,NA,0
+"full","BM",3,TRUE,12,4,0.4653934,1.02051612,0
+"full","ZP",3,TRUE,14,5,0.0940687,0.82438227,0
+"full","BM",5,FALSE,0,0,NA,NA,0
+"full","ZP",5,TRUE,14,3,0.39163176,0.65244252,0

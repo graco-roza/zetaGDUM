@@ -1,0 +1,74 @@
+"sampler","env","order","reason","n","share"
+"balanced","clustered",2,"fewer than 10 common profiles at any spread",20,0.37037037037037
+"balanced","clustered",2,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",13,0.240740740740741
+"balanced","clustered",2,"supported",21,0.388888888888889
+"balanced","clustered",3,"fewer than 10 common profiles at any spread",7,0.12962962962963
+"balanced","clustered",3,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",14,0.259259259259259
+"balanced","clustered",3,"supported",33,0.611111111111111
+"balanced","clustered",5,"fewer than 10 common profiles at any spread",25,0.252525252525253
+"balanced","clustered",5,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",31,0.313131313131313
+"balanced","clustered",5,"supported",43,0.434343434343434
+"balanced","clustered",10,"fewer than 10 common profiles at any spread",24,0.444444444444444
+"balanced","clustered",10,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",23,0.425925925925926
+"balanced","clustered",10,"supported",7,0.12962962962963
+"balanced","clustered",20,"fewer than 10 common profiles at any spread",50,0.925925925925926
+"balanced","clustered",20,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",4,0.0740740740740741
+"balanced","normal",2,"fewer than 10 common profiles at any spread",14,0.259259259259259
+"balanced","normal",2,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",3,0.0555555555555556
+"balanced","normal",2,"supported",37,0.685185185185185
+"balanced","normal",3,"fewer than 10 common profiles at any spread",8,0.148148148148148
+"balanced","normal",3,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",4,0.0740740740740741
+"balanced","normal",3,"supported",42,0.777777777777778
+"balanced","normal",5,"fewer than 10 common profiles at any spread",22,0.222222222222222
+"balanced","normal",5,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",26,0.262626262626263
+"balanced","normal",5,"supported",51,0.515151515151515
+"balanced","normal",10,"fewer than 10 common profiles at any spread",13,0.240740740740741
+"balanced","normal",10,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",20,0.37037037037037
+"balanced","normal",10,"supported",21,0.388888888888889
+"balanced","normal",20,"fewer than 10 common profiles at any spread",53,0.981481481481482
+"balanced","normal",20,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",1,0.0185185185185185
+"balanced","uniform",2,"fewer than 10 common profiles at any spread",16,0.296296296296296
+"balanced","uniform",2,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",2,0.037037037037037
+"balanced","uniform",2,"supported",36,0.666666666666667
+"balanced","uniform",3,"fewer than 10 common profiles at any spread",7,0.12962962962963
+"balanced","uniform",3,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",4,0.0740740740740741
+"balanced","uniform",3,"supported",43,0.796296296296296
+"balanced","uniform",5,"fewer than 10 common profiles at any spread",21,0.212121212121212
+"balanced","uniform",5,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",17,0.171717171717172
+"balanced","uniform",5,"supported",61,0.616161616161616
+"balanced","uniform",10,"fewer than 10 common profiles at any spread",11,0.203703703703704
+"balanced","uniform",10,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",23,0.425925925925926
+"balanced","uniform",10,"supported",20,0.37037037037037
+"balanced","uniform",20,"fewer than 10 common profiles at any spread",46,0.851851851851852
+"balanced","uniform",20,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",8,0.148148148148148
+"random","clustered",2,"fewer than 10 common profiles at any spread",17,0.314814814814815
+"random","clustered",2,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",14,0.259259259259259
+"random","clustered",2,"supported",23,0.425925925925926
+"random","clustered",3,"fewer than 10 common profiles at any spread",28,0.518518518518518
+"random","clustered",3,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",20,0.37037037037037
+"random","clustered",3,"supported",6,0.111111111111111
+"random","clustered",5,"fewer than 10 common profiles at any spread",49,0.494949494949495
+"random","clustered",5,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",50,0.505050505050505
+"random","clustered",10,"fewer than 10 common profiles at any spread",54,1
+"random","clustered",20,"fewer than 10 common profiles at any spread",54,1
+"random","normal",2,"fewer than 10 common profiles at any spread",8,0.148148148148148
+"random","normal",2,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",4,0.0740740740740741
+"random","normal",2,"supported",42,0.777777777777778
+"random","normal",3,"fewer than 10 common profiles at any spread",14,0.259259259259259
+"random","normal",3,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",7,0.12962962962963
+"random","normal",3,"supported",33,0.611111111111111
+"random","normal",5,"fewer than 10 common profiles at any spread",87,0.878787878787879
+"random","normal",5,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",12,0.121212121212121
+"random","normal",10,"fewer than 10 common profiles at any spread",54,1
+"random","normal",20,"fewer than 10 common profiles at any spread",54,1
+"random","uniform",2,"fewer than 10 common profiles at any spread",6,0.111111111111111
+"random","uniform",2,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",1,0.0185185185185185
+"random","uniform",2,"supported",47,0.87037037037037
+"random","uniform",3,"fewer than 10 common profiles at any spread",6,0.111111111111111
+"random","uniform",3,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",6,0.111111111111111
+"random","uniform",3,"supported",42,0.777777777777778
+"random","uniform",5,"fewer than 10 common profiles at any spread",41,0.414141414141414
+"random","uniform",5,"no run of >= 3 grid points and >= 0.20 log10 width with >= 10 common profiles",55,0.555555555555556
+"random","uniform",5,"supported",3,0.0303030303030303
+"random","uniform",10,"fewer than 10 common profiles at any spread",54,1
+"random","uniform",20,"fewer than 10 common profiles at any spread",54,1

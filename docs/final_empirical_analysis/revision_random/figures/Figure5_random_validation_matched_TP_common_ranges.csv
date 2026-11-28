@@ -1,0 +1,5 @@
+"community","axis","x_from","x_to","range_lo_diff","range_hi_diff","pool"
+"EPA macroinvertebrates","position",1.33035968458296,1.86205262991343,0,0,"shared"
+"EPA macroinvertebrates","spread",0.405306320283293,0.867676799839426,0,0,"shared"
+"EPA zooplankton","position",1.20105561435716,2.01755836348621,0,0,"shared"
+"EPA zooplankton","spread",0.274068621199404,1.02881414163416,0,0,"shared"

@@ -1,0 +1,15 @@
+"pool","group","order","model","converged","share_identified","n_parameters_total","D2_in_sample_total"
+"shared","BM",2,"additive",TRUE,TRUE,22,0.108655450135666
+"shared","BM",2,"spread_only",TRUE,TRUE,13,0.0899221628425875
+"shared","BM",5,"additive",TRUE,TRUE,22,0.0575264229200951
+"shared","BM",5,"spread_only",TRUE,TRUE,13,0.0326567888671594
+"shared","ZP",2,"additive",TRUE,TRUE,22,0.049510382197674
+"shared","ZP",2,"spread_only",TRUE,TRUE,13,0.0464140048814667
+"shared","ZP",4,"additive",TRUE,TRUE,22,0.0396593570532843
+"shared","ZP",4,"spread_only",TRUE,TRUE,13,0.0214005762091624
+"full","BM",2,"additive",TRUE,TRUE,22,0.0960288413608058
+"full","BM",2,"spread_only",TRUE,TRUE,13,0.0809572074401312
+"full","ZP",2,"additive",TRUE,TRUE,22,0.0450327209093456
+"full","ZP",2,"spread_only",TRUE,TRUE,13,0.040902239556298
+"full","ZP",4,"additive",TRUE,TRUE,22,0.031973714837884
+"full","ZP",4,"spread_only",TRUE,TRUE,13,0.0113062650648466

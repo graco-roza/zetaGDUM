@@ -1,0 +1,18 @@
+"check","identical_within_1e10"
+"ugdm_fit",TRUE
+"pos_linear",TRUE
+"pos_range_linear",TRUE
+"diag_linear",TRUE
+"imp_linear",TRUE
+"pos_nonlinear",TRUE
+"pos_range_nonlinear",TRUE
+"diag_nonlinear",TRUE
+"imp_nonlinear",TRUE
+"select",TRUE
+"additive coherent",TRUE
+"imp additive coherent",TRUE
+"additive independent",TRUE
+"imp additive independent",TRUE
+"spread_only coherent",TRUE
+"spread_only independent",TRUE
+"validate",TRUE

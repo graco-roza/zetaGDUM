@@ -1,0 +1,34 @@
+prepared shared BM k2
+prepared shared BM k5
+prepared shared ZP k2
+prepared shared ZP k4
+prepared full BM k2
+prepared full BM k5
+prepared full ZP k2
+prepared full ZP k4
+    pool group order matched_interval matched_available
+1 shared    BM     2            10:15              TRUE
+2 shared    BM     5            10:15              TRUE
+3 shared    ZP     2             5:14              TRUE
+4 shared    ZP     4             5:14              TRUE
+5   full    BM     2            10:15              TRUE
+6   full    BM     5            10:15             FALSE
+7   full    ZP     2             5:14              TRUE
+8   full    ZP     4             5:14              TRUE
+  n_supported_reference_configurations
+1                                  622
+2                                   12
+3                                  545
+4                                   14
+5                                  531
+6                                    0
+7                                  435
+8                                   13
+done shared BM k2 21.507 secs
+done shared BM k5 22.88851 secs
+done shared ZP k2 24.63287 secs
+done shared ZP k4 25.71341 secs
+done full BM k2 27.37729 secs
+done full ZP k2 29.1291 secs
+done full ZP k4 30.1515 secs
+finished 30.18242 secs 

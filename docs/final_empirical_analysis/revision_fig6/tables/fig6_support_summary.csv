@@ -1,0 +1,9 @@
+"pool","group","taxon","order","n_valid_common_intervals","matched_interval","interval_rule","matched_available","spread_from","spread_to","n_supported_reference_configurations","nn_threshold","max_common_profiles_any_spread","n_training_sets","n_unique_training_sets"
+"shared","BM","EPA macroinvertebrates",2,246,"10:15","common to both shared-pool orders",TRUE,0.45,0.7,622,1.08975627091232,714,6000,5970
+"shared","BM","EPA macroinvertebrates",5,4,"10:15","common to both shared-pool orders",TRUE,0.45,0.7,12,1.15799710202546,91,6000,6000
+"shared","ZP","EPA zooplankton",2,246,"5:14","common to both orders and both pools",TRUE,0.2,0.65,545,1.08975627091232,714,6000,5970
+"shared","ZP","EPA zooplankton",4,38,"5:14","common to both orders and both pools",TRUE,0.2,0.65,14,1.12249484901164,190,6000,6000
+"full","BM","EPA macroinvertebrates",2,267,"10:15","common to both shared-pool orders",TRUE,0.45,0.7,531,1.06431610237162,640,6000,5969
+"full","BM","EPA macroinvertebrates",5,2,"10:15","common to both shared-pool orders",FALSE,NA,NA,0,1.1607979556282,88,6000,6000
+"full","ZP","EPA zooplankton",2,345,"5:14","common to both orders and both pools",TRUE,0.2,0.65,435,1.05901979434373,649,6000,5966
+"full","ZP","EPA zooplankton",4,73,"5:14","common to both orders and both pools",TRUE,0.2,0.65,13,1.14966619910963,264,6000,6000

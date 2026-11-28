@@ -1,0 +1,13 @@
+# 01_balanced_design.R: balanced experimental design of environmental configurations spanning set position (m) and set spread (h) independently, with several internal arrangements per cell.
+# Spread h = mean pairwise |difference| of the focal predictor values in the set (the quantity entering the spread columns); position m = set mean. For k > 2 every configuration draws its internal arrangement
+# from five types (equally spaced symmetric; single outlier; two clusters of unequal size; uniform random; skewed exponential), so configurations are NOT limited to equally spaced symmetric sets.
+# The nuisance predictor N is drawn independently per site. Cells whose profile would leave [-3.5, 3.5] (beyond the fixed reference basis) are dropped and reported.
+ARR <- c("symmetric", "outlier", "two_clusters", "uniform", "skewed")
+shape_q <- function(k, type, rng_state = NULL) { q <- switch(type, symmetric = seq(-1, 1, length.out = k), outlier = c(runif(k - 1, -.3, .3), 1.6) * sample(c(-1, 1), 1), two_clusters = { n1 <- sample(1:(k - 1), 1); c(rnorm(n1, -1, .08), rnorm(k - n1, 1, .08)) }, uniform = runif(k, -1, 1), skewed = rexp(k)); if (k == 2) q <- c(-1, 1)
+  q <- q - mean(q); s <- mean(dist(q)); if (!is.finite(s) || s < 1e-8) { q <- seq(-1, 1, length.out = k); s <- mean(dist(q)) }; q / s }
+balanced_configs <- function(k, n_conf, seed, ms = seq(-1.5, 1.5, by = .5), hs = seq(.4, 2.4, by = .4), nuis_sd = 1, bound = 3.5) { set.seed(seed); cells <- expand.grid(m = ms, h = hs); rows <- list(); meta <- list(); id <- 0L
+  for (ci in seq_len(nrow(cells))) { types <- if (k == 2) rep("pair", n_conf) else sample(rep(ARR, length.out = n_conf)); for (t in types) { q <- shape_q(k, if (t == "pair") "symmetric" else t); Pv <- cells$m[ci] + cells$h[ci] * q; if (max(abs(Pv)) > bound) next; id <- id + 1L; rows[[id]] <- data.frame(P = Pv, N = rnorm(k, 0, nuis_sd)); meta[[id]] <- data.frame(cell = ci, m = cells$m[ci], h = cells$h[ci], arrangement = t) } }
+  list(env = do.call(rbind, rows), idx = matrix(seq_len(k * id), id, k, byrow = TRUE), meta = do.call(rbind, meta)) }
+random_configs <- function(k, n, seed, nuis_sd = 1) { set.seed(seed); env <- data.frame(P = rnorm(n * k), N = rnorm(n * k, 0, nuis_sd)); list(env = env, idx = matrix(seq_len(n * k), n, k, byrow = TRUE), meta = NULL) }
+ref_design <- function(n = 6000, seed = 99, k = 3) { set.seed(seed); e <- data.frame(P = rnorm(n), N = rnorm(n)); d0 <- ugdm_design(e, sample_sets(n, k, 3000, seed = 1)); list(d0 = d0, env = e) }   # fixed environmental reference basis (centring, scaling, I-spline bounds) for all designs
+cfg_stats <- function(cfg) { P <- matrix(cfg$env$P[t(cfg$idx)], ncol = ncol(cfg$idx), byrow = TRUE); data.frame(pos = rowMeans(P), spread = apply(P, 1, function(v) mean(dist(v)))) }

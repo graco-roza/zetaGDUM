@@ -1,0 +1,7 @@
+"config","n_fits","n_nonconverged"
+"additive",6000,0
+"cross_1e-06",6000,0
+"cross_5e-03",6000,0
+"same_1e-06",6000,0
+"same_5e-03",6000,0
+"spread_only",6000,30

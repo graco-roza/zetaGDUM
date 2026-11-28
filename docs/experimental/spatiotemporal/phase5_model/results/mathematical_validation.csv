@@ -1,0 +1,33 @@
+"test","passed"
+"unavailable is absent from index rather than an assemblage",TRUE
+"abundance endpoints do not depend on requesting attribution",TRUE
+"consecutive observed survey coverage",TRUE
+"actual unequal local lags",TRUE
+"local directional components",TRUE
+"incidence three-game agrees with four-game dummy",TRUE
+"observed common-support efficiency",TRUE
+"spatial additive incidence",TRUE
+"abundance identity",TRUE
+"native position sums",TRUE
+"native spread basis",TRUE
+"coherent sum",TRUE
+"coherent bounded endpoints",TRUE
+"crossed nonnegative simplex",TRUE
+"crossed rows equal process totals",TRUE
+"crossed columns equal component changes",TRUE
+"crossed totals equal endpoint change",TRUE
+"fixed-support telescoping",TRUE
+"forward folds dates separated",TRUE
+"spatial fold leakage absent",TRUE
+"predictor Shapley additivity",TRUE
+"observed empties allowed",TRUE
+"empty baseline common coalition undefined",TRUE
+"unsupported matching yields empty response",TRUE
+"local decomposition uses the full regional network",TRUE
+"one-site temporal response does not use spatial spread",TRUE
+"each rectangle uses four recorded communities",TRUE
+"each spatial response uses its observed sites",TRUE
+"paired windows keep chronological alignment",TRUE
+"native pairwise Sørensen agrees with binary counts",TRUE
+"defined local distance remains available when attribution is undefined",TRUE
+"period and importance weights target the stated means",TRUE

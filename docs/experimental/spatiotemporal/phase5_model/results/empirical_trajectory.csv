@@ -1,0 +1,1877 @@
+"dataset","panel","time","metric","value"
+"moths","response specific",1993,"zeta_presence",68.8181818181819
+"moths","response specific",1994,"zeta_presence",68.3484848484848
+"moths","response specific",1995,"zeta_presence",72.9242424242425
+"moths","response specific",1996,"zeta_presence",78.551282051282
+"moths","response specific",1997,"zeta_presence",57.7454545454545
+"moths","response specific",1998,"zeta_presence",69.025641025641
+"moths","response specific",1999,"zeta_presence",90.8846153846154
+"moths","response specific",2000,"zeta_presence",107.654545454545
+"moths","response specific",2001,"zeta_presence",93.5090909090909
+"moths","response specific",2002,"zeta_presence",91.8717948717948
+"moths","response specific",2003,"zeta_presence",73.1025641025641
+"moths","response specific",2004,"zeta_presence",72.9393939393939
+"moths","response specific",2005,"zeta_presence",87.7252747252748
+"moths","response specific",2006,"zeta_presence",89.7051282051282
+"moths","response specific",2007,"zeta_presence",88.1538461538461
+"moths","response specific",2008,"zeta_presence",79.6060606060606
+"moths","response specific",2009,"zeta_presence",88.9780219780219
+"moths","response specific",2010,"zeta_presence",99.5303030303031
+"moths","response specific",2011,"zeta_presence",110.133333333333
+"moths","response specific",2012,"zeta_presence",95.0222222222222
+"moths","response specific",2013,"zeta_presence",87.0151515151515
+"moths","response specific",2014,"zeta_presence",70.2181818181818
+"moths","response specific",2015,"zeta_presence",91.6111111111111
+"moths","response specific",2016,"zeta_presence",105.4
+"moths","response specific",1993,"incidence",0.564470838698628
+"moths","response specific",1994,"incidence",0.547339507672301
+"moths","response specific",1995,"incidence",0.549320679343913
+"moths","response specific",1996,"incidence",0.543528738187272
+"moths","response specific",1997,"incidence",0.592992556281662
+"moths","response specific",1998,"incidence",0.563708078169374
+"moths","response specific",1999,"incidence",0.494795573052197
+"moths","response specific",2000,"incidence",0.469175608862765
+"moths","response specific",2001,"incidence",0.462236309039764
+"moths","response specific",2002,"incidence",0.486699729327946
+"moths","response specific",2003,"incidence",0.574976901945743
+"moths","response specific",2004,"incidence",0.577271452232339
+"moths","response specific",2005,"incidence",0.51762265202819
+"moths","response specific",2006,"incidence",0.543894659820035
+"moths","response specific",2007,"incidence",0.540409161140369
+"moths","response specific",2008,"incidence",0.579314217413508
+"moths","response specific",2009,"incidence",0.525546025159592
+"moths","response specific",2010,"incidence",0.525240431258593
+"moths","response specific",2011,"incidence",0.505535706316843
+"moths","response specific",2012,"incidence",0.53049265907281
+"moths","response specific",2013,"incidence",0.555029365915421
+"moths","response specific",2014,"incidence",0.594037174875276
+"moths","response specific",2015,"incidence",0.53328156033788
+"moths","response specific",2016,"incidence",0.541366835999634
+"moths","response specific",1993,"turnover",0.221550729164418
+"moths","response specific",1994,"turnover",0.238854888346459
+"moths","response specific",1995,"turnover",0.214247971400114
+"moths","response specific",1996,"turnover",0.255907416704757
+"moths","response specific",1997,"turnover",0.268670429895842
+"moths","response specific",1998,"turnover",0.327980777024835
+"moths","response specific",1999,"turnover",0.227097624556711
+"moths","response specific",2000,"turnover",0.231340497743657
+"moths","response specific",2001,"turnover",0.267171520627278
+"moths","response specific",2002,"turnover",0.272101338837804
+"moths","response specific",2003,"turnover",0.292451924564576
+"moths","response specific",2004,"turnover",0.31091182223507
+"moths","response specific",2005,"turnover",0.249177557625024
+"moths","response specific",2006,"turnover",0.256579305061014
+"moths","response specific",2007,"turnover",0.269926834095402
+"moths","response specific",2008,"turnover",0.291012612589785
+"moths","response specific",2009,"turnover",0.233649611788852
+"moths","response specific",2010,"turnover",0.252238227020851
+"moths","response specific",2011,"turnover",0.241329138136208
+"moths","response specific",2012,"turnover",0.298886965693081
+"moths","response specific",2013,"turnover",0.296630147499169
+"moths","response specific",2014,"turnover",0.281087012705172
+"moths","response specific",2015,"turnover",0.257392693457055
+"moths","response specific",2016,"turnover",0.218566514636479
+"moths","response specific",1993,"nestedness",0.34292010953421
+"moths","response specific",1994,"nestedness",0.308484619325842
+"moths","response specific",1995,"nestedness",0.3350727079438
+"moths","response specific",1996,"nestedness",0.287621321482515
+"moths","response specific",1997,"nestedness",0.32432212638582
+"moths","response specific",1998,"nestedness",0.235727301144538
+"moths","response specific",1999,"nestedness",0.267697948495487
+"moths","response specific",2000,"nestedness",0.237835111119109
+"moths","response specific",2001,"nestedness",0.195064788412487
+"moths","response specific",2002,"nestedness",0.214598390490142
+"moths","response specific",2003,"nestedness",0.282524977381167
+"moths","response specific",2004,"nestedness",0.266359629997269
+"moths","response specific",2005,"nestedness",0.268445094403167
+"moths","response specific",2006,"nestedness",0.287315354759021
+"moths","response specific",2007,"nestedness",0.270482327044967
+"moths","response specific",2008,"nestedness",0.288301604823722
+"moths","response specific",2009,"nestedness",0.29189641337074
+"moths","response specific",2010,"nestedness",0.273002204237742
+"moths","response specific",2011,"nestedness",0.264206568180636
+"moths","response specific",2012,"nestedness",0.231605693379729
+"moths","response specific",2013,"nestedness",0.258399218416252
+"moths","response specific",2014,"nestedness",0.312950162170104
+"moths","response specific",2015,"nestedness",0.275888866880825
+"moths","response specific",2016,"nestedness",0.322800321363155
+"moths_balanced","response specific",2004,"zeta_presence",94.7142857142857
+"moths_balanced","response specific",2005,"zeta_presence",105.714285714286
+"moths_balanced","response specific",2006,"zeta_presence",114.095238095238
+"moths_balanced","response specific",2007,"zeta_presence",105.571428571429
+"moths_balanced","response specific",2008,"zeta_presence",94.4285714285714
+"moths_balanced","response specific",2009,"zeta_presence",102.571428571429
+"moths_balanced","response specific",2010,"zeta_presence",106
+"moths_balanced","response specific",2011,"zeta_presence",106.666666666667
+"moths_balanced","response specific",2012,"zeta_presence",101.095238095238
+"moths_balanced","response specific",2013,"zeta_presence",106.142857142857
+"moths_balanced","response specific",2004,"incidence",0.571125916279538
+"moths_balanced","response specific",2005,"incidence",0.538537172141003
+"moths_balanced","response specific",2006,"incidence",0.548268077080378
+"moths_balanced","response specific",2007,"incidence",0.552983496599153
+"moths_balanced","response specific",2008,"incidence",0.580401368518538
+"moths_balanced","response specific",2009,"incidence",0.560749473287905
+"moths_balanced","response specific",2010,"incidence",0.558733086332064
+"moths_balanced","response specific",2011,"incidence",0.552997534900329
+"moths_balanced","response specific",2012,"incidence",0.566825092537758
+"moths_balanced","response specific",2013,"incidence",0.553534938814628
+"moths_balanced","response specific",2004,"turnover",0.29188650455977
+"moths_balanced","response specific",2005,"turnover",0.233284791897414
+"moths_balanced","response specific",2006,"turnover",0.230887291413815
+"moths_balanced","response specific",2007,"turnover",0.21821537857333
+"moths_balanced","response specific",2008,"turnover",0.272443751762492
+"moths_balanced","response specific",2009,"turnover",0.215423584617453
+"moths_balanced","response specific",2010,"turnover",0.248807975820074
+"moths_balanced","response specific",2011,"turnover",0.250644512204598
+"moths_balanced","response specific",2012,"turnover",0.302638076355282
+"moths_balanced","response specific",2013,"turnover",0.251760245221723
+"moths_balanced","response specific",2004,"nestedness",0.279239411719768
+"moths_balanced","response specific",2005,"nestedness",0.305252380243588
+"moths_balanced","response specific",2006,"nestedness",0.317380785666563
+"moths_balanced","response specific",2007,"nestedness",0.334768118025823
+"moths_balanced","response specific",2008,"nestedness",0.307957616756046
+"moths_balanced","response specific",2009,"nestedness",0.345325888670452
+"moths_balanced","response specific",2010,"nestedness",0.30992511051199
+"moths_balanced","response specific",2011,"nestedness",0.302353022695731
+"moths_balanced","response specific",2012,"nestedness",0.264187016182477
+"moths_balanced","response specific",2013,"nestedness",0.301774693592906
+"phytoplankton","response specific",1992,"zeta_presence",36.42
+"phytoplankton","response specific",1993,"zeta_presence",29.4
+"phytoplankton","response specific",1994,"zeta_presence",27.8021978021978
+"phytoplankton","response specific",1995,"zeta_presence",17.4072784810126
+"phytoplankton","response specific",1996,"zeta_presence",16.4734422880489
+"phytoplankton","response specific",1997,"zeta_presence",17.1756894790603
+"phytoplankton","response specific",1998,"zeta_presence",17.7921348314606
+"phytoplankton","response specific",1999,"zeta_presence",17.5784549585673
+"phytoplankton","response specific",2000,"zeta_presence",19.3215980024968
+"phytoplankton","response specific",2001,"zeta_presence",19.1007751937983
+"phytoplankton","response specific",2002,"zeta_presence",19.2514357053685
+"phytoplankton","response specific",2003,"zeta_presence",19.1283079390536
+"phytoplankton","response specific",2004,"zeta_presence",18.4582369030087
+"phytoplankton","response specific",2005,"zeta_presence",18.6280068728522
+"phytoplankton","response specific",2006,"zeta_presence",20.0148112756809
+"phytoplankton","response specific",2007,"zeta_presence",19.1978487039323
+"phytoplankton","response specific",2008,"zeta_presence",19.9686742817584
+"phytoplankton","response specific",2009,"zeta_presence",18.2536527353042
+"phytoplankton","response specific",2010,"zeta_presence",18.9562687356726
+"phytoplankton","response specific",2011,"zeta_presence",17.5637623762376
+"phytoplankton","response specific",2012,"zeta_presence",17.4580413297395
+"phytoplankton","response specific",2013,"zeta_presence",17.2817401045555
+"phytoplankton","response specific",2014,"zeta_presence",17.7538353024159
+"phytoplankton","response specific",2015,"zeta_presence",17.6783636043027
+"phytoplankton","response specific",2016,"zeta_presence",17.3373302768471
+"phytoplankton","response specific",2017,"zeta_presence",15.9656145300653
+"phytoplankton","response specific",2018,"zeta_presence",15.4667607123964
+"phytoplankton","response specific",2019,"zeta_presence",15.1666372773761
+"phytoplankton","response specific",2020,"zeta_presence",13.5886087109857
+"phytoplankton","response specific",2021,"zeta_presence",13.5429377534827
+"phytoplankton","response specific",2022,"zeta_presence",15.1990830541351
+"phytoplankton","response specific",1992,"zeta_abundance",0.216569328697717
+"phytoplankton","response specific",1993,"zeta_abundance",0.226412806035449
+"phytoplankton","response specific",1994,"zeta_abundance",0.254689589254455
+"phytoplankton","response specific",1995,"zeta_abundance",0.165761313563459
+"phytoplankton","response specific",1996,"zeta_abundance",0.179997073522836
+"phytoplankton","response specific",1997,"zeta_abundance",0.183880024806287
+"phytoplankton","response specific",1998,"zeta_abundance",0.178787451199901
+"phytoplankton","response specific",1999,"zeta_abundance",0.180772153773814
+"phytoplankton","response specific",2000,"zeta_abundance",0.205725936704123
+"phytoplankton","response specific",2001,"zeta_abundance",0.165356436026499
+"phytoplankton","response specific",2002,"zeta_abundance",0.185979908834296
+"phytoplankton","response specific",2003,"zeta_abundance",0.179726117963309
+"phytoplankton","response specific",2004,"zeta_abundance",0.184280158113589
+"phytoplankton","response specific",2005,"zeta_abundance",0.19309910628672
+"phytoplankton","response specific",2006,"zeta_abundance",0.202117919172638
+"phytoplankton","response specific",2007,"zeta_abundance",0.207285468520038
+"phytoplankton","response specific",2008,"zeta_abundance",0.209943068767552
+"phytoplankton","response specific",2009,"zeta_abundance",0.18796265491825
+"phytoplankton","response specific",2010,"zeta_abundance",0.178883456894516
+"phytoplankton","response specific",2011,"zeta_abundance",0.160821006326225
+"phytoplankton","response specific",2012,"zeta_abundance",0.188217856654556
+"phytoplankton","response specific",2013,"zeta_abundance",0.161724539985928
+"phytoplankton","response specific",2014,"zeta_abundance",0.176238912479075
+"phytoplankton","response specific",2015,"zeta_abundance",0.172700296664663
+"phytoplankton","response specific",2016,"zeta_abundance",0.18063135473377
+"phytoplankton","response specific",2017,"zeta_abundance",0.198346783625971
+"phytoplankton","response specific",2018,"zeta_abundance",0.181600075163797
+"phytoplankton","response specific",2019,"zeta_abundance",0.181979656978854
+"phytoplankton","response specific",2020,"zeta_abundance",0.183649957733078
+"phytoplankton","response specific",2021,"zeta_abundance",0.179366330407946
+"phytoplankton","response specific",2022,"zeta_abundance",0.172545263456663
+"phytoplankton","response specific",1992,"zeta_dominance",3.08666666666666
+"phytoplankton","response specific",1993,"zeta_dominance",3.38
+"phytoplankton","response specific",1994,"zeta_dominance",3.72527472527472
+"phytoplankton","response specific",1995,"zeta_dominance",1.50158227848102
+"phytoplankton","response specific",1996,"zeta_dominance",1.8409090909091
+"phytoplankton","response specific",1997,"zeta_dominance",1.99208375893767
+"phytoplankton","response specific",1998,"zeta_dominance",2.02962206332991
+"phytoplankton","response specific",1999,"zeta_dominance",1.79577653033948
+"phytoplankton","response specific",2000,"zeta_dominance",2.41997503121098
+"phytoplankton","response specific",2001,"zeta_dominance",1.53194333066026
+"phytoplankton","response specific",2002,"zeta_dominance",1.85967540574284
+"phytoplankton","response specific",2003,"zeta_dominance",1.85351510291366
+"phytoplankton","response specific",2004,"zeta_dominance",1.87081843046496
+"phytoplankton","response specific",2005,"zeta_dominance",2.12156357388319
+"phytoplankton","response specific",2006,"zeta_dominance",2.17247969421884
+"phytoplankton","response specific",2007,"zeta_dominance",2.37929818374182
+"phytoplankton","response specific",2008,"zeta_dominance",2.3056420906889
+"phytoplankton","response specific",2009,"zeta_dominance",2.0672782874618
+"phytoplankton","response specific",2010,"zeta_dominance",1.66108270146361
+"phytoplankton","response specific",2011,"zeta_dominance",1.7506930693069
+"phytoplankton","response specific",2012,"zeta_dominance",1.7006289308176
+"phytoplankton","response specific",2013,"zeta_dominance",1.52931292008962
+"phytoplankton","response specific",2014,"zeta_dominance",1.75171927349673
+"phytoplankton","response specific",2015,"zeta_dominance",1.52019044260272
+"phytoplankton","response specific",2016,"zeta_dominance",1.90548404161527
+"phytoplankton","response specific",2017,"zeta_dominance",1.87815200141068
+"phytoplankton","response specific",2018,"zeta_dominance",1.76035972491625
+"phytoplankton","response specific",2019,"zeta_dominance",1.86757185681537
+"phytoplankton","response specific",2020,"zeta_dominance",1.84500088167869
+"phytoplankton","response specific",2021,"zeta_dominance",1.82948333627227
+"phytoplankton","response specific",2022,"zeta_dominance",1.56727208605184
+"phytoplankton","response specific",1992,"incidence",0.406225790172998
+"phytoplankton","response specific",1993,"incidence",0.4549524212038
+"phytoplankton","response specific",1994,"incidence",0.476667753654945
+"phytoplankton","response specific",1995,"incidence",0.604593141864159
+"phytoplankton","response specific",1996,"incidence",0.588781783508759
+"phytoplankton","response specific",1997,"incidence",0.576594601276073
+"phytoplankton","response specific",1998,"incidence",0.566318512900974
+"phytoplankton","response specific",1999,"incidence",0.553135925529796
+"phytoplankton","response specific",2000,"incidence",0.544504773756625
+"phytoplankton","response specific",2001,"incidence",0.56359516889967
+"phytoplankton","response specific",2002,"incidence",0.551796409567754
+"phytoplankton","response specific",2003,"incidence",0.553250044776966
+"phytoplankton","response specific",2004,"incidence",0.568564680078204
+"phytoplankton","response specific",2005,"incidence",0.552877827087935
+"phytoplankton","response specific",2006,"incidence",0.534994760245574
+"phytoplankton","response specific",2007,"incidence",0.554453003494205
+"phytoplankton","response specific",2008,"incidence",0.550923493608505
+"phytoplankton","response specific",2009,"incidence",0.578036640362495
+"phytoplankton","response specific",2010,"incidence",0.571792360816657
+"phytoplankton","response specific",2011,"incidence",0.616070087342972
+"phytoplankton","response specific",2012,"incidence",0.581668489740998
+"phytoplankton","response specific",2013,"incidence",0.597495371287014
+"phytoplankton","response specific",2014,"incidence",0.587428377686621
+"phytoplankton","response specific",2015,"incidence",0.599312448941046
+"phytoplankton","response specific",2016,"incidence",0.591303377625754
+"phytoplankton","response specific",2017,"incidence",0.594440087328356
+"phytoplankton","response specific",2018,"incidence",0.60386127660749
+"phytoplankton","response specific",2019,"incidence",0.60381475443989
+"phytoplankton","response specific",2020,"incidence",0.61767148978744
+"phytoplankton","response specific",2021,"incidence",0.618023261837484
+"phytoplankton","response specific",2022,"incidence",0.587730524244854
+"phytoplankton","response specific",1992,"turnover",0.280288471726644
+"phytoplankton","response specific",1993,"turnover",0.317929502915958
+"phytoplankton","response specific",1994,"turnover",0.32891081846977
+"phytoplankton","response specific",1995,"turnover",0.451705180918211
+"phytoplankton","response specific",1996,"turnover",0.4396806842227
+"phytoplankton","response specific",1997,"turnover",0.439193536348297
+"phytoplankton","response specific",1998,"turnover",0.419541247704718
+"phytoplankton","response specific",1999,"turnover",0.424618012343359
+"phytoplankton","response specific",2000,"turnover",0.41100513169985
+"phytoplankton","response specific",2001,"turnover",0.447493341113761
+"phytoplankton","response specific",2002,"turnover",0.411953700585187
+"phytoplankton","response specific",2003,"turnover",0.429684330266863
+"phytoplankton","response specific",2004,"turnover",0.436150859087571
+"phytoplankton","response specific",2005,"turnover",0.429318783246349
+"phytoplankton","response specific",2006,"turnover",0.41627899760421
+"phytoplankton","response specific",2007,"turnover",0.421510437825353
+"phytoplankton","response specific",2008,"turnover",0.421185048160888
+"phytoplankton","response specific",2009,"turnover",0.444669413829331
+"phytoplankton","response specific",2010,"turnover",0.456968635193049
+"phytoplankton","response specific",2011,"turnover",0.507201210439737
+"phytoplankton","response specific",2012,"turnover",0.47272548036478
+"phytoplankton","response specific",2013,"turnover",0.478048634566578
+"phytoplankton","response specific",2014,"turnover",0.477053263120492
+"phytoplankton","response specific",2015,"turnover",0.475105738317201
+"phytoplankton","response specific",2016,"turnover",0.471701906868819
+"phytoplankton","response specific",2017,"turnover",0.473994884101453
+"phytoplankton","response specific",2018,"turnover",0.493967390835169
+"phytoplankton","response specific",2019,"turnover",0.485968040591186
+"phytoplankton","response specific",2020,"turnover",0.508980125958691
+"phytoplankton","response specific",2021,"turnover",0.497292853715166
+"phytoplankton","response specific",2022,"turnover",0.476678929120158
+"phytoplankton","response specific",1992,"nestedness",0.125937318446354
+"phytoplankton","response specific",1993,"nestedness",0.137022918287842
+"phytoplankton","response specific",1994,"nestedness",0.147756935185175
+"phytoplankton","response specific",1995,"nestedness",0.152887960945947
+"phytoplankton","response specific",1996,"nestedness",0.149101099286059
+"phytoplankton","response specific",1997,"nestedness",0.137401064927776
+"phytoplankton","response specific",1998,"nestedness",0.146777265196256
+"phytoplankton","response specific",1999,"nestedness",0.128517913186437
+"phytoplankton","response specific",2000,"nestedness",0.133499642056776
+"phytoplankton","response specific",2001,"nestedness",0.116101827785909
+"phytoplankton","response specific",2002,"nestedness",0.139842708982567
+"phytoplankton","response specific",2003,"nestedness",0.123565714510103
+"phytoplankton","response specific",2004,"nestedness",0.132413820990633
+"phytoplankton","response specific",2005,"nestedness",0.123559043841586
+"phytoplankton","response specific",2006,"nestedness",0.118715762641363
+"phytoplankton","response specific",2007,"nestedness",0.132942565668852
+"phytoplankton","response specific",2008,"nestedness",0.129738445447617
+"phytoplankton","response specific",2009,"nestedness",0.133367226533165
+"phytoplankton","response specific",2010,"nestedness",0.114823725623608
+"phytoplankton","response specific",2011,"nestedness",0.108868876903235
+"phytoplankton","response specific",2012,"nestedness",0.108943009376218
+"phytoplankton","response specific",2013,"nestedness",0.119446736720437
+"phytoplankton","response specific",2014,"nestedness",0.11037511456613
+"phytoplankton","response specific",2015,"nestedness",0.124206710623844
+"phytoplankton","response specific",2016,"nestedness",0.119601470756935
+"phytoplankton","response specific",2017,"nestedness",0.120445203226903
+"phytoplankton","response specific",2018,"nestedness",0.10989388577232
+"phytoplankton","response specific",2019,"nestedness",0.117846713848704
+"phytoplankton","response specific",2020,"nestedness",0.108691363828749
+"phytoplankton","response specific",2021,"nestedness",0.120730408122318
+"phytoplankton","response specific",2022,"nestedness",0.111051595124696
+"phytoplankton","response specific",1992,"abundance",0.783430671302283
+"phytoplankton","response specific",1993,"abundance",0.77358719396455
+"phytoplankton","response specific",1994,"abundance",0.745310410745545
+"phytoplankton","response specific",1995,"abundance",0.83423868643654
+"phytoplankton","response specific",1996,"abundance",0.820002926477164
+"phytoplankton","response specific",1997,"abundance",0.816119975193713
+"phytoplankton","response specific",1998,"abundance",0.821212548800099
+"phytoplankton","response specific",1999,"abundance",0.819227846226186
+"phytoplankton","response specific",2000,"abundance",0.794274063295877
+"phytoplankton","response specific",2001,"abundance",0.834643563973501
+"phytoplankton","response specific",2002,"abundance",0.814020091165704
+"phytoplankton","response specific",2003,"abundance",0.820273882036691
+"phytoplankton","response specific",2004,"abundance",0.815719841886411
+"phytoplankton","response specific",2005,"abundance",0.80690089371328
+"phytoplankton","response specific",2006,"abundance",0.797882080827362
+"phytoplankton","response specific",2007,"abundance",0.792714531479962
+"phytoplankton","response specific",2008,"abundance",0.790056931232448
+"phytoplankton","response specific",2009,"abundance",0.81203734508175
+"phytoplankton","response specific",2010,"abundance",0.821116543105484
+"phytoplankton","response specific",2011,"abundance",0.839178993673775
+"phytoplankton","response specific",2012,"abundance",0.811782143345444
+"phytoplankton","response specific",2013,"abundance",0.838275460014072
+"phytoplankton","response specific",2014,"abundance",0.823761087520925
+"phytoplankton","response specific",2015,"abundance",0.827299703335337
+"phytoplankton","response specific",2016,"abundance",0.81936864526623
+"phytoplankton","response specific",2017,"abundance",0.801653216374029
+"phytoplankton","response specific",2018,"abundance",0.818399924836203
+"phytoplankton","response specific",2019,"abundance",0.818020343021146
+"phytoplankton","response specific",2020,"abundance",0.816350042266922
+"phytoplankton","response specific",2021,"abundance",0.820633669592054
+"phytoplankton","response specific",2022,"abundance",0.827454736543337
+"phytoplankton","response specific",1992,"occupancy",0.41463845788063
+"phytoplankton","response specific",1993,"occupancy",0.483216331885423
+"phytoplankton","response specific",1994,"occupancy",0.407916879885751
+"phytoplankton","response specific",1995,"occupancy",0.573360743829467
+"phytoplankton","response specific",1996,"occupancy",0.542851179858849
+"phytoplankton","response specific",1997,"occupancy",0.556284238769379
+"phytoplankton","response specific",1998,"occupancy",0.546802365284438
+"phytoplankton","response specific",1999,"occupancy",0.546386265116666
+"phytoplankton","response specific",2000,"occupancy",0.512988404543464
+"phytoplankton","response specific",2001,"occupancy",0.565784867063478
+"phytoplankton","response specific",2002,"occupancy",0.531494719188613
+"phytoplankton","response specific",2003,"occupancy",0.529090527557401
+"phytoplankton","response specific",2004,"occupancy",0.524522988202442
+"phytoplankton","response specific",2005,"occupancy",0.519789599729998
+"phytoplankton","response specific",2006,"occupancy",0.517663700897975
+"phytoplankton","response specific",2007,"occupancy",0.507891555647158
+"phytoplankton","response specific",2008,"occupancy",0.502677644955688
+"phytoplankton","response specific",2009,"occupancy",0.52347167730004
+"phytoplankton","response specific",2010,"occupancy",0.540215813985609
+"phytoplankton","response specific",2011,"occupancy",0.58204176273263
+"phytoplankton","response specific",2012,"occupancy",0.527868473168416
+"phytoplankton","response specific",2013,"occupancy",0.561261370521898
+"phytoplankton","response specific",2014,"occupancy",0.541349064537543
+"phytoplankton","response specific",2015,"occupancy",0.541528498283553
+"phytoplankton","response specific",2016,"occupancy",0.534977419851034
+"phytoplankton","response specific",2017,"occupancy",0.511417677000643
+"phytoplankton","response specific",2018,"occupancy",0.540785117612062
+"phytoplankton","response specific",2019,"occupancy",0.529381792477312
+"phytoplankton","response specific",2020,"occupancy",0.560906042569117
+"phytoplankton","response specific",2021,"occupancy",0.554468539861598
+"phytoplankton","response specific",2022,"occupancy",0.551872318902348
+"phytoplankton","response specific",1992,"numerical",0.368792213421653
+"phytoplankton","response specific",1993,"numerical",0.290370862079128
+"phytoplankton","response specific",1994,"numerical",0.337393530859794
+"phytoplankton","response specific",1995,"numerical",0.260877942607073
+"phytoplankton","response specific",1996,"numerical",0.277151746618315
+"phytoplankton","response specific",1997,"numerical",0.259835736424334
+"phytoplankton","response specific",1998,"numerical",0.274410183515661
+"phytoplankton","response specific",1999,"numerical",0.272841581109521
+"phytoplankton","response specific",2000,"numerical",0.281285658752414
+"phytoplankton","response specific",2001,"numerical",0.268858696910023
+"phytoplankton","response specific",2002,"numerical",0.28252537197709
+"phytoplankton","response specific",2003,"numerical",0.29118335447929
+"phytoplankton","response specific",2004,"numerical",0.291196853683969
+"phytoplankton","response specific",2005,"numerical",0.287111293983281
+"phytoplankton","response specific",2006,"numerical",0.280218379929387
+"phytoplankton","response specific",2007,"numerical",0.284822975832805
+"phytoplankton","response specific",2008,"numerical",0.28737928627676
+"phytoplankton","response specific",2009,"numerical",0.28856566778171
+"phytoplankton","response specific",2010,"numerical",0.280900729119875
+"phytoplankton","response specific",2011,"numerical",0.257137230941145
+"phytoplankton","response specific",2012,"numerical",0.283913670177029
+"phytoplankton","response specific",2013,"numerical",0.277014089492174
+"phytoplankton","response specific",2014,"numerical",0.282412022983381
+"phytoplankton","response specific",2015,"numerical",0.285771205051784
+"phytoplankton","response specific",2016,"numerical",0.284391225415196
+"phytoplankton","response specific",2017,"numerical",0.290235539373386
+"phytoplankton","response specific",2018,"numerical",0.277614807224141
+"phytoplankton","response specific",2019,"numerical",0.288638550543834
+"phytoplankton","response specific",2020,"numerical",0.255443999697805
+"phytoplankton","response specific",2021,"numerical",0.266165129730456
+"phytoplankton","response specific",2022,"numerical",0.275582417640988
+"phytoplankton","response specific",1992,"dominance",0.776578350547035
+"phytoplankton","response specific",1993,"dominance",0.756703277355198
+"phytoplankton","response specific",1994,"dominance",0.697495715789811
+"phytoplankton","response specific",1995,"dominance",0.834401018640894
+"phytoplankton","response specific",1996,"dominance",0.811511493655232
+"phytoplankton","response specific",1997,"dominance",0.810046882141012
+"phytoplankton","response specific",1998,"dominance",0.807883347841344
+"phytoplankton","response specific",1999,"dominance",0.810207887458425
+"phytoplankton","response specific",2000,"dominance",0.774438952235433
+"phytoplankton","response specific",2001,"dominance",0.837205733997788
+"phytoplankton","response specific",2002,"dominance",0.814271393829486
+"phytoplankton","response specific",2003,"dominance",0.820819145696014
+"phytoplankton","response specific",2004,"dominance",0.806709932795673
+"phytoplankton","response specific",2005,"dominance",0.790372113548506
+"phytoplankton","response specific",2006,"dominance",0.795953277706347
+"phytoplankton","response specific",2007,"dominance",0.770129999358121
+"phytoplankton","response specific",2008,"dominance",0.782078652565015
+"phytoplankton","response specific",2009,"dominance",0.792857948673069
+"phytoplankton","response specific",2010,"dominance",0.811804425272484
+"phytoplankton","response specific",2011,"dominance",0.834149892178676
+"phytoplankton","response specific",2012,"dominance",0.811001576877704
+"phytoplankton","response specific",2013,"dominance",0.830332808833161
+"phytoplankton","response specific",2014,"dominance",0.819754922228294
+"phytoplankton","response specific",2015,"dominance",0.832214936677224
+"phytoplankton","response specific",2016,"dominance",0.814989103361669
+"phytoplankton","response specific",2017,"dominance",0.790966977343658
+"phytoplankton","response specific",2018,"dominance",0.80620978903738
+"phytoplankton","response specific",2019,"dominance",0.808325553077808
+"phytoplankton","response specific",2020,"dominance",0.800330071336298
+"phytoplankton","response specific",2021,"dominance",0.803816851600276
+"phytoplankton","response specific",2022,"dominance",0.824291645447037
+"phytoplankton","Phase IV balanced",1995,"zeta_presence",17.0662337662337
+"phytoplankton","Phase IV balanced",1996,"zeta_presence",16.3779220779221
+"phytoplankton","Phase IV balanced",1997,"zeta_presence",16.7409090909091
+"phytoplankton","Phase IV balanced",1998,"zeta_presence",18.0954545454546
+"phytoplankton","Phase IV balanced",1999,"zeta_presence",17.2305194805195
+"phytoplankton","Phase IV balanced",2000,"zeta_presence",18.7175324675325
+"phytoplankton","Phase IV balanced",2001,"zeta_presence",19.8058441558441
+"phytoplankton","Phase IV balanced",2002,"zeta_presence",19.1071428571428
+"phytoplankton","Phase IV balanced",2003,"zeta_presence",19.0383116883117
+"phytoplankton","Phase IV balanced",2004,"zeta_presence",18.7045454545454
+"phytoplankton","Phase IV balanced",2005,"zeta_presence",18.75
+"phytoplankton","Phase IV balanced",2006,"zeta_presence",19.7077922077922
+"phytoplankton","Phase IV balanced",2007,"zeta_presence",18.4668831168831
+"phytoplankton","Phase IV balanced",2008,"zeta_presence",20.0915584415585
+"phytoplankton","Phase IV balanced",2009,"zeta_presence",18.751948051948
+"phytoplankton","Phase IV balanced",2010,"zeta_presence",19.2032467532468
+"phytoplankton","Phase IV balanced",2011,"zeta_presence",18.1201298701299
+"phytoplankton","Phase IV balanced",2012,"zeta_presence",18.0701298701299
+"phytoplankton","Phase IV balanced",2013,"zeta_presence",17.5357142857143
+"phytoplankton","Phase IV balanced",2014,"zeta_presence",18.8701298701299
+"phytoplankton","Phase IV balanced",2015,"zeta_presence",18.9564935064935
+"phytoplankton","Phase IV balanced",2016,"zeta_presence",18.2571428571429
+"phytoplankton","Phase IV balanced",2017,"zeta_presence",16.7448051948052
+"phytoplankton","Phase IV balanced",2018,"zeta_presence",16.9402597402597
+"phytoplankton","Phase IV balanced",2019,"zeta_presence",16.2415584415584
+"phytoplankton","Phase IV balanced",2020,"zeta_presence",14.0883116883117
+"phytoplankton","Phase IV balanced",2021,"zeta_presence",14.2532467532467
+"phytoplankton","Phase IV balanced",2022,"zeta_presence",16.1551948051948
+"phytoplankton","Phase IV balanced",1995,"zeta_abundance",0.186641417012463
+"phytoplankton","Phase IV balanced",1996,"zeta_abundance",0.180870682227539
+"phytoplankton","Phase IV balanced",1997,"zeta_abundance",0.185197154753376
+"phytoplankton","Phase IV balanced",1998,"zeta_abundance",0.188227309576118
+"phytoplankton","Phase IV balanced",1999,"zeta_abundance",0.185477878300857
+"phytoplankton","Phase IV balanced",2000,"zeta_abundance",0.215963100679176
+"phytoplankton","Phase IV balanced",2001,"zeta_abundance",0.173763818125896
+"phytoplankton","Phase IV balanced",2002,"zeta_abundance",0.196793907182181
+"phytoplankton","Phase IV balanced",2003,"zeta_abundance",0.18593710760013
+"phytoplankton","Phase IV balanced",2004,"zeta_abundance",0.203322729441524
+"phytoplankton","Phase IV balanced",2005,"zeta_abundance",0.195632125195816
+"phytoplankton","Phase IV balanced",2006,"zeta_abundance",0.206983869350475
+"phytoplankton","Phase IV balanced",2007,"zeta_abundance",0.204656963552277
+"phytoplankton","Phase IV balanced",2008,"zeta_abundance",0.215699148089669
+"phytoplankton","Phase IV balanced",2009,"zeta_abundance",0.195834637131907
+"phytoplankton","Phase IV balanced",2010,"zeta_abundance",0.188059260508303
+"phytoplankton","Phase IV balanced",2011,"zeta_abundance",0.157320342182558
+"phytoplankton","Phase IV balanced",2012,"zeta_abundance",0.198644592985542
+"phytoplankton","Phase IV balanced",2013,"zeta_abundance",0.158349188630938
+"phytoplankton","Phase IV balanced",2014,"zeta_abundance",0.191727175431501
+"phytoplankton","Phase IV balanced",2015,"zeta_abundance",0.186885389346342
+"phytoplankton","Phase IV balanced",2016,"zeta_abundance",0.187070084957272
+"phytoplankton","Phase IV balanced",2017,"zeta_abundance",0.197651565001625
+"phytoplankton","Phase IV balanced",2018,"zeta_abundance",0.196188771572809
+"phytoplankton","Phase IV balanced",2019,"zeta_abundance",0.187834410024472
+"phytoplankton","Phase IV balanced",2020,"zeta_abundance",0.197076334344505
+"phytoplankton","Phase IV balanced",2021,"zeta_abundance",0.192267953713071
+"phytoplankton","Phase IV balanced",2022,"zeta_abundance",0.17337814508837
+"phytoplankton","Phase IV balanced",1995,"zeta_dominance",1.56623376623376
+"phytoplankton","Phase IV balanced",1996,"zeta_dominance",1.72402597402598
+"phytoplankton","Phase IV balanced",1997,"zeta_dominance",1.89935064935065
+"phytoplankton","Phase IV balanced",1998,"zeta_dominance",2.08766233766234
+"phytoplankton","Phase IV balanced",1999,"zeta_dominance",1.82792207792207
+"phytoplankton","Phase IV balanced",2000,"zeta_dominance",2.30454545454545
+"phytoplankton","Phase IV balanced",2001,"zeta_dominance",1.62662337662337
+"phytoplankton","Phase IV balanced",2002,"zeta_dominance",1.78701298701299
+"phytoplankton","Phase IV balanced",2003,"zeta_dominance",1.74805194805194
+"phytoplankton","Phase IV balanced",2004,"zeta_dominance",2.062987012987
+"phytoplankton","Phase IV balanced",2005,"zeta_dominance",2.11753246753248
+"phytoplankton","Phase IV balanced",2006,"zeta_dominance",2.23766233766233
+"phytoplankton","Phase IV balanced",2007,"zeta_dominance",2.09805194805194
+"phytoplankton","Phase IV balanced",2008,"zeta_dominance",2.26623376623377
+"phytoplankton","Phase IV balanced",2009,"zeta_dominance",2.08246753246752
+"phytoplankton","Phase IV balanced",2010,"zeta_dominance",1.73506493506493
+"phytoplankton","Phase IV balanced",2011,"zeta_dominance",1.77662337662338
+"phytoplankton","Phase IV balanced",2012,"zeta_dominance",1.74480519480519
+"phytoplankton","Phase IV balanced",2013,"zeta_dominance",1.48571428571429
+"phytoplankton","Phase IV balanced",2014,"zeta_dominance",1.76558441558441
+"phytoplankton","Phase IV balanced",2015,"zeta_dominance",1.66038961038961
+"phytoplankton","Phase IV balanced",2016,"zeta_dominance",2.00389610389611
+"phytoplankton","Phase IV balanced",2017,"zeta_dominance",1.97467532467532
+"phytoplankton","Phase IV balanced",2018,"zeta_dominance",2.08896103896104
+"phytoplankton","Phase IV balanced",2019,"zeta_dominance",2.01558441558442
+"phytoplankton","Phase IV balanced",2020,"zeta_dominance",1.92727272727272
+"phytoplankton","Phase IV balanced",2021,"zeta_dominance",1.91753246753247
+"phytoplankton","Phase IV balanced",2022,"zeta_dominance",1.60714285714286
+"phytoplankton","Phase IV balanced",1995,"incidence",0.595905306871746
+"phytoplankton","Phase IV balanced",1996,"incidence",0.588774533443298
+"phytoplankton","Phase IV balanced",1997,"incidence",0.569695285132416
+"phytoplankton","Phase IV balanced",1998,"incidence",0.554597580706312
+"phytoplankton","Phase IV balanced",1999,"incidence",0.55429707314749
+"phytoplankton","Phase IV balanced",2000,"incidence",0.543774125301862
+"phytoplankton","Phase IV balanced",2001,"incidence",0.54492779860665
+"phytoplankton","Phase IV balanced",2002,"incidence",0.547107003010582
+"phytoplankton","Phase IV balanced",2003,"incidence",0.54655391391534
+"phytoplankton","Phase IV balanced",2004,"incidence",0.563629314139476
+"phytoplankton","Phase IV balanced",2005,"incidence",0.551114842466374
+"phytoplankton","Phase IV balanced",2006,"incidence",0.535580124213113
+"phytoplankton","Phase IV balanced",2007,"incidence",0.56186127006194
+"phytoplankton","Phase IV balanced",2008,"incidence",0.539423099701724
+"phytoplankton","Phase IV balanced",2009,"incidence",0.569440661638375
+"phytoplankton","Phase IV balanced",2010,"incidence",0.56912891938432
+"phytoplankton","Phase IV balanced",2011,"incidence",0.613735845469578
+"phytoplankton","Phase IV balanced",2012,"incidence",0.573933514907341
+"phytoplankton","Phase IV balanced",2013,"incidence",0.602823320222772
+"phytoplankton","Phase IV balanced",2014,"incidence",0.57127211802192
+"phytoplankton","Phase IV balanced",2015,"incidence",0.582865128565228
+"phytoplankton","Phase IV balanced",2016,"incidence",0.5771531420547
+"phytoplankton","Phase IV balanced",2017,"incidence",0.579436500725794
+"phytoplankton","Phase IV balanced",2018,"incidence",0.57832140354309
+"phytoplankton","Phase IV balanced",2019,"incidence",0.591651640258321
+"phytoplankton","Phase IV balanced",2020,"incidence",0.604959523136081
+"phytoplankton","Phase IV balanced",2021,"incidence",0.607655605188892
+"phytoplankton","Phase IV balanced",2022,"incidence",0.57732605148333
+"phytoplankton","Phase IV balanced",1995,"turnover",0.437599052576529
+"phytoplankton","Phase IV balanced",1996,"turnover",0.431639610674662
+"phytoplankton","Phase IV balanced",1997,"turnover",0.424816365858433
+"phytoplankton","Phase IV balanced",1998,"turnover",0.408035777452087
+"phytoplankton","Phase IV balanced",1999,"turnover",0.41706607368392
+"phytoplankton","Phase IV balanced",2000,"turnover",0.393287209285458
+"phytoplankton","Phase IV balanced",2001,"turnover",0.424268756031405
+"phytoplankton","Phase IV balanced",2002,"turnover",0.411668491750135
+"phytoplankton","Phase IV balanced",2003,"turnover",0.414061384004485
+"phytoplankton","Phase IV balanced",2004,"turnover",0.4320473902404
+"phytoplankton","Phase IV balanced",2005,"turnover",0.429890111239923
+"phytoplankton","Phase IV balanced",2006,"turnover",0.409765312109364
+"phytoplankton","Phase IV balanced",2007,"turnover",0.4191555270658
+"phytoplankton","Phase IV balanced",2008,"turnover",0.409806082870181
+"phytoplankton","Phase IV balanced",2009,"turnover",0.437725003865092
+"phytoplankton","Phase IV balanced",2010,"turnover",0.450849566912343
+"phytoplankton","Phase IV balanced",2011,"turnover",0.50273979053473
+"phytoplankton","Phase IV balanced",2012,"turnover",0.468916777597814
+"phytoplankton","Phase IV balanced",2013,"turnover",0.483911068244687
+"phytoplankton","Phase IV balanced",2014,"turnover",0.467764230845765
+"phytoplankton","Phase IV balanced",2015,"turnover",0.462557719187072
+"phytoplankton","Phase IV balanced",2016,"turnover",0.458254159074514
+"phytoplankton","Phase IV balanced",2017,"turnover",0.47144941789322
+"phytoplankton","Phase IV balanced",2018,"turnover",0.462526480792771
+"phytoplankton","Phase IV balanced",2019,"turnover",0.487067434706834
+"phytoplankton","Phase IV balanced",2020,"turnover",0.493790573279136
+"phytoplankton","Phase IV balanced",2021,"turnover",0.497946431602734
+"phytoplankton","Phase IV balanced",2022,"turnover",0.475753786833906
+"phytoplankton","Phase IV balanced",1995,"nestedness",0.158306254295217
+"phytoplankton","Phase IV balanced",1996,"nestedness",0.157134922768636
+"phytoplankton","Phase IV balanced",1997,"nestedness",0.144878919273984
+"phytoplankton","Phase IV balanced",1998,"nestedness",0.146561803254225
+"phytoplankton","Phase IV balanced",1999,"nestedness",0.13723099946357
+"phytoplankton","Phase IV balanced",2000,"nestedness",0.150486916016404
+"phytoplankton","Phase IV balanced",2001,"nestedness",0.120659042575245
+"phytoplankton","Phase IV balanced",2002,"nestedness",0.135438511260447
+"phytoplankton","Phase IV balanced",2003,"nestedness",0.132492529910855
+"phytoplankton","Phase IV balanced",2004,"nestedness",0.131581923899076
+"phytoplankton","Phase IV balanced",2005,"nestedness",0.121224731226452
+"phytoplankton","Phase IV balanced",2006,"nestedness",0.125814812103748
+"phytoplankton","Phase IV balanced",2007,"nestedness",0.14270574299614
+"phytoplankton","Phase IV balanced",2008,"nestedness",0.129617016831543
+"phytoplankton","Phase IV balanced",2009,"nestedness",0.131715657773283
+"phytoplankton","Phase IV balanced",2010,"nestedness",0.118279352471978
+"phytoplankton","Phase IV balanced",2011,"nestedness",0.110996054934849
+"phytoplankton","Phase IV balanced",2012,"nestedness",0.105016737309528
+"phytoplankton","Phase IV balanced",2013,"nestedness",0.118912251978084
+"phytoplankton","Phase IV balanced",2014,"nestedness",0.103507887176155
+"phytoplankton","Phase IV balanced",2015,"nestedness",0.120307409378156
+"phytoplankton","Phase IV balanced",2016,"nestedness",0.118898982980186
+"phytoplankton","Phase IV balanced",2017,"nestedness",0.107987082832574
+"phytoplankton","Phase IV balanced",2018,"nestedness",0.115794922750318
+"phytoplankton","Phase IV balanced",2019,"nestedness",0.104584205551487
+"phytoplankton","Phase IV balanced",2020,"nestedness",0.111168949856945
+"phytoplankton","Phase IV balanced",2021,"nestedness",0.109709173586158
+"phytoplankton","Phase IV balanced",2022,"nestedness",0.101572264649424
+"phytoplankton","Phase IV balanced",1995,"abundance",0.813358582987537
+"phytoplankton","Phase IV balanced",1996,"abundance",0.819129317772461
+"phytoplankton","Phase IV balanced",1997,"abundance",0.814802845246624
+"phytoplankton","Phase IV balanced",1998,"abundance",0.811772690423882
+"phytoplankton","Phase IV balanced",1999,"abundance",0.814522121699143
+"phytoplankton","Phase IV balanced",2000,"abundance",0.784036899320824
+"phytoplankton","Phase IV balanced",2001,"abundance",0.826236181874104
+"phytoplankton","Phase IV balanced",2002,"abundance",0.803206092817819
+"phytoplankton","Phase IV balanced",2003,"abundance",0.81406289239987
+"phytoplankton","Phase IV balanced",2004,"abundance",0.796677270558476
+"phytoplankton","Phase IV balanced",2005,"abundance",0.804367874804184
+"phytoplankton","Phase IV balanced",2006,"abundance",0.793016130649525
+"phytoplankton","Phase IV balanced",2007,"abundance",0.795343036447723
+"phytoplankton","Phase IV balanced",2008,"abundance",0.784300851910331
+"phytoplankton","Phase IV balanced",2009,"abundance",0.804165362868093
+"phytoplankton","Phase IV balanced",2010,"abundance",0.811940739491697
+"phytoplankton","Phase IV balanced",2011,"abundance",0.842679657817442
+"phytoplankton","Phase IV balanced",2012,"abundance",0.801355407014458
+"phytoplankton","Phase IV balanced",2013,"abundance",0.841650811369062
+"phytoplankton","Phase IV balanced",2014,"abundance",0.808272824568499
+"phytoplankton","Phase IV balanced",2015,"abundance",0.813114610653658
+"phytoplankton","Phase IV balanced",2016,"abundance",0.812929915042727
+"phytoplankton","Phase IV balanced",2017,"abundance",0.802348434998375
+"phytoplankton","Phase IV balanced",2018,"abundance",0.803811228427191
+"phytoplankton","Phase IV balanced",2019,"abundance",0.812165589975528
+"phytoplankton","Phase IV balanced",2020,"abundance",0.802923665655495
+"phytoplankton","Phase IV balanced",2021,"abundance",0.807732046286929
+"phytoplankton","Phase IV balanced",2022,"abundance",0.82662185491163
+"phytoplankton","Phase IV balanced",1995,"occupancy",0.551385901937378
+"phytoplankton","Phase IV balanced",1996,"occupancy",0.543355142098436
+"phytoplankton","Phase IV balanced",1997,"occupancy",0.566623123126085
+"phytoplankton","Phase IV balanced",1998,"occupancy",0.534625262740028
+"phytoplankton","Phase IV balanced",1999,"occupancy",0.544873757497756
+"phytoplankton","Phase IV balanced",2000,"occupancy",0.500898703036203
+"phytoplankton","Phase IV balanced",2001,"occupancy",0.560121091780798
+"phytoplankton","Phase IV balanced",2002,"occupancy",0.520968115776991
+"phytoplankton","Phase IV balanced",2003,"occupancy",0.517368195255729
+"phytoplankton","Phase IV balanced",2004,"occupancy",0.527727334502558
+"phytoplankton","Phase IV balanced",2005,"occupancy",0.515162899655668
+"phytoplankton","Phase IV balanced",2006,"occupancy",0.512169916138264
+"phytoplankton","Phase IV balanced",2007,"occupancy",0.516025884586169
+"phytoplankton","Phase IV balanced",2008,"occupancy",0.486101932912575
+"phytoplankton","Phase IV balanced",2009,"occupancy",0.519823763843024
+"phytoplankton","Phase IV balanced",2010,"occupancy",0.543576869997555
+"phytoplankton","Phase IV balanced",2011,"occupancy",0.58743869208685
+"phytoplankton","Phase IV balanced",2012,"occupancy",0.510761113283095
+"phytoplankton","Phase IV balanced",2013,"occupancy",0.571308538148374
+"phytoplankton","Phase IV balanced",2014,"occupancy",0.534047432919174
+"phytoplankton","Phase IV balanced",2015,"occupancy",0.532517626000381
+"phytoplankton","Phase IV balanced",2016,"occupancy",0.530162160863422
+"phytoplankton","Phase IV balanced",2017,"occupancy",0.511382059679654
+"phytoplankton","Phase IV balanced",2018,"occupancy",0.534781954649514
+"phytoplankton","Phase IV balanced",2019,"occupancy",0.536699424521009
+"phytoplankton","Phase IV balanced",2020,"occupancy",0.54534424383308
+"phytoplankton","Phase IV balanced",2021,"occupancy",0.55623074061655
+"phytoplankton","Phase IV balanced",2022,"occupancy",0.572586700298377
+"phytoplankton","Phase IV balanced",1995,"numerical",0.261972681050159
+"phytoplankton","Phase IV balanced",1996,"numerical",0.275774175674025
+"phytoplankton","Phase IV balanced",1997,"numerical",0.24817972212054
+"phytoplankton","Phase IV balanced",1998,"numerical",0.277147427683854
+"phytoplankton","Phase IV balanced",1999,"numerical",0.269648364201387
+"phytoplankton","Phase IV balanced",2000,"numerical",0.283138196284621
+"phytoplankton","Phase IV balanced",2001,"numerical",0.266115090093306
+"phytoplankton","Phase IV balanced",2002,"numerical",0.282237977040829
+"phytoplankton","Phase IV balanced",2003,"numerical",0.296694697144141
+"phytoplankton","Phase IV balanced",2004,"numerical",0.268949936055918
+"phytoplankton","Phase IV balanced",2005,"numerical",0.289204975148516
+"phytoplankton","Phase IV balanced",2006,"numerical",0.28084621451126
+"phytoplankton","Phase IV balanced",2007,"numerical",0.279317151861554
+"phytoplankton","Phase IV balanced",2008,"numerical",0.298198918997756
+"phytoplankton","Phase IV balanced",2009,"numerical",0.284341599025068
+"phytoplankton","Phase IV balanced",2010,"numerical",0.268363869494142
+"phytoplankton","Phase IV balanced",2011,"numerical",0.255240965730592
+"phytoplankton","Phase IV balanced",2012,"numerical",0.290594293731363
+"phytoplankton","Phase IV balanced",2013,"numerical",0.270342273220688
+"phytoplankton","Phase IV balanced",2014,"numerical",0.274225391649325
+"phytoplankton","Phase IV balanced",2015,"numerical",0.280596984653277
+"phytoplankton","Phase IV balanced",2016,"numerical",0.282767754179305
+"phytoplankton","Phase IV balanced",2017,"numerical",0.290966375318721
+"phytoplankton","Phase IV balanced",2018,"numerical",0.269029273777677
+"phytoplankton","Phase IV balanced",2019,"numerical",0.275466165454519
+"phytoplankton","Phase IV balanced",2020,"numerical",0.257579421822415
+"phytoplankton","Phase IV balanced",2021,"numerical",0.251501305670379
+"phytoplankton","Phase IV balanced",2022,"numerical",0.254035154613252
+"phytoplankton","Phase IV balanced",1995,"dominance",0.820209848788455
+"phytoplankton","Phase IV balanced",1996,"dominance",0.818425192760848
+"phytoplankton","Phase IV balanced",1997,"dominance",0.814775712149831
+"phytoplankton","Phase IV balanced",1998,"dominance",0.807928484566672
+"phytoplankton","Phase IV balanced",1999,"dominance",0.801828622568041
+"phytoplankton","Phase IV balanced",2000,"dominance",0.774420882935224
+"phytoplankton","Phase IV balanced",2001,"dominance",0.82671384363428
+"phytoplankton","Phase IV balanced",2002,"dominance",0.813409893978079
+"phytoplankton","Phase IV balanced",2003,"dominance",0.816037971125376
+"phytoplankton","Phase IV balanced",2004,"dominance",0.79656058382277
+"phytoplankton","Phase IV balanced",2005,"dominance",0.793316746485496
+"phytoplankton","Phase IV balanced",2006,"dominance",0.792068050920421
+"phytoplankton","Phase IV balanced",2007,"dominance",0.776133689680284
+"phytoplankton","Phase IV balanced",2008,"dominance",0.782898260725023
+"phytoplankton","Phase IV balanced",2009,"dominance",0.793066636637793
+"phytoplankton","Phase IV balanced",2010,"dominance",0.807078838131308
+"phytoplankton","Phase IV balanced",2011,"dominance",0.843173470249386
+"phytoplankton","Phase IV balanced",2012,"dominance",0.812169749340967
+"phytoplankton","Phase IV balanced",2013,"dominance",0.840787646883482
+"phytoplankton","Phase IV balanced",2014,"dominance",0.817047607142807
+"phytoplankton","Phase IV balanced",2015,"dominance",0.819491808034228
+"phytoplankton","Phase IV balanced",2016,"dominance",0.814601254603952
+"phytoplankton","Phase IV balanced",2017,"dominance",0.786408509998133
+"phytoplankton","Phase IV balanced",2018,"dominance",0.789293769876
+"phytoplankton","Phase IV balanced",2019,"dominance",0.800883727442224
+"phytoplankton","Phase IV balanced",2020,"dominance",0.793370845309469
+"phytoplankton","Phase IV balanced",2021,"dominance",0.795903348291354
+"phytoplankton","Phase IV balanced",2022,"dominance",0.82747955152334
+"littoral","response specific",1995,"zeta_presence",14.2555331991952
+"littoral","response specific",1996,"zeta_presence",14.5487742594484
+"littoral","response specific",1997,"zeta_presence",15.871682626539
+"littoral","response specific",1998,"zeta_presence",17.456862745098
+"littoral","response specific",1999,"zeta_presence",15.6081504702194
+"littoral","response specific",2000,"zeta_presence",16.0392943063352
+"littoral","response specific",2001,"zeta_presence",16.5753319713994
+"littoral","response specific",2002,"zeta_presence",17.5737341772152
+"littoral","response specific",2003,"zeta_presence",18.2660878447395
+"littoral","response specific",2004,"zeta_presence",17.8373340143003
+"littoral","response specific",2005,"zeta_presence",17.8139194139194
+"littoral","response specific",2006,"zeta_presence",17.2060946271051
+"littoral","response specific",2007,"zeta_presence",15.7236067843544
+"littoral","response specific",2008,"zeta_presence",17.3234323432343
+"littoral","response specific",2009,"zeta_presence",17.0765567765568
+"littoral","response specific",2010,"zeta_presence",16.650303030303
+"littoral","response specific",2011,"zeta_presence",16.1880830001904
+"littoral","response specific",2012,"zeta_presence",17.0549407881965
+"littoral","response specific",2013,"zeta_presence",16.7132595612503
+"littoral","response specific",2014,"zeta_presence",14.1300988319856
+"littoral","response specific",2015,"zeta_presence",17.3646001796945
+"littoral","response specific",2016,"zeta_presence",17.5877520537715
+"littoral","response specific",2017,"zeta_presence",16.7923076923077
+"littoral","response specific",2018,"zeta_presence",15.3844322344322
+"littoral","response specific",2019,"zeta_presence",17.3540293040293
+"littoral","response specific",2020,"zeta_presence",16.2463354273748
+"littoral","response specific",2021,"zeta_presence",17.3261762509335
+"littoral","response specific",2022,"zeta_presence",17.6874533233755
+"littoral","response specific",1995,"zeta_abundance",0.290072045243459
+"littoral","response specific",1996,"zeta_abundance",0.263501833407275
+"littoral","response specific",1997,"zeta_abundance",0.275696702010547
+"littoral","response specific",1998,"zeta_abundance",0.280153811238195
+"littoral","response specific",1999,"zeta_abundance",0.260085312464577
+"littoral","response specific",2000,"zeta_abundance",0.255376853159556
+"littoral","response specific",2001,"zeta_abundance",0.26758667371887
+"littoral","response specific",2002,"zeta_abundance",0.288159621802663
+"littoral","response specific",2003,"zeta_abundance",0.286620799705255
+"littoral","response specific",2004,"zeta_abundance",0.294335243345951
+"littoral","response specific",2005,"zeta_abundance",0.293381245236864
+"littoral","response specific",2006,"zeta_abundance",0.288271848534804
+"littoral","response specific",2007,"zeta_abundance",0.263312459579786
+"littoral","response specific",2008,"zeta_abundance",0.28257505420681
+"littoral","response specific",2009,"zeta_abundance",0.28621963039207
+"littoral","response specific",2010,"zeta_abundance",0.284955047997396
+"littoral","response specific",2011,"zeta_abundance",0.273354630177859
+"littoral","response specific",2012,"zeta_abundance",0.273765923758133
+"littoral","response specific",2013,"zeta_abundance",0.289493756055607
+"littoral","response specific",2014,"zeta_abundance",0.280182267835446
+"littoral","response specific",2015,"zeta_abundance",0.29586083085428
+"littoral","response specific",2016,"zeta_abundance",0.303677576183917
+"littoral","response specific",2017,"zeta_abundance",0.302590232089398
+"littoral","response specific",2018,"zeta_abundance",0.301182565482778
+"littoral","response specific",2019,"zeta_abundance",0.305801323820279
+"littoral","response specific",2020,"zeta_abundance",0.298690683459376
+"littoral","response specific",2021,"zeta_abundance",0.318211641039129
+"littoral","response specific",2022,"zeta_abundance",0.305016652681712
+"littoral","response specific",1995,"zeta_dominance",2.30865191146881
+"littoral","response specific",1996,"zeta_dominance",2.16419816138917
+"littoral","response specific",1997,"zeta_dominance",2.6703146374829
+"littoral","response specific",1998,"zeta_dominance",2.68403361344538
+"littoral","response specific",1999,"zeta_dominance",2.32445141065831
+"littoral","response specific",2000,"zeta_dominance",2.39267575514568
+"littoral","response specific",2001,"zeta_dominance",2.55771195097038
+"littoral","response specific",2002,"zeta_dominance",2.64082278481012
+"littoral","response specific",2003,"zeta_dominance",2.76225740551583
+"littoral","response specific",2004,"zeta_dominance",2.71348314606742
+"littoral","response specific",2005,"zeta_dominance",2.84468864468865
+"littoral","response specific",2006,"zeta_dominance",2.80593424218123
+"littoral","response specific",2007,"zeta_dominance",2.57649705780547
+"littoral","response specific",2008,"zeta_dominance",2.64705882352941
+"littoral","response specific",2009,"zeta_dominance",2.85897435897436
+"littoral","response specific",2010,"zeta_dominance",2.72383838383839
+"littoral","response specific",2011,"zeta_dominance",2.80296973158196
+"littoral","response specific",2012,"zeta_dominance",2.53232382061735
+"littoral","response specific",2013,"zeta_dominance",2.70549407881965
+"littoral","response specific",2014,"zeta_dominance",2.52219227313567
+"littoral","response specific",2015,"zeta_dominance",2.64474393530997
+"littoral","response specific",2016,"zeta_dominance",2.60436893203884
+"littoral","response specific",2017,"zeta_dominance",2.71959706959708
+"littoral","response specific",2018,"zeta_dominance",2.52967032967033
+"littoral","response specific",2019,"zeta_dominance",2.81300366300367
+"littoral","response specific",2020,"zeta_dominance",2.54730630116124
+"littoral","response specific",2021,"zeta_dominance",2.8412994772218
+"littoral","response specific",2022,"zeta_dominance",2.98226288274834
+"littoral","response specific",1995,"incidence",0.582816395713652
+"littoral","response specific",1996,"incidence",0.603970536154224
+"littoral","response specific",1997,"incidence",0.585153852068451
+"littoral","response specific",1998,"incidence",0.566770509017741
+"littoral","response specific",1999,"incidence",0.591653843680204
+"littoral","response specific",2000,"incidence",0.580948061708017
+"littoral","response specific",2001,"incidence",0.58368856226821
+"littoral","response specific",2002,"incidence",0.564956855955361
+"littoral","response specific",2003,"incidence",0.576718883072844
+"littoral","response specific",2004,"incidence",0.589552859297484
+"littoral","response specific",2005,"incidence",0.594681032286885
+"littoral","response specific",2006,"incidence",0.593473095014424
+"littoral","response specific",2007,"incidence",0.607875563327963
+"littoral","response specific",2008,"incidence",0.583560151470302
+"littoral","response specific",2009,"incidence",0.580616165700942
+"littoral","response specific",2010,"incidence",0.590461390982576
+"littoral","response specific",2011,"incidence",0.606896936068864
+"littoral","response specific",2012,"incidence",0.615360619022365
+"littoral","response specific",2013,"incidence",0.597151603498921
+"littoral","response specific",2014,"incidence",0.625080039813991
+"littoral","response specific",2015,"incidence",0.60447341352824
+"littoral","response specific",2016,"incidence",0.609637950613984
+"littoral","response specific",2017,"incidence",0.623843546338167
+"littoral","response specific",2018,"incidence",0.618650389873911
+"littoral","response specific",2019,"incidence",0.612096262549901
+"littoral","response specific",2020,"incidence",0.629684102989107
+"littoral","response specific",2021,"incidence",0.61804104497036
+"littoral","response specific",2022,"incidence",0.605384352089165
+"littoral","response specific",1995,"turnover",0.492519348331623
+"littoral","response specific",1996,"turnover",0.506632071053972
+"littoral","response specific",1997,"turnover",0.488727592644644
+"littoral","response specific",1998,"turnover",0.476176013858112
+"littoral","response specific",1999,"turnover",0.503245724662444
+"littoral","response specific",2000,"turnover",0.488554070878106
+"littoral","response specific",2001,"turnover",0.481577569408161
+"littoral","response specific",2002,"turnover",0.474618184142818
+"littoral","response specific",2003,"turnover",0.480833030980082
+"littoral","response specific",2004,"turnover",0.482014933664446
+"littoral","response specific",2005,"turnover",0.488927799551073
+"littoral","response specific",2006,"turnover",0.495176979153375
+"littoral","response specific",2007,"turnover",0.494579072548154
+"littoral","response specific",2008,"turnover",0.486187534908971
+"littoral","response specific",2009,"turnover",0.497360446094055
+"littoral","response specific",2010,"turnover",0.491555974687166
+"littoral","response specific",2011,"turnover",0.518673508683521
+"littoral","response specific",2012,"turnover",0.515078348017813
+"littoral","response specific",2013,"turnover",0.495747030185977
+"littoral","response specific",2014,"turnover",0.526570053277687
+"littoral","response specific",2015,"turnover",0.497382558329007
+"littoral","response specific",2016,"turnover",0.512745859511329
+"littoral","response specific",2017,"turnover",0.534186764584677
+"littoral","response specific",2018,"turnover",0.517315521484467
+"littoral","response specific",2019,"turnover",0.511548361094725
+"littoral","response specific",2020,"turnover",0.525909570701244
+"littoral","response specific",2021,"turnover",0.512609398085374
+"littoral","response specific",2022,"turnover",0.505401004714391
+"littoral","response specific",1995,"nestedness",0.0902970473820287
+"littoral","response specific",1996,"nestedness",0.0973384651002525
+"littoral","response specific",1997,"nestedness",0.0964262594238063
+"littoral","response specific",1998,"nestedness",0.0905944951596287
+"littoral","response specific",1999,"nestedness",0.08840811901776
+"littoral","response specific",2000,"nestedness",0.0923939908299105
+"littoral","response specific",2001,"nestedness",0.10211099286005
+"littoral","response specific",2002,"nestedness",0.0903386718125427
+"littoral","response specific",2003,"nestedness",0.0958858520927619
+"littoral","response specific",2004,"nestedness",0.107537925633038
+"littoral","response specific",2005,"nestedness",0.105753232735812
+"littoral","response specific",2006,"nestedness",0.0982961158610485
+"littoral","response specific",2007,"nestedness",0.113296490779809
+"littoral","response specific",2008,"nestedness",0.0973726165613312
+"littoral","response specific",2009,"nestedness",0.0832557196068868
+"littoral","response specific",2010,"nestedness",0.09890541629541
+"littoral","response specific",2011,"nestedness",0.0882234273853425
+"littoral","response specific",2012,"nestedness",0.100282271004552
+"littoral","response specific",2013,"nestedness",0.101404573312944
+"littoral","response specific",2014,"nestedness",0.0985099865363036
+"littoral","response specific",2015,"nestedness",0.107090855199232
+"littoral","response specific",2016,"nestedness",0.0968920911026558
+"littoral","response specific",2017,"nestedness",0.0896567817534909
+"littoral","response specific",2018,"nestedness",0.101334868389444
+"littoral","response specific",2019,"nestedness",0.100547901455175
+"littoral","response specific",2020,"nestedness",0.103774532287863
+"littoral","response specific",2021,"nestedness",0.105431646884987
+"littoral","response specific",2022,"nestedness",0.0999833473747734
+"littoral","response specific",1995,"abundance",0.709927954756541
+"littoral","response specific",1996,"abundance",0.736498166592725
+"littoral","response specific",1997,"abundance",0.724303297989453
+"littoral","response specific",1998,"abundance",0.719846188761805
+"littoral","response specific",1999,"abundance",0.739914687535423
+"littoral","response specific",2000,"abundance",0.744623146840444
+"littoral","response specific",2001,"abundance",0.73241332628113
+"littoral","response specific",2002,"abundance",0.711840378197337
+"littoral","response specific",2003,"abundance",0.713379200294745
+"littoral","response specific",2004,"abundance",0.705664756654049
+"littoral","response specific",2005,"abundance",0.706618754763136
+"littoral","response specific",2006,"abundance",0.711728151465196
+"littoral","response specific",2007,"abundance",0.736687540420214
+"littoral","response specific",2008,"abundance",0.71742494579319
+"littoral","response specific",2009,"abundance",0.71378036960793
+"littoral","response specific",2010,"abundance",0.715044952002604
+"littoral","response specific",2011,"abundance",0.726645369822141
+"littoral","response specific",2012,"abundance",0.726234076241867
+"littoral","response specific",2013,"abundance",0.710506243944393
+"littoral","response specific",2014,"abundance",0.719817732164554
+"littoral","response specific",2015,"abundance",0.70413916914572
+"littoral","response specific",2016,"abundance",0.696322423816083
+"littoral","response specific",2017,"abundance",0.697409767910602
+"littoral","response specific",2018,"abundance",0.698817434517222
+"littoral","response specific",2019,"abundance",0.69419867617972
+"littoral","response specific",2020,"abundance",0.701309316540623
+"littoral","response specific",2021,"abundance",0.681788358960871
+"littoral","response specific",2022,"abundance",0.694983347318288
+"littoral","response specific",1995,"occupancy",0.352191667109015
+"littoral","response specific",1996,"occupancy",0.36756169603351
+"littoral","response specific",1997,"occupancy",0.352869779586163
+"littoral","response specific",1998,"occupancy",0.357969820781829
+"littoral","response specific",1999,"occupancy",0.391356894114106
+"littoral","response specific",2000,"occupancy",0.39860096138929
+"littoral","response specific",2001,"occupancy",0.392015220647885
+"littoral","response specific",2002,"occupancy",0.341758729910057
+"littoral","response specific",2003,"occupancy",0.327923403222743
+"littoral","response specific",2004,"occupancy",0.329100227707303
+"littoral","response specific",2005,"occupancy",0.353043122272439
+"littoral","response specific",2006,"occupancy",0.360775007526052
+"littoral","response specific",2007,"occupancy",0.386633021010972
+"littoral","response specific",2008,"occupancy",0.346968433486357
+"littoral","response specific",2009,"occupancy",0.35419056850091
+"littoral","response specific",2010,"occupancy",0.356483290373743
+"littoral","response specific",2011,"occupancy",0.38625245755538
+"littoral","response specific",2012,"occupancy",0.364793969534793
+"littoral","response specific",2013,"occupancy",0.343803943637375
+"littoral","response specific",2014,"occupancy",0.362951658631597
+"littoral","response specific",2015,"occupancy",0.349568069197025
+"littoral","response specific",2016,"occupancy",0.340011717678552
+"littoral","response specific",2017,"occupancy",0.348019611297169
+"littoral","response specific",2018,"occupancy",0.34890056207884
+"littoral","response specific",2019,"occupancy",0.327881499636292
+"littoral","response specific",2020,"occupancy",0.351127523152795
+"littoral","response specific",2021,"occupancy",0.334267361191263
+"littoral","response specific",2022,"occupancy",0.326433571625273
+"littoral","response specific",1995,"numerical",0.357736287647526
+"littoral","response specific",1996,"numerical",0.368936470559215
+"littoral","response specific",1997,"numerical",0.37143351840329
+"littoral","response specific",1998,"numerical",0.361876367979976
+"littoral","response specific",1999,"numerical",0.348557793421317
+"littoral","response specific",2000,"numerical",0.346022185451153
+"littoral","response specific",2001,"numerical",0.340398105633245
+"littoral","response specific",2002,"numerical",0.37008164828728
+"littoral","response specific",2003,"numerical",0.385455797072002
+"littoral","response specific",2004,"numerical",0.376564528946745
+"littoral","response specific",2005,"numerical",0.353575632490697
+"littoral","response specific",2006,"numerical",0.350953143939143
+"littoral","response specific",2007,"numerical",0.350054519409242
+"littoral","response specific",2008,"numerical",0.370456512306833
+"littoral","response specific",2009,"numerical",0.35958980110702
+"littoral","response specific",2010,"numerical",0.358561661628861
+"littoral","response specific",2011,"numerical",0.340392912266761
+"littoral","response specific",2012,"numerical",0.361440106707074
+"littoral","response specific",2013,"numerical",0.366702300307018
+"littoral","response specific",2014,"numerical",0.356866073532958
+"littoral","response specific",2015,"numerical",0.354571099948695
+"littoral","response specific",2016,"numerical",0.35631070613753
+"littoral","response specific",2017,"numerical",0.349390156613433
+"littoral","response specific",2018,"numerical",0.349916872438382
+"littoral","response specific",2019,"numerical",0.366317176543428
+"littoral","response specific",2020,"numerical",0.350181793387828
+"littoral","response specific",2021,"numerical",0.347520997769608
+"littoral","response specific",2022,"numerical",0.368549775693015
+"littoral","response specific",1995,"dominance",0.676179840683148
+"littoral","response specific",1996,"dominance",0.700518728440507
+"littoral","response specific",1997,"dominance",0.675236733620777
+"littoral","response specific",1998,"dominance",0.680516345335733
+"littoral","response specific",1999,"dominance",0.705112305615669
+"littoral","response specific",2000,"dominance",0.720934117468952
+"littoral","response specific",2001,"dominance",0.709727875648506
+"littoral","response specific",2002,"dominance",0.669256008268094
+"littoral","response specific",2003,"dominance",0.662485836015798
+"littoral","response specific",2004,"dominance",0.66365928300955
+"littoral","response specific",2005,"dominance",0.665966027567158
+"littoral","response specific",2006,"dominance",0.682343334763548
+"littoral","response specific",2007,"dominance",0.690882606828605
+"littoral","response specific",2008,"dominance",0.677821199253022
+"littoral","response specific",2009,"dominance",0.669231257694565
+"littoral","response specific",2010,"dominance",0.674970846676072
+"littoral","response specific",2011,"dominance",0.669302394394615
+"littoral","response specific",2012,"dominance",0.695596611849175
+"littoral","response specific",2013,"dominance",0.662825891674728
+"littoral","response specific",2014,"dominance",0.683966139928518
+"littoral","response specific",2015,"dominance",0.675346064055206
+"littoral","response specific",2016,"dominance",0.663372886176734
+"littoral","response specific",2017,"dominance",0.664165983583061
+"littoral","response specific",2018,"dominance",0.668450538807559
+"littoral","response specific",2019,"dominance",0.649106155048392
+"littoral","response specific",2020,"dominance",0.666011757377039
+"littoral","response specific",2021,"dominance",0.652806416712905
+"littoral","response specific",2022,"dominance",0.647513176143076
+"littoral","Phase IV balanced",1995,"zeta_presence",15.8525490196078
+"littoral","Phase IV balanced",1996,"zeta_presence",16.5294117647059
+"littoral","Phase IV balanced",1997,"zeta_presence",17.3043137254902
+"littoral","Phase IV balanced",1998,"zeta_presence",18.5490196078431
+"littoral","Phase IV balanced",1999,"zeta_presence",18.321568627451
+"littoral","Phase IV balanced",2000,"zeta_presence",17.8729411764706
+"littoral","Phase IV balanced",2001,"zeta_presence",18.7239215686274
+"littoral","Phase IV balanced",2002,"zeta_presence",19.358431372549
+"littoral","Phase IV balanced",2003,"zeta_presence",21.5647058823529
+"littoral","Phase IV balanced",2004,"zeta_presence",20.5796078431372
+"littoral","Phase IV balanced",2005,"zeta_presence",21.2650980392157
+"littoral","Phase IV balanced",2006,"zeta_presence",19.9278431372549
+"littoral","Phase IV balanced",2007,"zeta_presence",20.0729411764706
+"littoral","Phase IV balanced",2008,"zeta_presence",20.956862745098
+"littoral","Phase IV balanced",2009,"zeta_presence",20.9380392156863
+"littoral","Phase IV balanced",2010,"zeta_presence",20.5152941176471
+"littoral","Phase IV balanced",2011,"zeta_presence",20.7811764705883
+"littoral","Phase IV balanced",2012,"zeta_presence",21.876862745098
+"littoral","Phase IV balanced",2013,"zeta_presence",20.6360784313726
+"littoral","Phase IV balanced",2014,"zeta_presence",16.9937254901961
+"littoral","Phase IV balanced",2015,"zeta_presence",22.161568627451
+"littoral","Phase IV balanced",2016,"zeta_presence",20.7482352941176
+"littoral","Phase IV balanced",2017,"zeta_presence",20.1043137254902
+"littoral","Phase IV balanced",2018,"zeta_presence",18.4588235294118
+"littoral","Phase IV balanced",2019,"zeta_presence",19.7411764705882
+"littoral","Phase IV balanced",2020,"zeta_presence",19.0486274509804
+"littoral","Phase IV balanced",2021,"zeta_presence",21.1105882352941
+"littoral","Phase IV balanced",2022,"zeta_presence",21.0047058823529
+"littoral","Phase IV balanced",1995,"zeta_abundance",0.316755753599503
+"littoral","Phase IV balanced",1996,"zeta_abundance",0.289050850124411
+"littoral","Phase IV balanced",1997,"zeta_abundance",0.305252671335382
+"littoral","Phase IV balanced",1998,"zeta_abundance",0.309406776949916
+"littoral","Phase IV balanced",1999,"zeta_abundance",0.297411602908732
+"littoral","Phase IV balanced",2000,"zeta_abundance",0.294065306306086
+"littoral","Phase IV balanced",2001,"zeta_abundance",0.299715832226732
+"littoral","Phase IV balanced",2002,"zeta_abundance",0.316339718594827
+"littoral","Phase IV balanced",2003,"zeta_abundance",0.32167402432466
+"littoral","Phase IV balanced",2004,"zeta_abundance",0.331803125469088
+"littoral","Phase IV balanced",2005,"zeta_abundance",0.332555023999991
+"littoral","Phase IV balanced",2006,"zeta_abundance",0.333698651639295
+"littoral","Phase IV balanced",2007,"zeta_abundance",0.332494216040555
+"littoral","Phase IV balanced",2008,"zeta_abundance",0.329193773349728
+"littoral","Phase IV balanced",2009,"zeta_abundance",0.354685054585146
+"littoral","Phase IV balanced",2010,"zeta_abundance",0.334220844504818
+"littoral","Phase IV balanced",2011,"zeta_abundance",0.323567181306319
+"littoral","Phase IV balanced",2012,"zeta_abundance",0.343156275386838
+"littoral","Phase IV balanced",2013,"zeta_abundance",0.335022408431614
+"littoral","Phase IV balanced",2014,"zeta_abundance",0.32378320827514
+"littoral","Phase IV balanced",2015,"zeta_abundance",0.350370628857278
+"littoral","Phase IV balanced",2016,"zeta_abundance",0.356137211724349
+"littoral","Phase IV balanced",2017,"zeta_abundance",0.354592936411847
+"littoral","Phase IV balanced",2018,"zeta_abundance",0.359172045224746
+"littoral","Phase IV balanced",2019,"zeta_abundance",0.35219545239442
+"littoral","Phase IV balanced",2020,"zeta_abundance",0.33770924925303
+"littoral","Phase IV balanced",2021,"zeta_abundance",0.379794474455158
+"littoral","Phase IV balanced",2022,"zeta_abundance",0.362503866747059
+"littoral","Phase IV balanced",1995,"zeta_dominance",2.59607843137255
+"littoral","Phase IV balanced",1996,"zeta_dominance",2.38117647058824
+"littoral","Phase IV balanced",1997,"zeta_dominance",2.88313725490196
+"littoral","Phase IV balanced",1998,"zeta_dominance",2.84078431372549
+"littoral","Phase IV balanced",1999,"zeta_dominance",2.73333333333334
+"littoral","Phase IV balanced",2000,"zeta_dominance",2.62980392156863
+"littoral","Phase IV balanced",2001,"zeta_dominance",2.72470588235294
+"littoral","Phase IV balanced",2002,"zeta_dominance",2.78901960784314
+"littoral","Phase IV balanced",2003,"zeta_dominance",3.00156862745098
+"littoral","Phase IV balanced",2004,"zeta_dominance",3.0643137254902
+"littoral","Phase IV balanced",2005,"zeta_dominance",3.10823529411765
+"littoral","Phase IV balanced",2006,"zeta_dominance",3.30039215686275
+"littoral","Phase IV balanced",2007,"zeta_dominance",3.32313725490196
+"littoral","Phase IV balanced",2008,"zeta_dominance",3.04862745098039
+"littoral","Phase IV balanced",2009,"zeta_dominance",3.57882352941176
+"littoral","Phase IV balanced",2010,"zeta_dominance",3.21568627450981
+"littoral","Phase IV balanced",2011,"zeta_dominance",3.38980392156864
+"littoral","Phase IV balanced",2012,"zeta_dominance",3.12470588235294
+"littoral","Phase IV balanced",2013,"zeta_dominance",3.28705882352942
+"littoral","Phase IV balanced",2014,"zeta_dominance",2.95294117647059
+"littoral","Phase IV balanced",2015,"zeta_dominance",3.08313725490196
+"littoral","Phase IV balanced",2016,"zeta_dominance",2.98117647058824
+"littoral","Phase IV balanced",2017,"zeta_dominance",3.37019607843137
+"littoral","Phase IV balanced",2018,"zeta_dominance",2.99529411764706
+"littoral","Phase IV balanced",2019,"zeta_dominance",3.30509803921568
+"littoral","Phase IV balanced",2020,"zeta_dominance",2.86509803921569
+"littoral","Phase IV balanced",2021,"zeta_dominance",3.40705882352941
+"littoral","Phase IV balanced",2022,"zeta_dominance",3.50196078431373
+"littoral","Phase IV balanced",1995,"incidence",0.554482321673053
+"littoral","Phase IV balanced",1996,"incidence",0.561653200611612
+"littoral","Phase IV balanced",1997,"incidence",0.547081575442768
+"littoral","Phase IV balanced",1998,"incidence",0.545086336880519
+"littoral","Phase IV balanced",1999,"incidence",0.541077275103087
+"littoral","Phase IV balanced",2000,"incidence",0.537101653945111
+"littoral","Phase IV balanced",2001,"incidence",0.538800075809847
+"littoral","Phase IV balanced",2002,"incidence",0.526424529551282
+"littoral","Phase IV balanced",2003,"incidence",0.522893582345916
+"littoral","Phase IV balanced",2004,"incidence",0.540698711739545
+"littoral","Phase IV balanced",2005,"incidence",0.544615935328172
+"littoral","Phase IV balanced",2006,"incidence",0.54947211669744
+"littoral","Phase IV balanced",2007,"incidence",0.540333613695163
+"littoral","Phase IV balanced",2008,"incidence",0.53364702680338
+"littoral","Phase IV balanced",2009,"incidence",0.517419211688532
+"littoral","Phase IV balanced",2010,"incidence",0.52772504424527
+"littoral","Phase IV balanced",2011,"incidence",0.535699147647547
+"littoral","Phase IV balanced",2012,"incidence",0.551012397917158
+"littoral","Phase IV balanced",2013,"incidence",0.544490969634627
+"littoral","Phase IV balanced",2014,"incidence",0.578725536957422
+"littoral","Phase IV balanced",2015,"incidence",0.53393268052742
+"littoral","Phase IV balanced",2016,"incidence",0.560725015223681
+"littoral","Phase IV balanced",2017,"incidence",0.575937398699733
+"littoral","Phase IV balanced",2018,"incidence",0.560488668338635
+"littoral","Phase IV balanced",2019,"incidence",0.562813010966987
+"littoral","Phase IV balanced",2020,"incidence",0.586977749700841
+"littoral","Phase IV balanced",2021,"incidence",0.557896618494763
+"littoral","Phase IV balanced",2022,"incidence",0.546866324522885
+"littoral","Phase IV balanced",1995,"turnover",0.466468513820603
+"littoral","Phase IV balanced",1996,"turnover",0.471532326348191
+"littoral","Phase IV balanced",1997,"turnover",0.44949366318082
+"littoral","Phase IV balanced",1998,"turnover",0.448961636320568
+"littoral","Phase IV balanced",1999,"turnover",0.456247049322075
+"littoral","Phase IV balanced",2000,"turnover",0.451884544493775
+"littoral","Phase IV balanced",2001,"turnover",0.442681392334054
+"littoral","Phase IV balanced",2002,"turnover",0.4335785408714
+"littoral","Phase IV balanced",2003,"turnover",0.433077972130132
+"littoral","Phase IV balanced",2004,"turnover",0.451015213750247
+"littoral","Phase IV balanced",2005,"turnover",0.44455037350778
+"littoral","Phase IV balanced",2006,"turnover",0.460114472079123
+"littoral","Phase IV balanced",2007,"turnover",0.430545461721534
+"littoral","Phase IV balanced",2008,"turnover",0.438863610586581
+"littoral","Phase IV balanced",2009,"turnover",0.43254932950828
+"littoral","Phase IV balanced",2010,"turnover",0.435460090318514
+"littoral","Phase IV balanced",2011,"turnover",0.438922848645551
+"littoral","Phase IV balanced",2012,"turnover",0.448054550376351
+"littoral","Phase IV balanced",2013,"turnover",0.447834997565265
+"littoral","Phase IV balanced",2014,"turnover",0.464007398361354
+"littoral","Phase IV balanced",2015,"turnover",0.418304852704346
+"littoral","Phase IV balanced",2016,"turnover",0.455427400089045
+"littoral","Phase IV balanced",2017,"turnover",0.484466810211113
+"littoral","Phase IV balanced",2018,"turnover",0.45561883541154
+"littoral","Phase IV balanced",2019,"turnover",0.475013204468063
+"littoral","Phase IV balanced",2020,"turnover",0.480051465703004
+"littoral","Phase IV balanced",2021,"turnover",0.459599254280841
+"littoral","Phase IV balanced",2022,"turnover",0.453723452328741
+"littoral","Phase IV balanced",1995,"nestedness",0.0880138078524505
+"littoral","Phase IV balanced",1996,"nestedness",0.0901208742634204
+"littoral","Phase IV balanced",1997,"nestedness",0.0975879122619488
+"littoral","Phase IV balanced",1998,"nestedness",0.0961247005599514
+"littoral","Phase IV balanced",1999,"nestedness",0.084830225781012
+"littoral","Phase IV balanced",2000,"nestedness",0.0852171094513358
+"littoral","Phase IV balanced",2001,"nestedness",0.0961186834757927
+"littoral","Phase IV balanced",2002,"nestedness",0.0928459886798825
+"littoral","Phase IV balanced",2003,"nestedness",0.0898156102157839
+"littoral","Phase IV balanced",2004,"nestedness",0.089683497989298
+"littoral","Phase IV balanced",2005,"nestedness",0.100065561820392
+"littoral","Phase IV balanced",2006,"nestedness",0.0893576446183175
+"littoral","Phase IV balanced",2007,"nestedness",0.109788151973628
+"littoral","Phase IV balanced",2008,"nestedness",0.0947834162167992
+"littoral","Phase IV balanced",2009,"nestedness",0.0848698821802514
+"littoral","Phase IV balanced",2010,"nestedness",0.0922649539267559
+"littoral","Phase IV balanced",2011,"nestedness",0.0967762990019966
+"littoral","Phase IV balanced",2012,"nestedness",0.102957847540807
+"littoral","Phase IV balanced",2013,"nestedness",0.0966559720693618
+"littoral","Phase IV balanced",2014,"nestedness",0.114718138596068
+"littoral","Phase IV balanced",2015,"nestedness",0.115627827823073
+"littoral","Phase IV balanced",2016,"nestedness",0.105297615134636
+"littoral","Phase IV balanced",2017,"nestedness",0.0914705884886199
+"littoral","Phase IV balanced",2018,"nestedness",0.104869832927096
+"littoral","Phase IV balanced",2019,"nestedness",0.0877998064989242
+"littoral","Phase IV balanced",2020,"nestedness",0.106926283997836
+"littoral","Phase IV balanced",2021,"nestedness",0.0982973642139223
+"littoral","Phase IV balanced",2022,"nestedness",0.0931428721941435
+"littoral","Phase IV balanced",1995,"abundance",0.683244246400497
+"littoral","Phase IV balanced",1996,"abundance",0.710949149875589
+"littoral","Phase IV balanced",1997,"abundance",0.694747328664618
+"littoral","Phase IV balanced",1998,"abundance",0.690593223050084
+"littoral","Phase IV balanced",1999,"abundance",0.702588397091268
+"littoral","Phase IV balanced",2000,"abundance",0.705934693693914
+"littoral","Phase IV balanced",2001,"abundance",0.700284167773268
+"littoral","Phase IV balanced",2002,"abundance",0.683660281405174
+"littoral","Phase IV balanced",2003,"abundance",0.67832597567534
+"littoral","Phase IV balanced",2004,"abundance",0.668196874530912
+"littoral","Phase IV balanced",2005,"abundance",0.667444976000009
+"littoral","Phase IV balanced",2006,"abundance",0.666301348360705
+"littoral","Phase IV balanced",2007,"abundance",0.667505783959445
+"littoral","Phase IV balanced",2008,"abundance",0.670806226650272
+"littoral","Phase IV balanced",2009,"abundance",0.645314945414854
+"littoral","Phase IV balanced",2010,"abundance",0.665779155495182
+"littoral","Phase IV balanced",2011,"abundance",0.676432818693681
+"littoral","Phase IV balanced",2012,"abundance",0.656843724613162
+"littoral","Phase IV balanced",2013,"abundance",0.664977591568386
+"littoral","Phase IV balanced",2014,"abundance",0.67621679172486
+"littoral","Phase IV balanced",2015,"abundance",0.649629371142722
+"littoral","Phase IV balanced",2016,"abundance",0.643862788275651
+"littoral","Phase IV balanced",2017,"abundance",0.645407063588153
+"littoral","Phase IV balanced",2018,"abundance",0.640827954775254
+"littoral","Phase IV balanced",2019,"abundance",0.64780454760558
+"littoral","Phase IV balanced",2020,"abundance",0.66229075074697
+"littoral","Phase IV balanced",2021,"abundance",0.620205525544842
+"littoral","Phase IV balanced",2022,"abundance",0.637496133252941
+"littoral","Phase IV balanced",1995,"occupancy",0.313832510549535
+"littoral","Phase IV balanced",1996,"occupancy",0.30636025825945
+"littoral","Phase IV balanced",1997,"occupancy",0.300634533879912
+"littoral","Phase IV balanced",1998,"occupancy",0.317581541354624
+"littoral","Phase IV balanced",1999,"occupancy",0.324217807797788
+"littoral","Phase IV balanced",2000,"occupancy",0.321917191742374
+"littoral","Phase IV balanced",2001,"occupancy",0.332819171777726
+"littoral","Phase IV balanced",2002,"occupancy",0.288541984738814
+"littoral","Phase IV balanced",2003,"occupancy",0.257185706509463
+"littoral","Phase IV balanced",2004,"occupancy",0.267985160386363
+"littoral","Phase IV balanced",2005,"occupancy",0.285303322318761
+"littoral","Phase IV balanced",2006,"occupancy",0.302550876082657
+"littoral","Phase IV balanced",2007,"occupancy",0.299393120613313
+"littoral","Phase IV balanced",2008,"occupancy",0.286375356228265
+"littoral","Phase IV balanced",2009,"occupancy",0.269133105925107
+"littoral","Phase IV balanced",2010,"occupancy",0.281641372396286
+"littoral","Phase IV balanced",2011,"occupancy",0.297767782431961
+"littoral","Phase IV balanced",2012,"occupancy",0.274712755625805
+"littoral","Phase IV balanced",2013,"occupancy",0.28263547813635
+"littoral","Phase IV balanced",2014,"occupancy",0.30419148297055
+"littoral","Phase IV balanced",2015,"occupancy",0.266835681792546
+"littoral","Phase IV balanced",2016,"occupancy",0.265408246773779
+"littoral","Phase IV balanced",2017,"occupancy",0.277892630867996
+"littoral","Phase IV balanced",2018,"occupancy",0.262622931646147
+"littoral","Phase IV balanced",2019,"occupancy",0.284320913633033
+"littoral","Phase IV balanced",2020,"occupancy",0.284582478191748
+"littoral","Phase IV balanced",2021,"occupancy",0.255742913191258
+"littoral","Phase IV balanced",2022,"occupancy",0.271781770773107
+"littoral","Phase IV balanced",1995,"numerical",0.369411735850962
+"littoral","Phase IV balanced",1996,"numerical",0.404588891616139
+"littoral","Phase IV balanced",1997,"numerical",0.394112794784707
+"littoral","Phase IV balanced",1998,"numerical",0.37301168169546
+"littoral","Phase IV balanced",1999,"numerical",0.37837058929348
+"littoral","Phase IV balanced",2000,"numerical",0.38401750195154
+"littoral","Phase IV balanced",2001,"numerical",0.367464995995543
+"littoral","Phase IV balanced",2002,"numerical",0.395118296666359
+"littoral","Phase IV balanced",2003,"numerical",0.421140269165878
+"littoral","Phase IV balanced",2004,"numerical",0.400211714144549
+"littoral","Phase IV balanced",2005,"numerical",0.382141653681248
+"littoral","Phase IV balanced",2006,"numerical",0.363750472278048
+"littoral","Phase IV balanced",2007,"numerical",0.368112663346132
+"littoral","Phase IV balanced",2008,"numerical",0.384430870422007
+"littoral","Phase IV balanced",2009,"numerical",0.376181839489747
+"littoral","Phase IV balanced",2010,"numerical",0.384137783098896
+"littoral","Phase IV balanced",2011,"numerical",0.37866503626172
+"littoral","Phase IV balanced",2012,"numerical",0.382130968987357
+"littoral","Phase IV balanced",2013,"numerical",0.382342113432035
+"littoral","Phase IV balanced",2014,"numerical",0.37202530875431
+"littoral","Phase IV balanced",2015,"numerical",0.382793689350176
+"littoral","Phase IV balanced",2016,"numerical",0.378454541501872
+"littoral","Phase IV balanced",2017,"numerical",0.367514432720158
+"littoral","Phase IV balanced",2018,"numerical",0.378205023129107
+"littoral","Phase IV balanced",2019,"numerical",0.363483633972547
+"littoral","Phase IV balanced",2020,"numerical",0.377708272555222
+"littoral","Phase IV balanced",2021,"numerical",0.364462612353584
+"littoral","Phase IV balanced",2022,"numerical",0.365714362479834
+"littoral","Phase IV balanced",1995,"dominance",0.651368899742705
+"littoral","Phase IV balanced",1996,"dominance",0.661001733796837
+"littoral","Phase IV balanced",1997,"dominance",0.637857541491797
+"littoral","Phase IV balanced",1998,"dominance",0.660177868885156
+"littoral","Phase IV balanced",1999,"dominance",0.671758926538872
+"littoral","Phase IV balanced",2000,"dominance",0.68742528285549
+"littoral","Phase IV balanced",2001,"dominance",0.689552644693452
+"littoral","Phase IV balanced",2002,"dominance",0.644977851822671
+"littoral","Phase IV balanced",2003,"dominance",0.633993885124718
+"littoral","Phase IV balanced",2004,"dominance",0.623580631721348
+"littoral","Phase IV balanced",2005,"dominance",0.635814462371999
+"littoral","Phase IV balanced",2006,"dominance",0.637134463077832
+"littoral","Phase IV balanced",2007,"dominance",0.619879643387373
+"littoral","Phase IV balanced",2008,"dominance",0.635842332081718
+"littoral","Phase IV balanced",2009,"dominance",0.596461252631631
+"littoral","Phase IV balanced",2010,"dominance",0.625273980370509
+"littoral","Phase IV balanced",2011,"dominance",0.611791262716122
+"littoral","Phase IV balanced",2012,"dominance",0.633373763043019
+"littoral","Phase IV balanced",2013,"dominance",0.612695846539367
+"littoral","Phase IV balanced",2014,"dominance",0.643838994015833
+"littoral","Phase IV balanced",2015,"dominance",0.626222179181228
+"littoral","Phase IV balanced",2016,"dominance",0.606273061705097
+"littoral","Phase IV balanced",2017,"dominance",0.59832623334101
+"littoral","Phase IV balanced",2018,"dominance",0.605333837668567
+"littoral","Phase IV balanced",2019,"dominance",0.592171234132494
+"littoral","Phase IV balanced",2020,"dominance",0.627341164622086
+"littoral","Phase IV balanced",2021,"dominance",0.604694963495326
+"littoral","Phase IV balanced",2022,"dominance",0.605958595921238
+"profundal","response specific",1992,"zeta_presence",2.82666666666667
+"profundal","response specific",1993,"zeta_presence",2.6195652173913
+"profundal","response specific",1994,"zeta_presence",2.84782608695652
+"profundal","response specific",1995,"zeta_presence",2.37019607843137
+"profundal","response specific",1996,"zeta_presence",2.73473389355742
+"profundal","response specific",1997,"zeta_presence",2.80219192729218
+"profundal","response specific",1998,"zeta_presence",2.95490196078431
+"profundal","response specific",1999,"zeta_presence",2.48823529411764
+"profundal","response specific",2000,"zeta_presence",2.54397219994653
+"profundal","response specific",2001,"zeta_presence",2.4640218878249
+"profundal","response specific",2002,"zeta_presence",2.18132911392405
+"profundal","response specific",2003,"zeta_presence",2.40122100122101
+"profundal","response specific",2004,"zeta_presence",2.55822267620019
+"profundal","response specific",2005,"zeta_presence",2.59267399267399
+"profundal","response specific",2006,"zeta_presence",2.27238706228282
+"profundal","response specific",2007,"zeta_presence",2.4314465408805
+"profundal","response specific",2008,"zeta_presence",2.47673992673993
+"profundal","response specific",2009,"zeta_presence",2.52985347985347
+"profundal","response specific",2010,"zeta_presence",2.1207991038088
+"profundal","response specific",2011,"zeta_presence",2.32712871287129
+"profundal","response specific",2012,"zeta_presence",2.31727330107302
+"profundal","response specific",2013,"zeta_presence",2.28192720387125
+"profundal","response specific",2014,"zeta_presence",2.29505840071877
+"profundal","response specific",2015,"zeta_presence",2.20631067961165
+"profundal","response specific",2016,"zeta_presence",2.62573767371027
+"profundal","response specific",2017,"zeta_presence",2.66996336996335
+"profundal","response specific",2018,"zeta_presence",2.62687987816484
+"profundal","response specific",2019,"zeta_presence",2.53406593406594
+"profundal","response specific",2020,"zeta_presence",2.41823719779174
+"profundal","response specific",2021,"zeta_presence",2.63288409703504
+"profundal","response specific",2022,"zeta_presence",2.77677256469598
+"profundal","response specific",1992,"zeta_abundance",0.286514930781893
+"profundal","response specific",1993,"zeta_abundance",0.218217685809452
+"profundal","response specific",1994,"zeta_abundance",0.229605798430807
+"profundal","response specific",1995,"zeta_abundance",0.214926337981644
+"profundal","response specific",1996,"zeta_abundance",0.223765455605754
+"profundal","response specific",1997,"zeta_abundance",0.237787244073252
+"profundal","response specific",1998,"zeta_abundance",0.204535626928834
+"profundal","response specific",1999,"zeta_abundance",0.220984636158025
+"profundal","response specific",2000,"zeta_abundance",0.223311381977437
+"profundal","response specific",2001,"zeta_abundance",0.246326723443794
+"profundal","response specific",2002,"zeta_abundance",0.249423830070842
+"profundal","response specific",2003,"zeta_abundance",0.229984517709146
+"profundal","response specific",2004,"zeta_abundance",0.218421503257817
+"profundal","response specific",2005,"zeta_abundance",0.22881104440931
+"profundal","response specific",2006,"zeta_abundance",0.252163628437264
+"profundal","response specific",2007,"zeta_abundance",0.194693792253369
+"profundal","response specific",2008,"zeta_abundance",0.194444278743053
+"profundal","response specific",2009,"zeta_abundance",0.226795901676754
+"profundal","response specific",2010,"zeta_abundance",0.21280989328968
+"profundal","response specific",2011,"zeta_abundance",0.216620186280884
+"profundal","response specific",2012,"zeta_abundance",0.214677963828598
+"profundal","response specific",2013,"zeta_abundance",0.221012726677361
+"profundal","response specific",2014,"zeta_abundance",0.210247695914117
+"profundal","response specific",2015,"zeta_abundance",0.199475772901085
+"profundal","response specific",2016,"zeta_abundance",0.207178264439309
+"profundal","response specific",2017,"zeta_abundance",0.201617059972421
+"profundal","response specific",2018,"zeta_abundance",0.231243343243055
+"profundal","response specific",2019,"zeta_abundance",0.220003042089991
+"profundal","response specific",2020,"zeta_abundance",0.222036358990309
+"profundal","response specific",2021,"zeta_abundance",0.220348247969612
+"profundal","response specific",2022,"zeta_abundance",0.231599932137245
+"profundal","response specific",1992,"zeta_dominance",0.843333333333333
+"profundal","response specific",1993,"zeta_dominance",0.63768115942029
+"profundal","response specific",1994,"zeta_dominance",0.702898550724638
+"profundal","response specific",1995,"zeta_dominance",0.59921568627451
+"profundal","response specific",1996,"zeta_dominance",0.779271708683473
+"profundal","response specific",1997,"zeta_dominance",0.699545576049183
+"profundal","response specific",1998,"zeta_dominance",0.709803921568628
+"profundal","response specific",1999,"zeta_dominance",0.664705882352939
+"profundal","response specific",2000,"zeta_dominance",0.598770382250736
+"profundal","response specific",2001,"zeta_dominance",0.675786593707252
+"profundal","response specific",2002,"zeta_dominance",0.59113924050633
+"profundal","response specific",2003,"zeta_dominance",0.644444444444443
+"profundal","response specific",2004,"zeta_dominance",0.570224719101124
+"profundal","response specific",2005,"zeta_dominance",0.660805860805861
+"profundal","response specific",2006,"zeta_dominance",0.638064688585941
+"profundal","response specific",2007,"zeta_dominance",0.562803234501348
+"profundal","response specific",2008,"zeta_dominance",0.6415750915751
+"profundal","response specific",2009,"zeta_dominance",0.743040293040299
+"profundal","response specific",2010,"zeta_dominance",0.675504107542942
+"profundal","response specific",2011,"zeta_dominance",0.6380198019802
+"profundal","response specific",2012,"zeta_dominance",0.6233957500526
+"profundal","response specific",2013,"zeta_dominance",0.642541552703553
+"profundal","response specific",2014,"zeta_dominance",0.619946091644204
+"profundal","response specific",2015,"zeta_dominance",0.537714712471993
+"profundal","response specific",2016,"zeta_dominance",0.650485436893212
+"profundal","response specific",2017,"zeta_dominance",0.713553113553119
+"profundal","response specific",2018,"zeta_dominance",0.747192080715783
+"profundal","response specific",2019,"zeta_dominance",0.656227106227106
+"profundal","response specific",2020,"zeta_dominance",0.647249190938513
+"profundal","response specific",2021,"zeta_dominance",0.718059299191374
+"profundal","response specific",2022,"zeta_dominance",0.713444140542816
+"profundal","response specific",1992,"incidence",0.676795223708207
+"profundal","response specific",1993,"incidence",0.672283913559643
+"profundal","response specific",1994,"incidence",0.617903669591342
+"profundal","response specific",1995,"incidence",0.637082730554016
+"profundal","response specific",1996,"incidence",0.671123137256158
+"profundal","response specific",1997,"incidence",0.636136859785699
+"profundal","response specific",1998,"incidence",0.646334509724119
+"profundal","response specific",1999,"incidence",0.685760489174743
+"profundal","response specific",2000,"incidence",0.655291467438939
+"profundal","response specific",2001,"incidence",0.673875866793008
+"profundal","response specific",2002,"incidence",0.678458188225908
+"profundal","response specific",2003,"incidence",0.684377213180562
+"profundal","response specific",2004,"incidence",0.665302943570748
+"profundal","response specific",2005,"incidence",0.664342657017788
+"profundal","response specific",2006,"incidence",0.687509623951307
+"profundal","response specific",2007,"incidence",0.690650843962466
+"profundal","response specific",2008,"incidence",0.686138472894235
+"profundal","response specific",2009,"incidence",0.696650359259803
+"profundal","response specific",2010,"incidence",0.728304375987341
+"profundal","response specific",2011,"incidence",0.709635124333141
+"profundal","response specific",2012,"incidence",0.717085355637878
+"profundal","response specific",2013,"incidence",0.693758770911317
+"profundal","response specific",2014,"incidence",0.688456980148763
+"profundal","response specific",2015,"incidence",0.711643391037124
+"profundal","response specific",2016,"incidence",0.687986058047559
+"profundal","response specific",2017,"incidence",0.703198026362531
+"profundal","response specific",2018,"incidence",0.680124278086396
+"profundal","response specific",2019,"incidence",0.702740526679924
+"profundal","response specific",2020,"incidence",0.681227026881377
+"profundal","response specific",2021,"incidence",0.684398399650099
+"profundal","response specific",2022,"incidence",0.67568798883598
+"profundal","response specific",1992,"turnover",0.486016633148986
+"profundal","response specific",1993,"turnover",0.513617084700844
+"profundal","response specific",1994,"turnover",0.419268814920989
+"profundal","response specific",1995,"turnover",0.476481481481482
+"profundal","response specific",1996,"turnover",0.500664471503767
+"profundal","response specific",1997,"turnover",0.488873524261614
+"profundal","response specific",1998,"turnover",0.479545656074944
+"profundal","response specific",1999,"turnover",0.504398297662364
+"profundal","response specific",2000,"turnover",0.489514448395764
+"profundal","response specific",2001,"turnover",0.506162443327826
+"profundal","response specific",2002,"turnover",0.523932268158409
+"profundal","response specific",2003,"turnover",0.491934021144548
+"profundal","response specific",2004,"turnover",0.481429151252307
+"profundal","response specific",2005,"turnover",0.495857133030496
+"profundal","response specific",2006,"turnover",0.527605968597288
+"profundal","response specific",2007,"turnover",0.496217136529884
+"profundal","response specific",2008,"turnover",0.527858962744014
+"profundal","response specific",2009,"turnover",0.513491837810468
+"profundal","response specific",2010,"turnover",0.550821100514432
+"profundal","response specific",2011,"turnover",0.539663935042503
+"profundal","response specific",2012,"turnover",0.551816717645151
+"profundal","response specific",2013,"turnover",0.510396266295637
+"profundal","response specific",2014,"turnover",0.51913254158994
+"profundal","response specific",2015,"turnover",0.531359368166425
+"profundal","response specific",2016,"turnover",0.540432736211066
+"profundal","response specific",2017,"turnover",0.541498654613958
+"profundal","response specific",2018,"turnover",0.50213357325841
+"profundal","response specific",2019,"turnover",0.541701327354854
+"profundal","response specific",2020,"turnover",0.510539378337854
+"profundal","response specific",2021,"turnover",0.524171077910574
+"profundal","response specific",2022,"turnover",0.510586101645618
+"profundal","response specific",1992,"nestedness",0.190778590559221
+"profundal","response specific",1993,"nestedness",0.158666828858799
+"profundal","response specific",1994,"nestedness",0.198634854670354
+"profundal","response specific",1995,"nestedness",0.160601249072534
+"profundal","response specific",1996,"nestedness",0.170458665752391
+"profundal","response specific",1997,"nestedness",0.147263335524085
+"profundal","response specific",1998,"nestedness",0.166788853649175
+"profundal","response specific",1999,"nestedness",0.181362191512379
+"profundal","response specific",2000,"nestedness",0.165777019043176
+"profundal","response specific",2001,"nestedness",0.167713423465182
+"profundal","response specific",2002,"nestedness",0.154525920067499
+"profundal","response specific",2003,"nestedness",0.192443192036015
+"profundal","response specific",2004,"nestedness",0.183873792318441
+"profundal","response specific",2005,"nestedness",0.168485523987292
+"profundal","response specific",2006,"nestedness",0.159903655354018
+"profundal","response specific",2007,"nestedness",0.194433707432582
+"profundal","response specific",2008,"nestedness",0.158279510150221
+"profundal","response specific",2009,"nestedness",0.183158521449335
+"profundal","response specific",2010,"nestedness",0.177483275472909
+"profundal","response specific",2011,"nestedness",0.169971189290639
+"profundal","response specific",2012,"nestedness",0.165268637992727
+"profundal","response specific",2013,"nestedness",0.183362504615681
+"profundal","response specific",2014,"nestedness",0.169324438558823
+"profundal","response specific",2015,"nestedness",0.1802840228707
+"profundal","response specific",2016,"nestedness",0.147553321836493
+"profundal","response specific",2017,"nestedness",0.161699371748573
+"profundal","response specific",2018,"nestedness",0.177990704827985
+"profundal","response specific",2019,"nestedness",0.161039199325071
+"profundal","response specific",2020,"nestedness",0.170687648543523
+"profundal","response specific",2021,"nestedness",0.160227321739525
+"profundal","response specific",2022,"nestedness",0.165101887190362
+"profundal","response specific",1992,"abundance",0.713485069218107
+"profundal","response specific",1993,"abundance",0.781782314190548
+"profundal","response specific",1994,"abundance",0.770394201569193
+"profundal","response specific",1995,"abundance",0.785073662018356
+"profundal","response specific",1996,"abundance",0.776234544394246
+"profundal","response specific",1997,"abundance",0.762212755926748
+"profundal","response specific",1998,"abundance",0.795464373071166
+"profundal","response specific",1999,"abundance",0.779015363841975
+"profundal","response specific",2000,"abundance",0.776688618022563
+"profundal","response specific",2001,"abundance",0.753673276556206
+"profundal","response specific",2002,"abundance",0.750576169929158
+"profundal","response specific",2003,"abundance",0.770015482290854
+"profundal","response specific",2004,"abundance",0.781578496742183
+"profundal","response specific",2005,"abundance",0.77118895559069
+"profundal","response specific",2006,"abundance",0.747836371562736
+"profundal","response specific",2007,"abundance",0.805306207746631
+"profundal","response specific",2008,"abundance",0.805555721256947
+"profundal","response specific",2009,"abundance",0.773204098323246
+"profundal","response specific",2010,"abundance",0.78719010671032
+"profundal","response specific",2011,"abundance",0.783379813719116
+"profundal","response specific",2012,"abundance",0.785322036171403
+"profundal","response specific",2013,"abundance",0.778987273322639
+"profundal","response specific",2014,"abundance",0.789752304085883
+"profundal","response specific",2015,"abundance",0.800524227098915
+"profundal","response specific",2016,"abundance",0.792821735560691
+"profundal","response specific",2017,"abundance",0.798382940027579
+"profundal","response specific",2018,"abundance",0.768756656756945
+"profundal","response specific",2019,"abundance",0.779996957910009
+"profundal","response specific",2020,"abundance",0.777963641009691
+"profundal","response specific",2021,"abundance",0.779651752030388
+"profundal","response specific",2022,"abundance",0.768400067862755
+"profundal","response specific",1992,"occupancy",0.436052992239923
+"profundal","response specific",1993,"occupancy",0.535392432681959
+"profundal","response specific",1994,"occupancy",0.481034994094109
+"profundal","response specific",1995,"occupancy",0.508640354742933
+"profundal","response specific",1996,"occupancy",0.531778051744026
+"profundal","response specific",1997,"occupancy",0.519496844033454
+"profundal","response specific",1998,"occupancy",0.517258955438069
+"profundal","response specific",1999,"occupancy",0.538266934771046
+"profundal","response specific",2000,"occupancy",0.537558367968227
+"profundal","response specific",2001,"occupancy",0.519736421689132
+"profundal","response specific",2002,"occupancy",0.54491780248856
+"profundal","response specific",2003,"occupancy",0.537709855141719
+"profundal","response specific",2004,"occupancy",0.536904658894056
+"profundal","response specific",2005,"occupancy",0.532233253466244
+"profundal","response specific",2006,"occupancy",0.540637754799421
+"profundal","response specific",2007,"occupancy",0.557044992980001
+"profundal","response specific",2008,"occupancy",0.573361555960762
+"profundal","response specific",2009,"occupancy",0.540604088191197
+"profundal","response specific",2010,"occupancy",0.585584376990968
+"profundal","response specific",2011,"occupancy",0.568220125001248
+"profundal","response specific",2012,"occupancy",0.566878658357957
+"profundal","response specific",2013,"occupancy",0.565841066939574
+"profundal","response specific",2014,"occupancy",0.56400573755061
+"profundal","response specific",2015,"occupancy",0.57753361153458
+"profundal","response specific",2016,"occupancy",0.561485445674159
+"profundal","response specific",2017,"occupancy",0.563470050239748
+"profundal","response specific",2018,"occupancy",0.527305229538365
+"profundal","response specific",2019,"occupancy",0.557675701287648
+"profundal","response specific",2020,"occupancy",0.540282671325412
+"profundal","response specific",2021,"occupancy",0.553965752587477
+"profundal","response specific",2022,"occupancy",0.535085881288215
+"profundal","response specific",1992,"numerical",0.277432076978184
+"profundal","response specific",1993,"numerical",0.246389881508589
+"profundal","response specific",1994,"numerical",0.289359207475083
+"profundal","response specific",1995,"numerical",0.276433307275423
+"profundal","response specific",1996,"numerical",0.24445649265022
+"profundal","response specific",1997,"numerical",0.242715911893294
+"profundal","response specific",1998,"numerical",0.278205417633097
+"profundal","response specific",1999,"numerical",0.24074842907093
+"profundal","response specific",2000,"numerical",0.239130250054336
+"profundal","response specific",2001,"numerical",0.233936854867073
+"profundal","response specific",2002,"numerical",0.205658367440598
+"profundal","response specific",2003,"numerical",0.232305627149136
+"profundal","response specific",2004,"numerical",0.244673837848126
+"profundal","response specific",2005,"numerical",0.238955702124446
+"profundal","response specific",2006,"numerical",0.207198616763316
+"profundal","response specific",2007,"numerical",0.24826121476663
+"profundal","response specific",2008,"numerical",0.232194165296185
+"profundal","response specific",2009,"numerical",0.232600010132049
+"profundal","response specific",2010,"numerical",0.201605729719352
+"profundal","response specific",2011,"numerical",0.215159688717868
+"profundal","response specific",2012,"numerical",0.218443377813446
+"profundal","response specific",2013,"numerical",0.213146206383065
+"profundal","response specific",2014,"numerical",0.225746566535273
+"profundal","response specific",2015,"numerical",0.222990615564335
+"profundal","response specific",2016,"numerical",0.231336289886533
+"profundal","response specific",2017,"numerical",0.234912889787831
+"profundal","response specific",2018,"numerical",0.24145142721858
+"profundal","response specific",2019,"numerical",0.22232125662236
+"profundal","response specific",2020,"numerical",0.23768096968428
+"profundal","response specific",2021,"numerical",0.225685999442912
+"profundal","response specific",2022,"numerical",0.23331418657454
+"profundal","response specific",1992,"dominance",0.664769378769379
+"profundal","response specific",1993,"dominance",0.758034276512537
+"profundal","response specific",1994,"dominance",0.688121118012422
+"profundal","response specific",1995,"dominance",0.765049543049543
+"profundal","response specific",1996,"dominance",0.727865283505422
+"profundal","response specific",1997,"dominance",0.730719329676827
+"profundal","response specific",1998,"dominance",0.761412274311434
+"profundal","response specific",1999,"dominance",0.744400907307481
+"profundal","response specific",2000,"dominance",0.75518105405836
+"profundal","response specific",2001,"dominance",0.715462909183839
+"profundal","response specific",2002,"dominance",0.72363611072472
+"profundal","response specific",2003,"dominance",0.734132284754995
+"profundal","response specific",2004,"dominance",0.765155246807444
+"profundal","response specific",2005,"dominance",0.748015634321388
+"profundal","response specific",2006,"dominance",0.73009914402433
+"profundal","response specific",2007,"dominance",0.783659648727035
+"profundal","response specific",2008,"dominance",0.77266545372557
+"profundal","response specific",2009,"dominance",0.736728625464889
+"profundal","response specific",2010,"dominance",0.750858051996962
+"profundal","response specific",2011,"dominance",0.75157518208188
+"profundal","response specific",2012,"dominance",0.753836570073683
+"profundal","response specific",2013,"dominance",0.74832536843898
+"profundal","response specific",2014,"dominance",0.758484151368249
+"profundal","response specific",2015,"dominance",0.785289267822875
+"profundal","response specific",2016,"dominance",0.76581545133801
+"profundal","response specific",2017,"dominance",0.774421482058845
+"profundal","response specific",2018,"dominance",0.743135853308192
+"profundal","response specific",2019,"dominance",0.763787508787509
+"profundal","response specific",2020,"dominance",0.754184243533187
+"profundal","response specific",2021,"dominance",0.75506965877348
+"profundal","response specific",2022,"dominance",0.739548801830519
+"profundal","Phase IV balanced",1995,"zeta_presence",2.89655172413793
+"profundal","Phase IV balanced",1996,"zeta_presence",2.52183908045977
+"profundal","Phase IV balanced",1997,"zeta_presence",3.12413793103448
+"profundal","Phase IV balanced",1998,"zeta_presence",3.23908045977011
+"profundal","Phase IV balanced",1999,"zeta_presence",2.45057471264368
+"profundal","Phase IV balanced",2000,"zeta_presence",2.82528735632184
+"profundal","Phase IV balanced",2001,"zeta_presence",2.43448275862069
+"profundal","Phase IV balanced",2002,"zeta_presence",2.07126436781609
+"profundal","Phase IV balanced",2003,"zeta_presence",2.29885057471264
+"profundal","Phase IV balanced",2004,"zeta_presence",2.6183908045977
+"profundal","Phase IV balanced",2005,"zeta_presence",2.71034482758621
+"profundal","Phase IV balanced",2006,"zeta_presence",2.0735632183908
+"profundal","Phase IV balanced",2007,"zeta_presence",2.38850574712644
+"profundal","Phase IV balanced",2008,"zeta_presence",2.54712643678161
+"profundal","Phase IV balanced",2009,"zeta_presence",2.60229885057471
+"profundal","Phase IV balanced",2010,"zeta_presence",2.42988505747126
+"profundal","Phase IV balanced",2011,"zeta_presence",2.00919540229885
+"profundal","Phase IV balanced",2012,"zeta_presence",2.44827586206897
+"profundal","Phase IV balanced",2013,"zeta_presence",2.48045977011494
+"profundal","Phase IV balanced",2014,"zeta_presence",2.54942528735632
+"profundal","Phase IV balanced",2015,"zeta_presence",2.37931034482759
+"profundal","Phase IV balanced",2016,"zeta_presence",3.24597701149425
+"profundal","Phase IV balanced",2017,"zeta_presence",3.05287356321839
+"profundal","Phase IV balanced",2018,"zeta_presence",2.99540229885057
+"profundal","Phase IV balanced",2019,"zeta_presence",3.03448275862069
+"profundal","Phase IV balanced",2020,"zeta_presence",2.6551724137931
+"profundal","Phase IV balanced",2021,"zeta_presence",3.10574712643678
+"profundal","Phase IV balanced",2022,"zeta_presence",3.03908045977012
+"profundal","Phase IV balanced",1995,"zeta_abundance",0.262989739680102
+"profundal","Phase IV balanced",1996,"zeta_abundance",0.286606024588078
+"profundal","Phase IV balanced",1997,"zeta_abundance",0.30964090262536
+"profundal","Phase IV balanced",1998,"zeta_abundance",0.27678277947143
+"profundal","Phase IV balanced",1999,"zeta_abundance",0.323456953234319
+"profundal","Phase IV balanced",2000,"zeta_abundance",0.350958671115571
+"profundal","Phase IV balanced",2001,"zeta_abundance",0.301557551434991
+"profundal","Phase IV balanced",2002,"zeta_abundance",0.353943715188182
+"profundal","Phase IV balanced",2003,"zeta_abundance",0.336258413062925
+"profundal","Phase IV balanced",2004,"zeta_abundance",0.359669193910252
+"profundal","Phase IV balanced",2005,"zeta_abundance",0.341906661654191
+"profundal","Phase IV balanced",2006,"zeta_abundance",0.389984866172107
+"profundal","Phase IV balanced",2007,"zeta_abundance",0.328637743751514
+"profundal","Phase IV balanced",2008,"zeta_abundance",0.313618158315322
+"profundal","Phase IV balanced",2009,"zeta_abundance",0.364537756906073
+"profundal","Phase IV balanced",2010,"zeta_abundance",0.372046515025032
+"profundal","Phase IV balanced",2011,"zeta_abundance",0.434954231111529
+"profundal","Phase IV balanced",2012,"zeta_abundance",0.42915646266643
+"profundal","Phase IV balanced",2013,"zeta_abundance",0.420070739519404
+"profundal","Phase IV balanced",2014,"zeta_abundance",0.383215032302838
+"profundal","Phase IV balanced",2015,"zeta_abundance",0.388517352720633
+"profundal","Phase IV balanced",2016,"zeta_abundance",0.357406830337747
+"profundal","Phase IV balanced",2017,"zeta_abundance",0.323460660918326
+"profundal","Phase IV balanced",2018,"zeta_abundance",0.379092889742473
+"profundal","Phase IV balanced",2019,"zeta_abundance",0.364597654877329
+"profundal","Phase IV balanced",2020,"zeta_abundance",0.360405952894808
+"profundal","Phase IV balanced",2021,"zeta_abundance",0.36275975517946
+"profundal","Phase IV balanced",2022,"zeta_abundance",0.421649615059615
+"profundal","Phase IV balanced",1995,"zeta_dominance",0.577011494252873
+"profundal","Phase IV balanced",1996,"zeta_dominance",0.673563218390805
+"profundal","Phase IV balanced",1997,"zeta_dominance",0.714942528735632
+"profundal","Phase IV balanced",1998,"zeta_dominance",0.616091954022989
+"profundal","Phase IV balanced",1999,"zeta_dominance",0.733333333333333
+"profundal","Phase IV balanced",2000,"zeta_dominance",0.705747126436782
+"profundal","Phase IV balanced",2001,"zeta_dominance",0.671264367816092
+"profundal","Phase IV balanced",2002,"zeta_dominance",0.754022988505747
+"profundal","Phase IV balanced",2003,"zeta_dominance",0.63448275862069
+"profundal","Phase IV balanced",2004,"zeta_dominance",0.770114942528736
+"profundal","Phase IV balanced",2005,"zeta_dominance",0.659770114942529
+"profundal","Phase IV balanced",2006,"zeta_dominance",0.662068965517241
+"profundal","Phase IV balanced",2007,"zeta_dominance",0.641379310344827
+"profundal","Phase IV balanced",2008,"zeta_dominance",0.673563218390805
+"profundal","Phase IV balanced",2009,"zeta_dominance",0.822988505747126
+"profundal","Phase IV balanced",2010,"zeta_dominance",0.754022988505747
+"profundal","Phase IV balanced",2011,"zeta_dominance",0.760919540229885
+"profundal","Phase IV balanced",2012,"zeta_dominance",0.839080459770115
+"profundal","Phase IV balanced",2013,"zeta_dominance",0.754022988505747
+"profundal","Phase IV balanced",2014,"zeta_dominance",0.813793103448276
+"profundal","Phase IV balanced",2015,"zeta_dominance",0.731034482758621
+"profundal","Phase IV balanced",2016,"zeta_dominance",0.793103448275862
+"profundal","Phase IV balanced",2017,"zeta_dominance",0.917241379310345
+"profundal","Phase IV balanced",2018,"zeta_dominance",0.820689655172414
+"profundal","Phase IV balanced",2019,"zeta_dominance",0.763218390804598
+"profundal","Phase IV balanced",2020,"zeta_dominance",0.783908045977012
+"profundal","Phase IV balanced",2021,"zeta_dominance",0.839080459770115
+"profundal","Phase IV balanced",2022,"zeta_dominance",0.857471264367816
+"profundal","Phase IV balanced",1995,"incidence",0.557559901240909
+"profundal","Phase IV balanced",1996,"incidence",0.616602115921001
+"profundal","Phase IV balanced",1997,"incidence",0.553365667256254
+"profundal","Phase IV balanced",1998,"incidence",0.558150805018497
+"profundal","Phase IV balanced",1999,"incidence",0.597104263915943
+"profundal","Phase IV balanced",2000,"incidence",0.584715969985454
+"profundal","Phase IV balanced",2001,"incidence",0.595943087235924
+"profundal","Phase IV balanced",2002,"incidence",0.633083085911633
+"profundal","Phase IV balanced",2003,"incidence",0.628765607775193
+"profundal","Phase IV balanced",2004,"incidence",0.580719502731353
+"profundal","Phase IV balanced",2005,"incidence",0.57601470648263
+"profundal","Phase IV balanced",2006,"incidence",0.637345463392757
+"profundal","Phase IV balanced",2007,"incidence",0.613806743513693
+"profundal","Phase IV balanced",2008,"incidence",0.578699018085695
+"profundal","Phase IV balanced",2009,"incidence",0.586413208797365
+"profundal","Phase IV balanced",2010,"incidence",0.583182940327588
+"profundal","Phase IV balanced",2011,"incidence",0.621765369528794
+"profundal","Phase IV balanced",2012,"incidence",0.607009838818896
+"profundal","Phase IV balanced",2013,"incidence",0.581934133068968
+"profundal","Phase IV balanced",2014,"incidence",0.576440049438875
+"profundal","Phase IV balanced",2015,"incidence",0.602804091926009
+"profundal","Phase IV balanced",2016,"incidence",0.554320421744496
+"profundal","Phase IV balanced",2017,"incidence",0.585626708973661
+"profundal","Phase IV balanced",2018,"incidence",0.563459082414295
+"profundal","Phase IV balanced",2019,"incidence",0.581669506369651
+"profundal","Phase IV balanced",2020,"incidence",0.573856594301681
+"profundal","Phase IV balanced",2021,"incidence",0.561210479334399
+"profundal","Phase IV balanced",2022,"incidence",0.545798873783867
+"profundal","Phase IV balanced",1995,"turnover",0.406448640758985
+"profundal","Phase IV balanced",1996,"turnover",0.48302590768108
+"profundal","Phase IV balanced",1997,"turnover",0.410592957489509
+"profundal","Phase IV balanced",1998,"turnover",0.422078046474598
+"profundal","Phase IV balanced",1999,"turnover",0.452685641306331
+"profundal","Phase IV balanced",2000,"turnover",0.409316009660837
+"profundal","Phase IV balanced",2001,"turnover",0.439139755519066
+"profundal","Phase IV balanced",2002,"turnover",0.485489874110564
+"profundal","Phase IV balanced",2003,"turnover",0.43198852233335
+"profundal","Phase IV balanced",2004,"turnover",0.354119188601947
+"profundal","Phase IV balanced",2005,"turnover",0.421539616194789
+"profundal","Phase IV balanced",2006,"turnover",0.499433082881359
+"profundal","Phase IV balanced",2007,"turnover",0.445842911877395
+"profundal","Phase IV balanced",2008,"turnover",0.442748586024448
+"profundal","Phase IV balanced",2009,"turnover",0.420946907498632
+"profundal","Phase IV balanced",2010,"turnover",0.407813355227148
+"profundal","Phase IV balanced",2011,"turnover",0.442598066046342
+"profundal","Phase IV balanced",2012,"turnover",0.494396593189697
+"profundal","Phase IV balanced",2013,"turnover",0.455095785440613
+"profundal","Phase IV balanced",2014,"turnover",0.439314906039044
+"profundal","Phase IV balanced",2015,"turnover",0.439871373836891
+"profundal","Phase IV balanced",2016,"turnover",0.393256634808359
+"profundal","Phase IV balanced",2017,"turnover",0.444457215836526
+"profundal","Phase IV balanced",2018,"turnover",0.433302897613242
+"profundal","Phase IV balanced",2019,"turnover",0.408064891685581
+"profundal","Phase IV balanced",2020,"turnover",0.424602262360883
+"profundal","Phase IV balanced",2021,"turnover",0.412218726356657
+"profundal","Phase IV balanced",2022,"turnover",0.383023502678675
+"profundal","Phase IV balanced",1995,"nestedness",0.151111260481923
+"profundal","Phase IV balanced",1996,"nestedness",0.133576208239921
+"profundal","Phase IV balanced",1997,"nestedness",0.142772709766745
+"profundal","Phase IV balanced",1998,"nestedness",0.136072758543899
+"profundal","Phase IV balanced",1999,"nestedness",0.144418622609612
+"profundal","Phase IV balanced",2000,"nestedness",0.175399960324617
+"profundal","Phase IV balanced",2001,"nestedness",0.156803331716858
+"profundal","Phase IV balanced",2002,"nestedness",0.147593211801069
+"profundal","Phase IV balanced",2003,"nestedness",0.196777085441843
+"profundal","Phase IV balanced",2004,"nestedness",0.226600314129406
+"profundal","Phase IV balanced",2005,"nestedness",0.154475090287842
+"profundal","Phase IV balanced",2006,"nestedness",0.137912380511398
+"profundal","Phase IV balanced",2007,"nestedness",0.167963831636299
+"profundal","Phase IV balanced",2008,"nestedness",0.135950432061247
+"profundal","Phase IV balanced",2009,"nestedness",0.165466301298733
+"profundal","Phase IV balanced",2010,"nestedness",0.17536958510044
+"profundal","Phase IV balanced",2011,"nestedness",0.179167303482452
+"profundal","Phase IV balanced",2012,"nestedness",0.112613245629199
+"profundal","Phase IV balanced",2013,"nestedness",0.126838347628355
+"profundal","Phase IV balanced",2014,"nestedness",0.137125143399831
+"profundal","Phase IV balanced",2015,"nestedness",0.162932718089118
+"profundal","Phase IV balanced",2016,"nestedness",0.161063786936137
+"profundal","Phase IV balanced",2017,"nestedness",0.141169493137135
+"profundal","Phase IV balanced",2018,"nestedness",0.130156184801053
+"profundal","Phase IV balanced",2019,"nestedness",0.17360461468407
+"profundal","Phase IV balanced",2020,"nestedness",0.149254331940798
+"profundal","Phase IV balanced",2021,"nestedness",0.148991752977741
+"profundal","Phase IV balanced",2022,"nestedness",0.162775371105192
+"profundal","Phase IV balanced",1995,"abundance",0.737010260319898
+"profundal","Phase IV balanced",1996,"abundance",0.713393975411922
+"profundal","Phase IV balanced",1997,"abundance",0.69035909737464
+"profundal","Phase IV balanced",1998,"abundance",0.72321722052857
+"profundal","Phase IV balanced",1999,"abundance",0.67654304676568
+"profundal","Phase IV balanced",2000,"abundance",0.649041328884429
+"profundal","Phase IV balanced",2001,"abundance",0.698442448565009
+"profundal","Phase IV balanced",2002,"abundance",0.646056284811818
+"profundal","Phase IV balanced",2003,"abundance",0.663741586937075
+"profundal","Phase IV balanced",2004,"abundance",0.640330806089748
+"profundal","Phase IV balanced",2005,"abundance",0.658093338345809
+"profundal","Phase IV balanced",2006,"abundance",0.610015133827893
+"profundal","Phase IV balanced",2007,"abundance",0.671362256248486
+"profundal","Phase IV balanced",2008,"abundance",0.686381841684678
+"profundal","Phase IV balanced",2009,"abundance",0.635462243093927
+"profundal","Phase IV balanced",2010,"abundance",0.627953484974968
+"profundal","Phase IV balanced",2011,"abundance",0.565045768888471
+"profundal","Phase IV balanced",2012,"abundance",0.57084353733357
+"profundal","Phase IV balanced",2013,"abundance",0.579929260480596
+"profundal","Phase IV balanced",2014,"abundance",0.616784967697162
+"profundal","Phase IV balanced",2015,"abundance",0.611482647279367
+"profundal","Phase IV balanced",2016,"abundance",0.642593169662253
+"profundal","Phase IV balanced",2017,"abundance",0.676539339081674
+"profundal","Phase IV balanced",2018,"abundance",0.620907110257527
+"profundal","Phase IV balanced",2019,"abundance",0.635402345122671
+"profundal","Phase IV balanced",2020,"abundance",0.639594047105192
+"profundal","Phase IV balanced",2021,"abundance",0.63724024482054
+"profundal","Phase IV balanced",2022,"abundance",0.578350384940385
+"profundal","Phase IV balanced",1995,"occupancy",0.413013750185875
+"profundal","Phase IV balanced",1996,"occupancy",0.465400378902679
+"profundal","Phase IV balanced",1997,"occupancy",0.415083150919099
+"profundal","Phase IV balanced",1998,"occupancy",0.410424852043002
+"profundal","Phase IV balanced",1999,"occupancy",0.435562403081342
+"profundal","Phase IV balanced",2000,"occupancy",0.399455141942762
+"profundal","Phase IV balanced",2001,"occupancy",0.450037441991248
+"profundal","Phase IV balanced",2002,"occupancy",0.443449717781359
+"profundal","Phase IV balanced",2003,"occupancy",0.428286685606875
+"profundal","Phase IV balanced",2004,"occupancy",0.372359168841217
+"profundal","Phase IV balanced",2005,"occupancy",0.390718494589451
+"profundal","Phase IV balanced",2006,"occupancy",0.429411700627815
+"profundal","Phase IV balanced",2007,"occupancy",0.439522180634726
+"profundal","Phase IV balanced",2008,"occupancy",0.44560940224455
+"profundal","Phase IV balanced",2009,"occupancy",0.384324956703376
+"profundal","Phase IV balanced",2010,"occupancy",0.380222667928425
+"profundal","Phase IV balanced",2011,"occupancy",0.370533787307384
+"profundal","Phase IV balanced",2012,"occupancy",0.334285459057812
+"profundal","Phase IV balanced",2013,"occupancy",0.3833510972614
+"profundal","Phase IV balanced",2014,"occupancy",0.362022976982351
+"profundal","Phase IV balanced",2015,"occupancy",0.364525451476557
+"profundal","Phase IV balanced",2016,"occupancy",0.360328516734241
+"profundal","Phase IV balanced",2017,"occupancy",0.403276743992605
+"profundal","Phase IV balanced",2018,"occupancy",0.354583380046118
+"profundal","Phase IV balanced",2019,"occupancy",0.349480712806262
+"profundal","Phase IV balanced",2020,"occupancy",0.394915084387234
+"profundal","Phase IV balanced",2021,"occupancy",0.368616986734644
+"profundal","Phase IV balanced",2022,"occupancy",0.292463686000042
+"profundal","Phase IV balanced",1995,"numerical",0.323996510134024
+"profundal","Phase IV balanced",1996,"numerical",0.247993596509243
+"profundal","Phase IV balanced",1997,"numerical",0.275275946455542
+"profundal","Phase IV balanced",1998,"numerical",0.312792368485568
+"profundal","Phase IV balanced",1999,"numerical",0.240980643684338
+"profundal","Phase IV balanced",2000,"numerical",0.249586186941667
+"profundal","Phase IV balanced",2001,"numerical",0.248405006573761
+"profundal","Phase IV balanced",2002,"numerical",0.202606567030459
+"profundal","Phase IV balanced",2003,"numerical",0.235454901330199
+"profundal","Phase IV balanced",2004,"numerical",0.26797163724853
+"profundal","Phase IV balanced",2005,"numerical",0.267374843756358
+"profundal","Phase IV balanced",2006,"numerical",0.180603433200078
+"profundal","Phase IV balanced",2007,"numerical",0.23184007561376
+"profundal","Phase IV balanced",2008,"numerical",0.240772439440127
+"profundal","Phase IV balanced",2009,"numerical",0.251137286390551
+"profundal","Phase IV balanced",2010,"numerical",0.247730817046542
+"profundal","Phase IV balanced",2011,"numerical",0.194511981581087
+"profundal","Phase IV balanced",2012,"numerical",0.236558078275758
+"profundal","Phase IV balanced",2013,"numerical",0.196578163219196
+"profundal","Phase IV balanced",2014,"numerical",0.254761990714811
+"profundal","Phase IV balanced",2015,"numerical",0.24695719580281
+"profundal","Phase IV balanced",2016,"numerical",0.282264652928011
+"profundal","Phase IV balanced",2017,"numerical",0.27326259508907
+"profundal","Phase IV balanced",2018,"numerical",0.266323730211408
+"profundal","Phase IV balanced",2019,"numerical",0.28592163231641
+"profundal","Phase IV balanced",2020,"numerical",0.244678962717958
+"profundal","Phase IV balanced",2021,"numerical",0.268623258085896
+"profundal","Phase IV balanced",2022,"numerical",0.285886698940343
+"profundal","Phase IV balanced",1995,"dominance",0.737193942711184
+"profundal","Phase IV balanced",1996,"dominance",0.658188286808977
+"profundal","Phase IV balanced",1997,"dominance",0.656159294090329
+"profundal","Phase IV balanced",1998,"dominance",0.715562024182714
+"profundal","Phase IV balanced",1999,"dominance",0.629069512862616
+"profundal","Phase IV balanced",2000,"dominance",0.640448823207444
+"profundal","Phase IV balanced",2001,"dominance",0.638823207443897
+"profundal","Phase IV balanced",2002,"dominance",0.596376573617953
+"profundal","Phase IV balanced",2003,"dominance",0.626588213829594
+"profundal","Phase IV balanced",2004,"dominance",0.586947637292465
+"profundal","Phase IV balanced",2005,"dominance",0.637274220032841
+"profundal","Phase IV balanced",2006,"dominance",0.599733625250866
+"profundal","Phase IV balanced",2007,"dominance",0.648901660280971
+"profundal","Phase IV balanced",2008,"dominance",0.652001459587667
+"profundal","Phase IV balanced",2009,"dominance",0.608317991076612
+"profundal","Phase IV balanced",2010,"dominance",0.574349239521653
+"profundal","Phase IV balanced",2011,"dominance",0.530288268564131
+"profundal","Phase IV balanced",2012,"dominance",0.531116584564861
+"profundal","Phase IV balanced",2013,"dominance",0.56856595511768
+"profundal","Phase IV balanced",2014,"dominance",0.572486772486772
+"profundal","Phase IV balanced",2015,"dominance",0.585380405035578
+"profundal","Phase IV balanced",2016,"dominance",0.598396278051451
+"profundal","Phase IV balanced",2017,"dominance",0.63800666766184
+"profundal","Phase IV balanced",2018,"dominance",0.576971355592046
+"profundal","Phase IV balanced",2019,"dominance",0.614490056559022
+"profundal","Phase IV balanced",2020,"dominance",0.63512248926042
+"profundal","Phase IV balanced",2021,"dominance",0.615494518253139
+"profundal","Phase IV balanced",2022,"dominance",0.556633825944171

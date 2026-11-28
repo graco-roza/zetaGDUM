@@ -14,7 +14,7 @@ C$task <- factor(C$task,levels=c("spatial","local","local_observed","rectangle",
                  labels=c("Spatial","Local, 1 year","Local, observed","Rectangle","Pair change","Window change","Shared turnover"))
 save(ggplot(C,aes(task,dataset,fill=eligible_observation_fraction))+
   geom_tile(colour="white",linewidth=.8)+geom_text(aes(label=sprintf("%.1f%%",100*eligible_observation_fraction)),size=3.2)+
-  scale_fill_gradient(low="#e5f1f2",high="#4ab0b3",limits=c(0,1),name="Observed records used")+
+  scale_fill_gradient(low="#e5f1f2",high="#4ab0b3",limits=c(0,1),name="Eligible observed records")+
   labs(x=NULL,y=NULL,title="Observation coverage by response",caption="Eligibility is computed before combination sampling and response denominators.")+
   theme(axis.text.x=element_text(angle=20,hjust=1)),"01_coverage",9,4)
 
@@ -52,6 +52,7 @@ curves <- read_result("empirical_curves")
 save(ggplot(curves,aes(change_sd_per_site,contribution,colour=process,group=interaction(process,fold)))+
   geom_hline(yintercept=0,colour="grey70")+geom_line(alpha=.63,linewidth=.45)+
   facet_grid(dataset~predictor)+scale_colour_manual(values=pal)+
+  scale_x_continuous(breaks=c(-1,0,1))+
   labs(x="Directional change per site (training SD)",y="Predicted change (Sørensen units)",colour="Process",
        title="Partial environmental response curves",
        caption="Each line uses one training fold. Other design columns are held at their training medians."),

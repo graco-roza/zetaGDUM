@@ -101,11 +101,10 @@ ugdm_component_surface <- function(fit, design, predictor, bins = 8L,
 #'
 #' Reports unpenalised scaled design and information rank, condition and
 #' active constraints for each fitted part. For the coherent share, only rows
-#' with positive total contribute. Interaction residuals measure support
-#' beyond the additive spread and position columns.
+#' with positive total contribute.
 #' @param fit,design As in [ugdm_predict_components()].
 #' @param response Training responses.
-#' @return A list of stage diagnostics and residual interaction geometry.
+#' @return A list of stage diagnostics and the identification status of the share.
 #' @export
 ugdm_component_diagnostics <- function(fit, design, response) {
   .component_match_response(design, response)
@@ -130,23 +129,7 @@ ugdm_component_diagnostics <- function(fit, design, response) {
       active = sum(a$coef[bounded] <= 1e-8), converged = a$converged,
       projected_gradient = a$projected_gradient, nonzero_weight_sets = sum(w > 0))
   })
-  residuals <- NULL
-  if (design$model == "interaction") {
-    problem <- .component_problem(design, fit$ridge, fit$interaction_shrink)
-    keep <- setdiff(fit$keep, unlist(lapply(problem$groups, "[[", "interaction")))
-    base <- problem$X %*% .component_transform(problem, keep)
-    root <- sqrt(fit$weights / sum(fit$weights))
-    orthogonal <- qr(base * root)
-    residuals <- do.call(rbind, lapply(design$vars, function(p) {
-      g <- problem$groups[[p]]
-      Z <- problem$X[, g$interaction, drop = FALSE] * root
-      norm <- colSums(Z^2)
-      data.frame(predictor = p, basis = seq_along(norm),
-        residual_fraction = ifelse(norm > 0, sqrt(colSums(qr.resid(orthogonal, Z)^2) / norm), NA_real_))
-    }))
-  }
-  list(stages = do.call(rbind, rows), interaction_residual = residuals,
-       share_identified = fit$share_identified)
+  list(stages = do.call(rbind, rows), share_identified = fit$share_identified)
 }
 
 .component_assessment <- function(response, predictions, means, weight) {
@@ -206,16 +189,16 @@ ugdm_assess_components <- function(fit, design, response, training_response, mas
 #' @param blocks Number of coordinate clusters when fold labels are absent.
 #' @param models,architectures Component model and architecture choices.
 #' @param combinations Training and held-out combinations per fold.
-#' @param ridge,interaction_shrink,monotone_total As in [ugdm_fit_components()].
+#' @param ridge,monotone_total As in [ugdm_fit_components()].
 #' @param geographic Include a distance predictor in addition to spatial folds.
 #' @param lonlat Use great-circle distance for geographic coordinates.
 #' @param seed Optional random seed.
 #' @return Fold-level predictive metrics, overlap, closure and convergence.
 #' @export
 ugdm_validate_components <- function(community, environment, coordinates = NULL, order = 2L,
-    fold = NULL, blocks = 4L, models = c("spread_only", "additive", "interaction"),
+    fold = NULL, blocks = 4L, models = c("spread_only", "additive"),
     architectures = c("independent", "coherent"), combinations = 1000L,
-    ridge = .001, interaction_shrink = .01, monotone_total = TRUE,
+    ridge = .001, monotone_total = TRUE,
     geographic = FALSE, lonlat = FALSE, seed = NULL) {
   if (anyNA(community)) stop("Supply complete community observations.")
   x <- .conditional_community(community)
@@ -224,7 +207,7 @@ ugdm_validate_components <- function(community, environment, coordinates = NULL,
   if (nrow(env) != n) stop("Community and environment rows must agree.")
   order <- .zeta_order_integer(order, n, 2L)
   combinations <- .set_design_integer(combinations, "combinations", 2L)
-  models <- unique(match.arg(models, c("spread_only", "additive", "interaction"), several.ok = TRUE))
+  models <- unique(match.arg(models, c("spread_only", "additive"), several.ok = TRUE))
   architectures <- unique(match.arg(architectures, c("independent", "coherent"), several.ok = TRUE))
   if (is.null(fold) || geographic) {
     xy <- as.matrix(coordinates)
@@ -257,7 +240,7 @@ ugdm_validate_components <- function(community, environment, coordinates = NULL,
         coordinates = coords(test), reference = d, lonlat = lonlat)
       do.call(rbind, lapply(architectures, function(a) {
         t <- proc.time()[["elapsed"]]
-        fit <- ugdm_fit_components(d, y, a, ridge, interaction_shrink, monotone_total)
+        fit <- ugdm_fit_components(d, y, a, ridge, monotone_total)
         seconds <- proc.time()[["elapsed"]] - t
         out <- ugdm_assess_components(fit, heldout, v, y)
         support <- ugdm_assess_components(fit, heldout, v, y, mask = TRUE)

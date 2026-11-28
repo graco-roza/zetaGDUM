@@ -2,9 +2,9 @@ test_that("within-order support requires calibrated intervals and separate numer
   set.seed(14)
   env <- data.frame(a = runif(20), b = runif(20))
   original <- ugdm_design(env, t(combn(20L, 2L)))
-  design <- ugdm_interaction_design(original, env, "nonlinear", "constant")
+  design <- ugdm_position_design(original, env, "nonlinear")
   y <- plogis(original$Xpos[, 1L] / 2)
-  fit <- ugdm_fit_interactions(design, y, ridge = 0.01)
+  fit <- ugdm_fit_position(design, y, ridge = 0.01)
   numeric <- cbind(a = c(.025, .03, .02), b = c(.01, .014, .008))
   ecological <- cbind(a = seq(.025, .035, len = 30), b = seq(.008, .012, len = 30))
   check <- function(calibrated, mc, ...) ugdm_within_order_diagnostic(

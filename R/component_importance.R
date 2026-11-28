@@ -3,10 +3,8 @@
 #' Refits both stages or all independent marginals for each coalition. The
 #' scoring function evaluates the final prediction of each response, including
 #' the products from the coherent model. Predictor groups use Shapley weights.
-#' Within a group, spread and position use Owen weights. Explicit interaction
-#' enters after both main effects and receives the conditional gain above the
-#' predictor's additive restriction. Equal endpoints enforce that restriction.
-#' This hierarchy avoids double counting. Negative held-out allocations are
+#' Within a group, spread and position use Owen weights, which avoids double
+#' counting. Negative held-out allocations are
 #' possible. Relative allocations require positive explained deviance.
 #'
 #' @param fit,design Training component fit and design.
@@ -33,13 +31,13 @@ ugdm_component_importance <- function(fit, design, response, evaluation = NULL,
     stop("Supply a nonnegative finite minimum explained deviance.")
   }
   if (!is.null(seed)) set.seed(seed)
-  problem <- .component_problem(design, fit$ridge, fit$interaction_shrink)
-  Z <- .interaction_layout(evaluation, !is.null(evaluation$geo))$X
+  problem <- .component_problem(design, fit$ridge)
+  Z <- .position_layout(evaluation, !is.null(evaluation$geo))$X
   groups <- problem$groups
   if (resolution == "predictor") {
     groups <- lapply(groups, function(g) list(predictor = unlist(g, use.names = FALSE)))
   }
-  plan <- .within_importance_plan(groups, permutations, exact_max, interaction_last = TRUE)
+  plan <- .within_importance_plan(groups, permutations, exact_max)
   w <- fit$weights
   means <- colSums(response * (w / sum(w)))
   components <- names(means)

@@ -22,7 +22,7 @@ ugdm_within_order_importance(
 )
 }
 \arguments{
-\item{fit}{Fitted [ugdm_fit_interactions()] model.}
+\item{fit}{Fitted [ugdm_fit_position()] model.}
 
 \item{design}{Its training design.}
 

@@ -7,12 +7,12 @@ test_that("within-order draws use a common null and coherent predictor rankings"
   site_noise <- rnorm(n)
   idx <- sample_sets(n, 3L, M = 340)
   base <- ugdm_design(env, idx)
-  d <- ugdm_interaction_design(base, env, "nonlinear", "constant")
+  d <- ugdm_position_design(base, env, "nonlinear")
   y <- make_y(d)
-  fit <- ugdm_fit_interactions(d, y, distance = FALSE, ridge = .002)
+  fit <- ugdm_fit_position(d, y, distance = FALSE, ridge = .002)
   build <- function(idx, sites) {
-    dd <- ugdm_interaction_design(ugdm_design(env[sites, ], idx, ref = base),
-                                  env[sites, ], "nonlinear", "constant")
+    dd <- ugdm_position_design(ugdm_design(env[sites, ], idx, ref = base),
+                                  env[sites, ], "nonlinear")
     list(design = dd, y = make_y(dd))
   }
   methods <- c("bayesian_bootstrap", "gaussian_gmm", "multiplier", "site_bootstrap")

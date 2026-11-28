@@ -9,7 +9,6 @@ ugdm_fit_components(
   response,
   architecture = c("coherent", "independent"),
   ridge = 0.001,
-  interaction_shrink = 0.01,
   monotone_total = TRUE,
   sampling_weights = NULL
 )
@@ -22,8 +21,6 @@ ugdm_fit_components(
 \item{architecture}{Fit independent marginal regressions or a coherent model.}
 
 \item{ridge}{Nonnegative main-effect ridge penalty.}
-
-\item{interaction_shrink}{Nonnegative penalty on endpoint differences.}
 
 \item{monotone_total}{Constrain the total model's directional coefficients.}
 
@@ -39,6 +36,6 @@ contribute only to the total fit. It estimates the ratio of expected
 heterogeneity to expected total. Predictions preserve compositional closure.
 The independent architecture fits all three marginals separately.
 Spread monotonicity is optional for total and unrestricted for the
-components or conditional share. Endpoint-average ridge and endpoint
-difference penalties keep the additive restriction comparable.
+components or conditional share. The same ridge penalty applies to the
+spread-only and additive models, so they are comparable.
 }

@@ -7,7 +7,7 @@
 ugdm_component_design(
   environment,
   sets,
-  model = c("additive", "spread_only", "interaction"),
+  model = c("additive", "spread_only"),
   coordinates = NULL,
   reference = NULL,
   lonlat = FALSE
@@ -18,8 +18,8 @@ ugdm_component_design(
 
 \item{sets}{Site index matrix as in [ugdm_component_response()].}
 
-\item{model}{Spread alone, additive nonlinear position, or varying spread
-with nonlinear position. Defaults to the reference model if supplied.}
+\item{model}{Spread alone, or spread with additive nonlinear position.
+Defaults to the reference model if supplied.}
 
 \item{coordinates}{Optional site coordinates for a geographic distance term.}
 
@@ -31,9 +31,8 @@ with nonlinear position. Defaults to the reference model if supplied.}
 A component design containing training coordinates and set geometry.
 }
 \description{
-Uses the existing nonlinear spread and position bases. The interaction
-linearly interpolates two spread curves at clipped mean set position.
-Identical endpoint curves reduce the interaction design to the additive
-design. The additive I-splines can already produce different effects for
-the same raw spread at different positions.
+Uses the existing nonlinear spread and position bases. The additive
+I-splines can already produce different effects for the same raw spread
+at different positions; position terms are an addition to, not a
+replacement of, the spread curves.
 }

@@ -11,11 +11,10 @@ ugdm_validate_components(
   order = 2L,
   fold = NULL,
   blocks = 4L,
-  models = c("spread_only", "additive", "interaction"),
+  models = c("spread_only", "additive"),
   architectures = c("independent", "coherent"),
   combinations = 1000L,
   ridge = 0.001,
-  interaction_shrink = 0.01,
   monotone_total = TRUE,
   geographic = FALSE,
   lonlat = FALSE,
@@ -37,7 +36,7 @@ folds when fold labels are absent.}
 
 \item{combinations}{Training and held-out combinations per fold.}
 
-\item{ridge, interaction_shrink, monotone_total}{As in [ugdm_fit_components()].}
+\item{ridge, monotone_total}{As in [ugdm_fit_components()].}
 
 \item{geographic}{Include a distance predictor in addition to spatial folds.}
 

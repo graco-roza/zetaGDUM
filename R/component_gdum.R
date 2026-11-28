@@ -21,22 +21,21 @@ ugdm_component_response <- function(community, sets) {
 
 #' Design for component-specific multisite GDUM
 #'
-#' Uses the existing nonlinear spread and position bases. The interaction
-#' linearly interpolates two spread curves at clipped mean set position.
-#' Identical endpoint curves reduce the interaction design to the additive
-#' design. The additive I-splines can already produce different effects for
-#' the same raw spread at different positions.
+#' Uses the existing nonlinear spread and position bases. The additive
+#' I-splines can already produce different effects for the same raw spread
+#' at different positions; position terms are an addition to, not a
+#' replacement of, the spread curves.
 #' @param environment Numeric environmental data, one row per site.
 #' @param sets Site index matrix as in [ugdm_component_response()].
-#' @param model Spread alone, additive nonlinear position, or varying spread
-#'   with nonlinear position. Defaults to the reference model if supplied.
+#' @param model Spread alone, or spread with additive nonlinear position.
+#'   Defaults to the reference model if supplied.
 #' @param coordinates Optional site coordinates for a geographic distance term.
 #' @param reference Optional training design or component fit. Reuses its basis.
 #' @param lonlat Use great-circle distance for longitude and latitude.
 #' @return A component design containing training coordinates and set geometry.
 #' @export
 ugdm_component_design <- function(environment, sets,
-    model = c("additive", "spread_only", "interaction"), coordinates = NULL,
+    model = c("additive", "spread_only"), coordinates = NULL,
     reference = NULL, lonlat = FALSE) {
   if (!is.null(reference) && !inherits(reference, c("ugdm_component_fit", "ugdm_component_design"))) {
     stop("Supply a component training design or fit as reference.")
@@ -59,8 +58,7 @@ ugdm_component_design <- function(environment, sets,
   }
   base <- ugdm_design(env, idx, dist_matrix = distance, ref = reference$reference,
     dist_range = if (!is.null(distance)) .pair_distance_range(distance))
-  design <- ugdm_interaction_design(base, env, "nonlinear",
-    if (model == "interaction") "varying" else "constant")
+  design <- ugdm_position_design(base, env, "nonlinear")
   design$model <- model
   design$reference <- base[c("environment_basis", "dist_basis", "dist_range")]
   values <- as.matrix(env)
@@ -77,26 +75,16 @@ ugdm_component_design <- function(environment, sets,
   design
 }
 
-.component_problem <- function(design, ridge, interaction_shrink) {
-  a <- .interaction_layout(design, !is.null(design$geo))
+.component_problem <- function(design, ridge) {
+  a <- .position_layout(design, !is.null(design$geo))
   groups <- lapply(seq_along(design$vars), function(j) {
     b <- 3L * (j - 1L) + seq_len(3L)
-    direction <- if (design$model == "interaction") {
-      ii <- 6L * (j - 1L) + seq_len(6L)
-      list(spread = a$dir[ii[1:3]], interaction = a$dir[ii[4:6]])
-    } else list(spread = a$dir[b])
+    direction <- list(spread = a$dir[b])
     if (design$model != "spread_only") direction$position <- a$pos[b]
     direction
   })
   names(groups) <- design$vars
-  P <- .interaction_penalties(design, a, c(ridge = ridge, interaction_shrink = interaction_shrink))
-  if (design$model == "interaction") {
-    mean_basis <- cbind(diag(3L), diag(3L)) / 2
-    for (g in groups) {
-      ii <- c(g$spread, g$interaction)
-      P[ii, ii] <- P[ii, ii] + ridge * (crossprod(mean_basis) - diag(6L))
-    }
-  }
+  P <- .position_penalties(design, a, c(ridge = ridge))
   if (a$distance) {
     label <- make.unique(c(names(groups), "geographic_distance"))[length(groups) + 1L]
     groups[[label]] <- list(distance = utils::tail(a$dir, ncol(design$geo)))
@@ -105,13 +93,7 @@ ugdm_component_design <- function(environment, sets,
 }
 
 .component_transform <- function(problem, keep) {
-  A <- diag(ncol(problem$X))[, keep, drop = FALSE]
-  for (g in problem$groups) {
-    if (length(g$interaction) && all(g$spread %in% keep) && !any(g$interaction %in% keep)) {
-      A[g$interaction, match(g$spread, keep)] <- diag(length(g$spread))
-    }
-  }
-  A
+  diag(ncol(problem$X))[, keep, drop = FALSE]
 }
 
 .component_fits <- function(X, P, y, w, architecture, bounded, start = NULL) {
@@ -159,26 +141,23 @@ ugdm_component_design <- function(environment, sets,
 #' heterogeneity to expected total. Predictions preserve compositional closure.
 #' The independent architecture fits all three marginals separately.
 #' Spread monotonicity is optional for total and unrestricted for the
-#' components or conditional share. Endpoint-average ridge and endpoint
-#' difference penalties keep the additive restriction comparable.
+#' components or conditional share. The same ridge penalty applies to the
+#' spread-only and additive models, so they are comparable.
 #' @param design Component design from [ugdm_component_design()].
 #' @param response Aligned component response from [ugdm_component_response()].
 #' @param architecture Fit independent marginal regressions or a coherent model.
 #' @param ridge Nonnegative main-effect ridge penalty.
-#' @param interaction_shrink Nonnegative penalty on endpoint differences.
 #' @param monotone_total Constrain the total model's directional coefficients.
 #' @param sampling_weights Optional uniform-target importance weights.
 #' @return A fit for [ugdm_predict_components()] and [ugdm_component_importance()].
 #' @export
 ugdm_fit_components <- function(design, response, architecture = c("coherent", "independent"),
-    ridge = .001, interaction_shrink = .01, monotone_total = TRUE, sampling_weights = NULL) {
+    ridge = .001, monotone_total = TRUE, sampling_weights = NULL) {
   architecture <- match.arg(architecture)
   .component_match_response(design, response)
   if (!is.logical(monotone_total) || length(monotone_total) != 1L || is.na(monotone_total) ||
-      !is.numeric(ridge) || length(ridge) != 1L || !is.finite(ridge) || ridge < 0 ||
-      !is.numeric(interaction_shrink) || length(interaction_shrink) != 1L ||
-      !is.finite(interaction_shrink) || interaction_shrink < 0) stop("Invalid penalties or monotonicity.")
-  problem <- .component_problem(design, ridge, interaction_shrink)
+      !is.numeric(ridge) || length(ridge) != 1L || !is.finite(ridge) || ridge < 0) stop("Invalid penalties or monotonicity.")
+  problem <- .component_problem(design, ridge)
   keep <- sort(c(1L, unlist(problem$groups, use.names = FALSE)))
   A <- .component_transform(problem, keep)
   w <- .model_weights(nrow(response), sampling_weights = sampling_weights)
@@ -189,7 +168,7 @@ ugdm_fit_components <- function(design, response, architecture = c("coherent", "
   bounds <- if (monotone_total) which(keep %in% direction) else integer()
   fits <- .component_fits(X, crossprod(A, problem$P %*% A), response, w, architecture, bounds)
   structure(list(model = design$model, architecture = architecture, fits = fits,
-    keep = keep, transform = A, ridge = ridge, interaction_shrink = interaction_shrink,
+    keep = keep, transform = A, ridge = ridge,
     direction = if (monotone_total) direction else integer(), weights = w,
     reference = design$reference, order = design$order, vars = design$vars,
     sets = design$idx, share_trials = if (architecture == "coherent") response[, "total"],
@@ -215,7 +194,7 @@ ugdm_fit_components <- function(design, response, architecture = c("coherent", "
       !identical(design$reference, fit$reference)) {
     stop("Rebuild the evaluation design with the fitted training reference and order.")
   }
-  .interaction_layout(design, !is.null(design$geo))$X %*% fit$transform
+  .position_layout(design, !is.null(design$geo))$X %*% fit$transform
 }
 
 #' Predict the component dissimilarities

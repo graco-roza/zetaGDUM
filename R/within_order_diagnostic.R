@@ -28,9 +28,9 @@ ugdm_within_order_diagnostic <- function(fit, design, y, integration, draws,
     component = c("total", "occupancy", "heterogeneity")) {
   compositional <- inherits(fit, "ugdm_component_fit")
   component <- match.arg(component)
-  if (!compositional && (!inherits(fit, "ugdm_interaction_fit") ||
-      !inherits(design, "ugdm_interaction_design") || design$spread != "constant")) {
-    stop("Supply the additive extended MS-GDUM and matching design.")
+  if (!compositional && (!inherits(fit, "ugdm_position_fit") ||
+      !inherits(design, "ugdm_position_design"))) {
+    stop("Supply the additive position MS-GDUM and matching design.")
   }
   if (length(y) != nrow(design$idx) || any(!is.finite(y) | y < 0 | y > 1) ||
       length(y) < 2L || (!is.null(sharing) && (!is.logical(sharing) ||
@@ -41,7 +41,7 @@ ugdm_within_order_diagnostic <- function(fit, design, y, integration, draws,
       !is.logical(calibrated) || is.na(calibrated)) stop("Invalid diagnostic criteria.")
   if (!is.numeric(heldout_D2) || length(heldout_D2) != 1L) stop("Supply one held-out D2.")
   if (compositional && !identical(fit$sets, design$idx)) stop("Supply the original component design.")
-  target_names <- if (compositional) names(.component_problem(design, fit$ridge, fit$interaction_shrink)$groups) else
+  target_names <- if (compositional) names(.component_problem(design, fit$ridge)$groups) else
     names(.within_importance_setup(fit, design, y)$groups)
   if (compositional && is.null(sampling_weights)) sampling_weights <- fit$weights
   weights <- .model_weights(length(y), sampling_weights = sampling_weights)
@@ -72,7 +72,7 @@ ugdm_within_order_diagnostic <- function(fit, design, y, integration, draws,
       all(is.finite(ecological_draws))) apply(ecological_draws, 2L, function(value)
         diff(stats::quantile(value, c(.025, .975), names = FALSE))) else NA_real_
   X <- if (compositional) .component_prediction_matrix(fit, design) else
-    .interaction_layout(design, fit$has_distance)$X
+    .position_layout(design, fit$has_distance)$X
   working_information <- function(mu, working) {
     Z <- X * sqrt(working * mu * (1 - mu))
     scale <- sqrt(colSums(Z^2))

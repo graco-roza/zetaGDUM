@@ -8,7 +8,7 @@ ugdm_predict(fit, design, type = c("response", "link"))
 }
 \arguments{
 \item{fit}{An original or extended GDUM fit from \code{\link{ugdm_fit}} or
-\code{\link{ugdm_fit_interactions}}.}
+\code{\link{ugdm_fit_position}}.}
 
 \item{design}{A matching original or extended design. Reuse the training
 reference when constructing evaluation sets.}

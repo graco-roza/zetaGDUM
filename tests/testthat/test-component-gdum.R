@@ -47,30 +47,27 @@ test_that("zero dissimilarity and share boundaries have exact predictions", {
   expect_equal(plogis(f$share$coef), .4/1.6, tolerance=1e-6)
 })
 
-test_that("interaction restrictions and height of the component hierarchy are coherent", {
+test_that("spread-only and additive component hierarchies are coherent", {
   a <- component_fixture()
   main <- ugdm_component_design(a$env,a$idx)
-  full <- ugdm_component_design(a$env,a$idx,"interaction",reference=main)
-  p <- zetaGDUM:::.component_problem(main,.001,.01)
-  q <- zetaGDUM:::.component_problem(full,.001,.01)
-  keep <- setdiff(seq_len(ncol(q$X)), unlist(lapply(q$groups,"[[","interaction")))
-  A <- zetaGDUM:::.component_transform(q,keep)
-  expect_equal(unname(q$X %*% A), unname(p$X), tolerance=1e-12)
-  expect_equal(crossprod(A,q$P %*% A), p$P, tolerance=1e-12)
-  f <- ugdm_fit_components(full,a$y)
-  h <- ugdm_component_importance(f,full,a$y)
+  base <- ugdm_component_design(a$env,a$idx,"spread_only",reference=main)
+  p <- zetaGDUM:::.component_problem(main,.001)
+  q <- zetaGDUM:::.component_problem(base,.001)
+  expect_lt(ncol(q$X), ncol(p$X) + 1L)
+  expect_false(any(vapply(p$groups, function(g) "interaction" %in% names(g), TRUE)))
+  f <- ugdm_fit_components(main,a$y)
+  h <- ugdm_component_importance(f,main,a$y)
   expect_length(h$diagnostics$failed_coalitions,0)
-  expect_true("interaction" %in% h$hierarchy$term)
   expect_equal(tapply(h$hierarchy$absolute,h$hierarchy$response,sum),
     tapply(h$hierarchy$D2,h$hierarchy$response,unique), tolerance=1e-9)
   expect_equal(tapply(h$predictors$absolute,h$predictors$response,sum),
     tapply(h$predictors$D2,h$predictors$response,unique), tolerance=1e-9)
-  g <- ugdm_component_importance(f,full,a$y,exact_max=0,permutations=10,seed=85)
+  g <- ugdm_component_importance(f,main,a$y,exact_max=0,permutations=10,seed=85)
   expect_equal(tapply(g$hierarchy$absolute,g$hierarchy$response,sum),
     tapply(g$hierarchy$D2,g$hierarchy$response,unique), tolerance=1e-9)
   expect_true(all(is.finite(g$hierarchy$mc_se)))
-  q <- ugdm_component_diagnostics(f,full,a$y)
-  expect_equal(nrow(q$interaction_residual),6L)
+  q <- ugdm_component_diagnostics(f,main,a$y)
+  expect_null(q$interaction_residual)
   expect_true(all(q$stages$information_rank <= q$stages$parameters))
 })
 
@@ -97,7 +94,7 @@ test_that("spatial validation and existing confirmation accept component fits", 
   a <- component_fixture()
   q <- ugdm_validate_components(a$x,a$env,fold=rep(1:3,length.out=nrow(a$x)),
     combinations=80,seed=12)
-  expect_equal(nrow(q),3L*3L*2L*3L)
+  expect_equal(nrow(q),3L*2L*2L*3L)
   expect_true(all(q$closure_RMSE[q$architecture=="coherent"] < 1e-14))
   d <- ugdm_component_design(a$env,a$idx)
   f <- ugdm_fit_components(d,a$y)

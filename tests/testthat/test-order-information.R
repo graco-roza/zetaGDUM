@@ -52,7 +52,7 @@ test_that("position and mean pairwise spread variance have exact finite-site for
   for (k in 2:6) {
     idx <- t(combn(nrow(x), k))
     base <- ugdm_design(env, idx, dist)
-    actual <- ugdm_interaction_design(base, env, "nonlinear", "constant")
+    actual <- ugdm_position_design(base, env, "nonlinear")
     d <- detail[detail$order == k, ]
     expect_equal(d$position_variance, unname(apply(actual$mean_position, 2, pop)))
     expect_equal(d$quadratic_variance, unname(apply(actual$pos[, c(2,5), drop=FALSE], 2, pop)))

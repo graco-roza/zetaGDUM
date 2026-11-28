@@ -10,7 +10,7 @@
 #' Coalitions share the declared penalty, coefficient bounds and evaluation
 #' sets. Held-out gains can be negative. The intercept-only reference is
 #' estimated on the training sets, including for held-out evaluation.
-#' @param fit Fitted [ugdm_fit_interactions()] model.
+#' @param fit Fitted [ugdm_fit_position()] model.
 #' @param design Its training design.
 #' @param y,trials,sampling_weights Training response and weights.
 #' @param evaluation Optional held-out design using the training basis.
@@ -45,23 +45,23 @@ ugdm_within_order_importance <- function(fit, design, y, trials = rep(1, length(
 .within_importance_setup <- function(fit, design, y, trials = NULL,
     sampling_weights = NULL, evaluation = NULL, evaluation_y = NULL,
     evaluation_trials = NULL, evaluation_sampling_weights = NULL) {
-  if (!inherits(fit, "ugdm_interaction_fit") || !inherits(design, "ugdm_interaction_design")) {
-    stop("Use a fitted extended MS-GDUM and matching training design.")
+  if (!inherits(fit, "ugdm_position_fit") || !inherits(design, "ugdm_position_design")) {
+    stop("Use a fitted position MS-GDUM and matching training design.")
   }
   verify <- function(d) {
-    if (!inherits(d, "ugdm_interaction_design") ||
+    if (!inherits(d, "ugdm_position_design") ||
         !identical(d$order, fit$order) || !identical(d$vars, fit$vars)) {
       stop("Each importance design must match the fitted predictors and zeta order.")
     }
     # Prediction also checks environmental and geographic bases and all column names.
-    invisible(.interaction_predict(fit, d, "link"))
+    invisible(.position_predict(fit, d, "link"))
   }
   verify(design)
   if (!is.null(evaluation)) {
     if (is.null(evaluation_y)) stop("Supply the held-out response.")
     verify(evaluation)
   }
-  train <- .interaction_layout(design, fit$has_distance)
+  train <- .position_layout(design, fit$has_distance)
   X <- train$X
   check_response <- function(z, n) {
     if (!is.numeric(z) || length(z) != n || any(!is.finite(z) | z < 0 | z > 1)) {
@@ -69,7 +69,7 @@ ugdm_within_order_importance <- function(fit, design, y, trials = rep(1, length(
     }
   }
   check_response(y, nrow(X))
-  test_X <- if (is.null(evaluation)) X else .interaction_layout(evaluation, fit$has_distance)$X
+  test_X <- if (is.null(evaluation)) X else .position_layout(evaluation, fit$has_distance)$X
   test_y <- if (is.null(evaluation)) y else evaluation_y
   check_response(test_y, nrow(test_X))
   weights <- .model_weights(length(y), trials, sampling_weights = sampling_weights)
@@ -77,13 +77,12 @@ ugdm_within_order_importance <- function(fit, design, y, trials = rep(1, length(
     .model_weights(length(test_y), evaluation_trials, sampling_weights = evaluation_sampling_weights)
 
   penalty <- fit$penalty
-  expected <- .interaction_penalties(design, train, fit$strengths,
-    if (is.null(fit$interaction_penalty)) "coefficients" else fit$interaction_penalty,
+  expected <- .position_penalties(design, train, fit$strengths,
     if (is.null(fit$penalty_scale)) "native" else fit$penalty_scale)
   if (!isTRUE(all.equal(unname(penalty), unname(expected), tolerance = 1e-10))) {
     stop("The fitted penalty must match the training design and its coefficient coordinates.")
   }
-  span <- switch(design$spread, constant = 3L, varying = 6L, contextual = 12L)
+  span <- 3L
   pos_span <- if (design$position == "linear") 1L else 3L
   groups <- lapply(seq_along(design$vars), function(j) {
     list(spread = train$dir[span * (j - 1L) + seq_len(span)],
@@ -99,16 +98,15 @@ ugdm_within_order_importance <- function(fit, design, y, trials = rep(1, length(
     start = fit$coef, idx = design$idx, n = design$n, order = design$order)
 }
 
-.within_importance_plan <- function(groups, permutations, exact_max, interaction_last = FALSE) {
+.within_importance_plan <- function(groups, permutations, exact_max) {
   exact_max <- .set_design_integer(exact_max, "exact_max", 0L, 8L)
-  kinds <- unlist(lapply(groups, names), use.names = FALSE)
   groups <- lapply(groups, unname)
   blocks <- lengths(groups)
   group <- rep(seq_along(groups), blocks)
   cells <- unlist(groups, recursive = FALSE, use.names = FALSE)
   cell_ids <- split(seq_along(cells), group)
   group_count <- length(groups)
-  late <- if (interaction_last) which(kinds == "interaction") else integer()
+  late <- integer()
   exact <- group_count <= exact_max
   path <- function(ordering) {
     order <- unlist(lapply(cell_ids[ordering], function(i) {

@@ -4,10 +4,10 @@ test_that("within-order grouped attribution has the declared full total", {
   env <- data.frame(a = rnorm(n), b = rnorm(n))
   idx <- sample_sets(n, 3L, M = 250L)
   base <- ugdm_design(env, idx)
-  d <- ugdm_interaction_design(base, env, "nonlinear", "constant")
+  d <- ugdm_position_design(base, env, "nonlinear")
   y <- plogis(-.7 + .25 * d$dir[, 1L] + .2 * d$pos[, 1L] +
                 rnorm(nrow(idx), sd = .13))
-  fit <- ugdm_fit_interactions(d, y, distance = FALSE, ridge = .001)
+  fit <- ugdm_fit_position(d, y, distance = FALSE, ridge = .001)
   a <- ugdm_within_order_importance(fit, d, y)
   expect_equal(sum(a$predictors$absolute), a$predictors$total, tolerance = 1e-7)
   expect_equal(sum(a$components$absolute), a$components$total, tolerance = 1e-7)
@@ -24,16 +24,16 @@ test_that("held-out importance validates basis and penalty coordinates", {
   train <- seq_len(21L)
   idx <- t(combn(train, 2L))
   ref <- ugdm_design(env, idx, basis_sites = train)
-  d <- ugdm_interaction_design(ref, env, "nonlinear", "constant")
+  d <- ugdm_position_design(ref, env, "nonlinear")
   y <- plogis(-.7 + d$pos[, 1L] + .1 * d$pos[, 4L])
-  fit <- ugdm_fit_interactions(d, y, distance = FALSE, ridge = .001)
+  fit <- ugdm_fit_position(d, y, distance = FALSE, ridge = .001)
   ii <- t(combn(setdiff(seq_len(n), train), 2L))
-  held <- ugdm_interaction_design(ugdm_design(env, ii, ref = ref), env, "nonlinear")
+  held <- ugdm_position_design(ugdm_design(env, ii, ref = ref), env, "nonlinear")
   validation <- ugdm_within_order_importance(fit, d, y, evaluation = held,
     evaluation_y = plogis(-.7 - held$pos[, 1L]))
   expect_lt(validation$predictors$total, 0)
   expect_true(all(is.na(validation$predictors$relative)))
-  independent <- ugdm_interaction_design(ugdm_design(env, ii), env, "nonlinear")
+  independent <- ugdm_position_design(ugdm_design(env, ii), env, "nonlinear")
   expect_error(ugdm_within_order_importance(fit, d, y, evaluation = independent,
     evaluation_y = rep(.5, nrow(ii))), "training reference")
   fit$penalty[2L, 2L] <- 1

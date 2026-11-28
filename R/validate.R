@@ -4,7 +4,7 @@
 #' plots of generalised dissimilarity models.
 #'
 #' @param fit An original or extended GDUM fit from \code{\link{ugdm_fit}} or
-#'   \code{\link{ugdm_fit_interactions}}.
+#'   \code{\link{ugdm_fit_position}}.
 #' @param design A matching original or extended design. Reuse the training
 #'   reference when constructing evaluation sets.
 #' @param type `"response"` (default; expected dissimilarity) or `"link"` (linear predictor, the "predicted ecological distance").
@@ -12,7 +12,7 @@
 #' @export
 ugdm_predict <- function(fit, design, type = c("response", "link")) {
   type <- match.arg(type)
-  if (inherits(fit, "ugdm_interaction_fit")) return(.interaction_predict(fit, design, type))
+  if (inherits(fit, "ugdm_position_fit")) return(.position_predict(fit, design, type))
   dm <- .design_matrix(design, fit$vars, fit$has_distance)
   eta <- fit$intercept + drop(dm$Xdir %*% fit$beta) + drop(dm$Xpos %*% fit$lambda)
   if (type == "link") eta else stats::plogis(eta)
@@ -120,4 +120,41 @@ ugdm_validate <- function(comm, env, coords = NULL, lonlat = FALSE, order = 2, c
 .weighted_r2 <- function(y, predicted, w) {
   if (length(unique(y[w > 0])) < 2L || length(unique(predicted[w > 0])) < 2L) return(NA_real_)
   .wcov(y, predicted, w)^2 / (.wcov(y, y, w) * .wcov(predicted, predicted, w))
+}
+
+#' Repeated site partitions for MS-GDUM validation
+#'
+#' Without coordinates, partitions use independent site permutations.
+#' With projected coordinates, each partition uses contiguous bands
+#' perpendicular to a random spatial direction. Every site appears once
+#' per partition and block sizes differ by at most one. Spatial bands
+#' are a sensitivity design and do not imply independence between blocks.
+#' @param n Number of observed sites.
+#' @param blocks Number of validation blocks per partition.
+#' @param repetitions Number of independent partition draws.
+#' @param coords Optional numeric matrix of projected site coordinates,
+#'   indexed by site.
+#' @param seed Optional partition seed.
+#' @return Integer matrix of site-by-partition assignments.
+#' @export
+ugdm_site_partitions <- function(n, blocks = 5L, repetitions = 10L,
+                                coords = NULL, seed = NULL) {
+  n <- .set_design_integer(n, "n", 2L)
+  blocks <- .set_design_integer(blocks, "blocks", 2L, n)
+  repetitions <- .set_design_integer(repetitions, "repetitions")
+  if (!is.null(coords)) {
+    coords <- as.matrix(coords)
+    if (!is.numeric(coords) || nrow(coords) != n || ncol(coords) < 2L ||
+        any(!is.finite(coords))) stop("Supply finite projected coordinates for every site.")
+  }
+  if (!is.null(seed)) set.seed(seed)
+  groups <- rep(seq_len(blocks), length.out = n)
+  groups <- sort(groups)
+  out <- vapply(seq_len(repetitions), function(j) {
+    index <- if (is.null(coords)) sample.int(n) else
+      order(drop(coords %*% stats::rnorm(ncol(coords))))
+    groups[order(index)]
+  }, integer(n))
+  colnames(out) <- paste0("partition", seq_len(repetitions))
+  out
 }

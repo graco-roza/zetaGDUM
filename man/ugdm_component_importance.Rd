@@ -36,9 +36,7 @@ Predictor allocations, a predictor-term hierarchy and failed coalition
 Refits both stages or all independent marginals for each coalition. The
 scoring function evaluates the final prediction of each response, including
 the products from the coherent model. Predictor groups use Shapley weights.
-Within a group, spread and position use Owen weights. Explicit interaction
-enters after both main effects and receives the conditional gain above the
-predictor's additive restriction. Equal endpoints enforce that restriction.
-This hierarchy avoids double counting. Negative held-out allocations are
+Within a group, spread and position use Owen weights, which avoids double
+counting. Negative held-out allocations are
 possible. Relative allocations require positive explained deviance.
 }

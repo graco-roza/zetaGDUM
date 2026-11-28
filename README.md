@@ -58,6 +58,12 @@ Main functions
 | `pair_partition()` | Baselga and Podani-Legendre partitions for pairs |
 | `ugdm_design()`, `ugdm_fit()` | multi-site GDUM (spread = directional, position = non-directional, optional distance) |
 | `ugdm_importance()`, `ugdm_shapley()` | variance-partition importance and Shapley contributions to D2 |
+| `ugdm_position_design()`, `ugdm_fit_position()`, `ugdm_position_diagnostics()` | additive MS-GDUM with linear or nonlinear environmental position (spread-only comparator under identical bases, links, constraints and penalties) |
+| `ugdm_component_response()`, `ugdm_component_design()`, `ugdm_fit_components()`, `ugdm_predict_components()` | coherent and independent modelling of total dissimilarity and its occupancy-associated and abundance-heterogeneity components (`spread_only` or `additive`) |
+| `ugdm_within_order_importance()`, `ugdm_component_importance()` | within-order Shapley/Owen predictor attribution |
+| `zeta_order_information()`, `ugdm_order_limits()` | order-selection and retention diagnostics |
+
+The package presents an additive framework: environmental spread (I-spline) terms, optional environmental position terms and optional geographic distance. Explicit spread-by-position interaction models were evaluated and are not part of this interface (identifiability and recovery are documented in the analysis repository; the experimental implementation is kept on the `experimental/interactions` branch).
 | `site_weights()`, `zeta_orders()`, `compare_orders()` | paired Bayesian bootstrap across orders |
 | `simulate_metacommunity()` | niche-based simulation of a metacommunity |
 

@@ -12,11 +12,10 @@ ugdm_component_diagnostics(fit, design, response)
 \item{response}{Training responses.}
 }
 \value{
-A list of stage diagnostics and residual interaction geometry.
+A list of stage diagnostics and the identification status of the share.
 }
 \description{
 Reports unpenalised scaled design and information rank, condition and
 active constraints for each fitted part. For the coherent share, only rows
-with positive total contribute. Interaction residuals measure support
-beyond the additive spread and position columns.
+with positive total contribute.
 }

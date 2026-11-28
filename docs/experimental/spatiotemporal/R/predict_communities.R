@@ -37,11 +37,11 @@ st2_predict_communities <- function(transition, positive, design, states, draws 
 # The first observed assemblage anchors both enabled and disabled forecasts.
 # Original survey histories are generated anew at every subsequent step.
 st2_predict_trajectory <- function(object, positive, x, env, uniform_presence = NULL,
-                                   uniform_abundance = NULL) {
+                                   uniform_abundance = NULL, transform = identity) {
   p <- .st_panel(x)
   d <- dim(p$x)
   if (!identical(dimnames(p$x)[[3L]], object$species)) stop("Species pool must match M2 training.")
-  design <- st2_transition_design(p, env, 1L, basis = object$design$basis)
+  design <- transform(st2_transition_design(p, env, 1L, basis = object$design$basis))
   transition <- st2_predict_dynamic(object, design, env)
   design <- st2_neighbourhood_design(design, env, object$neighbourhood)
   shape <- c(d[1L], d[2L] - 1L, d[3L])

@@ -1,0 +1,111 @@
+"EU_ID","Lake_name","publication_name","latitude","longitude","match_rule","ecoregion","spatial_block"
+"SE758208-161749","Abiskojaure","Abiskojaure",68.31,18.65,"normalized name from Table S1",,6
+"SE633989-140731","Älgarydssjön","Älgarydssjön",57.18,14.27,"normalized name from Table S1",,2
+"SE655275-153234","Älgsjön","Älgsjön",59.09,16.37,"normalized name from Table S1",,3
+"SE642489-151724","Allgjuttern","Allgjuttern",57.95,16.1,"normalized name from Table S1",,2
+"SE647050-130644","Alsjön","Alsjön",58.32,12.5,"normalized name from Table S1",,2
+"SE661206-147901","Ämten","Ämten",59.63,15.43,"normalized name from Table S1",,4
+"SE623624-141149","Bäen","Bäen",56.25,14.38,"normalized name from Table S1",,1
+"SE642555-168553","Bästeträsk","Bästeträsk",57.92,18.94,"normalized name from Table S1",,2
+"SE742442-153530","Båtkåjaure","Båtkåjaure",66.91,16.61,"normalized name from Table S1",,6
+"SE733110-182955","Bergträsket","Bergträsket",65.91,23.05,"normalized name from Table S1",,6
+"SE713404-172465","Bjännsjön","Bjännsjön",64.24,20.44,"normalized name from Table S1",,6
+"SE652707-159032","Björken","Björken",58.86,17.37,"normalized name from Table S1",,3
+"SE728095-175926","Brännträsket","Brännträsket",65.53,21.42,"normalized name from Table S1",,6
+"SE627443-149526","Brunnsjön","Brunnsjön",56.6,15.73,"normalized name from Table S1",,1
+"SE658086-130264","Bysjön","Bysjön",59.3,12.34,"normalized name from Table S1",,3
+"SE664197-149337","Dagarn","Dagarn",59.9,15.69,"normalized name from Table S1",,4
+"SE708512-152086","Degervattnet","Degervattnet",63.87,16.23,"normalized name from Table S1",,5
+"SE656263-156963","Djupa Holmsjön","Djupa Holmsjön",59.18,17.02,"normalized name from Table S1",,3
+"SE713131-144608","Dunnervattnet","Dunnervattnet",64.28,14.69,"normalized name from Table S1",,6
+"SE663365-161779","Edasjön","Edasjön",59.81,17.9,"normalized name from Table S1",,4
+"SE663907-156927","Ekholmssjön","Ekholmssjön",59.87,17.04,"normalized name from Table S1",,4
+"SE651558-143620","Fagertärn","Fagertärn",58.76,14.7,"normalized name from Table S1",,3
+"SE633025-142267","Fiolen","Fiolen",57.09,14.53,"normalized name from Table S1",,1
+"SE638725-146677","Fjärasjö","Fjärasjö",57.61,15.25,"normalized name from Table S1",,2
+"SE645289-128665","Fräcksjön","Fräcksjön",58.15,12.18,"normalized name from Table S1",,2
+"SE704082-148125","Fyrsjön","Fyrsjön",63.48,15.43,"normalized name from Table S1",,5
+"SE660749-161885","Fysingen","Fysingen",59.57,17.91,"normalized name from Table S1",,4
+"SE698735-139620","Gåtejaure","Gåtejaure",62.98,13.76,"normalized name from Table S1",,5
+"SE672729-138082","Gipsjön","Gipsjön",60.65,13.63,"normalized name from Table S1",,4
+"SE642122-148744","Glimmingen","Glimmingen",57.94,15.57,"normalized name from Table S1",,2
+"SE677506-156174","Gosjön","Gosjön",61.09,16.95,"normalized name from Table S1",,4
+"SE646293-126302","Granvattnet","Granvattnet",58.23,11.77,"normalized name from Table S1",,2
+"SE651578-146163","Grissjön","Grissjön",58.76,15.14,"normalized name from Table S1",,3
+"SE635878-137392","Hagasjön","Hagasjön",57.34,13.71,"normalized name from Table S1",,2
+"SE667151-149602","Hällsjön","Hällsjön",60.16,15.73,"normalized name from Table S1",,4
+"SE704955-159090","Hällvattnet","Hällvattnet",63.54,17.63,"normalized name from Table S1",,5
+"SE632231-136476","Harasjön","Harasjön",57.01,13.58,"normalized name from Table S1",,1
+"SE615365-134524","Havgårdssjön","Havgårdssjön",55.49,13.36,"normalized name from Table S1",,1
+"SE630605-144655","Hinnasjön","Hinnasjön",56.88,14.93,"normalized name from Table S1",,1
+"SE632515-146675","Hjärtsjön","Hjärtsjön",57.05,15.26,"normalized name from Table S1",,1
+"SE639047-149701","Hökesjön","Hökesjön",57.64,15.76,"normalized name from Table S1",,2
+"SE642008-168013","Horsan","Horsan",57.87,18.84,"normalized name from Table S1",,2
+"SE650061-142276","Humsjön","Humsjön",58.62,14.48,"normalized name from Table S1",,3
+"SE744629-167999","Jutsajaure","Jutsajaure",67.06,19.94,"normalized name from Table S1",,6
+"SE615375-137087","Krageholmssjön","Krageholmssjön",55.5,13.76,"normalized name from Table S1",,1
+"SE617797-135339","Krankesjön","Krankesjön",55.71,13.47,"normalized name from Table S1",,1
+"SE673534-153381","Långsjön","Långsjön",60.73,16.42,"normalized name from Table S1",,4
+"SE758677-161050","Latnjajaure","Latnjajaure",68.35,18.49,"normalized name from Table S1",,6
+"SE638665-129243","Lilla Öresjön","Lilla Öresjön",57.56,12.34,"normalized name from Table S1",,2
+"SE655380-155738","Lillsjön","Lillsjön",59.1,16.81,"normalized name from Table S1",,3
+"SE660804-142742","Limmingsjön","Limmingsjön",59.59,14.52,"normalized name from Table S1",,4
+"SE736804-160569","Louvvajaure","Louvvajaure",66.39,18.17,"normalized name from Table S1",,6
+"SE665654-149206","Mäsen","Mäsen",60.03,15.66,"normalized name from Table S1",,4
+"SE656206-159170","N. Yngern","N. Yngern",59.17,17.41,"normalized name from Table S1",,3
+"SE741340-153576","Njalakjaure","Njalakjaure",66.82,16.62,"normalized name from Table S1",,6
+"SE730091-165102","Norra Reivo","Norra Reivo",65.77,19.1,"normalized name from Table S1",,6
+"SE712246-170866","Ögerträsket","Ögerträsket",64.15,20.09,"normalized name from Table S1",,6
+"SE644987-152393","Öjsjön","Öjsjön",58.17,16.21,"normalized name from Table S1",,2
+"SE624038-143063","Örsjön","Örsjön",56.29,14.69,"normalized name from Table S1",,1
+"SE700796-136901","Östra Helgtjärnen","Östra Helgtjärnen",63.16,13.21,"normalized name from Table S1",,5
+"SE664410-136192","Översjön","Översjön",59.89,13.34,"normalized name from Table S1",,4
+"SE659105-133982","Överudssjön","Överudssjön",59.41,12.98,"normalized name from Table S1",,3
+"SE690617-134197","Övre Fjätsjön","Övre Fjätsjön",62.23,12.76,"normalized name from Table S1",,5
+"SE663532-148571","Övre Skärsjön","Övre Skärsjön",59.84,15.55,"normalized name from Table S1",,4
+"SE742829-183168","Pahajärvi","Pahajärvi",66.77,23.35,"normalized name from Table S1",,6
+"SE629570-135470","Rammsjön","Rammsjön",56.77,13.43,"normalized name from Table S1",,1
+"SE708619-162132","Remmarsjön","Remmarsjön",63.86,18.27,"normalized name from Table S1",,5
+"SE652902-125783","Rotehogstjärnen","Rotehogstjärnen",58.82,11.61,"normalized name from Table S1",,3
+"SE652177-159038","Rundbosjön","Rundbosjön",58.81,17.37,"normalized name from Table S1",,3
+"SE686849-145214","Sangen","Sangen",61.93,14.89,"normalized name from Table S1",,5
+"SE624421-147234","Sännen","Sännen",56.33,15.36,"normalized name from Table S1",,1
+"SE709218-169710","Sidensjön","Sidensjön",63.88,19.82,"normalized name from Table S1",,5
+"SE665175-157559","Siggeforasjön","Siggeforasjön",59.98,17.16,"normalized name from Table S1",,4
+"SE651573-152481","Skärgölen","Skärgölen",58.76,16.23,"homonym resolved using EU_ID RT90 location code",,3
+"SE640609-148673","Skärgölen","Skärgölen",57.78,15.58,"homonym resolved using EU_ID RT90 location code",,2
+"SE633344-130068","Skärsjön","Skärsjön",57.08,12.52,"normalized name from Table S1",,1
+"SE672467-148031","Spjutsjön","Spjutsjön",60.64,15.45,"normalized name from Table S1",,4
+"SE644463-139986","St. Lummersjön","St. Lummersjön",58.11,14.11,"normalized name from Table S1",,2
+"SE683673-154083","Stensjön","Stensjön",61.64,16.58,"normalized name from Table S1",,4
+"SE716717-158596","Stor-Arasjön","Stor-Arasjön",64.6,17.6,"normalized name from Table S1",,6
+"SE695220-143383","Stor-Backsjön","Stor-Backsjön",62.68,14.51,"normalized name from Table S1",,5
+"SE706083-132287","Stor-Björsjön","Stor-Björsjön",63.61,12.23,"normalized name from Table S1",,5
+"SE731799-151196","Stor-Tjulträsket","Stor-Tjulträsket",65.96,16.07,"normalized name from Table S1",,6
+"SE655587-158869","Stora Envättern","Stora Envättern",59.11,17.35,"normalized name from Table S1",,3
+"SE652840-151589","Stora Gryten","Stora Gryten",58.88,16.08,"normalized name from Table S1",,3
+"SE633738-142203","Stora Skärsjön","Stora Skärsjön",57.16,14.52,"homonym resolved using EU_ID RT90 location code",,2
+"SE628606-133205","Stora Skärsjön","Stora Skärsjön",56.67,13.07,"homonym resolved using EU_ID RT90 location code",,1
+"SE655209-126937","Stora Tresticklan","Stora Tresticklan",59.03,11.79,"normalized name from Table S1",,3
+"SE631360-146750","Storasjö","Storasjö",56.95,15.27,"normalized name from Table S1",,1
+"SE728271-157578","Storvindeln","Storvindeln",65.64,17.45,"normalized name from Table S1",,6
+"SE630558-134327","Svartesjön","Svartesjön",56.85,13.24,"normalized name from Table S1",,1
+"SE651609-140839","Svartsjön","Svartsjön",58.76,14.22,"normalized name from Table S1",,3
+"SE706672-167201","Svartvattnet","Svartvattnet",63.67,19.28,"normalized name from Table S1",,5
+"SE622803-144609","Svinarydsjön","Svinarydsjön",56.18,14.94,"normalized name from Table S1",,1
+"SE711365-171748","Täftesträsket","Täftesträsket",64.06,20.26,"normalized name from Table S1",,5
+"SE637120-145525","Tångerdasjön","Tångerdasjön",57.46,15.06,"normalized name from Table S1",,2
+"SE637121-151366","Tängersjö","Tängersjö",57.47,16.03,"normalized name from Table S1",,2
+"SE660688-164478","Tärnan","Tärnan",59.56,18.37,"normalized name from Table S1",,4
+"SE629026-147562","Tomeshultagölen","Tomeshultagölen",56.74,15.41,"normalized name from Table S1",,1
+"SE698860-135948","Tronntjärnarna","Tronntjärnarna",62.98,13.03,"normalized name from Table S1",,5
+"SE690345-149315","Tväringen","Tväringen",62.24,15.67,"normalized name from Table S1",,5
+"SE661521-130182","Ulvsjön","Ulvsjön",59.61,12.29,"normalized name from Table S1",,4
+"SE691365-156127","V. Rännöbodsjön","Rännöbodsjön",62.33,16.99,"documented Table S1 name alias",,5
+"SE698918-158665","Valasjön","Valasjön",63,17.52,"normalized name from Table S1",,5
+"SE751252-175433","Valkeajärvi","Valkeajärvi",67.6,21.79,"normalized name from Table S1",,6
+"SE655863-129783","Västra Solsjön","Västra Solsjön",59.1,12.28,"normalized name from Table S1",,3
+"SE718150-168580","Vitträsket","Vitträsket",64.69,19.7,"normalized name from Table S1",,6
+"SE698561-139682","Vuolejaure","Vuolejaure",62.97,13.77,"normalized name from Table S1",,5
+"SE728744-162653","Vuolgamjaure","Vuolgamjaure",65.66,18.56,"normalized name from Table S1",,6
+"SE650398-139136","Ymsen","Ymsen",58.64,13.93,"normalized name from Table S1",,3

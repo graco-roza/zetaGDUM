@@ -1,0 +1,4 @@
+assemblage,archived_rows,archived_taxon_columns,nonempty,observed_raw_taxa,harmonised_taxa,genus_labels,max_mass_error,duplicate_taxon_keys,duplicate_metric_keys,missing_metrics,richness_conflicts
+phytoplankton,2844,780,2844,780,777,272,1.7963543985644e-09,0,0,0,425
+littoral,2713,678,2695,678,676,417,2.53113086046142e-09,0,0,18,27
+profundal,2803,321,2727,320,320,215,2.49109666228264e-09,0,0,0,286

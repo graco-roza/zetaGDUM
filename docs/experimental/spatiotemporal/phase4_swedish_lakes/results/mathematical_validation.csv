@@ -1,0 +1,4 @@
+assemblage,n_sets,native_phase3_max_error,baselga_max_error,phase3_kernel_efficiency
+phytoplankton,40,4.44089209850063e-16,0,8.88178419700125e-16
+littoral,40,2.22044604925031e-16,0,4.44089209850063e-16
+profundal,40,1.11022302462516e-16,0,2.22044604925031e-16

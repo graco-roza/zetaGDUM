@@ -1,0 +1,13 @@
+assemblage,design,lakes,taxa,start,end,surveys
+phytoplankton,A_original,12,331,1992,2022,10
+phytoplankton,A,71,593,1995,2022,10
+phytoplankton,B_original,10,401,1992,2022,31
+phytoplankton,B,56,650,1995,2022,28
+littoral,A_original,0,0,1992,2022,10
+littoral,A,62,484,1995,2022,10
+littoral,B_original,0,0,1992,2022,31
+littoral,B,51,558,1995,2022,28
+profundal,A_original,14,78,1992,2022,10
+profundal,A,38,117,1995,2022,10
+profundal,B_original,10,100,1992,2022,31
+profundal,B,30,146,1995,2022,28

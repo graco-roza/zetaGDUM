@@ -1,0 +1,22 @@
+Screen support: shared BM k=2
+Screen support: shared BM k=5
+Screen support: shared ZP k=2
+Screen support: shared ZP k=4
+Screen support: full BM k=2
+Screen support: full BM k=5
+Screen support: full ZP k=2
+Screen support: full ZP k=4
+  group k_selected matched spread_from spread_to sharing_at_selected
+1    BM          5    TRUE        0.45      0.70              0.8210
+2    ZP          4    TRUE        0.20      0.65              0.3055
+                            selection_rule
+1 Common interval: both shared-pool orders
+2   Common interval: both orders and pools
+Warning message:
+full BM slot 2: no common supported contrast. 
+Warning messages:
+1: No shared levels found between `names(values)` of the manual scale and the
+data's fill values. 
+2: No shared levels found between `names(values)` of the manual scale and the
+data's fill values. 
+Finished. Panel A uses coherent predictions; B independent marginal transformations. Inspect support, convergence and all rendered panels.

@@ -1,0 +1,5 @@
+"group","pool","split","max_closure_RMSE","min_evaluated_fraction","n"
+"BM","shared","test",4.70591398708697e-17,1,1680
+"BM","shared","train",4.73203396931407e-17,1,1680
+"ZP","shared","test",4.38034223084018e-17,1,840
+"ZP","shared","train",4.24699610381674e-17,1,840

@@ -1,0 +1,15 @@
+"pool","group","order","model","n_predictions","max_abs_closure_C_plus_O_plus_H_minus_1","max_abs_total_minus_O_minus_H"
+"full","BM",2,"Additive",9558,0,5.55111512312578e-17
+"full","BM",2,"Interaction",9558,0,5.55111512312578e-17
+"full","ZP",2,"Additive",13050,0,5.55111512312578e-17
+"full","ZP",2,"Interaction",13050,0,5.55111512312578e-17
+"full","ZP",4,"Additive",390,0,5.55111512312578e-17
+"full","ZP",4,"Interaction",390,0,5.55111512312578e-17
+"shared","BM",2,"Additive",11196,0,5.55111512312578e-17
+"shared","BM",2,"Interaction",11196,0,5.55111512312578e-17
+"shared","BM",5,"Additive",216,0,5.55111512312578e-17
+"shared","BM",5,"Interaction",216,0,5.55111512312578e-17
+"shared","ZP",2,"Additive",16350,0,5.55111512312578e-17
+"shared","ZP",2,"Interaction",16350,0,5.55111512312578e-17
+"shared","ZP",4,"Additive",420,0,5.55111512312578e-17
+"shared","ZP",4,"Interaction",420,0,5.55111512312578e-17

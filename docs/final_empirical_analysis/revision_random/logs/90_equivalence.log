@@ -1,0 +1,90 @@
+[1] "singular convergence (7)"
+[1] "singular convergence (7)"
+Warning messages:
+1: In eval(family$initialize) : non-integer #successes in a binomial glm!
+2: In eval(family$initialize) : non-integer #successes in a binomial glm!
+3: In eval(family$initialize) : non-integer #successes in a binomial glm!
+4: In eval(family$initialize) : non-integer #successes in a binomial glm!
+                                                                                                        comparison
+1                                                                     E1 additive MS-GDUM k=2 vs gdmmTMB (matched)
+2            E2 spread-only MS-GDUM k=2 vs gdm (matched: negative-exponential link, gdm deviance, gdm knots/basis)
+3                                 E2n spread-only MS-GDUM k=2 native fit vs gdm (UNMATCHED: logit link, own basis)
+4                   E3 spread-only MS-GDUM k=3 vs zetadiv (matched: binomial(log), Simpson zeta, sign constraints)
+5  E3n spread-only MS-GDUM k=3 native fit vs zetadiv (UNMATCHED: logit/dissimilarity vs log/similarity, own basis)
+6                   E3 spread-only MS-GDUM k=5 vs zetadiv (matched: binomial(log), Simpson zeta, sign constraints)
+7  E3n spread-only MS-GDUM k=5 native fit vs zetadiv (UNMATCHED: logit/dissimilarity vs log/similarity, own basis)
+8                                                                     E1 additive MS-GDUM k=2 vs gdmmTMB (matched)
+9            E2 spread-only MS-GDUM k=2 vs gdm (matched: negative-exponential link, gdm deviance, gdm knots/basis)
+10                                E2n spread-only MS-GDUM k=2 native fit vs gdm (UNMATCHED: logit link, own basis)
+11                  E3 spread-only MS-GDUM k=3 vs zetadiv (matched: binomial(log), Simpson zeta, sign constraints)
+12 E3n spread-only MS-GDUM k=3 native fit vs zetadiv (UNMATCHED: logit/dissimilarity vs log/similarity, own basis)
+13                  E3 spread-only MS-GDUM k=5 vs zetadiv (matched: binomial(log), Simpson zeta, sign constraints)
+14 E3n spread-only MS-GDUM k=5 native fit vs zetadiv (UNMATCHED: logit/dissimilarity vs log/similarity, own basis)
+   taxon order max_abs_diff_all max_abs_diff_intercept max_abs_diff_spline
+1     BM     2         1.89e-05               2.86e-06            1.89e-05
+2     BM     2         4.85e-06               1.10e-06            4.85e-06
+3     BM     2         5.79e-01               5.79e-01            4.72e-01
+4     BM     3         1.08e-15               2.22e-16            1.08e-15
+5     BM     3         5.05e-01               5.05e-01            4.97e-01
+6     BM     5         3.00e-15               4.44e-16            3.00e-15
+7     BM     5         5.09e-01               3.40e-01            5.09e-01
+8     ZP     2         1.79e-04               9.16e-07            1.79e-04
+9     ZP     2         2.48e-06               8.34e-07            2.48e-06
+10    ZP     2         6.43e-01               4.73e-01            6.43e-01
+11    ZP     3         1.78e-15               8.88e-16            1.78e-15
+12    ZP     3         1.11e+00               4.02e-01            1.11e+00
+13    ZP     5         4.44e-15               8.88e-16            4.44e-15
+14    ZP     5         1.56e+00               2.94e-01            1.56e+00
+   cor_all_coefficients design_max_abs_diff curve_max_abs_diff
+1                 1.000            0.00e+00           1.25e-05
+2                 1.000            4.44e-16           1.36e-02
+3                 0.723                  NA           3.76e-01
+4                 1.000            1.11e-16           6.66e-16
+5                 0.854                  NA           2.86e-01
+6                 1.000            1.11e-16           3.11e-15
+7                 0.935                  NA           3.18e-01
+8                 1.000            0.00e+00           8.51e-05
+9                 1.000            1.11e-15           1.55e-02
+10                0.864                  NA           9.12e-01
+11                1.000            1.11e-16           2.22e-15
+12                0.800                  NA           1.08e+00
+13                1.000            1.11e-16           4.44e-15
+14                0.894                  NA           2.26e+00
+                                                                                              comparison
+1                                                           E1 additive MS-GDUM k=2 vs gdmmTMB (matched)
+2                                                           E1 additive MS-GDUM k=2 vs gdmmTMB (matched)
+3  E2 spread-only MS-GDUM k=2 vs gdm (matched: negative-exponential link, gdm deviance, gdm knots/basis)
+4  E2 spread-only MS-GDUM k=2 vs gdm (matched: negative-exponential link, gdm deviance, gdm knots/basis)
+5  E2 spread-only MS-GDUM k=2 vs gdm (matched: negative-exponential link, gdm deviance, gdm knots/basis)
+6         E3 spread-only MS-GDUM k=3 vs zetadiv (matched: binomial(log), Simpson zeta, sign constraints)
+7         E3 spread-only MS-GDUM k=3 vs zetadiv (matched: binomial(log), Simpson zeta, sign constraints)
+8         E3 spread-only MS-GDUM k=5 vs zetadiv (matched: binomial(log), Simpson zeta, sign constraints)
+9         E3 spread-only MS-GDUM k=5 vs zetadiv (matched: binomial(log), Simpson zeta, sign constraints)
+10                                                          E1 additive MS-GDUM k=2 vs gdmmTMB (matched)
+11                                                          E1 additive MS-GDUM k=2 vs gdmmTMB (matched)
+12 E2 spread-only MS-GDUM k=2 vs gdm (matched: negative-exponential link, gdm deviance, gdm knots/basis)
+13 E2 spread-only MS-GDUM k=2 vs gdm (matched: negative-exponential link, gdm deviance, gdm knots/basis)
+14 E2 spread-only MS-GDUM k=2 vs gdm (matched: negative-exponential link, gdm deviance, gdm knots/basis)
+15        E3 spread-only MS-GDUM k=3 vs zetadiv (matched: binomial(log), Simpson zeta, sign constraints)
+16        E3 spread-only MS-GDUM k=3 vs zetadiv (matched: binomial(log), Simpson zeta, sign constraints)
+17        E3 spread-only MS-GDUM k=5 vs zetadiv (matched: binomial(log), Simpson zeta, sign constraints)
+18        E3 spread-only MS-GDUM k=5 vs zetadiv (matched: binomial(log), Simpson zeta, sign constraints)
+   taxon order max_abs_diff
+1     BM     2     1.03e-05
+2     BM     2     0.00e+00
+3     BM     2     1.48e-09
+4     BM     2     1.36e-02
+5     BM     2     4.44e-16
+6     BM     3     5.55e-17
+7     BM     3     1.11e-16
+8     BM     5     5.55e-17
+9     BM     5     1.11e-16
+10    ZP     2     1.00e-04
+11    ZP     2     0.00e+00
+12    ZP     2     2.72e-08
+13    ZP     2     1.55e-02
+14    ZP     2     1.11e-15
+15    ZP     3     5.55e-17
+16    ZP     3     1.11e-16
+17    ZP     5     5.55e-17
+18    ZP     5     1.11e-16

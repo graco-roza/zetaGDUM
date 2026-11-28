@@ -1,0 +1,109 @@
+compositional BCI bci
+compositional BM shared
+compositional BM full
+compositional ZP shared
+compositional ZP full
+env BM shared k2
+env BM shared k3
+env BM shared k4
+env BM shared k5
+env BM shared k6
+env BM shared k8
+env BM shared k10
+env BM shared k12
+env BM shared k16
+env BM shared k20
+env ZP shared k2
+env ZP shared k3
+env ZP shared k4
+env ZP shared k5
+env ZP shared k6
+env ZP shared k8
+env ZP shared k10
+env ZP shared k12
+env ZP shared k16
+env ZP shared k20
+env BM full k2
+env BM full k3
+env BM full k4
+env BM full k5
+env BM full k6
+env BM full k8
+env BM full k10
+env BM full k12
+env BM full k16
+env BM full k20
+env ZP full k2
+env ZP full k3
+env ZP full k4
+env ZP full k5
+env ZP full k6
+env ZP full k8
+env ZP full k10
+env ZP full k12
+env ZP full k16
+env ZP full k20
+done
+                community order max_VIF cor_TP_spread_TP_position
+1  EPA macroinvertebrates     2    3.59                     0.305
+2  EPA macroinvertebrates     3    3.64                     0.337
+3  EPA macroinvertebrates     4    3.87                     0.364
+4  EPA macroinvertebrates     5    3.84                     0.391
+5  EPA macroinvertebrates     6    3.79                     0.391
+6  EPA macroinvertebrates     8    3.86                     0.376
+7  EPA macroinvertebrates    10    3.96                     0.413
+8  EPA macroinvertebrates    12    3.95                     0.409
+9  EPA macroinvertebrates    16    4.15                     0.438
+10 EPA macroinvertebrates    20    4.00                     0.421
+11        EPA zooplankton     2    3.59                     0.305
+12        EPA zooplankton     3    3.64                     0.337
+13        EPA zooplankton     4    3.87                     0.364
+14        EPA zooplankton     5    3.84                     0.391
+15        EPA zooplankton     6    3.79                     0.391
+16        EPA zooplankton     8    3.86                     0.376
+17        EPA zooplankton    10    3.96                     0.413
+18        EPA zooplankton    12    3.95                     0.409
+19        EPA zooplankton    16    4.15                     0.438
+20        EPA zooplankton    20    4.00                     0.421
+   TP_cells_supported n_valid_common_intervals widest_interval_n_profiles
+1                  55                      246                         98
+2                  66                      171                         18
+3                  65                       38                         19
+4                  61                        4                         12
+5                  64                        0                         NA
+6                  58                        0                         NA
+7                  66                        0                         NA
+8                  70                        0                         NA
+9                  64                        0                         NA
+10                 61                        0                         NA
+11                 55                      246                         98
+12                 66                      171                         18
+13                 65                       38                         19
+14                 61                        4                         12
+15                 64                        0                         NA
+16                 58                        0                         NA
+17                 66                        0                         NA
+18                 70                        0                         NA
+19                 64                        0                         NA
+20                 61                        0                         NA
+   widest_interval_log10_width informative
+1                         1.25        TRUE
+2                         1.05        TRUE
+3                         0.45        TRUE
+4                         0.25        TRUE
+5                           NA        TRUE
+6                           NA        TRUE
+7                           NA        TRUE
+8                           NA        TRUE
+9                           NA       FALSE
+10                          NA       FALSE
+11                        1.25        TRUE
+12                        1.05        TRUE
+13                        0.45        TRUE
+14                        0.25        TRUE
+15                          NA       FALSE
+16                          NA       FALSE
+17                          NA       FALSE
+18                          NA       FALSE
+19                          NA       FALSE
+20                          NA       FALSE

@@ -1,0 +1,130 @@
+test_that("M1 design uses native position and spread and omits structural terms at k=1", {
+  s <- simulate_st_gdum("interaction", n_sites = 10, n_species = 20, seed = 9)
+  ref <- st2_basis(s$latent, s$env, 1:4)
+  pair <- matrix(c(2, 3), 1L)
+  windows <- st2_windows(s$latent$times, 1L, matrix(c(1, 2), 1L))
+  d <- st2_transition_design(s$latent, s$env, 2, sets = pair, windows = windows, basis = ref)
+  native <- zetaGDUM::ugdm_design(.st_flat_env(s$env), rbind(pair, pair + 10),
+                                  ref = list(environment_basis = ref))
+  expect_equal(unname(d$X[1, "position.gradient"]), unname(native$Xpos[1, 1]))
+  expect_equal(unname(d$X[1, paste0("spread.gradient_f", 1:3)]), unname(native$Xdir[1, ]))
+  expect_equal(sum(d$X[, "deviation.gradient"]), 0)
+  expect_equal(sum(d$X[, "deviation_change.gradient"]), 0)
+  expect_false("log_lag" %in% .st2_terms(d, FALSE))
+  local <- st2_transition_design(s$latent, s$env, 1, basis = ref)
+  expect_identical(.st2_terms(local, TRUE), c("position.gradient", "position_change.gradient", "position_by_change.gradient"))
+  expect_error(st2_windows(c(0, 1, 3, 10), 2), "spacing")
+  expect_error(st2_windows(1:5, 2, matrix(c(1, 2), 1L)), "non-overlapping")
+})
+
+test_that("window state is an intersection and grouped risks are exact", {
+  set.seed(99)
+  a <- array(runif(8 * 6 * 10) < 0.5, c(8, 6, 10))
+  e <- array(rnorm(8 * 6 * 2), c(8, 6, 2))
+  d <- st2_transition_design(a, e, 2, 2, sets = rbind(1:2, 3:4), proposal = c(0.1, 0.2))
+  z <- st2_states(a, d)
+  expect_equal(unname(z$z[1:2, ]), a[1:2, 1, ] & a[1:2, 2, ])
+  expect_equal(unname(z$y[1:2, ]), a[1:2, 3, ] & a[1:2, 4, ])
+  expect_equal(unname(z$other[1L, ]), as.numeric(z$z[2L, ]))
+  expect_equal(d$rows$weight[1L] / d$rows$weight[2L], 2)
+  for (event in c("gain", "loss")) {
+    g <- st2_risk_data(d, z, event, .st2_terms(d, FALSE))
+    expect_equal(sum(g$n), if (event == "gain") sum(!z$z) else sum(z$z))
+    expect_equal(sum(g$y), if (event == "gain") sum(!z$z & z$y) else sum(z$z & !z$y))
+  }
+})
+
+test_that("M1 predictions satisfy expected zeta and occupancy budgets", {
+  s <- simulate_st_gdum("interaction", n_sites = 12, n_species = 24, seed = 87)
+  for (k in 1:3) for (m in 1:2) {
+    sets <- head(t(combn(12, k)), 20)
+    d <- st2_transition_design(s$latent, s$env, k, m, sets = sets)
+    z <- st2_states(s$latent, d)
+    model <- st2_fit_transition(s$latent, d)
+    expect_equal(model$fit$gain$status, "estimated")
+    prediction <- st2_predict_transition(model, d, z)
+    q <- st2_transition_summary(prediction, d, z)
+    expect_equal(unname(q$final_shared), unname(q$initial_shared + q$gains - q$losses))
+    expect_true(all(q$expansion + q$contraction + q$pure_redistribution <= 1 + 1e-12))
+    expect_identical(dim(q$redistribution), dim(q$final_shared))
+    if (k == 1) {
+      m0 <- st2_fit_transition(s$latent, d, pooled = TRUE)
+      pooled <- st2_predict_transition(m0, d, z)
+      expect_equal(unname(q$final_shared), unname(pooled$shared))
+    }
+  }
+})
+
+test_that("sequential M2 trajectories and M1 community draws use absolute abundance", {
+  skip_if_not_installed("lme4")
+  s <- simulate_st_gdum("null", n_sites = 12, n_species = 16, abundance = "gamma", seed = 9)
+  d <- st2_transition_design(s$latent, s$env, 1)
+  m <- st2_fit_dynamic(s$latent, d)
+  p <- st2_fit_positive(s$latent, d, hierarchical = TRUE)
+  shape <- c(12L, 4L, 16L)
+  u <- array(runif(prod(shape)), shape)
+  a <- st2_predict_trajectory(m, p, s$latent, s$env, u, u)
+  b <- st2_predict_trajectory(m, p, s$latent, s$env, u, u)
+  expect_identical(a, b)
+  expect_identical(a$x[, 1, ], s$latent$x[, 1, ])
+  expect_true(any(a$x[, -1, ] != s$latent$x[, -1, ]))
+  v <- st2_zeta(a, 3, 3)
+  expect_true(all(v$surface$temporal_retention <= 1 + 1e-12, na.rm = TRUE))
+  nbh <- setNames(lapply(seq_len(12), function(i) paste0("site", c(i %% 12, (i + 1) %% 12) + 1)), d$sites)
+  e <- st2_neighbourhood_design(d, s$env, nbh)
+  expect_true(all(c("neighbourhood.gradient", "neighbourhood_change.gradient") %in% colnames(e$X)))
+  local <- st2_fit_transition(s$latent, d)
+  z <- st2_states(s$latent, d)
+  draws <- st2_predict_communities(st2_predict_transition(local, d, z), p, d, z, 2)
+  expect_equal(length(draws), 2L)
+  expect_true(all(draws[[1]] >= 0))
+})
+
+test_that("count sensitivity generates positive integers at occupied sites", {
+  if (!suppressWarnings(requireNamespace("glmmTMB", quietly = TRUE))) skip("glmmTMB unavailable")
+  s <- simulate_st_gdum("null", n_sites = 18, n_species = 18, abundance = "count", seed = 80)
+  d <- st2_transition_design(s$latent, s$env, 1)
+  set.seed(81)
+  x <- s$latent$x
+  size <- sum(x > 0)
+  x[x > 0] <- qnbinom(dnbinom(0, size = 1.8, mu = 4) + runif(size) *
+                         (1 - dnbinom(0, size = 1.8, mu = 4)), size = 1.8, mu = 4)
+  s$latent$x <- x
+  p <- suppressWarnings(st2_fit_positive(s$latent, d, family = "truncated_nbinom"))
+  f <- st2_fit_transition(s$latent, d)
+  z <- st2_states(s$latent, d)
+  draws <- st2_predict_communities(st2_predict_transition(f, d, z), p, d, z, 2)
+  expect_true(all(draws[[1]] >= 0 & draws[[1]] == floor(draws[[1]])))
+  expect_true(any(draws[[1]] > 0))
+})
+
+test_that("native beta accounting is additive and Tatsumi components benchmark both scales", {
+  a <- matrix(c(3, 2, 0, 4, 8, 0, 1, 1), 2)
+  b <- matrix(c(3, 0, 1, 6, 0, 3, 2, 3), 2)
+  q <- st2_beta_accounting(a, b, matrix(1:2, 1))
+  expect_equal(q$change, q$gain + q$loss)
+  expect_equal(q$change, q$differentiating + q$homogenising)
+  expect_equal(q$before[q$component == "total"], zetaGDUM::pair_partition(a)$sorensen)
+  expect_equal(q$before[q$component == "turnover"], zetaGDUM::pair_partition(a)$simpson)
+  skip_if_not_installed("ecopart")
+  for (index in c("sorensen", "bray-curtis")) {
+    p <- st2_tatsumi(a, b, index)
+    expect_true(any(p < 0) && any(p > 0))
+    expect_equal(sum(p), q$change[q$component == if (index == "sorensen") "total" else "bray_curtis"])
+  }
+})
+
+test_that("coherence checking detects explicit spatial and temporal violations", {
+  s <- simulate_st_gdum("null", n_sites = 6, n_species = 8, seed = 34)
+  ref <- st2_basis(s$latent, s$env)
+  w1 <- st2_windows(s$latent$times, 1, matrix(c(1L, 3L), 1))
+  w2 <- st2_windows(s$latent$times, 2, matrix(c(1L, 3L), 1))
+  a <- st2_transition_design(s$latent, s$env, 1, windows = w1, basis = ref)
+  b <- st2_transition_design(s$latent, s$env, 2, 2, windows = w2, basis = ref)
+  lo <- list(design = a, shared = matrix(.35, nrow(a$sets), 8))
+  hi <- list(design = b, shared = matrix(.4, nrow(b$sets), 8))
+  test <- st2_shared_coherence(lo, hi)
+  expect_equal(unname(test["violations"]), 15 * 2 * 8)
+  p <- function(d) list(design = d, shared = st2_observed_projection(s$latent, d)$final_shared)
+  expect_equal(unname(st2_shared_coherence(p(a), p(b))["violations"]), 0)
+})

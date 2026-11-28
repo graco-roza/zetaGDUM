@@ -1,0 +1,11 @@
+"sim","config","n_fits","n_nonconverged"
+"A","additive",750,0
+"A","interaction_1e-04",750,0
+"A","interaction_1e-06",750,0
+"A","interaction_5e-03",750,0
+"A","spread_only",750,1
+"B","additive",2000,0
+"B","interaction_1e-04",2000,0
+"B","interaction_1e-06",2000,0
+"B","interaction_5e-03",2000,0
+"B","spread_only",2000,5

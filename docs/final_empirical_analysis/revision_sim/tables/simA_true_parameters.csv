@@ -1,0 +1,10 @@
+"scenario","term","beta_L","beta_U"
+"none","P_f1",1.2,1.2
+"none","P_f2",0.8,0.8
+"none","P_f3",0.5,0.5
+"moderate","P_f1",1.6,0.8
+"moderate","P_f2",1,0.5
+"moderate","P_f3",0.6,0.3
+"strong","P_f1",2.4,0.2
+"strong","P_f2",1.4,0.1
+"strong","P_f3",0.8,0.05

@@ -1,0 +1,11 @@
+"scenario","order","sharing_probability_median","prop_sharing_ge_0.10","prop_matched_support","n_supported_cells_median","n_train_sets_median","n_replicates"
+"control",2,1,1,1,26,3000,50
+"control",3,1,1,0,17,3000,50
+"control",4,1,1,0,14,3000,50
+"control",5,1,1,0,11,3000,50
+"control",8,1,1,0,4,3000,50
+"logistic",2,1,1,1,26,3000,50
+"logistic",3,1,1,0,17,3000,50
+"logistic",4,1,1,0,13,3000,50
+"logistic",5,1,1,0,11,3000,50
+"logistic",8,1,1,0,4,3000,50

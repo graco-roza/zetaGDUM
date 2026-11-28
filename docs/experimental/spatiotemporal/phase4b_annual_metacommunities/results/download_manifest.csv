@@ -1,0 +1,13 @@
+name,url,bytes,sha256,status
+"biotime-604.csv","https://biotime.st-andrews.ac.uk/dl_request.php?dl=rawdata&study=604",2891345,"81c2191ead315dc47585c8ffa637e506a061579cee82208305acd8c7474f4448","verified"
+"biotime-604-metadata.csv","https://biotime.st-andrews.ac.uk/dl_request.php?dl=metadata&study=604",3588,"504865c4347856e55de807818a3203001276b3d614a3bef21a7231566b8b2dee","verified"
+"biotime-604-original.xlsx","https://b2share.eudat.eu/records/ccynf-ak936/files/S048-S060%20S072.xlsx?download=1",2056400,"44361064cba1696d9f78c4ea80770938c4f5072f74304280d44c976775fd7c50","verified"
+"dryad-220216.json","https://datadryad.org/api/v2/versions/220216/files",2703,"80507e2c7a71abf22c5992d2d279f4ed5c1a89a391eff5998d21def6413113de","verified"
+"observations_coarse.csv","https://datadryad.org/downloads/file_stream/2096532 https://datadryad.org/api/v2/files/2096532/download",12423693,"b1c42ee581356bbadcb9669f03764817ddcf1985319f2ead02a847e2335503e8","unavailable or unverified (curl 56 )"
+"README_model_validation.txt","https://datadryad.org/downloads/file_stream/2096535 https://datadryad.org/api/v2/files/2096535/download",12447,"a6829d6e2b992515785f70aba4a6535facb23735b4339ddfd6cf5f37f8bc36ee","unavailable or unverified (curl 56 )"
+"dryad-118759.json","https://datadryad.org/api/v2/versions/118759/files",13222,"e22046c7bab0782326ed24a5a05a08ed8adeac9006d41465e7ec22726c87db0d","verified"
+"Data_FIBMS_count.csv","https://datadryad.org/downloads/file_stream/688201 https://datadryad.org/api/v2/files/688201/download",5143604,"918966247807261703f50a1e7261661b38101197c37c76112ea34500f32e81c6","unavailable or unverified (curl 56 )"
+"Data_FIBMS_transect.csv","https://datadryad.org/downloads/file_stream/688203 https://datadryad.org/api/v2/files/688203/download",4434,"f33feffd033658bc716174d590c1492b6dd2dfb6d2835e3bc11379135eb93c4a","unavailable or unverified (curl 56 )"
+"Data_FIBMS_visit.csv","https://datadryad.org/downloads/file_stream/688190 https://datadryad.org/api/v2/files/688190/download",397434,"a693ef517c8e8dd33ee397de7bb590ce3841f1a34462197a2afc365337f8d5f9","unavailable or unverified (curl 56 )"
+"Data_Trends_Moths.txt","https://datadryad.org/downloads/file_stream/688195 https://datadryad.org/api/v2/files/688195/download",14958280,"1dbdb2d0957df3e5cc3b58d632eca7b7693384e0d8efcea057c0f9e45e024f19","unavailable or unverified (curl 56 )"
+"readme_Hällfors_et_al._2021.docx","https://datadryad.org/downloads/file_stream/688189 https://datadryad.org/api/v2/files/688189/download",38026,"3462a6a33182a53049780e4dc0622904aa50d409b413a07ec5427e46c4fe5202","unavailable or unverified (curl 56 )"

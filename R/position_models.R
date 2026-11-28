@@ -127,10 +127,10 @@ ugdm_position_design <- function(design, env, position = c("linear", "nonlinear"
 #' The directional (spread) and geographic coefficients are constrained
 #' nonnegative; position coefficients are unrestricted. Three independent
 #' penalties act on directional curvature, position curvature and slope
-#' magnitude (ridge). The spread-only comparator is obtained by fitting the
-#' same design with the position columns removed (see
-#' [ugdm_position_diagnostics()]), so that bases, links, constraints and
-#' penalties are identical.
+#' magnitude (ridge). With `spread_only = TRUE` the same design is fitted
+#' with the position columns removed (the spread-only MS-GDM comparator), so
+#' that bases, links, constraints and penalties are identical to the position
+#' model.
 #'
 #' @param design Design from [ugdm_position_design()].
 #' @param y,trials,sampling_weights,distance As in [ugdm_fit_variant()].
@@ -142,13 +142,14 @@ ugdm_position_design <- function(design, env, position = c("linear", "nonlinear"
 #'   obtained by function-space projection, separate from curvature.
 #' @param start Optional previous fit or numeric vector in the same basis and
 #'   coefficient layout for warm-starting the optimiser.
+#' @param spread_only Fit without environmental position terms.
 #' @return A fit for [ugdm_predict()].
 #' @export
 ugdm_fit_position <- function(design, y, trials = rep(1, length(y)),
                               sampling_weights = NULL, distance = TRUE,
                               spread_smooth = 0, position_smooth = 0, ridge = 0,
                               penalty_scale = c("native", "range"),
-                              spread_null = 0, position_null = 0, start = NULL) {
+                              spread_null = 0, position_null = 0, start = NULL, spread_only = FALSE) {
   penalty_scale <- match.arg(penalty_scale)
   if (!inherits(design, "ugdm_position_design")) stop("Supply a position design.")
   if (length(y) != nrow(design$idx) || any(!is.finite(y) | y < 0 | y > 1)) {
@@ -164,6 +165,18 @@ ugdm_fit_position <- function(design, y, trials = rep(1, length(y)),
   w <- .model_weights(length(y), trials, sampling_weights = sampling_weights)
   a <- .position_layout(design, distance)
   P <- .position_penalties(design, a, strengths, penalty_scale)
+  if (spread_only) {
+    if (!is.null(start)) stop("Warm starts are not available for the spread-only model.")
+    keep <- c(1L, a$dir)
+    X <- a$X[, keep, drop = FALSE]
+    fit <- .position_fit_core(X, y, w, P[keep, keep, drop = FALSE], a$dir)
+    fit$coef <- stats::setNames(fit$coef, colnames(X))
+    return(structure(c(fit, list(strengths = strengths, penalty = P[keep, keep, drop = FALSE], vars = design$vars,
+      penalty_scale = penalty_scale, nd = a$nd, has_distance = a$distance, basis = design$basis, order = design$order,
+      dist_basis = if (a$distance) attributes(design$dist_basis)[c("degree", "knots", "Boundary.knots", "intercept")],
+      dist_range = if (a$distance) design$dist_range, position = design$position, spread_only = TRUE)),
+      class = "ugdm_position_fit"))
+  }
   if (inherits(start, "ugdm_position_fit")) {
     if (!identical(start$basis, design$basis) || !identical(names(start$coef), colnames(a$X)) ||
         (a$distance && (!identical(start$dist_range, design$dist_range) ||
@@ -193,6 +206,7 @@ ugdm_fit_position <- function(design, y, trials = rep(1, length(y)),
     stop("Supply a matching position design built with the training reference.")
   }
   X <- .position_layout(design, fit$has_distance)$X
+  if (isTRUE(fit$spread_only)) X <- X[, c(1L, .position_layout(design, fit$has_distance)$dir), drop = FALSE]
   if (!identical(colnames(X), names(fit$coef))) stop("Prediction columns differ from the fitted model.")
   eta <- drop(X %*% fit$coef)
   if (type == "link") eta else stats::plogis(eta)

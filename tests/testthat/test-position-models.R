@@ -37,6 +37,20 @@ test_that("the spread-only comparator is the same design without position column
   expect_false(any(grepl("interaction", names(diag))))
 })
 
+test_that("spread_only fitting matches the position model with position columns removed", {
+  z <- seq(-2, 2, length.out = 14)
+  env <- data.frame(climate = z)
+  d <- ugdm_design(env, t(combn(length(z), 3L)))
+  a <- ugdm_position_design(d, env, "nonlinear")
+  y <- plogis(-.3 + .4 * a$pos[, 1L] + drop(a$dir %*% c(.2, .5, .8)))
+  s <- ugdm_fit_position(a, y, ridge = .001, spread_smooth = .002, position_smooth = .002, spread_only = TRUE)
+  expect_true(s$converged)
+  expect_equal(length(s$coef), 1L + ncol(a$dir))
+  expect_equal(length(ugdm_predict(s, a)), length(y))
+  f <- ugdm_fit_position(a, y, ridge = .001, spread_smooth = .002, position_smooth = .002)
+  expect_gte(f$D2, s$D2 - 1e-8)
+})
+
 test_that("penalty selection holds out sites and compares the same pools", {
   env <- data.frame(z = seq(-2, 2, length.out = 28))
   folds <- rep(1:4, each = 7L)

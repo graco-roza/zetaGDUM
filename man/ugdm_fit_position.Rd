@@ -16,7 +16,8 @@ ugdm_fit_position(
   penalty_scale = c("native", "range"),
   spread_null = 0,
   position_null = 0,
-  start = NULL
+  start = NULL,
+  spread_only = FALSE
 )
 }
 \arguments{
@@ -35,6 +36,8 @@ obtained by function-space projection, separate from curvature.}
 
 \item{start}{Optional previous fit or numeric vector in the same basis and
 coefficient layout for warm-starting the optimiser.}
+
+\item{spread_only}{Fit without environmental position terms.}
 }
 \value{
 A fit for [ugdm_predict()].
@@ -43,8 +46,8 @@ A fit for [ugdm_predict()].
 The directional (spread) and geographic coefficients are constrained
 nonnegative; position coefficients are unrestricted. Three independent
 penalties act on directional curvature, position curvature and slope
-magnitude (ridge). The spread-only comparator is obtained by fitting the
-same design with the position columns removed (see
-[ugdm_position_diagnostics()]), so that bases, links, constraints and
-penalties are identical.
+magnitude (ridge). With `spread_only = TRUE` the same design is fitted
+with the position columns removed (the spread-only MS-GDM comparator), so
+that bases, links, constraints and penalties are identical to the position
+model.
 }
